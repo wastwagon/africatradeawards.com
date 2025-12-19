@@ -52,7 +52,7 @@ export default function HeroSection() {
 								Africa Trade Awards 2026
 							</h5>
 							<div className="space16" />
-							<h1 className="text-anime-style-3" style={{ color: 'white', fontSize: 'clamp(1.35rem, 3vw, 2.2rem)', fontWeight: 'bold', lineHeight: '1.2' }}>
+							<h1 className="text-anime-style-3" style={{ color: 'white', fontSize: 'clamp(1.1rem, 2.5vw, 1.8rem)', fontWeight: 'bold', lineHeight: '1.2' }}>
 								Celebrating Africa&apos;s <br className="d-lg-block d-none" />
 								Trade Excellence <br className="d-lg-block d-none" />
 								and Industrial Champions
