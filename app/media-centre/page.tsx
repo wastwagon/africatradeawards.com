@@ -4,29 +4,29 @@ import Link from "next/link"
 
 const pressReleases = [
 	{
-		icon: 'fa-bullhorn',
 		title: 'Media Launch',
-		description: 'Official launch announcement and event details.'
+		description: 'Official launch announcement and event details.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
-		icon: 'fa-users',
 		title: 'Jury Announcements',
-		description: 'Announcement of Jury Board members and evaluation process.'
+		description: 'Announcement of Jury Board members and evaluation process.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
-		icon: 'fa-star',
 		title: 'Nominee Releases',
-		description: 'Announcement of finalists and nominees across all categories.'
+		description: 'Announcement of finalists and nominees across all categories.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
-		icon: 'fa-trophy',
 		title: 'Gala Highlights',
-		description: 'Coverage of Awards Gala Night and winner announcements.'
+		description: 'Coverage of Awards Gala Night and winner announcements.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
-		icon: 'fa-file-lines',
 		title: 'Post-Event Report',
-		description: 'Comprehensive post-event summary and impact report.'
+		description: 'Comprehensive post-event summary and impact report.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	}
 ]
 
@@ -124,8 +124,9 @@ export default function MediaCentre() {
 							{pressReleases.map((release, index) => (
 								<div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
 									<div className="modern-press-card">
-										<div className="press-icon-wrapper">
-											<i className={`fa-solid ${release.icon}`}></i>
+										<div className="press-image-wrapper">
+											<img src={release.image} alt={release.title} />
+											<div className="press-overlay"></div>
 										</div>
 										<div className="press-content">
 											<h4>{release.title}</h4>
