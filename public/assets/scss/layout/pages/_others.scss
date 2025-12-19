@@ -5835,24 +5835,45 @@
 	}
 }
 
-// Modern Event Details Section
+// Modern Event Details Section - Trending Cards
 .modern-event-details-section {
 	padding: 80px 0;
-	background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+	background: linear-gradient(135deg, rgba(78, 43, 90, 0.02) 0%, rgba(93, 58, 107, 0.04) 50%, rgba(78, 43, 90, 0.02) 100%);
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(circle at 20% 50%, rgba(93, 58, 107, 0.05) 0%, transparent 50%),
+					radial-gradient(circle at 80% 50%, rgba(107, 74, 124, 0.05) 0%, transparent 50%);
+		pointer-events: none;
+	}
+
+	.container {
+		position: relative;
+		z-index: 1;
+	}
 
 	@media #{$xs} {
 		padding: 60px 0;
 	}
 
 	.modern-event-detail-card {
-		background: #ffffff;
-		border-radius: 16px;
-		padding: 32px 24px;
+		background: rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(10px);
+		border-radius: 24px;
+		padding: 40px 28px;
 		text-align: center;
 		height: 100%;
-		border: 1px solid rgba(78, 43, 90, 0.08);
-		box-shadow: 0 2px 12px rgba(78, 43, 90, 0.04);
-		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		border: 1px solid rgba(78, 43, 90, 0.1);
+		box-shadow: 0 8px 32px rgba(78, 43, 90, 0.08),
+					0 2px 8px rgba(78, 43, 90, 0.04);
+		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 		position: relative;
 		overflow: hidden;
 
@@ -5862,65 +5883,97 @@
 			top: 0;
 			left: 0;
 			right: 0;
-			height: 4px;
-			background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
-			transform: scaleX(0);
-			transition: transform 0.4s ease;
+			height: 100%;
+			background: linear-gradient(135deg, rgba(93, 58, 107, 0.05) 0%, rgba(107, 74, 124, 0.05) 50%, rgba(122, 90, 141, 0.05) 100%);
+			opacity: 0;
+			transition: opacity 0.5s ease;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			background: radial-gradient(circle, rgba(93, 58, 107, 0.1) 0%, transparent 70%);
+			opacity: 0;
+			transition: opacity 0.5s ease;
 		}
 
 		&:hover {
-			transform: translateY(-6px);
-			box-shadow: 0 12px 32px rgba(78, 43, 90, 0.12);
-			border-color: rgba(78, 43, 90, 0.15);
+			transform: translateY(-12px) scale(1.02);
+			box-shadow: 0 20px 60px rgba(78, 43, 90, 0.15),
+						0 8px 24px rgba(93, 58, 107, 0.1);
+			border-color: rgba(78, 43, 90, 0.2);
+			background: rgba(255, 255, 255, 1);
 
 			&::before {
-				transform: scaleX(1);
+				opacity: 1;
+			}
+
+			&::after {
+				opacity: 1;
 			}
 
 			.event-detail-icon {
-				transform: scale(1.1);
+				transform: scale(1.15) rotate(5deg);
 				background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
+				box-shadow: 0 12px 32px rgba(93, 58, 107, 0.3);
 
 				i {
 					color: #ffffff;
+					transform: scale(1.1);
 				}
+			}
+
+			h4 {
+				color: #4e2b5a;
 			}
 		}
 
 		.event-detail-icon {
-			width: 72px;
-			height: 72px;
-			border-radius: 18px;
-			background: linear-gradient(135deg, rgba(93, 58, 107, 0.1) 0%, rgba(107, 74, 124, 0.1) 100%);
+			width: 88px;
+			height: 88px;
+			border-radius: 24px;
+			background: linear-gradient(135deg, rgba(93, 58, 107, 0.12) 0%, rgba(107, 74, 124, 0.12) 100%);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			margin: 0 auto 20px;
-			transition: all 0.4s ease;
+			margin: 0 auto 24px;
+			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+			position: relative;
+			z-index: 1;
+			box-shadow: 0 4px 16px rgba(93, 58, 107, 0.15);
 
 			i {
-				font-size: 32px;
+				font-size: 36px;
 				color: #4e2b5a;
-				transition: color 0.4s ease;
+				transition: all 0.5s ease;
 			}
 		}
 
 		h4 {
 			font-family: var(--grotesk);
-			font-size: var(--ztc-font-size-font-s18);
+			font-size: var(--ztc-font-size-font-s20);
 			font-weight: var(--ztc-weight-bold);
 			color: var(--ztc-text-text-2);
-			margin-bottom: 12px;
-			line-height: 1.4;
+			margin-bottom: 16px;
+			line-height: 1.3;
+			position: relative;
+			z-index: 1;
+			transition: color 0.3s ease;
 		}
 
 		.event-detail-content {
 			font-family: var(--figtree);
-			font-size: var(--ztc-font-size-font-s16);
+			font-size: var(--ztc-font-size-font-s17);
 			color: var(--ztc-text-text-2);
 			line-height: 1.6;
-			margin-bottom: 8px;
-			font-weight: var(--ztc-weight-medium);
+			margin-bottom: 10px;
+			font-weight: var(--ztc-weight-semibold);
+			position: relative;
+			z-index: 1;
 		}
 
 		.event-detail-subcontent {
@@ -5929,6 +5982,8 @@
 			color: var(--ztc-text-text-3);
 			line-height: 1.6;
 			margin: 0;
+			position: relative;
+			z-index: 1;
 		}
 	}
 }
