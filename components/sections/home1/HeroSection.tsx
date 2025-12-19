@@ -64,31 +64,6 @@ export default function HeroSection() {
 									&quot;Honouring the Champions of Africa&apos;s Trade and Industrialisation.&quot;
 								</span>
 							</div>
-							<div className="space20" />
-							<div className="btn-area1" data-aos="fade-left" data-aos-duration={1100}>
-								<Link 
-									href="/nomination" 
-									style={{
-										color: '#ffffff',
-										fontSize: '18px',
-										fontWeight: '600',
-										textDecoration: 'none',
-										display: 'inline-flex',
-										alignItems: 'center',
-										gap: '8px',
-										transition: 'all 0.3s ease'
-									}}
-									onMouseEnter={(e) => {
-										e.currentTarget.style.opacity = '0.8';
-									}}
-									onMouseLeave={(e) => {
-										e.currentTarget.style.opacity = '1';
-									}}
-								>
-									Nominate Now
-									<i className="fa-solid fa-arrow-right" style={{ fontSize: '14px' }}></i>
-								</Link>
-							</div>
 						</div>
 					</div>
 					
