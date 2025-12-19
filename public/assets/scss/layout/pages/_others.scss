@@ -6540,11 +6540,8 @@
 	box-shadow: 0 8px 24px rgba(78, 43, 90, 0.3);
 	overflow: hidden;
 
-	@media #{$xs} {
-		right: 20px;
-		bottom: 90px; // Above mobile bottom nav
-		width: 56px;
-		height: 56px;
+	@media (max-width: 991px) {
+		display: none !important;
 	}
 
 	&::before {
