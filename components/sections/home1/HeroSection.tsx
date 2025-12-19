@@ -5,7 +5,6 @@ export default function HeroSection() {
 	return (
 		<section className="hero1-section-area" 
 			style={{ 
-				background: 'linear-gradient(135deg, #4e2b5a 0%, #3d2247 50%, #5a6fd8 100%)',
 				minHeight: '100vh', 
 				display: 'flex', 
 				alignItems: 'center', 
@@ -13,14 +12,33 @@ export default function HeroSection() {
 				overflow: 'hidden'
 			}}>
 			
-			{/* Gradient overlay for depth */}
+			{/* Video Background */}
+			<video
+				autoPlay
+				loop
+				muted
+				playsInline
+				style={{
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					width: '100%',
+					height: '100%',
+					objectFit: 'cover',
+					zIndex: 0
+				}}
+			>
+				<source src="/assets/video/hero-video.mp4" type="video/mp4" />
+			</video>
+			
+			{/* Overlay for better text readability */}
 			<div style={{
 				position: 'absolute',
 				top: 0,
 				left: 0,
 				right: 0,
 				bottom: 0,
-				background: 'radial-gradient(circle at 30% 50%, rgba(123, 90, 141, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(78, 43, 90, 0.4) 0%, transparent 50%)',
+				background: 'linear-gradient(135deg, rgba(78, 43, 90, 0.7) 0%, rgba(61, 34, 71, 0.6) 50%, rgba(90, 111, 216, 0.5) 100%)',
 				pointerEvents: 'none',
 				zIndex: 1
 			}} />
@@ -78,29 +96,24 @@ export default function HeroSection() {
 						</div>
 					</div>
 					
-					{/* Right Column - Image & Info */}
+					{/* Right Column - Event Info Only (Image Removed) */}
 					<div className="col-lg-5" data-aos="fade-left" data-aos-duration={1000}>
-						<div className="header-images">
-							<div className="img1" data-aos="zoom-in" data-aos-duration={1000}>
-								<img src="/assets/img/all-images/hero/hero-img1.png" alt="" />
-							</div>
-							<div className="images-content-area" data-aos="fade-up" data-aos-duration={900} style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', padding: '1.5rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.2)', color: 'white', marginTop: '1.5rem' }}>
-								<h3 style={{ color: 'white', fontWeight: 'bold' }}>AFRICA TRADE AWARDS 2026</h3>
-								<div className="space12" />
-								<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block' }}>
-									<i className="fa-solid fa-calendar" style={{ marginRight: '0.5rem' }}></i>
-									28th and 29th January 2026
-								</Link>
-								<div className="space12" />
-								<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block' }}>
-									<i className="fa-solid fa-location-dot" style={{ marginRight: '0.5rem' }}></i>
-									Kempinski Gold Coast City Hotel, Accra
-								</Link>
-								<div className="space16" />
-								<p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-									Join a historic moment of recognition, prestige, and progress. Nominate, partner, or attend the Awards and stand with the pioneers advancing Africa&apos;s trade and industrial future.
-								</p>
-							</div>
+						<div className="images-content-area" data-aos="fade-up" data-aos-duration={900} style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', padding: '1.5rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.2)', color: 'white' }}>
+							<h3 style={{ color: 'white', fontWeight: 'bold' }}>AFRICA TRADE AWARDS 2026</h3>
+							<div className="space12" />
+							<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block' }}>
+								<i className="fa-solid fa-calendar" style={{ marginRight: '0.5rem' }}></i>
+								28th and 29th January 2026
+							</Link>
+							<div className="space12" />
+							<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block' }}>
+								<i className="fa-solid fa-location-dot" style={{ marginRight: '0.5rem' }}></i>
+								Kempinski Gold Coast City Hotel, Accra
+							</Link>
+							<div className="space16" />
+							<p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+								Join a historic moment of recognition, prestige, and progress. Nominate, partner, or attend the Awards and stand with the pioneers advancing Africa&apos;s trade and industrial future.
+							</p>
 						</div>
 					</div>
 				</div>

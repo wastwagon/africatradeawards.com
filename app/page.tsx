@@ -21,7 +21,7 @@ export default function Home() {
 				<MediaSection />
 			</Layout>
 			
-			<Popup />
+			{/* <Popup /> */} {/* Temporarily disabled */}
 		</>
 	)
 }
