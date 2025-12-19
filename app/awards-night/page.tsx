@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const eventDetails = [
 	{
-		icon: 'fa-calendar-days',
+		icon: 'fa-calendar',
 		title: 'Date & Time',
 		content: 'Friday, 30 January 2026',
 		subContent: '6:30 p.m. – 11:00 p.m.'
@@ -28,7 +28,7 @@ const eventDetails = [
 
 const eveningHighlights = [
 	{
-		icon: 'fa-red-carpet',
+		icon: 'fa-star',
 		title: 'Red Carpet & Networking',
 		description: 'Reception with continental leaders and industry pioneers.'
 	},
