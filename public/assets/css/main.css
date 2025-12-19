@@ -25603,126 +25603,61 @@ html {
     line-height: 1.7;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section {
+.about1-section-area.nomination-process-section .timeline-grid-section {
   position: relative;
-  padding: 20px 0 30px;
+  padding: 20px 0 50px;
   margin-top: 0;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section {
-    padding: 16px 0 24px;
+  .about1-section-area.nomination-process-section .timeline-grid-section {
+    padding: 16px 0 40px;
     margin-top: 0;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section {
-    padding: 18px 0 28px;
+  .about1-section-area.nomination-process-section .timeline-grid-section {
+    padding: 18px 0 48px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper {
-  position: relative;
-  padding: 0 50px;
+.about1-section-area.nomination-process-section .timeline-grid-section .row {
+  margin: 0 -15px;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper {
-    padding: 0 40px;
+  .about1-section-area.nomination-process-section .timeline-grid-section .row {
+    margin: 0 -10px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(78, 43, 90, 0.1);
-  color: #4e2b5a;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 20px rgba(78, 43, 90, 0.1);
-  z-index: 10;
+.about1-section-area.nomination-process-section .timeline-grid-section .row > [class*=col-] {
+  padding: 0 15px;
+  margin-bottom: 30px;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-nav-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 14px;
+  .about1-section-area.nomination-process-section .timeline-grid-section .row > [class*=col-] {
+    padding: 0 10px;
+    margin-bottom: 24px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-nav-btn:hover:not(:disabled):not(.disabled) {
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
-  color: #ffffff;
-  border-color: transparent;
-  box-shadow: 0 8px 30px rgba(78, 43, 90, 0.3);
-  transform: translateY(-50%) scale(1.1);
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-nav-btn:disabled, .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-nav-btn.disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-nav-btn.timeline-nav-prev {
-  left: 0;
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-nav-btn.timeline-nav-next {
-  right: 0;
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-progress-container {
-  position: relative;
-  margin-bottom: 24px;
-  height: 4px;
-}
-@media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-progress-container {
-    margin-bottom: 20px;
-    height: 3px;
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .about1-section-area.nomination-process-section .timeline-grid-section .row > [class*=col-] {
+    margin-bottom: 28px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-progress-container .timeline-progress-line {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(78, 43, 90, 0.1) 0%, rgba(78, 43, 90, 0.2) 50%, rgba(78, 43, 90, 0.1) 100%);
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-progress-container .timeline-progress-line .timeline-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #4e2b5a 0%, #5a6fd8 100%);
-  border-radius: 2px;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 10px rgba(78, 43, 90, 0.3);
-  width: 0%;
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper {
-  position: relative;
-  padding: 20px 0 50px;
-  overflow: visible;
-}
-@media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper {
-    padding: 15px 0 40px;
-  }
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide {
-  height: auto;
-  display: flex;
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 0 10px;
   height: 100%;
+  transition: all 0.3s ease;
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card:hover .step-node .node-circle {
+  border-color: rgba(78, 43, 90, 0.25);
+  box-shadow: 0 8px 30px rgba(78, 43, 90, 0.2);
+}
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card:hover .step-node .node-circle .node-icon {
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.08) 0%, rgba(90, 111, 216, 0.08) 100%);
+}
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25731,11 +25666,11 @@ html {
   z-index: 2;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node {
+  .about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node {
     margin-bottom: 18px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node .node-circle {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node .node-circle {
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -25749,13 +25684,13 @@ html {
   box-shadow: 0 4px 20px rgba(78, 43, 90, 0.12);
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node .node-circle {
+  .about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node .node-circle {
     width: 70px;
     height: 70px;
     border-width: 3px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node .node-circle .node-icon {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node .node-circle .node-icon {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -25766,22 +25701,22 @@ html {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node .node-circle .node-icon {
+  .about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node .node-circle .node-icon {
     width: 54px;
     height: 54px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node .node-circle .node-icon i {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node .node-circle .node-icon i {
   font-size: 28px;
   color: #4e2b5a;
   transition: all 0.3s ease;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node .node-circle .node-icon i {
+  .about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node .node-circle .node-icon i {
     font-size: 22px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node .node-number {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node .node-number {
   margin-top: 10px;
   font-family: var(--grotesk);
   font-size: var(--ztc-font-size-font-s14);
@@ -25790,12 +25725,12 @@ html {
   letter-spacing: 0.5px;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-node .node-number {
+  .about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-node .node-number {
     margin-top: 8px;
     font-size: var(--ztc-font-size-font-s12);
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-content {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-content {
   background: #ffffff;
   border-radius: 16px;
   padding: 24px 20px;
@@ -25809,17 +25744,17 @@ html {
   justify-content: center;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-content {
+  .about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-content {
     padding: 20px 16px;
     border-radius: 12px;
     min-height: 160px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-content:hover {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-content:hover {
   box-shadow: 0 12px 40px rgba(78, 43, 90, 0.15), 0 0 0 1px rgba(78, 43, 90, 0.12);
   transform: translateY(-4px);
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-content .step-title {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-content .step-title {
   font-family: var(--grotesk);
   font-size: var(--ztc-font-size-font-s20);
   font-weight: var(--ztc-weight-bold);
@@ -25829,12 +25764,12 @@ html {
   letter-spacing: -0.3px;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-content .step-title {
+  .about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-content .step-title {
     font-size: var(--ztc-font-size-font-s18);
     margin-bottom: 10px;
   }
 }
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-content .step-description {
+.about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-content .step-description {
   font-family: var(--figtree);
   font-size: var(--ztc-font-size-font-s16);
   font-weight: var(--ztc-weight-regular);
@@ -25843,67 +25778,9 @@ html {
   margin: 0;
 }
 @media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .timeline-step-card .step-content .step-description {
+  .about1-section-area.nomination-process-section .timeline-grid-section .timeline-step-card .step-content .step-description {
     font-size: var(--ztc-font-size-font-s14);
     line-height: 1.7;
-  }
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide .timeline-step-card .step-node .node-circle {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide .timeline-step-card .step-content {
-  transition: all 0.3s ease;
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide-active .timeline-step-card .step-node .node-circle,
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide-next .timeline-step-card .step-node .node-circle {
-  border-color: rgba(78, 43, 90, 0.25);
-  box-shadow: 0 8px 30px rgba(78, 43, 90, 0.2);
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide-active .timeline-step-card .step-node .node-circle .node-icon,
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide-next .timeline-step-card .step-node .node-circle .node-icon {
-  background: linear-gradient(135deg, rgba(78, 43, 90, 0.08) 0%, rgba(90, 111, 216, 0.08) 100%);
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide-active .timeline-step-card .step-content,
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-swiper .swiper-slide-next .timeline-step-card .step-content {
-  box-shadow: 0 10px 35px rgba(78, 43, 90, 0.12), 0 0 0 1px rgba(78, 43, 90, 0.1);
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 30px;
-  position: relative;
-}
-@media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-pagination {
-    margin-top: 20px;
-    gap: 6px;
-  }
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background: rgba(78, 43, 90, 0.2);
-  opacity: 1;
-  transition: all 0.3s ease;
-  border-radius: 50%;
-}
-@media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-pagination .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-  }
-}
-.about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
-  width: 32px;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(78, 43, 90, 0.3);
-}
-@media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .timeline-carousel-section .timeline-carousel-wrapper .timeline-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    width: 28px;
   }
 }
 .about1-section-area.nomination-process-section .nomination-cta-wrapper .nomination-buttons {

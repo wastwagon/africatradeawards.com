@@ -1,8 +1,4 @@
 'use client'
-import { useState, useRef } from 'react'
-import Link from 'next/link'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper/modules'
 
 const processSteps = [
 	{
@@ -43,96 +39,7 @@ const processSteps = [
 	}
 ]
 
-const swiperOptions = {
-	modules: [Navigation, Pagination],
-	slidesPerView: 3,
-	spaceBetween: 30,
-	loop: false,
-	navigation: {
-		nextEl: '.timeline-nav-next',
-		prevEl: '.timeline-nav-prev',
-	},
-	pagination: {
-		el: '.timeline-pagination',
-		clickable: true,
-		type: 'bullets' as const,
-	},
-	breakpoints: {
-		320: {
-			slidesPerView: 2,
-			spaceBetween: 16,
-		},
-		768: {
-			slidesPerView: 2,
-			spaceBetween: 20,
-		},
-		992: {
-			slidesPerView: 3,
-			spaceBetween: 30,
-		},
-		1200: {
-			slidesPerView: 3,
-			spaceBetween: 30,
-		},
-	}
-}
-
 export default function HowToNominateSection() {
-	const [swiper, setSwiper] = useState<any>(null)
-	const [isBeginning, setIsBeginning] = useState(true)
-	const [isEnd, setIsEnd] = useState(false)
-	const progressRef = useRef<HTMLDivElement>(null)
-	const prevBtnRef = useRef<HTMLButtonElement>(null)
-	const nextBtnRef = useRef<HTMLButtonElement>(null)
-
-	const handleSlideChange = (swiperInstance: any) => {
-		if (progressRef.current) {
-			const maxIndex = processSteps.length - swiperInstance.slidesPerViewDynamic()
-			const progress = maxIndex > 0 ? (swiperInstance.activeIndex / maxIndex) * 100 : 0
-			progressRef.current.style.width = `${Math.min(progress, 100)}%`
-		}
-		setIsBeginning(swiperInstance.isBeginning)
-		setIsEnd(swiperInstance.isEnd)
-		
-		// Update button states
-		if (prevBtnRef.current) {
-			prevBtnRef.current.disabled = swiperInstance.isBeginning
-			prevBtnRef.current.classList.toggle('disabled', swiperInstance.isBeginning)
-		}
-		if (nextBtnRef.current) {
-			nextBtnRef.current.disabled = swiperInstance.isEnd
-			nextBtnRef.current.classList.toggle('disabled', swiperInstance.isEnd)
-		}
-	}
-
-	const handleSwiperInit = (swiperInstance: any) => {
-		setSwiper(swiperInstance)
-		setIsBeginning(swiperInstance.isBeginning)
-		setIsEnd(swiperInstance.isEnd)
-		
-		// Update button states on init
-		if (prevBtnRef.current) {
-			prevBtnRef.current.disabled = swiperInstance.isBeginning
-			prevBtnRef.current.classList.toggle('disabled', swiperInstance.isBeginning)
-		}
-		if (nextBtnRef.current) {
-			nextBtnRef.current.disabled = swiperInstance.isEnd
-			nextBtnRef.current.classList.toggle('disabled', swiperInstance.isEnd)
-		}
-	}
-
-	const handlePrev = () => {
-		if (swiper && !swiper.isBeginning) {
-			swiper.slidePrev()
-		}
-	}
-
-	const handleNext = () => {
-		if (swiper && !swiper.isEnd) {
-			swiper.slideNext()
-		}
-	}
-
 	return (
 		<>
 			<div className="about1-section-area nomination-process-section">
@@ -146,71 +53,31 @@ export default function HowToNominateSection() {
 							</div>
 						</div>
 					</div>
-					<div className="space12" />
+					<div className="space50" />
 				</div>
 
-				{/* Timeline Carousel */}
-				<div className="timeline-carousel-section">
+				{/* Timeline Grid */}
+				<div className="timeline-grid-section">
 					<div className="container">
-						<div className="timeline-carousel-wrapper">
-							{/* Navigation Buttons */}
-							<button 
-								ref={prevBtnRef}
-								className={`timeline-nav-btn timeline-nav-prev ${isBeginning ? 'disabled' : ''}`}
-								aria-label="Previous"
-								disabled={isBeginning}
-								onClick={handlePrev}
-							>
-								<i className="fa-solid fa-chevron-left"></i>
-							</button>
-							<button 
-								ref={nextBtnRef}
-								className={`timeline-nav-btn timeline-nav-next ${isEnd ? 'disabled' : ''}`}
-								aria-label="Next"
-								disabled={isEnd}
-								onClick={handleNext}
-							>
-								<i className="fa-solid fa-chevron-right"></i>
-							</button>
-
-							{/* Progress Line */}
-							<div className="timeline-progress-container">
-								<div className="timeline-progress-line">
-									<div className="timeline-progress-fill" ref={progressRef}></div>
-								</div>
-							</div>
-
-							{/* Swiper Carousel */}
-							<Swiper
-								{...swiperOptions}
-								onSwiper={handleSwiperInit}
-								onSlideChange={handleSlideChange}
-								onReachBeginning={() => setIsBeginning(true)}
-								onReachEnd={() => setIsEnd(true)}
-								className="timeline-swiper"
-							>
-								{processSteps.map((step, index) => (
-									<SwiperSlide key={index}>
-										<div className="timeline-step-card">
-											<div className="step-node">
-												<div className="node-circle">
-													<div className="node-icon">
-														<i className={`fa-solid ${step.icon}`}></i>
-													</div>
+						<div className="row">
+							{processSteps.map((step, index) => (
+								<div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
+									<div className="timeline-step-card">
+										<div className="step-node">
+											<div className="node-circle">
+												<div className="node-icon">
+													<i className={`fa-solid ${step.icon}`}></i>
 												</div>
-												<div className="node-number">{step.number}</div>
 											</div>
-											<div className="step-content">
-												<h3 className="step-title">{step.title}</h3>
-												<p className="step-description">{step.description}</p>
-											</div>
+											<div className="node-number">{step.number}</div>
 										</div>
-									</SwiperSlide>
-								))}
-							</Swiper>
-
-							{/* Pagination */}
-							<div className="timeline-pagination"></div>
+										<div className="step-content">
+											<h3 className="step-title">{step.title}</h3>
+											<p className="step-description">{step.description}</p>
+										</div>
+									</div>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
