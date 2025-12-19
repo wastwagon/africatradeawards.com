@@ -38,14 +38,8 @@ export default function HeroSection() {
 								</span>
 							</div>
 							<div className="space20" />
-							<div className="btn-area1" data-aos="fade-left" data-aos-duration={1100} style={{ marginTop: '24px' }}>
-								<Link 
-									href="/nomination" 
-									className="vl-btn1 hero-cta-white"
-								>
-									Nominate Now
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
+							<div className="btn-area1" data-aos="fade-left" data-aos-duration={1100}>
+								<Link href="/nomination" className="vl-btn1">Nominate Now</Link>
 							</div>
 						</div>
 					</div>
