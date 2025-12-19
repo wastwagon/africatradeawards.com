@@ -24,12 +24,12 @@ export default function IndependentAudit() {
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="modern-section-header text-center space-margin60">
-									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Overview</span>
-									<div className="space20" />
-									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Guaranteeing Integrity Through Independent Verification</h2>
+								<div className="heading2 text-center space-margin60">
+									<h5 data-aos="fade-up" data-aos-duration={800}>Overview</h5>
+									<div className="space18" />
+									<h2 className="text-anime-style-3" data-aos="fade-up" data-aos-duration={900}>Guaranteeing Integrity Through Independent Verification</h2>
 									<div className="space16" />
-									<p className="modern-section-subtitle" data-aos="fade-up" data-aos-duration={1000}>To guarantee integrity, the Africa Trade Awards are independently audited by Forvis Mazars Ghana, the official Independent Process Verification Partner.</p>
+									<p data-aos="fade-up" data-aos-duration={1000}>To guarantee integrity, the Africa Trade Awards are independently audited by Forvis Mazars Ghana, the official Independent Process Verification Partner.</p>
 								</div>
 							</div>
 						</div>
