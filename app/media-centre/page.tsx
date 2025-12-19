@@ -32,29 +32,29 @@ const pressReleases = [
 
 const galleryItems = [
 	{
-		icon: 'fa-rocket',
 		title: 'Launch Event',
-		link: '/memories'
+		link: '/memories',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
-		icon: 'fa-star',
 		title: 'Nominee Spotlights',
-		link: '/memories'
+		link: '/memories',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
-		icon: 'fa-trophy',
 		title: 'Gala Highlights',
-		link: '/memories'
+		link: '/memories',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
-		icon: 'fa-microphone',
 		title: 'Winner Interviews',
-		link: '/memories'
+		link: '/memories',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
-		icon: 'fa-camera',
 		title: 'Behind-the-Scenes',
-		link: '/memories'
+		link: '/memories',
+		image: '/assets/img/all-images/about/about-img8.png'
 	}
 ]
 
@@ -153,13 +153,16 @@ export default function MediaCentre() {
 						</div>
 						<div className="row">
 							{galleryItems.map((item, index) => (
-								<div key={index} className={index === 4 ? "col-lg-6 col-md-6" : "col-lg-3 col-md-6"} data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
-									<Link href={item.link} className="modern-gallery-btn">
-										<div className="gallery-icon-wrapper">
-											<i className={`fa-solid ${item.icon}`}></i>
+								<div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
+									<Link href={item.link} className="modern-gallery-card">
+										<div className="gallery-image-wrapper">
+											<img src={item.image} alt={item.title} />
+											<div className="gallery-overlay"></div>
 										</div>
-										<span>{item.title}</span>
-										<i className="fa-solid fa-arrow-right"></i>
+										<div className="gallery-content">
+											<h4>{item.title}</h4>
+											<i className="fa-solid fa-arrow-right"></i>
+										</div>
 									</Link>
 								</div>
 							))}
