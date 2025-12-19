@@ -25,6 +25,7 @@ import Header7 from './header/Header7'
 import Header8 from './header/Header8'
 import Header9 from './header/Header9'
 import MobileMenu from './MobileMenu'
+import MobileBottomNav from './MobileBottomNav'
 
 interface LayoutProps {
 	headerStyle?: Number
@@ -83,6 +84,8 @@ export default function Layout({ headerStyle, footerStyle, children }: LayoutPro
 
 
 			{children}
+
+			<MobileBottomNav />
 
 		{!footerStyle && <Footer1 />}
 		{footerStyle === 1 && <Footer1 />}
