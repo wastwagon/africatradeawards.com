@@ -36,96 +36,80 @@ export default function IndependentAudit() {
 					</div>
 				</div>
 				{/*===== SCOPE OF VERIFICATION =======*/}
-				<div className="choose-section-area trending-verification-section sp2">
-					<div className="verification-hero-bg"></div>
+				<div className="modern-benefits-section">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="modern-section-header text-center space-margin60">
-									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Scope of Verification</span>
-									<div className="space20" />
-									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>What We Verify</h2>
+								<div className="heading2 text-center space-margin60">
+									<h5 data-aos="fade-up" data-aos-duration={800}>Scope of Verification</h5>
+									<div className="space18" />
+									<h2 className="text-anime-style-3">What We Verify</h2>
 								</div>
 							</div>
 						</div>
-						<div className="space50" />
 						<div className="row">
-							<div className="col-lg-12">
-								<div className="trending-verification-grid">
-									<div className="trending-verification-card card-featured" data-aos="fade-up" data-aos-duration={800} data-aos-once="true">
-										<div className="card-number-overlay">
-											<span>01</span>
-										</div>
-										<div className="card-gradient-overlay"></div>
-										<div className="card-content-inner">
-											<div className="card-icon-featured">
-												<div className="icon-glow"></div>
-												<i className="fa-solid fa-file-circle-check"></i>
-											</div>
-											<h3>Nomination &amp; Eligibility Review</h3>
-											<p>Verification of all nomination submissions and eligibility criteria compliance.</p>
-										</div>
-										<div className="card-border-glow"></div>
+							<div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={800}>
+								<div className="modern-press-card">
+									<div className="press-image-wrapper">
+										<img src="/assets/img/all-images/about/about-img8.png" alt="Nomination & Eligibility Review" />
+										<div className="press-overlay"></div>
+										<div className="press-number-badge">01</div>
 									</div>
-									<div className="trending-verification-card" data-aos="fade-up" data-aos-duration={900} data-aos-once="true">
-										<div className="card-number-overlay">
-											<span>02</span>
-										</div>
-										<div className="card-gradient-overlay"></div>
-										<div className="card-content-inner">
-											<div className="card-icon-featured">
-												<div className="icon-glow"></div>
-												<i className="fa-solid fa-chart-line"></i>
-											</div>
-											<h3>Evaluation Scoring Integrity</h3>
-											<p>Audit of evaluation process and scoring methodology to ensure fairness and objectivity.</p>
-										</div>
-										<div className="card-border-glow"></div>
+									<div className="press-content">
+										<h4>Nomination &amp; Eligibility Review</h4>
+										<p>Verification of all nomination submissions and eligibility criteria compliance.</p>
 									</div>
-									<div className="trending-verification-card" data-aos="fade-up" data-aos-duration={1000} data-aos-once="true">
-										<div className="card-number-overlay">
-											<span>03</span>
-										</div>
-										<div className="card-gradient-overlay"></div>
-										<div className="card-content-inner">
-											<div className="card-icon-featured">
-												<div className="icon-glow"></div>
-												<i className="fa-solid fa-lock"></i>
-											</div>
-											<h3>Data Security &amp; Confidentiality</h3>
-											<p>Review of data handling procedures and confidentiality protocols.</p>
-										</div>
-										<div className="card-border-glow"></div>
+								</div>
+							</div>
+							<div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={900}>
+								<div className="modern-press-card">
+									<div className="press-image-wrapper">
+										<img src="/assets/img/all-images/about/about-img8.png" alt="Evaluation Scoring Integrity" />
+										<div className="press-overlay"></div>
+										<div className="press-number-badge">02</div>
 									</div>
-									<div className="trending-verification-card" data-aos="fade-up" data-aos-duration={1100} data-aos-once="true">
-										<div className="card-number-overlay">
-											<span>04</span>
-										</div>
-										<div className="card-gradient-overlay"></div>
-										<div className="card-content-inner">
-											<div className="card-icon-featured">
-												<div className="icon-glow"></div>
-												<i className="fa-solid fa-calculator"></i>
-											</div>
-											<h3>Result Compilation</h3>
-											<p>Verification of result compilation and accuracy of final outcomes.</p>
-										</div>
-										<div className="card-border-glow"></div>
+									<div className="press-content">
+										<h4>Evaluation Scoring Integrity</h4>
+										<p>Audit of evaluation process and scoring methodology to ensure fairness and objectivity.</p>
 									</div>
-									<div className="trending-verification-card" data-aos="fade-up" data-aos-duration={1200} data-aos-once="true">
-										<div className="card-number-overlay">
-											<span>05</span>
-										</div>
-										<div className="card-gradient-overlay"></div>
-										<div className="card-content-inner">
-											<div className="card-icon-featured">
-												<div className="icon-glow"></div>
-												<i className="fa-solid fa-file-lines"></i>
-											</div>
-											<h3>Post-Award Audit Report</h3>
-											<p>Comprehensive audit report issued after the Awards ceremony.</p>
-										</div>
-										<div className="card-border-glow"></div>
+								</div>
+							</div>
+							<div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={1000}>
+								<div className="modern-press-card">
+									<div className="press-image-wrapper">
+										<img src="/assets/img/all-images/about/about-img8.png" alt="Data Security & Confidentiality" />
+										<div className="press-overlay"></div>
+										<div className="press-number-badge">03</div>
+									</div>
+									<div className="press-content">
+										<h4>Data Security &amp; Confidentiality</h4>
+										<p>Review of data handling procedures and confidentiality protocols.</p>
+									</div>
+								</div>
+							</div>
+							<div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={1100}>
+								<div className="modern-press-card">
+									<div className="press-image-wrapper">
+										<img src="/assets/img/all-images/about/about-img8.png" alt="Result Compilation" />
+										<div className="press-overlay"></div>
+										<div className="press-number-badge">04</div>
+									</div>
+									<div className="press-content">
+										<h4>Result Compilation</h4>
+										<p>Verification of result compilation and accuracy of final outcomes.</p>
+									</div>
+								</div>
+							</div>
+							<div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={1200}>
+								<div className="modern-press-card">
+									<div className="press-image-wrapper">
+										<img src="/assets/img/all-images/about/about-img8.png" alt="Post-Award Audit Report" />
+										<div className="press-overlay"></div>
+										<div className="press-number-badge">05</div>
+									</div>
+									<div className="press-content">
+										<h4>Post-Award Audit Report</h4>
+										<p>Comprehensive audit report issued after the Awards ceremony.</p>
 									</div>
 								</div>
 							</div>
