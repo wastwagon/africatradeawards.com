@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout"
-import Popup from '@/components/layout/Popup'
+// import Popup from '@/components/layout/Popup' // Temporarily disabled
 import HeroSection from '@/components/sections/home1/HeroSection'
 import AboutSection from '@/components/sections/home1/AboutSection'
 import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
