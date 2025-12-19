@@ -58,33 +58,25 @@ export default function HeroSection() {
 								and Industrial Champions
 							</h1>
 							<div className="space16" />
-							<div className="theme-badge" data-aos="fade-left" data-aos-duration={1000} style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', padding: '1rem', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-								<strong style={{ color: 'white' }}>Theme 2026:</strong>
-								<span style={{ color: 'rgba(255, 255, 255, 0.9)', marginLeft: '0.5rem' }}>
+							<div className="theme-badge" data-aos="fade-left" data-aos-duration={1000} style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', padding: '1.5rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.2)', color: 'white' }}>
+								<strong style={{ color: 'white', display: 'block', marginBottom: '12px' }}>Theme 2026:</strong>
+								<p style={{ color: 'rgba(255, 255, 255, 0.9)', marginBottom: '16px' }}>
 									&quot;Honouring the Champions of Africa&apos;s Trade and Industrialisation.&quot;
-								</span>
+								</p>
+								<div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)', paddingTop: '16px', marginTop: '16px' }}>
+									<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block', marginBottom: '12px', textDecoration: 'none' }}>
+										<i className="fa-solid fa-calendar" style={{ marginRight: '0.5rem' }}></i>
+										28th and 29th January 2026
+									</Link>
+									<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block', marginBottom: '16px', textDecoration: 'none' }}>
+										<i className="fa-solid fa-location-dot" style={{ marginRight: '0.5rem' }}></i>
+										Kempinski Gold Coast City Hotel, Accra
+									</Link>
+									<p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: 0 }}>
+										Join a historic moment of recognition, prestige, and progress. Nominate, partner, or attend the Awards and stand with the pioneers advancing Africa&apos;s trade and industrial future.
+									</p>
+								</div>
 							</div>
-						</div>
-					</div>
-					
-					{/* Right Column - Event Info Only (Image Removed) */}
-					<div className="col-lg-5" data-aos="fade-left" data-aos-duration={1000}>
-						<div className="images-content-area" data-aos="fade-up" data-aos-duration={900} style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', padding: '1.5rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.2)', color: 'white' }}>
-							<h3 style={{ color: 'white', fontWeight: 'bold' }}>AFRICA TRADE AWARDS 2026</h3>
-							<div className="space12" />
-							<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block' }}>
-								<i className="fa-solid fa-calendar" style={{ marginRight: '0.5rem' }}></i>
-								28th and 29th January 2026
-							</Link>
-							<div className="space12" />
-							<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block' }}>
-								<i className="fa-solid fa-location-dot" style={{ marginRight: '0.5rem' }}></i>
-								Kempinski Gold Coast City Hotel, Accra
-							</Link>
-							<div className="space16" />
-							<p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-								Join a historic moment of recognition, prestige, and progress. Nominate, partner, or attend the Awards and stand with the pioneers advancing Africa&apos;s trade and industrial future.
-							</p>
 						</div>
 					</div>
 				</div>
