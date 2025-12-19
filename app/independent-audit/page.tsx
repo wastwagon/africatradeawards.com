@@ -117,24 +117,72 @@ export default function IndependentAudit() {
 					</div>
 				</div>
 				{/*===== GOVERNANCE FRAMEWORK =======*/}
+				<div className="about1-section-area modern-governance-integrity-section sp2">
+					<div className="container">
+						<div className="row">
+							<div className="col-lg-10 m-auto">
+								<div className="heading2 text-center space-margin60">
+									<h5 data-aos="fade-up" data-aos-duration={800}>Governance & Integrity</h5>
+									<div className="space18" />
+									<h2 className="text-anime-style-3">Transparency and Trust</h2>
+									<div className="space24" />
+									<p data-aos="fade-up" data-aos-duration={900} style={{ marginBottom: '40px', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+										The Awards operate under a governance framework guaranteeing transparency and trust:
+									</p>
+								</div>
+								<div className="governance-integrity-grid">
+									<div className="governance-integrity-item" data-aos="fade-up" data-aos-duration={900}>
+										<div className="governance-item-icon">
+											<i className="fa-solid fa-building"></i>
+										</div>
+										<div className="governance-item-content">
+											<h4>Host Institution</h4>
+											<p>African Trade Chamber (ATC)</p>
+										</div>
+									</div>
+									<div className="governance-integrity-item" data-aos="fade-up" data-aos-duration={1000}>
+										<div className="governance-item-icon">
+											<i className="fa-solid fa-copyright"></i>
+										</div>
+										<div className="governance-item-content">
+											<h4>Intellectual Property Holder</h4>
+											<p>Agile Media Solutions</p>
+										</div>
+									</div>
+									<div className="governance-integrity-item" data-aos="fade-up" data-aos-duration={1100}>
+										<div className="governance-item-icon">
+											<i className="fa-solid fa-shield-halved"></i>
+										</div>
+										<div className="governance-item-content">
+											<h4>Independent Verification Partner</h4>
+											<p>Forvis Mazars Ghana</p>
+										</div>
+									</div>
+									<div className="governance-integrity-item" data-aos="fade-up" data-aos-duration={1200}>
+										<div className="governance-item-icon">
+											<i className="fa-solid fa-users-line"></i>
+										</div>
+										<div className="governance-item-content">
+											<h4>Oversight Board</h4>
+											<p>Representatives from ATC, Agile, and independent experts</p>
+										</div>
+									</div>
+								</div>
+								<div className="space32" />
+								<div className="governance-integrity-statement" data-aos="fade-up" data-aos-duration={1300}>
+									<p>All nominations and evaluations undergo rigorous scrutiny and independent verification prior to ratification.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{/*===== VERIFICATION STATEMENT =======*/}
 				<div className="about1-section-area trending-governance-section sp2">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-10 m-auto">
 								<div className="trending-governance-grid">
 									<div className="trending-governance-card" data-aos="fade-up" data-aos-duration={800} data-aos-once="true">
-										<div className="governance-card-pattern"></div>
-										<div className="governance-card-content">
-											<div className="governance-icon-featured">
-												<div className="icon-pulse"></div>
-												<i className="fa-solid fa-users-line"></i>
-											</div>
-											<h3>Governance Framework</h3>
-											<p>Oversight Board comprising ATC, Agile Media Solutions, Forvis Mazars Ghana, and an independent trade expert.</p>
-										</div>
-										<div className="governance-card-shine"></div>
-									</div>
-									<div className="trending-governance-card" data-aos="fade-up" data-aos-duration={900} data-aos-once="true">
 										<div className="governance-card-pattern"></div>
 										<div className="governance-card-content">
 											<div className="governance-icon-featured">

@@ -19383,6 +19383,151 @@ html {
     transform: scale(1.05);
   }
 }
+/*============= GOVERNANCE & INTEGRITY SECTION ===============*/
+.modern-governance-integrity-section {
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.02) 0%, rgba(90, 111, 216, 0.02) 100%);
+}
+.modern-governance-integrity-section .governance-integrity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+@media (max-width: 767px) {
+  .modern-governance-integrity-section .governance-integrity-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .modern-governance-integrity-section .governance-integrity-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 0 8px 32px rgba(78, 43, 90, 0.08), 0 0 0 1px rgba(78, 43, 90, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(78, 43, 90, 0.12), 0 0 0 1px rgba(78, 43, 90, 0.08);
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item:hover::before {
+  opacity: 1;
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item:hover .governance-item-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item:hover .governance-item-icon i {
+  color: #ffffff;
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item .governance-item-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(78, 43, 90, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (max-width: 767px) {
+  .modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item .governance-item-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item .governance-item-icon i {
+  font-size: 24px;
+  color: #4e2b5a;
+  transition: color 0.3s ease;
+}
+@media (max-width: 767px) {
+  .modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item .governance-item-icon i {
+    font-size: 20px;
+  }
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item .governance-item-content {
+  flex: 1;
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item .governance-item-content h4 {
+  font-family: var(--grotesk);
+  font-size: var(--ztc-font-size-font-s18);
+  font-weight: var(--ztc-weight-bold);
+  color: var(--ztc-text-text-2);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+@media (max-width: 767px) {
+  .modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item .governance-item-content h4 {
+    font-size: var(--ztc-font-size-font-s16);
+    margin-bottom: 6px;
+  }
+}
+.modern-governance-integrity-section .governance-integrity-grid .governance-integrity-item .governance-item-content p {
+  font-family: var(--figtree);
+  font-size: var(--ztc-font-size-font-s15);
+  color: var(--ztc-text-text-3);
+  line-height: 1.6;
+  margin: 0;
+}
+.modern-governance-integrity-section .governance-integrity-statement {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 40px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(78, 43, 90, 0.08), 0 0 0 1px rgba(78, 43, 90, 0.05);
+  position: relative;
+  border-left: 4px solid #4e2b5a;
+}
+@media (max-width: 767px) {
+  .modern-governance-integrity-section .governance-integrity-statement {
+    padding: 24px 20px;
+  }
+}
+.modern-governance-integrity-section .governance-integrity-statement p {
+  font-family: var(--figtree);
+  font-size: var(--ztc-font-size-font-s16);
+  color: var(--ztc-text-text-2);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: var(--ztc-weight-medium);
+}
+@media (max-width: 767px) {
+  .modern-governance-integrity-section .governance-integrity-statement p {
+    font-size: var(--ztc-font-size-font-s15);
+  }
+}
+
 /*============= BACK TO TOP BUTTON ===============*/
 .back-to-top-btn {
   position: fixed;
