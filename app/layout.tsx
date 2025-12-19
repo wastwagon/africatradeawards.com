@@ -54,50 +54,52 @@ export default function RootLayout({
 				<style dangerouslySetInnerHTML={{
 					__html: `
 						body { visibility: hidden; opacity: 0; }
-						body.css-loaded { visibility: visible; opacity: 1; transition: opacity 0.1s ease-in; }
+						body.css-loaded { visibility: visible; opacity: 1; transition: opacity 0.2s ease-in; }
 					`
 				}} />
 				<script dangerouslySetInnerHTML={{
 					__html: `
 						(function() {
-							const cssFiles = [
-								'/assets/css/vendor/bootstrap.min.css',
-								'/assets/css/vendor/fontawesome.css',
-								'/assets/css/main.css',
-								'/assets/css/vendor/aos.css',
-								'/assets/css/vendor/magnific-popup.css',
-								'/assets/css/vendor/mobile.css',
-								'/assets/css/vendor/sidebar.css',
-								'/assets/css/vendor/slick-slider.css',
-								'/assets/css/vendor/nice-select.css',
-								'/assets/css/vendor/odometer.css'
-							];
+							// Check if CSS links are already loaded
+							const cssLinks = document.querySelectorAll('link[rel="stylesheet"][href*="/assets/css/"]');
 							let loadedCount = 0;
-							const totalFiles = cssFiles.length;
+							const totalFiles = cssLinks.length;
 							
-							cssFiles.forEach(function(href) {
-								const link = document.createElement('link');
-								link.rel = 'stylesheet';
-								link.href = href;
-								link.onload = function() {
+							if (totalFiles === 0) {
+								// No CSS links found, show body immediately
+								document.body.classList.add('css-loaded');
+								return;
+							}
+							
+							// Wait for all CSS files to load
+							cssLinks.forEach(function(link) {
+								if (link.sheet || link.styleSheet) {
+									// Already loaded
 									loadedCount++;
 									if (loadedCount === totalFiles) {
 										document.body.classList.add('css-loaded');
 									}
-								};
-								link.onerror = function() {
-									loadedCount++;
-									if (loadedCount === totalFiles) {
-										document.body.classList.add('css-loaded');
-									}
-								};
-								document.head.appendChild(link);
+								} else {
+									// Wait for load
+									link.onload = function() {
+										loadedCount++;
+										if (loadedCount === totalFiles) {
+											document.body.classList.add('css-loaded');
+										}
+									};
+									link.onerror = function() {
+										loadedCount++;
+										if (loadedCount === totalFiles) {
+											document.body.classList.add('css-loaded');
+										}
+									};
+								}
 							});
 							
-							// Fallback: show content after 2 seconds even if CSS hasn't loaded
+							// Fallback: show content after 1.5 seconds
 							setTimeout(function() {
 								document.body.classList.add('css-loaded');
-							}, 2000);
+							}, 1500);
 						})();
 					`
 				}} />
