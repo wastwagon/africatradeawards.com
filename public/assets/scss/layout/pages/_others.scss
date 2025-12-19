@@ -6701,6 +6701,12 @@
 					font-size: var(--ztc-font-size-font-s12);
 					color: rgba(78, 43, 90, 0.5);
 					margin-top: 6px;
+					transition: color 0.3s ease;
+
+					&.warning {
+						color: #e67e22;
+						font-weight: var(--ztc-weight-semibold);
+					}
 				}
 
 				.error-message {

@@ -228,8 +228,9 @@ export default function ContactForm() {
 										className={errors.message ? 'error' : ''}
 										placeholder="Please provide details about your inquiry..."
 										rows={6}
+										maxLength={500}
 									/>
-									<div className="char-count">
+									<div className={`char-count ${formData.message.length > 450 ? 'warning' : ''}`}>
 										{formData.message.length} / 500 characters
 									</div>
 									{errors.message && <span className="error-message">{errors.message}</span>}
