@@ -5,7 +5,7 @@ export default function HeroSection() {
 	return (
 		<section className="hero1-section-area" 
 			style={{ 
-				background: 'linear-gradient(135deg, #3d1f47 0%, #4e2b5a 25%, #5d3a6b 50%, #6b4a7c 75%, #7a5a8d 100%)',
+				background: 'linear-gradient(135deg, #4e2b5a 0%, #3d2247 50%, #5a6fd8 100%)',
 				minHeight: '100vh', 
 				display: 'flex', 
 				alignItems: 'center', 

@@ -38,7 +38,7 @@ export default function Section1() {
 									</div>
 									<div className="col-lg-5">
 										<div className="heading12">
-											<h3>30 January 2025</h3>
+											<h3>28th and 29th January 2026</h3>
 											<div className="space16" />
 											<p><img src="/assets/img/icons/location1.svg" alt="" /> Secret Location In The UK</p>
 										</div>
