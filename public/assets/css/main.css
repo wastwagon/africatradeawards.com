@@ -8633,9 +8633,23 @@ html {
   transition: all 0.4s;
   padding: 0 20px;
 }
-.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a {
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a {
   transition: all 0.4s;
-  color: var(--ztc-text-text-4) !important;
+  color: #4e2b5a !important;
+  position: relative;
+}
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a::after, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  border-radius: 2px;
+}
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a {
+  font-weight: var(--ztc-weight-semibold);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li .tp-submenu {
   visibility: hidden;
@@ -8673,14 +8687,14 @@ html {
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.main-small-menu:hover > a {
   transition: all 0.4s;
   padding-left: 25px;
-  color: var(--ztc-text-text-4);
+  color: #4e2b5a;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.main-small-menu:hover > a::after {
-  background: var(--ztc-text-text-4);
+  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
   transition: all 0.4s;
   visibility: visible;
   opacity: 1;
-  color: var(--ztc-text-text-4);
+  color: #4e2b5a;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li {
   display: block;
@@ -8689,34 +8703,65 @@ html {
   font-family: var(--grotesk);
   font-weight: var(--ztc-weight-medium);
   transition: all 0.4s;
-  padding: 8px;
+  padding: 10px 12px;
   display: inline-block;
   position: relative;
   z-index: 1;
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--ztc-text-text-2);
+  width: 100%;
+}
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 4px;
+  transition: all 0.4s;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  border-radius: 0 4px 4px 0;
+  display: inline-block;
+  visibility: hidden;
+  opacity: 0;
+  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a::after {
   position: absolute;
   content: "";
-  height: 25px;
-  width: 3px;
+  height: 100%;
+  width: 4px;
   transition: all 0.4s;
   z-index: -1;
-  left: -10px;
-  top: 20%;
-  border-radius: 4px;
+  left: 0;
+  top: 0;
+  border-radius: 0 4px 4px 0;
   display: inline-block;
   visibility: hidden;
   opacity: 0;
-  background: var(--ztc-text-text-4);
+  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
 }
-.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover {
-  padding-left: 25px;
-  color: var(--ztc-text-text-4);
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link {
+  padding-left: 20px;
+  color: #4e2b5a;
+  font-weight: var(--ztc-weight-semibold);
+  background: rgba(78, 43, 90, 0.05);
 }
-.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::after {
-  border-radius: 4px;
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::after, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link::after {
+  border-radius: 0 4px 4px 0;
+  visibility: visible;
+  transition: all 0.4s;
+  opacity: 1;
+  left: 0;
+}
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a {
+  padding-left: 20px;
+  color: #4e2b5a;
+  font-weight: var(--ztc-weight-semibold);
+  background: rgba(78, 43, 90, 0.08);
+}
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a::after {
+  border-radius: 0 4px 4px 0;
   visibility: visible;
   transition: all 0.4s;
   opacity: 1;
