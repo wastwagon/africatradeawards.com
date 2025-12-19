@@ -182,7 +182,11 @@ export default function MediaCentre() {
 										{livestreamInfo.map((info, index) => (
 											<div key={index} className="contact-info-item" data-aos="fade-up" data-aos-duration={900 + (index * 100)}>
 												<div className="contact-icon">
-													<i className={`fa-brands ${info.icon === 'fa-youtube' ? 'fa-youtube' : 'fa-solid ' + info.icon}`}></i>
+													{info.icon === 'fa-youtube' ? (
+														<i className="fa-brands fa-youtube"></i>
+													) : (
+														<i className={`fa-solid ${info.icon}`}></i>
+													)}
 												</div>
 												<h6>{info.label}</h6>
 												<Link href={info.link}>{info.value}</Link>
