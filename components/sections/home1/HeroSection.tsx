@@ -5,12 +5,25 @@ export default function HeroSection() {
 	return (
 		<section className="hero1-section-area" 
 			style={{ 
-				backgroundColor: '#4e2b5a',
+				background: 'linear-gradient(135deg, #3d1f47 0%, #4e2b5a 25%, #5d3a6b 50%, #6b4a7c 75%, #7a5a8d 100%)',
 				minHeight: '100vh', 
 				display: 'flex', 
 				alignItems: 'center', 
-				position: 'relative'
+				position: 'relative',
+				overflow: 'hidden'
 			}}>
+			
+			{/* Gradient overlay for depth */}
+			<div style={{
+				position: 'absolute',
+				top: 0,
+				left: 0,
+				right: 0,
+				bottom: 0,
+				background: 'radial-gradient(circle at 30% 50%, rgba(123, 90, 141, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(78, 43, 90, 0.4) 0%, transparent 50%)',
+				pointerEvents: 'none',
+				zIndex: 1
+			}} />
 			
 			<div className="container" style={{ position: 'relative', zIndex: 10 }}>
 				<div className="row">
