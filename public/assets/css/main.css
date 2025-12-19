@@ -3002,13 +3002,36 @@ Location:
 .inner-page-header {
   position: relative;
   z-index: 1;
+  background: linear-gradient(135deg, #3d1f47 0%, #4e2b5a 25%, #5d3a6b 50%, #6b4a7c 75%, #7a5a8d 100%) !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 160px 0 90px;
+  overflow: hidden;
+}
+.inner-page-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(123, 90, 141, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(78, 43, 90, 0.4) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.inner-page-header .container {
+  position: relative;
+  z-index: 1;
+}
+.inner-page-header .heading1 h1 {
+  color: #ffffff;
+  font-family: var(--grotesk);
+  font-weight: var(--ztc-weight-bold);
+  text-transform: uppercase;
 }
 .inner-page-header .heading1 a {
-  color: var(--ztc-text-text-1);
+  color: #ffffff;
   text-align: center;
   font-family: var(--grotesk);
   font-size: var(--ztc-font-size-font-s28);
@@ -3017,6 +3040,12 @@ Location:
   line-height: 28px;
   display: inline-block;
   transition: all 0.4s;
+}
+.inner-page-header .heading1 a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+.inner-page-header .heading1 a span {
+  color: rgba(255, 255, 255, 0.9);
 }
 .inner-page-header .heading1 a i {
   margin: 0 8px 0 0;
