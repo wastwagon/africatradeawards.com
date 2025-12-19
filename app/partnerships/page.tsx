@@ -1,6 +1,40 @@
 'use client'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PartnersSection from '@/components/sections/home1/PartnersSection'
+
+const benefits = [
+	{
+		icon: 'fa-chart-line',
+		title: 'Unrivalled Visibility',
+		description: 'Maximum exposure across all event platforms and media channels.'
+	},
+	{
+		icon: 'fa-handshake',
+		title: 'Strategic Alignment',
+		description: 'Alignment with ATC & AfCFTA objectives and continental trade agenda.'
+	},
+	{
+		icon: 'fa-lightbulb',
+		title: 'Thought Leadership Access',
+		description: 'Access to high-level thought leadership platforms and networking opportunities.'
+	},
+	{
+		icon: 'fa-shield-halved',
+		title: 'Verified Integrity',
+		description: 'Association with independently verified and audited awards process.'
+	},
+	{
+		icon: 'fa-star',
+		title: 'Legacy Impact',
+		description: 'Support youth and SME programmes that create lasting continental impact.'
+	},
+	{
+		icon: 'fa-users',
+		title: 'Network Expansion',
+		description: 'Connect with Africa\'s most influential trade leaders and decision-makers.'
+	}
+]
 
 export default function Partnerships() {
 	return (
@@ -19,7 +53,8 @@ export default function Partnerships() {
 						</div>
 					</div>
 				</div>
-				{/*===== OVERVIEW AREA STARTS =======*/}
+				
+				{/*===== OVERVIEW AREA =======*/}
 				<div className="about1-section-area sp1">
 					<div className="container">
 						<div className="row">
@@ -35,184 +70,82 @@ export default function Partnerships() {
 						</div>
 					</div>
 				</div>
-				{/*===== WHY PARTNER =======*/}
-				<div className="choose-section-area sp2">
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-6 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5>Why Partner</h5>
-									<div className="space18" />
-									<h2>Benefits of Partnership</h2>
-								</div>
-							</div>
-						</div>
-						<div className="row">
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={800}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Unrivalled Visibility</h6>
-										<div className="space16" />
-										<p>Maximum exposure across all event platforms and media channels.</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={900}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Strategic Alignment</h6>
-										<div className="space16" />
-										<p>Alignment with ATC &amp; AfCFTA objectives and continental trade agenda.</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1000}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Thought Leadership Access</h6>
-										<div className="space16" />
-										<p>Access to high-level thought leadership platforms and networking opportunities.</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1100}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Verified Integrity</h6>
-										<div className="space16" />
-										<p>Association with independently verified and audited awards process.</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1200}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Legacy Impact</h6>
-										<div className="space16" />
-										<p>Support youth and SME programmes that create lasting continental impact.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{/*===== SPONSORSHIP PACKAGES =======*/}
-				<div className="pricing-lan-section-area sp2">
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-5 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5>Sponsorship Packages</h5>
-									<div className="space18" />
-									<h2>Choose Your Partnership Tier</h2>
-								</div>
-							</div>
-						</div>
-						<div className="row">
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={800}>
-								<div className="pricing-boxarea">
-									<h5>Title Sponsor</h5>
-									<div className="space20" />
-									<p>Exclusive naming rights – &quot;Africa Trade Awards 2026 presented by [Partner]&quot;</p>
-									<div className="space28" />
-									<div className="btn-area1">
-										<Link href="/contact" className="vl-btn1">Contact Us</Link>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={900}>
-								<div className="pricing-boxarea">
-									<h5>Platinum Partner</h5>
-									<div className="space20" />
-									<p>Category co-branding, premium visibility across all platforms</p>
-									<div className="space28" />
-									<div className="btn-area1">
-										<Link href="/contact" className="vl-btn1">Contact Us</Link>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1000}>
-								<div className="pricing-boxarea">
-									<h5>Gold Partner</h5>
-									<div className="space20" />
-									<p>Stage and media wall branding, digital recognition</p>
-									<div className="space28" />
-									<div className="btn-area1">
-										<Link href="/contact" className="vl-btn1">Contact Us</Link>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1100}>
-								<div className="pricing-boxarea">
-									<h5>Silver Partner</h5>
-									<div className="space20" />
-									<p>Digital and print recognition, event access</p>
-									<div className="space28" />
-									<div className="btn-area1">
-										<Link href="/contact" className="vl-btn1">Contact Us</Link>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1200}>
-								<div className="pricing-boxarea">
-									<h5>Category Sponsor</h5>
-									<div className="space20" />
-									<p>Dedicated award association, targeted visibility</p>
-									<div className="space28" />
-									<div className="btn-area1">
-										<Link href="/contact" className="vl-btn1">Contact Us</Link>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1300}>
-								<div className="pricing-boxarea">
-									<h5>Media Partner</h5>
-									<div className="space20" />
-									<p>Cross-platform coverage, content collaboration</p>
-									<div className="space28" />
-									<div className="btn-area1">
-										<Link href="/contact" className="vl-btn1">Contact Us</Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{/*===== CONTACT INFO =======*/}
-				<div className="about1-section-area sp2">
+				
+				{/*===== BENEFITS SECTION =======*/}
+				<div className="modern-benefits-section">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
 								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Get In Touch</h5>
-									<div className="space16" />
-									<p data-aos="fade-up" data-aos-duration={900}>Email: <Link href="mailto:partnerships@africantradechamber.org">partnerships@africantradechamber.org</Link></p>
-									<p data-aos="fade-up" data-aos-duration={900}>Phone: <Link href="tel:+233505366200">+233 50 536 6200</Link></p>
+									<h5 data-aos="fade-up" data-aos-duration={800}>Why Partner</h5>
+									<div className="space18" />
+									<h2 className="text-anime-style-3">Benefits of Partnership</h2>
+								</div>
+							</div>
+						</div>
+						<div className="row">
+							{benefits.map((benefit, index) => (
+								<div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
+									<div className="modern-benefit-card">
+										<div className="benefit-icon-wrapper">
+											<i className={`fa-solid ${benefit.icon}`}></i>
+										</div>
+										<div className="benefit-content">
+											<h4>{benefit.title}</h4>
+											<p>{benefit.description}</p>
+										</div>
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+				
+				{/*===== PARTNERSHIP TIERS =======*/}
+				<PartnersSection />
+				
+				{/*===== CONTACT SECTION =======*/}
+				<div className="modern-contact-section">
+					<div className="container">
+						<div className="row">
+							<div className="col-lg-10 m-auto">
+								<div className="contact-card-wrapper">
+									<div className="heading2 text-center">
+										<h5 data-aos="fade-up" data-aos-duration={800}>Get In Touch</h5>
+										<div className="space16" />
+										<h2 className="text-anime-style-3">Ready to Partner With Us?</h2>
+										<div className="space24" />
+									</div>
+									<div className="contact-info-grid">
+										<div className="contact-info-item" data-aos="fade-up" data-aos-duration={900}>
+											<div className="contact-icon">
+												<i className="fa-solid fa-envelope"></i>
+											</div>
+											<h6>Email</h6>
+											<Link href="mailto:partnerships@africantradechamber.org">partnerships@africantradechamber.org</Link>
+										</div>
+										<div className="contact-info-item" data-aos="fade-up" data-aos-duration={1000}>
+											<div className="contact-icon">
+												<i className="fa-solid fa-phone"></i>
+											</div>
+											<h6>Phone</h6>
+											<Link href="tel:+233505366200">+233 50 536 6200</Link>
+										</div>
+									</div>
 									<div className="space32" />
-									<div className="btn-area1">
-										<Link href="/contact" className="vl-btn1">Download Prospectus</Link>
-										<Link href="/contact" className="vl-btn2">Become a Partner</Link>
-										<Link href="/contact" className="vl-btn2">Contact Our Team</Link>
+									<div className="cta-buttons-group">
+										<Link href="/contact" className="modern-cta-btn primary" data-aos="fade-up" data-aos-duration={1100}>
+											<span>Download Prospectus</span>
+											<i className="fa-solid fa-download"></i>
+										</Link>
+										<Link href="/contact" className="modern-cta-btn secondary" data-aos="fade-up" data-aos-duration={1200}>
+											<span>Become a Partner</span>
+											<i className="fa-solid fa-arrow-right"></i>
+										</Link>
+										<Link href="/contact" className="modern-cta-btn secondary" data-aos="fade-up" data-aos-duration={1300}>
+											<span>Contact Our Team</span>
+											<i className="fa-solid fa-envelope"></i>
+										</Link>
 									</div>
 								</div>
 							</div>
