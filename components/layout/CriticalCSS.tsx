@@ -17,6 +17,9 @@ export default function CriticalCSS() {
 			'/assets/css/vendor/odometer.css',
 		]
 
+		let loadedCount = 0
+		const totalFiles = cssFiles.length
+
 		// Load CSS synchronously - check if already loaded first
 		cssFiles.forEach((href) => {
 			const existingLink = document.querySelector(`link[href="${href}"]`)
@@ -26,6 +29,20 @@ export default function CriticalCSS() {
 				link.href = href
 				link.setAttribute('data-critical', 'true')
 				
+				// Track when CSS loads
+				link.onload = () => {
+					loadedCount++
+					if (loadedCount === totalFiles) {
+						document.body.classList.add('css-loaded')
+					}
+				}
+				link.onerror = () => {
+					loadedCount++
+					if (loadedCount === totalFiles) {
+						document.body.classList.add('css-loaded')
+					}
+				}
+				
 				// Insert at the beginning of head to ensure proper cascade
 				const firstLink = document.head.querySelector('link[rel="stylesheet"]')
 				if (firstLink) {
@@ -33,8 +50,18 @@ export default function CriticalCSS() {
 				} else {
 					document.head.appendChild(link)
 				}
+			} else {
+				loadedCount++
+				if (loadedCount === totalFiles) {
+					document.body.classList.add('css-loaded')
+				}
 			}
 		})
+
+		// Fallback: show content after 1 second even if CSS detection fails
+		setTimeout(() => {
+			document.body.classList.add('css-loaded')
+		}, 1000)
 	}, []) // Empty dependency array - only run once on mount
 
 	return null

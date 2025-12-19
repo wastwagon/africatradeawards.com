@@ -4,3 +4,15 @@
 	100% { transform: rotate(360deg); }
 }
 
+/* Prevent FOUC - hide body until CSS loads */
+body:not(.css-loaded) {
+	visibility: hidden;
+	opacity: 0;
+}
+
+body.css-loaded {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.2s ease-in;
+}
+
