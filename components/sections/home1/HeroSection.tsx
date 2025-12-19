@@ -5,17 +5,12 @@ export default function HeroSection() {
 	return (
 		<section className="hero1-section-area" 
 			style={{ 
-				backgroundImage: 'url(/assets/img/bg/header-bg2.png)', 
+				backgroundColor: '#4e2b5a',
 				minHeight: '100vh', 
 				display: 'flex', 
 				alignItems: 'center', 
-				backgroundSize: 'cover', 
-				backgroundPosition: 'center', 
-				backgroundRepeat: 'no-repeat',
 				position: 'relative'
 			}}>
-			{/* Overlay for better text readability */}
-			<div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0, 0, 0, 0.4)', zIndex: 1 }}></div>
 			
 			<div className="container" style={{ position: 'relative', zIndex: 10 }}>
 				<div className="row">
