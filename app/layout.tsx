@@ -38,73 +38,72 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
-				{/* Critical CSS - load immediately to prevent FOUC */}
-				<link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css" />
-				<link rel="stylesheet" href="/assets/css/vendor/fontawesome.css" />
-				<link rel="stylesheet" href="/assets/css/main.css" />
-				<link rel="stylesheet" href="/assets/css/vendor/aos.css" />
-				<link rel="stylesheet" href="/assets/css/vendor/magnific-popup.css" />
-				<link rel="stylesheet" href="/assets/css/vendor/mobile.css" />
-				<link rel="stylesheet" href="/assets/css/vendor/sidebar.css" />
-				<link rel="stylesheet" href="/assets/css/vendor/slick-slider.css" />
-				<link rel="stylesheet" href="/assets/css/vendor/nice-select.css" />
-				<link rel="stylesheet" href="/assets/css/vendor/odometer.css" />
-				{/* Hide body until CSS loads - prevents FOUC */}
-				<style dangerouslySetInnerHTML={{
-					__html: `
-						body { visibility: hidden; opacity: 0; }
-						body.css-loaded { visibility: visible; opacity: 1; transition: opacity 0.2s ease-in; }
-					`
-				}} />
-				<script dangerouslySetInnerHTML={{
-					__html: `
-						(function() {
-							// Check if CSS links are already loaded
-							const cssLinks = document.querySelectorAll('link[rel="stylesheet"][href*="/assets/css/"]');
-							let loadedCount = 0;
-							const totalFiles = cssLinks.length;
-							
-							if (totalFiles === 0) {
-								// No CSS links found, show body immediately
-								document.body.classList.add('css-loaded');
-								return;
-							}
-							
-							// Wait for all CSS files to load
-							cssLinks.forEach(function(link) {
-								if (link.sheet || link.styleSheet) {
-									// Already loaded
-									loadedCount++;
-									if (loadedCount === totalFiles) {
-										document.body.classList.add('css-loaded');
-									}
-								} else {
-									// Wait for load
-									link.onload = function() {
-										loadedCount++;
-										if (loadedCount === totalFiles) {
-											document.body.classList.add('css-loaded');
-										}
-									};
-									link.onerror = function() {
-										loadedCount++;
-										if (loadedCount === totalFiles) {
-											document.body.classList.add('css-loaded');
-										}
-									};
-								}
-							});
-							
-							// Fallback: show content after 1.5 seconds
-							setTimeout(function() {
-								document.body.classList.add('css-loaded');
-							}, 1500);
-						})();
-					`
-				}} />
-			</head>
 			<body className={`${figtree.variable} ${grotesk.variable} homepage1-body`}>
+				{/* Blocking script to load CSS and prevent FOUC */}
+				<Script
+					id="load-critical-css"
+					strategy="beforeInteractive"
+					dangerouslySetInnerHTML={{
+						__html: `
+							(function() {
+								// Hide body until CSS loads
+								document.body.style.visibility = 'hidden';
+								document.body.style.opacity = '0';
+								
+								const cssFiles = [
+									'/assets/css/vendor/bootstrap.min.css',
+									'/assets/css/vendor/fontawesome.css',
+									'/assets/css/main.css',
+									'/assets/css/vendor/aos.css',
+									'/assets/css/vendor/magnific-popup.css',
+									'/assets/css/vendor/mobile.css',
+									'/assets/css/vendor/sidebar.css',
+									'/assets/css/vendor/slick-slider.css',
+									'/assets/css/vendor/nice-select.css',
+									'/assets/css/vendor/odometer.css'
+								];
+								
+								let loadedCount = 0;
+								const totalFiles = cssFiles.length;
+								
+								function showBody() {
+									document.body.style.visibility = 'visible';
+									document.body.style.opacity = '1';
+									document.body.style.transition = 'opacity 0.2s ease-in';
+								}
+								
+								cssFiles.forEach(function(href) {
+									if (!document.querySelector('link[href="' + href + '"]')) {
+										const link = document.createElement('link');
+										link.rel = 'stylesheet';
+										link.href = href;
+										link.onload = function() {
+											loadedCount++;
+											if (loadedCount === totalFiles) {
+												showBody();
+											}
+										};
+										link.onerror = function() {
+											loadedCount++;
+											if (loadedCount === totalFiles) {
+												showBody();
+											}
+										};
+										document.head.appendChild(link);
+									} else {
+										loadedCount++;
+										if (loadedCount === totalFiles) {
+											showBody();
+										}
+									}
+								});
+								
+								// Fallback: show content after 1.5 seconds
+								setTimeout(showBody, 1500);
+							})();
+						`,
+					}}
+				/>
 				{children}
 			</body>
 		</html>
