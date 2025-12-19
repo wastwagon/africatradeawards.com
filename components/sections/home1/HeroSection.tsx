@@ -38,8 +38,26 @@ export default function HeroSection() {
 								</span>
 							</div>
 							<div className="space20" />
-							<div className="btn-area1" data-aos="fade-left" data-aos-duration={1100}>
-								<Link href="/nomination" className="vl-btn1">Nominate Now</Link>
+							<div className="btn-area1" data-aos="fade-left" data-aos-duration={1100} style={{ marginTop: '24px' }}>
+								<Link 
+									href="/nomination" 
+									className="vl-btn1"
+									style={{
+										backgroundColor: '#ffffff',
+										color: '#4e2b5a',
+										padding: '15px 24px',
+										borderRadius: '8px',
+										display: 'inline-flex',
+										alignItems: 'center',
+										gap: '8px',
+										fontWeight: 'bold',
+										textDecoration: 'none',
+										transition: 'all 0.3s ease'
+									}}
+								>
+									Nominate Now
+									<i className="fa-solid fa-arrow-right" style={{ fontSize: '14px' }}></i>
+								</Link>
 							</div>
 						</div>
 					</div>
