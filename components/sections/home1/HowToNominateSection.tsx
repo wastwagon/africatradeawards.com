@@ -5,7 +5,7 @@ const processSteps = [
 		number: '01',
 		title: 'Eligibility & Submission',
 		description: 'Nominations open to individuals, enterprises, and institutions across Africa. All submissions must meet eligibility criteria and include required documentation.',
-		icon: 'fa-file-circle-check'
+		icon: 'fa-square-xmark'
 	},
 	{
 		number: '02',
