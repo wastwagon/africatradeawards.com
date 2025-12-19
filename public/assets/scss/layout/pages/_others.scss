@@ -5806,6 +5806,55 @@
 	}
 }
 
+// Local Info Cards with Icons
+.local-info-card {
+	position: relative;
+	padding-top: 20px;
+
+	.local-info-icon-wrapper {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		width: 64px;
+		height: 64px;
+		background: #4e2b5a;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		z-index: 2;
+		box-shadow: 0 4px 12px rgba(78, 43, 90, 0.3);
+
+		@media #{$xs} {
+			top: 16px;
+			right: 16px;
+			width: 56px;
+			height: 56px;
+			border-radius: 10px;
+		}
+
+		i {
+			font-size: 28px;
+			color: #ffffff;
+			transition: all 0.5s ease;
+
+			@media #{$xs} {
+				font-size: 24px;
+			}
+		}
+	}
+
+	&:hover .local-info-icon-wrapper {
+		transform: scale(1.05);
+		box-shadow: 0 6px 20px rgba(78, 43, 90, 0.4);
+
+		i {
+			transform: scale(1.05);
+		}
+	}
+}
+
 // Modern Highlight Cards with Images
 .modern-highlight-card {
 	background: #ffffff;

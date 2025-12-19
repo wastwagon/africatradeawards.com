@@ -129,7 +129,10 @@ export default function TravelAccommodation() {
 									<div className="space16" />
 									<div className="row">
 										<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={800}>
-											<div className="choose-widget-boxarea">
+											<div className="choose-widget-boxarea local-info-card">
+												<div className="local-info-icon-wrapper">
+													<i className="fa-solid fa-language"></i>
+												</div>
 												<div className="content-area">
 													<h6>Language</h6>
 													<p>English</p>
@@ -137,7 +140,10 @@ export default function TravelAccommodation() {
 											</div>
 										</div>
 										<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={900}>
-											<div className="choose-widget-boxarea">
+											<div className="choose-widget-boxarea local-info-card">
+												<div className="local-info-icon-wrapper">
+													<i className="fa-solid fa-sun"></i>
+												</div>
 												<div className="content-area">
 													<h6>Weather</h6>
 													<p>30 °C avg</p>
@@ -145,7 +151,10 @@ export default function TravelAccommodation() {
 											</div>
 										</div>
 										<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1000}>
-											<div className="choose-widget-boxarea">
+											<div className="choose-widget-boxarea local-info-card">
+												<div className="local-info-icon-wrapper">
+													<i className="fa-solid fa-clock"></i>
+												</div>
 												<div className="content-area">
 													<h6>Time Zone</h6>
 													<p>GMT (+0)</p>
