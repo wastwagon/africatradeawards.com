@@ -8628,28 +8628,41 @@ html {
   font-family: var(--grotesk);
   font-size: var(--ztc-font-size-font-s18);
   font-weight: var(--ztc-weight-medium);
-  color: var(--ztc-text-text-2);
+  color: #ffffff;
   display: inline-block;
   transition: all 0.4s;
   padding: 0 20px;
 }
-.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a {
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a {
   transition: all 0.4s;
-  color: #4e2b5a !important;
+  color: #ffffff !important;
   position: relative;
 }
-.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a::after, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a::after {
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a::after {
   content: "";
   position: absolute;
   bottom: -5px;
   left: 20px;
   right: 20px;
   height: 2px;
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  background: #ffffff;
   border-radius: 2px;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a {
+  transition: all 0.4s;
+  color: #ffffff !important;
   font-weight: var(--ztc-weight-semibold);
+  position: relative;
+}
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li .tp-submenu {
   visibility: hidden;
@@ -8690,7 +8703,7 @@ html {
   color: #4e2b5a;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.main-small-menu:hover > a::after {
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  background: #4e2b5a;
   transition: all 0.4s;
   visibility: visible;
   opacity: 1;
@@ -8724,7 +8737,7 @@ html {
   display: inline-block;
   visibility: hidden;
   opacity: 0;
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  background: #4e2b5a;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a::after {
   position: absolute;
@@ -8739,13 +8752,13 @@ html {
   display: inline-block;
   visibility: hidden;
   opacity: 0;
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  background: #4e2b5a;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link {
   padding-left: 20px;
   color: #4e2b5a;
   font-weight: var(--ztc-weight-semibold);
-  background: rgba(78, 43, 90, 0.05);
+  background: rgba(78, 43, 90, 0.08);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::after, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link::after {
   border-radius: 0 4px 4px 0;
@@ -8758,7 +8771,7 @@ html {
   padding-left: 20px;
   color: #4e2b5a;
   font-weight: var(--ztc-weight-semibold);
-  background: rgba(78, 43, 90, 0.08);
+  background: rgba(78, 43, 90, 0.12);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a::after {
   border-radius: 0 4px 4px 0;
@@ -8781,8 +8794,18 @@ html {
   animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  background: var(--ztc-text-text-1);
+  background: #4e2b5a;
   transition: all 0.4s;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+}
+.header-area.homepage1.sticky .header-elements .main-menu ul li a {
+  color: #ffffff;
+}
+.header-area.homepage1.sticky .header-elements .main-menu ul li a:hover {
+  color: #ffffff !important;
+}
+.header-area.homepage1.sticky .header-elements .main-menu ul li.active > a {
+  color: #ffffff !important;
 }
 
 /*============= HEADER CSS AREA ENDS ===============*/
