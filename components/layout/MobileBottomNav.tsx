@@ -18,8 +18,8 @@ const navItems = [
 	{
 		href: '/nomination',
 		label: 'Nominate',
-		icon: 'fa-file-circle-check',
-		activeIcon: 'fa-file-circle-check'
+		icon: 'fa-star',
+		activeIcon: 'fa-star'
 	},
 	{
 		href: '/partnerships',
