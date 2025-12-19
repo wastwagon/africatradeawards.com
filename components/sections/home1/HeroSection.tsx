@@ -58,10 +58,6 @@ export default function HeroSection() {
 								and Industrial Champions
 							</h1>
 							<div className="space16" />
-							<p data-aos="fade-left" data-aos-duration={900} style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1.1rem' }}>
-								The Africa Trade Awards honour the trailblazers, innovators, and institutions powering the continent&apos;s trade transformation and industrial renaissance.
-							</p>
-							<div className="space16" />
 							<div className="theme-badge" data-aos="fade-left" data-aos-duration={1000} style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', padding: '1rem', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
 								<strong style={{ color: 'white' }}>Theme 2026:</strong>
 								<span style={{ color: 'rgba(255, 255, 255, 0.9)', marginLeft: '0.5rem' }}>
