@@ -1,7 +1,58 @@
 'use client'
-import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+
+const eventDetails = [
+	{
+		icon: 'fa-calendar-days',
+		title: 'Date & Time',
+		content: 'Friday, 30 January 2026',
+		subContent: '6:30 p.m. – 11:00 p.m.'
+	},
+	{
+		icon: 'fa-location-dot',
+		title: 'Venue',
+		content: 'Kempinski Gold Coast City Hotel, Accra – Ghana'
+	},
+	{
+		icon: 'fa-shirt',
+		title: 'Dress Code',
+		content: 'Black Tie / African Elegant'
+	},
+	{
+		icon: 'fa-users',
+		title: 'Distinguished Guests',
+		content: 'Heads of State | Ministers | CEOs | DFIs | Industry Leaders | Diplomats'
+	}
+]
+
+const eveningHighlights = [
+	{
+		icon: 'fa-red-carpet',
+		title: 'Red Carpet & Networking',
+		description: 'Reception with continental leaders and industry pioneers.'
+	},
+	{
+		icon: 'fa-microphone',
+		title: 'Opening Ceremony',
+		description: 'Formal opening with keynote addresses and welcome messages.'
+	},
+	{
+		icon: 'fa-trophy',
+		title: 'Awards Presentations',
+		description: 'Celebration of winners across all award categories.'
+	},
+	{
+		icon: 'fa-utensils',
+		title: 'Gala Dinner',
+		description: 'Premium dining experience with continental cuisine.'
+	},
+	{
+		icon: 'fa-music',
+		title: 'Cultural Performances',
+		description: 'Showcasing Africa\'s rich cultural heritage through music and dance.'
+	}
+]
 
 export default function AwardsNight() {
 	return (
@@ -20,7 +71,8 @@ export default function AwardsNight() {
 						</div>
 					</div>
 				</div>
-				{/*===== OVERVIEW AREA STARTS =======*/}
+				
+				{/*===== OVERVIEW =======*/}
 				<div className="about1-section-area sp1">
 					<div className="container">
 						<div className="row">
@@ -36,168 +88,53 @@ export default function AwardsNight() {
 						</div>
 					</div>
 				</div>
+				
 				{/*===== EVENT DETAILS =======*/}
-				<div className="event-team-area sp2">
+				<div className="modern-event-details-section">
+					<div className="container">
+						<div className="row">
+							{eventDetails.map((detail, index) => (
+								<div key={index} className="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
+									<div className="modern-event-detail-card">
+										<div className="event-detail-icon">
+											<i className={`fa-solid ${detail.icon}`}></i>
+										</div>
+										<h4>{detail.title}</h4>
+										<p className="event-detail-content">{detail.content}</p>
+										{detail.subContent && <p className="event-detail-subcontent">{detail.subContent}</p>}
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+				
+				{/*===== EVENING HIGHLIGHTS =======*/}
+				<div className="modern-benefits-section">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="event-widget-area">
-									<div className="row">
-										<div className="col-lg-12">
-											<div className="event2-boxarea box1" data-aos="fade-up" data-aos-duration={800}>
-												<div className="content-area text-center">
-													<h3>Date &amp; Time</h3>
-													<div className="space16" />
-													<p><strong>Friday, 30 January 2026</strong><br />6:30 p.m. – 11:00 p.m.</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="space30" />
-									<div className="row">
-										<div className="col-lg-12">
-											<div className="event2-boxarea box1" data-aos="fade-up" data-aos-duration={900}>
-												<div className="content-area text-center">
-													<h3>Venue</h3>
-													<div className="space16" />
-													<p><strong>Kempinski Gold Coast City Hotel, Accra – Ghana</strong></p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="space30" />
-									<div className="row">
-										<div className="col-lg-12">
-											<div className="event2-boxarea box1" data-aos="fade-up" data-aos-duration={1000}>
-												<div className="content-area text-center">
-													<h3>Dress Code</h3>
-													<div className="space16" />
-													<p><strong>Black Tie / African Elegant</strong></p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="space30" />
-									<div className="row">
-										<div className="col-lg-12">
-											<div className="event2-boxarea box1" data-aos="fade-up" data-aos-duration={1100}>
-												<div className="content-area">
-													<h3>Distinguished Guests</h3>
-													<div className="space16" />
-													<p>Heads of State | Ministers | CEOs | DFIs | Industry Leaders | Diplomats</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{/*===== EVENING HIGHLIGHTS =======*/}
-				<div className="choose-section-area sp2">
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-6 m-auto">
 								<div className="heading2 text-center space-margin60">
-									<h5>Evening Highlights</h5>
+									<h5 data-aos="fade-up" data-aos-duration={800}>Evening Highlights</h5>
 									<div className="space18" />
-									<h2>What to Expect</h2>
+									<h2 className="text-anime-style-3">What to Expect</h2>
 								</div>
 							</div>
 						</div>
 						<div className="row">
-							<div className="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-duration={800}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Red Carpet &amp; Networking</h6>
-										<div className="space16" />
-										<p>Reception with continental leaders and industry pioneers.</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-duration={900}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Opening Ceremony</h6>
-										<div className="space16" />
-										<p>Formal opening with keynote addresses and welcome messages.</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-duration={1000}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Awards Presentations</h6>
-										<div className="space16" />
-										<p>Celebration of winners across all award categories.</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-duration={1100}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Gala Dinner</h6>
-										<div className="space16" />
-										<p>Premium dining experience with continental cuisine.</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-6 col-md-6" data-aos="zoom-in" data-aos-duration={1200}>
-								<div className="choose-widget-boxarea">
-									<div className="icons">
-										<img src="/assets/img/icons/choose-icons1.svg" alt="" />
-									</div>
-									<div className="space24" />
-									<div className="content-area">
-										<h6>Cultural Performances</h6>
-										<div className="space16" />
-										<p>Showcasing Africa&apos;s rich cultural heritage through music and dance.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{/*===== CTA AREA =======*/}
-				<div className="cta1-section-area">
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-10 m-auto">
-								<div className="cta1-main-boxarea">
-									<div className="timer-btn-area">
-										<Countdown />
-										<div className="btn-area1">
-											<Link href="/contact" className="vl-btn1">View Agenda</Link>
-											<Link href="/media-centre" className="vl-btn2">Livestream Event</Link>
+							{eveningHighlights.map((highlight, index) => (
+								<div key={index} className={index === 4 ? "col-lg-6 col-md-6" : "col-lg-3 col-md-6"} data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
+									<div className="modern-benefit-card">
+										<div className="benefit-icon-wrapper">
+											<i className={`fa-solid ${highlight.icon}`}></i>
+										</div>
+										<div className="benefit-content">
+											<h4>{highlight.title}</h4>
+											<p>{highlight.description}</p>
 										</div>
 									</div>
-									<ul>
-										<li>
-											<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />30 January 2026 - 6:30pm to 11:00pm</Link>
-										</li>
-										<li className="m-0">
-											<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Kempinski Gold Coast City Hotel, Accra</Link>
-										</li>
-									</ul>
 								</div>
-							</div>
+							))}
 						</div>
 					</div>
 				</div>

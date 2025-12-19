@@ -18296,6 +18296,93 @@ html {
   color: rgba(78, 43, 90, 0.7);
 }
 
+.modern-event-details-section {
+  padding: 80px 0;
+  background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+}
+@media (max-width: 767px) {
+  .modern-event-details-section {
+    padding: 60px 0;
+  }
+}
+.modern-event-details-section .modern-event-detail-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  height: 100%;
+  border: 1px solid rgba(78, 43, 90, 0.08);
+  box-shadow: 0 2px 12px rgba(78, 43, 90, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.modern-event-details-section .modern-event-detail-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.modern-event-details-section .modern-event-detail-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(78, 43, 90, 0.12);
+  border-color: rgba(78, 43, 90, 0.15);
+}
+.modern-event-details-section .modern-event-detail-card:hover::before {
+  transform: scaleX(1);
+}
+.modern-event-details-section .modern-event-detail-card:hover .event-detail-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
+}
+.modern-event-details-section .modern-event-detail-card:hover .event-detail-icon i {
+  color: #ffffff;
+}
+.modern-event-details-section .modern-event-detail-card .event-detail-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(93, 58, 107, 0.1) 0%, rgba(107, 74, 124, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.4s ease;
+}
+.modern-event-details-section .modern-event-detail-card .event-detail-icon i {
+  font-size: 32px;
+  color: #4e2b5a;
+  transition: color 0.4s ease;
+}
+.modern-event-details-section .modern-event-detail-card h4 {
+  font-family: var(--grotesk);
+  font-size: var(--ztc-font-size-font-s18);
+  font-weight: var(--ztc-weight-bold);
+  color: var(--ztc-text-text-2);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.modern-event-details-section .modern-event-detail-card .event-detail-content {
+  font-family: var(--figtree);
+  font-size: var(--ztc-font-size-font-s16);
+  color: var(--ztc-text-text-2);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  font-weight: var(--ztc-weight-medium);
+}
+.modern-event-details-section .modern-event-detail-card .event-detail-subcontent {
+  font-family: var(--figtree);
+  font-size: var(--ztc-font-size-font-s15);
+  color: var(--ztc-text-text-3);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /*============= TEAM CSS AREA ===============*/
 .team1-section-area {
   position: relative;
