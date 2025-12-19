@@ -102,7 +102,7 @@ export default function TravelAccommodation() {
 										</div>
 										<div className="venue-detail-item" data-aos="fade-up" data-aos-duration={1100}>
 											<div className="venue-icon">
-												<i className="fa-solid fa-sign-out-alt"></i>
+												<i className="fa-solid fa-calendar-check"></i>
 											</div>
 											<h6>Check-out</h6>
 											<p>12:00 noon</p>
