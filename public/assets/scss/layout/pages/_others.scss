@@ -639,17 +639,10 @@
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
-			transition: all 0.3s ease;
 			box-shadow: 0 2px 8px rgba(78, 43, 90, 0.05);
 
 			@media #{$xs} {
 				padding: 28px 20px;
-			}
-
-			&:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 8px 20px rgba(78, 43, 90, 0.1);
-				border-color: rgba(78, 43, 90, 0.12);
 			}
 
 			.tier-badge {
@@ -708,23 +701,15 @@
 				display: inline-flex;
 				align-items: center;
 				gap: 8px;
-				padding: 12px 24px;
-				background: linear-gradient(135deg, #4e2b5a 0%, #3d2247 50%, #5a6fd8 100%);
-				color: #ffffff;
+				color: var(--ztc-text-text-2);
 				font-family: var(--grotesk);
 				font-size: var(--ztc-font-size-font-s14);
-				font-weight: var(--ztc-weight-bold);
-				text-transform: uppercase;
+				font-weight: var(--ztc-weight-medium);
 				text-decoration: none;
-				border: none;
-				border-radius: 8px;
-				transition: all 0.3s ease;
-				letter-spacing: 0.5px;
-				box-shadow: 0 4px 12px rgba(78, 43, 90, 0.3);
-				box-shadow: none;
+				transition: color 0.3s ease;
 
 				@media #{$xs} {
-					font-size: var(--ztc-font-size-font-s14);
+					font-size: var(--ztc-font-size-font-s13);
 					gap: 6px;
 				}
 
@@ -738,22 +723,7 @@
 				}
 
 				&:hover {
-					background: linear-gradient(135deg, #5a3a66 0%, #4a2d55 50%, #6a7fe8 100%);
-					color: #ffffff;
-					transform: translateY(-2px);
-					box-shadow: 0 6px 16px rgba(78, 43, 90, 0.4);
-
-					i {
-						transform: translateX(4px);
-					}
-				}
-				}
-
-				&:hover {
-					background: linear-gradient(135deg, #5a3a66 0%, #4a2d55 50%, #6a7fe8 100%);
-					color: #ffffff;
-					transform: translateY(-2px);
-					box-shadow: 0 6px 16px rgba(78, 43, 90, 0.4);
+					color: var(--ztc-text-text-1);
 
 					i {
 						transform: translateX(4px);
@@ -861,18 +831,18 @@
 				gap: 20px;
 			}
 
-		.premium-tier-card {
-			position: relative;
-			background: #ffffff;
-			border-radius: 20px;
-			cursor: pointer;
-			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-			overflow: hidden;
-			box-shadow: 0 4px 20px rgba(78, 43, 90, 0.08);
+			.premium-tier-card {
+				position: relative;
+				background: #ffffff;
+				border-radius: 20px;
+				cursor: pointer;
+				transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+				overflow: hidden;
+				box-shadow: 0 4px 20px rgba(78, 43, 90, 0.08);
 
-			@media #{$xs} {
-				border-radius: 16px;
-			}
+				@media #{$xs} {
+					border-radius: 16px;
+				}
 
 			&::before {
 				content: '';
@@ -1157,8 +1127,9 @@
 				flex-direction: column;
 			}
 		}
-		}
 	}
+}
+}
 
 .elegant-partners-section {
 	padding: 20px 0;
@@ -1888,6 +1859,7 @@
 				line-height: 1.6;
 			}
 		}
+	}
 }
 
 // Shared Elegant Button Styles
@@ -5411,6 +5383,4 @@
 		transform: translateY(0);
 		opacity: 1;
 	}
-}
-
 }
