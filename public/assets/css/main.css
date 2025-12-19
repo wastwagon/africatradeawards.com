@@ -18304,6 +18304,161 @@ html {
   color: #6b4a7c;
 }
 
+.modern-press-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(78, 43, 90, 0.08);
+  box-shadow: 0 2px 12px rgba(78, 43, 90, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+.modern-press-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.modern-press-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(78, 43, 90, 0.12);
+  border-color: rgba(78, 43, 90, 0.15);
+}
+.modern-press-card:hover::before {
+  transform: scaleX(1);
+}
+.modern-press-card:hover .press-icon-wrapper {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
+}
+.modern-press-card .press-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(93, 58, 107, 0.1) 0%, rgba(107, 74, 124, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.4s ease;
+}
+.modern-press-card .press-icon-wrapper i {
+  font-size: 32px;
+  color: #4e2b5a;
+  transition: color 0.4s ease;
+}
+.modern-press-card:hover .press-icon-wrapper i {
+  color: #ffffff;
+}
+.modern-press-card .press-content {
+  flex: 1;
+}
+.modern-press-card .press-content h4 {
+  font-family: var(--grotesk);
+  font-size: var(--ztc-font-size-font-s18);
+  font-weight: var(--ztc-weight-bold);
+  color: var(--ztc-text-text-2);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.modern-press-card .press-content p {
+  font-family: var(--figtree);
+  font-size: var(--ztc-font-size-font-s15);
+  color: var(--ztc-text-text-3);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.modern-gallery-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(78, 43, 90, 0.08);
+  box-shadow: 0 2px 12px rgba(78, 43, 90, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+}
+.modern-gallery-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.modern-gallery-btn:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(78, 43, 90, 0.12);
+  border-color: rgba(78, 43, 90, 0.15);
+}
+.modern-gallery-btn:hover::before {
+  transform: scaleX(1);
+}
+.modern-gallery-btn:hover .gallery-icon-wrapper {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
+}
+.modern-gallery-btn:hover span {
+  color: #4e2b5a;
+}
+.modern-gallery-btn:hover i.fa-arrow-right {
+  transform: translateX(4px);
+}
+.modern-gallery-btn .gallery-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(93, 58, 107, 0.1) 0%, rgba(107, 74, 124, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+.modern-gallery-btn .gallery-icon-wrapper i {
+  font-size: 28px;
+  color: #4e2b5a;
+  transition: color 0.4s ease;
+}
+.modern-gallery-btn:hover .gallery-icon-wrapper i {
+  color: #ffffff;
+}
+.modern-gallery-btn span {
+  font-family: var(--grotesk);
+  font-size: var(--ztc-font-size-font-s16);
+  font-weight: var(--ztc-weight-semibold);
+  color: var(--ztc-text-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+.modern-gallery-btn i.fa-arrow-right {
+  font-size: 14px;
+  color: #4e2b5a;
+  transition: transform 0.3s ease;
+}
+
 .local-info-card {
   position: relative;
   padding-top: 20px;
