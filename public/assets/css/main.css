@@ -15856,7 +15856,7 @@ html {
   justify-content: center;
   gap: 10px;
   padding: 14px 28px;
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  background: linear-gradient(135deg, #5d3a6b 0%, #6b4a7c 50%, #7a5a8d 100%);
   color: #ffffff;
   font-family: var(--grotesk);
   font-size: var(--ztc-font-size-font-s14);
@@ -15864,7 +15864,7 @@ html {
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(78, 43, 90, 0.25);
+  box-shadow: 0 3px 10px rgba(93, 58, 107, 0.2);
   margin-top: auto;
   letter-spacing: 0.3px;
   text-transform: uppercase;
@@ -15886,14 +15886,15 @@ html {
   }
 }
 .image-card .card-content-box .card-nominate-btn:hover {
-  background: linear-gradient(135deg, #3d2247 0%, #4a5bc4 100%);
-  box-shadow: 0 6px 20px rgba(78, 43, 90, 0.35);
+  background: linear-gradient(135deg, #6b4a7c 0%, #7a5a8d 50%, #8a6a9e 100%);
+  box-shadow: 0 5px 15px rgba(93, 58, 107, 0.3);
   transform: translateY(-2px);
 }
 .image-card .card-content-box .card-nominate-btn:hover i {
   transform: translateX(4px);
 }
 .image-card .card-content-box .card-nominate-btn:active {
+  background: linear-gradient(135deg, #4e2b5a 0%, #5d3a6b 50%, #6b4a7c 100%);
   transform: translateY(0);
 }
 .image-card .card-content-box .premium-cta-group {
