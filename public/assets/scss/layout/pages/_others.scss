@@ -6518,6 +6518,308 @@
 	}
 }
 
+/*============= PREMIUM CONTACT FORM ===============*/
+.premium-contact-form-section {
+	padding: 80px 0;
+	background: linear-gradient(135deg, rgba(78, 43, 90, 0.02) 0%, rgba(90, 111, 216, 0.02) 100%);
+
+	@media #{$xs} {
+		padding: 60px 0;
+	}
+
+	.premium-contact-form-wrapper {
+		background: #ffffff;
+		border-radius: 24px;
+		padding: 60px 50px;
+		box-shadow: 0 20px 60px rgba(78, 43, 90, 0.08),
+					0 0 0 1px rgba(78, 43, 90, 0.05);
+		position: relative;
+		overflow: hidden;
+
+		@media #{$xs} {
+			padding: 40px 24px;
+			border-radius: 16px;
+		}
+
+		@media #{$md} {
+			padding: 50px 40px;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+		}
+
+		.form-header {
+			margin-bottom: 50px;
+
+			@media #{$xs} {
+				margin-bottom: 40px;
+			}
+
+			p {
+				font-family: var(--figtree);
+				font-size: var(--ztc-font-size-font-s16);
+				color: var(--ztc-text-text-3);
+				line-height: 1.7;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+		}
+
+		.premium-contact-form {
+			.form-row {
+				display: flex;
+				gap: 24px;
+				margin-bottom: 24px;
+
+				@media #{$xs} {
+					flex-direction: column;
+					gap: 0;
+					margin-bottom: 0;
+				}
+
+				@media #{$md} {
+					gap: 20px;
+				}
+			}
+
+			.form-group {
+				margin-bottom: 24px;
+				position: relative;
+
+				@media #{$xs} {
+					margin-bottom: 20px;
+				}
+
+				label {
+					display: flex;
+					align-items: center;
+					gap: 8px;
+					font-family: var(--grotesk);
+					font-size: var(--ztc-font-size-font-s14);
+					font-weight: var(--ztc-weight-semibold);
+					color: var(--ztc-text-text-2);
+					margin-bottom: 10px;
+					transition: color 0.3s ease;
+
+					i {
+						color: #4e2b5a;
+						font-size: 14px;
+					}
+
+					span {
+						color: var(--ztc-text-text-2);
+					}
+				}
+
+				input,
+				textarea,
+				select {
+					width: 100%;
+					padding: 16px 20px;
+					font-family: var(--figtree);
+					font-size: var(--ztc-font-size-font-s16);
+					color: var(--ztc-text-text-2);
+					background: #ffffff;
+					border: 2px solid rgba(78, 43, 90, 0.1);
+					border-radius: 12px;
+					transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+					outline: none;
+					appearance: none;
+
+					@media #{$xs} {
+						padding: 14px 18px;
+						font-size: var(--ztc-font-size-font-s15);
+					}
+
+					&::placeholder {
+						color: rgba(78, 43, 90, 0.4);
+					}
+
+					&:focus {
+						border-color: #4e2b5a;
+						box-shadow: 0 0 0 4px rgba(78, 43, 90, 0.1);
+						background: #ffffff;
+					}
+
+					&.error {
+						border-color: #e74c3c;
+						background: rgba(231, 76, 60, 0.02);
+
+						&:focus {
+							border-color: #e74c3c;
+							box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1);
+						}
+					}
+				}
+
+				textarea {
+					resize: vertical;
+					min-height: 140px;
+					font-family: var(--figtree);
+					line-height: 1.6;
+				}
+
+				.select-wrapper {
+					position: relative;
+
+					select {
+						padding-right: 50px;
+						cursor: pointer;
+						background-image: none;
+
+						&:hover {
+							border-color: rgba(78, 43, 90, 0.2);
+						}
+					}
+
+					.select-arrow {
+						position: absolute;
+						right: 20px;
+						top: 50%;
+						transform: translateY(-50%);
+						pointer-events: none;
+						color: #4e2b5a;
+						font-size: 12px;
+						transition: transform 0.3s ease;
+					}
+
+					&:hover .select-arrow {
+						transform: translateY(-50%) translateY(-2px);
+					}
+				}
+
+				.char-count {
+					text-align: right;
+					font-family: var(--figtree);
+					font-size: var(--ztc-font-size-font-s12);
+					color: rgba(78, 43, 90, 0.5);
+					margin-top: 6px;
+				}
+
+				.error-message {
+					display: block;
+					font-family: var(--figtree);
+					font-size: var(--ztc-font-size-font-s13);
+					color: #e74c3c;
+					margin-top: 6px;
+					animation: slideDown 0.3s ease;
+				}
+			}
+
+			.form-submit-wrapper {
+				margin-top: 40px;
+				text-align: center;
+
+				@media #{$xs} {
+					margin-top: 32px;
+				}
+
+				.premium-submit-btn {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					gap: 12px;
+					padding: 18px 40px;
+					font-family: var(--grotesk);
+					font-size: var(--ztc-font-size-font-s16);
+					font-weight: var(--ztc-weight-bold);
+					color: #ffffff;
+					background: linear-gradient(135deg, #4e2b5a 0%, #3d2247 50%, #5a6fd8 100%);
+					border: none;
+					border-radius: 12px;
+					cursor: pointer;
+					transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+					box-shadow: 0 8px 24px rgba(78, 43, 90, 0.3);
+					position: relative;
+					overflow: hidden;
+					min-width: 200px;
+
+					@media #{$xs} {
+						padding: 16px 32px;
+						font-size: var(--ztc-font-size-font-s15);
+						min-width: 180px;
+					}
+
+					&::before {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: -100%;
+						width: 100%;
+						height: 100%;
+						background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+						transition: left 0.5s ease;
+					}
+
+					&:hover:not(:disabled):not(.success) {
+						transform: translateY(-2px);
+						box-shadow: 0 12px 32px rgba(78, 43, 90, 0.4);
+
+						&::before {
+							left: 100%;
+						}
+					}
+
+					&:active:not(:disabled) {
+						transform: translateY(0);
+					}
+
+					&:disabled {
+						opacity: 0.7;
+						cursor: not-allowed;
+					}
+
+					&.submitting {
+						background: linear-gradient(135deg, #5a6fd8 0%, #4e2b5a 100%);
+					}
+
+					&.success {
+						background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+						box-shadow: 0 8px 24px rgba(39, 174, 96, 0.3);
+						animation: successPulse 0.6s ease;
+					}
+
+					i {
+						font-size: 16px;
+						transition: transform 0.3s ease;
+					}
+
+					&:hover:not(:disabled):not(.success) i.fa-paper-plane {
+						transform: translateX(4px);
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes successPulse {
+	0%, 100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+}
+
 /*============= BACK TO TOP BUTTON ===============*/
 .back-to-top-btn {
 	position: fixed;
