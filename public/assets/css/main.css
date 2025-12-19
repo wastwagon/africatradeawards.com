@@ -13449,7 +13449,7 @@ html {
   display: inline-block;
   width: 80%;
   padding: 10px 20px;
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  background: #e8d5f0;
   border-radius: 30px;
   margin-bottom: 20px;
 }
@@ -13461,7 +13461,7 @@ html {
   }
 }
 .elegant-partnership-section .partnership-cards-grid .partnership-tier-card .tier-badge span {
-  color: #ffffff;
+  color: #4e2b5a;
   font-family: var(--grotesk);
   font-size: var(--ztc-font-size-font-s13);
   font-weight: var(--ztc-weight-bold);
@@ -13770,15 +13770,15 @@ html {
 .elegant-partnership-section .partnership-visual .premium-tiers-display .premium-tier-card.tier-title .tier-content .tier-badge {
   display: inline-block;
   padding: 6px 16px;
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
-  color: #ffffff;
+  background: #e8d5f0;
+  color: #4e2b5a;
   font-family: var(--grotesk);
   font-size: var(--ztc-font-size-font-s11);
   font-weight: var(--ztc-weight-bold);
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(78, 43, 90, 0.3);
+  box-shadow: 0 2px 8px rgba(78, 43, 90, 0.1);
 }
 .elegant-partnership-section .partnership-visual .premium-tiers-display .premium-tier-card.tier-platinum, .elegant-partnership-section .partnership-visual .premium-tiers-display .premium-tier-card.tier-gold {
   flex: 1;
