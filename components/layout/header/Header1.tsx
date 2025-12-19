@@ -75,7 +75,10 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSear
 												<Link href="/partnerships">Partnerships</Link>
 											</li>
 											<li className={isActive('/legal') ? 'active' : ''}>
-												<Link href="/legal">Contact</Link>
+												<Link href="/legal">Legal</Link>
+											</li>
+											<li className={isActive('/contact') ? 'active' : ''}>
+												<Link href="/contact">Contact Us</Link>
 											</li>
 										</ul>
 									</div>

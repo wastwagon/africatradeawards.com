@@ -39,6 +39,8 @@ export default function Footer1() {
 									<li><Link href="/jury">Jury & Evaluation</Link></li>
 									<li><Link href="/awards-night">Awards Night</Link></li>
 									<li><Link href="/media-centre">Media Centre</Link></li>
+									<li><Link href="/contact">Contact Us</Link></li>
+									<li><Link href="/legal">Legal & Administrative</Link></li>
 								</ul>
 							</div>
 						</div>

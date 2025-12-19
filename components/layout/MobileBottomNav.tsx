@@ -28,7 +28,7 @@ const navItems = [
 		activeIcon: 'fa-handshake'
 	},
 	{
-		href: '/legal',
+		href: '/contact',
 		label: 'Contact',
 		icon: 'fa-envelope',
 		activeIcon: 'fa-envelope'

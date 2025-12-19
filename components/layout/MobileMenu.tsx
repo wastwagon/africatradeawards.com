@@ -60,7 +60,8 @@ const handleAccordion = (key: any) => {
 							</ul>
 						</li>
 						<li className="hash-has-sub"><Link href="/partnerships" className="hash-nav">Partnerships</Link></li>
-						<li className="hash-has-sub"><Link href="/legal" className="hash-nav">Contact</Link></li>
+						<li className="hash-has-sub"><Link href="/legal" className="hash-nav">Legal</Link></li>
+						<li className="hash-has-sub"><Link href="/contact" className="hash-nav">Contact Us</Link></li>
 					</ul>
 
 					<div className="allmobilesection">
