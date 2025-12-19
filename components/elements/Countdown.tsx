@@ -22,8 +22,8 @@ export default function Countdown({ style }: any) {
 	useEffect(() => {
 		setMounted(true)
 		const now = Date.now()
-		// Event date: January 30, 2026 at 6:30 PM GMT
-		const endDateTime = new Date('2026-01-30T18:30:00+00:00') // 6:30 PM GMT on January 30, 2026
+		// Event date: January 28, 2026 at 6:30 PM GMT
+		const endDateTime = new Date('2026-01-28T18:30:00+00:00') // 6:30 PM GMT on January 28, 2026
 		setTimeDif(Math.max(0, endDateTime.getTime() - now))
 	}, [])
 

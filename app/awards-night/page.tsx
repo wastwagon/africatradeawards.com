@@ -6,7 +6,7 @@ const eventDetails = [
 	{
 		icon: 'fa-calendar',
 		title: 'Date & Time',
-		content: 'Friday, 30 January 2026',
+		content: '28th and 29th January 2026',
 		subContent: '6:30 p.m. – 11:00 p.m.'
 	},
 	{

@@ -22,7 +22,7 @@ export default function Section5New() {
 								<i className="fa-solid fa-calendar-days"></i>
 							</div>
 							<h6 className="card-label">Date &amp; Time</h6>
-							<p className="card-content">Friday, 30 January 2026<br />6:30 p.m. – 11:00 p.m.</p>
+							<p className="card-content">28th and 29th January 2026<br />6:30 p.m. – 11:00 p.m.</p>
 						</div>
 						<div className="event-info-card">
 							<div className="card-icon">

@@ -22,7 +22,7 @@ const grotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
 	title: "Africa Trade Awards 2026 | Celebrating Africa's Trade Excellence",
-	description: "The Africa Trade Awards honour the trailblazers, innovators, and institutions powering the continent's trade transformation and industrial renaissance. 30 January 2026, Kempinski Gold Coast City Hotel, Accra",
+	description: "The Africa Trade Awards honour the trailblazers, innovators, and institutions powering the continent's trade transformation and industrial renaissance. 28th and 29th January 2026, Kempinski Gold Coast City Hotel, Accra",
 }
 
 export default function RootLayout({

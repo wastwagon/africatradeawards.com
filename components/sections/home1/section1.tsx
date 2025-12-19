@@ -42,7 +42,7 @@ export default function Section1() {
 								<div className="images-content-area" data-aos="fade-up" data-aos-duration={900}>
 									<h3>AFRICA TRADE AWARDS 2026</h3>
 									<div className="space12" />
-									<Link href="/#">30 January 2026</Link>
+									<Link href="/#">28th and 29th January 2026</Link>
 									<div className="space12" />
 									<Link href="/#">Kempinski Gold Coast City Hotel, Accra</Link>
 									<div className="space16" />

@@ -89,7 +89,7 @@ export default function HeroSection() {
 								<div className="space12" />
 								<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block' }}>
 									<i className="fa-solid fa-calendar" style={{ marginRight: '0.5rem' }}></i>
-									30 January 2026
+									28th and 29th January 2026
 								</Link>
 								<div className="space12" />
 								<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block' }}>

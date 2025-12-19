@@ -100,7 +100,7 @@ export default function Popup() {
 							<div className="info-icon">
 								<i className="fa-solid fa-calendar-days"></i>
 							</div>
-							<span className="info-text">30 January 2026 - 6:30pm to 11:00pm</span>
+							<span className="info-text">28th and 29th January 2026 - 6:30pm to 11:00pm</span>
 						</div>
 						<div className="info-item">
 							<div className="info-icon">
