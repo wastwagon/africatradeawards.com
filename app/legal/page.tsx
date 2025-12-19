@@ -160,20 +160,6 @@ export default function Legal() {
 						</div>
 					</div>
 				</div>
-				
-				{/*===== COPYRIGHT =======*/}
-				<div className="modern-copyright-section">
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-8 m-auto">
-								<div className="copyright-content" data-aos="fade-up" data-aos-duration={800}>
-									<p>&copy; 2026 African Trade Chamber &amp; Agile Media Solutions. All Rights Reserved.</p>
-									<p>Designed and Powered by Agile Media Solutions in partnership with the African Trade Chamber.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</Layout>
 	)
