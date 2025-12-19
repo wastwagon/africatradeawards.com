@@ -42,36 +42,9 @@ export default function HeroSection() {
 								<Link 
 									href="/nomination" 
 									className="vl-btn1 hero-cta-white"
-									style={{
-										backgroundColor: '#ffffff',
-										color: '#4e2b5a',
-										padding: '15px 24px',
-										borderRadius: '8px',
-										display: 'inline-flex',
-										alignItems: 'center',
-										gap: '8px',
-										fontWeight: 'bold',
-										textDecoration: 'none',
-										transition: 'all 0.3s ease',
-										background: '#ffffff',
-										border: 'none',
-										boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-										position: 'relative',
-										zIndex: 1
-									}}
-									onMouseEnter={(e) => {
-										e.currentTarget.style.backgroundColor = '#f5f5f5';
-										e.currentTarget.style.color = '#4e2b5a';
-										e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-									}}
-									onMouseLeave={(e) => {
-										e.currentTarget.style.backgroundColor = '#ffffff';
-										e.currentTarget.style.color = '#4e2b5a';
-										e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
-									}}
 								>
-									<span style={{ position: 'relative', zIndex: 2 }}>Nominate Now</span>
-									<i className="fa-solid fa-arrow-right" style={{ fontSize: '14px', position: 'relative', zIndex: 2 }}></i>
+									Nominate Now
+									<i className="fa-solid fa-arrow-right"></i>
 								</Link>
 							</div>
 						</div>
