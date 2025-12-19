@@ -18334,26 +18334,29 @@ html {
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
+  background: #4e2b5a;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
+  box-shadow: 0 4px 12px rgba(78, 43, 90, 0.3);
 }
 @media (max-width: 767px) {
   .modern-highlight-card .highlight-image-wrapper .highlight-icon-wrapper {
     top: 16px;
     right: 16px;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
   }
 }
 .modern-highlight-card .highlight-image-wrapper .highlight-icon-wrapper i {
   font-size: 28px;
   color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
 }
 @media (max-width: 767px) {
