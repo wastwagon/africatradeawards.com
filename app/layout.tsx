@@ -5,6 +5,7 @@ import './globals.css'
 
 import type { Metadata } from "next"
 import { Figtree, Space_Grotesk } from "next/font/google"
+import Script from 'next/script'
 
 const figtree = Figtree({
 	weight: ['300', '400', '500', '600', '700', '800', '900'],
@@ -31,9 +32,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
+			<body className={`${figtree.variable} ${grotesk.variable} homepage1-body`}>
 				{/* Blocking script to load CSS before React hydrates - prevents FOUC */}
-				<script
+				<Script
+					id="load-critical-css"
+					strategy="beforeInteractive"
 					dangerouslySetInnerHTML={{
 						__html: `
 							(function() {
@@ -61,8 +64,6 @@ export default function RootLayout({
 						`,
 					}}
 				/>
-			</head>
-			<body className={`${figtree.variable} ${grotesk.variable} homepage1-body`}>
 				{children}
 			</body>
 		</html>
