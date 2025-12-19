@@ -30,27 +30,32 @@ const eveningHighlights = [
 	{
 		icon: 'fa-star',
 		title: 'Red Carpet & Networking',
-		description: 'Reception with continental leaders and industry pioneers.'
+		description: 'Reception with continental leaders and industry pioneers.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
 		icon: 'fa-microphone',
 		title: 'Opening Ceremony',
-		description: 'Formal opening with keynote addresses and welcome messages.'
+		description: 'Formal opening with keynote addresses and welcome messages.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
 		icon: 'fa-trophy',
 		title: 'Awards Presentations',
-		description: 'Celebration of winners across all award categories.'
+		description: 'Celebration of winners across all award categories.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
 		icon: 'fa-utensils',
 		title: 'Gala Dinner',
-		description: 'Premium dining experience with continental cuisine.'
+		description: 'Premium dining experience with continental cuisine.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	},
 	{
 		icon: 'fa-music',
 		title: 'Cultural Performances',
-		description: 'Showcasing Africa\'s rich cultural heritage through music and dance.'
+		description: 'Showcasing Africa\'s rich cultural heritage through music and dance.',
+		image: '/assets/img/all-images/about/about-img8.png'
 	}
 ]
 
@@ -123,12 +128,16 @@ export default function AwardsNight() {
 						</div>
 						<div className="row">
 							{eveningHighlights.map((highlight, index) => (
-								<div key={index} className={index === 4 ? "col-lg-6 col-md-6" : "col-lg-3 col-md-6"} data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
-									<div className="modern-benefit-card">
-										<div className="benefit-icon-wrapper">
-											<i className={`fa-solid ${highlight.icon}`}></i>
+								<div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
+									<div className="modern-highlight-card">
+										<div className="highlight-image-wrapper">
+											<img src={highlight.image} alt={highlight.title} />
+											<div className="highlight-overlay"></div>
+											<div className="highlight-icon-wrapper">
+												<i className={`fa-solid ${highlight.icon}`}></i>
+											</div>
 										</div>
-										<div className="benefit-content">
+										<div className="highlight-content">
 											<h4>{highlight.title}</h4>
 											<p>{highlight.description}</p>
 										</div>
