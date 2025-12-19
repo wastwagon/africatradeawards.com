@@ -159,23 +159,21 @@ html {
 							display: inline-block;
 							transition: all .4s;
 							padding: 0 20px;
+							text-decoration: none;
+							border-bottom: none;
+
+							&:hover {
+								text-decoration: none;
+								border-bottom: none;
+							}
 						}
 
 						&:hover>a {
 							transition: all .4s;
 							color: #ffffff !important;
 							position: relative;
-
-							&::after {
-								content: '';
-								position: absolute;
-								bottom: -5px;
-								left: 20px;
-								right: 20px;
-								height: 2px;
-								background: #ffffff;
-								border-radius: 2px;
-							}
+							text-decoration: none;
+							border-bottom: none;
 						}
 
 						&.active>a {
@@ -183,6 +181,8 @@ html {
 							color: #ffffff !important;
 							font-weight: var(--ztc-weight-semibold);
 							position: relative;
+							text-decoration: none;
+							border-bottom: none;
 
 							&::after {
 								content: '';

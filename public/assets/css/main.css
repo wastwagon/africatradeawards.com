@@ -8632,27 +8632,27 @@ html {
   display: inline-block;
   transition: all 0.4s;
   padding: 0 20px;
+  text-decoration: none;
+  border-bottom: none;
+}
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li a:hover {
+  text-decoration: none;
+  border-bottom: none;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a {
   transition: all 0.4s;
   color: #ffffff !important;
   position: relative;
-}
-.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 20px;
-  right: 20px;
-  height: 2px;
-  background: #ffffff;
-  border-radius: 2px;
+  text-decoration: none;
+  border-bottom: none;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a {
   transition: all 0.4s;
   color: #ffffff !important;
   font-weight: var(--ztc-weight-semibold);
   position: relative;
+  text-decoration: none;
+  border-bottom: none;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a::after {
   content: "";
