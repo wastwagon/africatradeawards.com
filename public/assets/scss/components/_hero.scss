@@ -1131,9 +1131,10 @@
 		position: relative;
 		z-index: 1;
 	}
+}
 
-	/*============= PREMIUM HERO CONTENT SECTION (Outside Hero) ===============*/
-	.premium-hero-content-section {
+/*============= PREMIUM HERO CONTENT SECTION (Outside Hero) ===============*/
+.premium-hero-content-section {
 		background: linear-gradient(135deg, rgba(78, 43, 90, 0.02) 0%, rgba(192, 192, 192, 0.05) 50%, rgba(78, 43, 90, 0.02) 100%);
 		padding: 80px 0;
 		position: relative;
@@ -1333,15 +1334,51 @@
 		}
 	}
 
-	@keyframes shine {
-		0% {
-			left: -100%;
+	.premium-hero-description {
+		margin-top: 0;
+		
+		.premium-description-heading {
+			font-family: var(--grotesk);
+			font-size: clamp(1.5rem, 2.5vw, 2rem);
+			font-weight: var(--ztc-weight-bold);
+			color: #4e2b5a;
+			line-height: 1.3;
+			margin-bottom: 0;
+			
+			@media #{$xs} {
+				font-size: clamp(1.25rem, 4vw, 1.75rem);
+			}
 		}
-		50%, 100% {
-			left: 100%;
+		
+		.premium-description-text {
+			p {
+				font-family: var(--figtree);
+				font-size: clamp(1rem, 1.2vw, 1.125rem);
+				font-weight: var(--ztc-weight-regular);
+				line-height: 1.8;
+				color: var(--ztc-text-text-2);
+				margin-bottom: 0;
+				
+				@media #{$xs} {
+					font-size: clamp(0.9375rem, 3vw, 1rem);
+					line-height: 1.7;
+				}
+			}
 		}
 	}
 
+}
+
+@keyframes shine {
+	0% {
+		left: -100%;
+	}
+	50%, 100% {
+		left: 100%;
+	}
+}
+
+.inner-page-header {
 	.heading1 {
 		text-align: center;
 		
