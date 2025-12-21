@@ -170,10 +170,11 @@ html {
 
 						&:hover>a {
 							transition: all .4s;
-							color: #ffffff !important;
+							color: rgba(192, 192, 192, 0.95) !important;
 							position: relative;
 							text-decoration: none;
 							border-bottom: none;
+							text-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
 						}
 
 						&.active>a {

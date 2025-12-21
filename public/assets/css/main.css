@@ -8693,6 +8693,7 @@ html {
   position: relative;
   text-decoration: none;
   border-bottom: none;
+  text-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a::after {
   content: "";
@@ -8701,8 +8702,20 @@ html {
   left: 20px;
   right: 20px;
   height: 2px;
-  background: #ffffff;
+  background: linear-gradient(90deg, rgba(192, 192, 192, 0.8) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(192, 192, 192, 0.8) 100%);
   border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);
+}
+.homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(192, 192, 192, 0.6) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(192, 192, 192, 0.6) 100%);
+  border-radius: 2px;
+  opacity: 0.7;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li .tp-submenu {
   visibility: hidden;
@@ -8777,7 +8790,7 @@ html {
   display: inline-block;
   visibility: hidden;
   opacity: 0;
-  background: #4e2b5a;
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.4) 0%, rgba(78, 43, 90, 0.8) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a::after {
   position: absolute;
@@ -8792,13 +8805,13 @@ html {
   display: inline-block;
   visibility: hidden;
   opacity: 0;
-  background: #4e2b5a;
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.4) 0%, rgba(78, 43, 90, 0.8) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link {
   padding-left: 20px;
   color: #4e2b5a;
   font-weight: var(--ztc-weight-semibold);
-  background: rgba(78, 43, 90, 0.08);
+  background: linear-gradient(90deg, rgba(192, 192, 192, 0.1) 0%, rgba(78, 43, 90, 0.12) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::after, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link::after {
   border-radius: 0 4px 4px 0;
@@ -8811,7 +8824,7 @@ html {
   padding-left: 20px;
   color: #4e2b5a;
   font-weight: var(--ztc-weight-semibold);
-  background: rgba(78, 43, 90, 0.12);
+  background: linear-gradient(90deg, rgba(192, 192, 192, 0.12) 0%, rgba(78, 43, 90, 0.15) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a::after {
   border-radius: 0 4px 4px 0;
@@ -8973,7 +8986,7 @@ html {
   transition: all 0.4s;
   position: relative;
   z-index: 1;
-  background: var(--ztc-bg-bg-3);
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(78, 43, 90, 0.4) 100%);
   padding: 16px 20px;
   display: inline-block;
   border-radius: 8px;
@@ -9066,8 +9079,9 @@ html {
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a {
   transition: all 0.4s;
-  color: var(--ztc-text-text-4) !important;
+  color: rgba(192, 192, 192, 0.95) !important;
   font-weight: var(--ztc-weight-medium);
+  text-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li .tp-submenu {
   visibility: hidden;
@@ -9111,14 +9125,14 @@ html {
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.main-small-menu:hover > a {
   transition: all 0.4s;
   padding-left: 15px;
-  color: var(--ztc-text-text-4);
+  color: #4e2b5a;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.main-small-menu:hover > a::after {
-  background: var(--ztc-text-text-4);
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
   transition: all 0.4s;
   visibility: visible;
   opacity: 1;
-  color: var(--ztc-text-text-4);
+  color: #4e2b5a;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li {
   display: block;
@@ -9148,7 +9162,7 @@ html {
   display: inline-block;
   visibility: hidden;
   opacity: 0;
-  background: var(--ztc-text-text-4);
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover {
   padding-left: 15px;
@@ -9192,7 +9206,7 @@ html {
   margin: 0 6px 0 0;
 }
 .homepage1-body .header-area.homepage1 .header-elements .btn-area ul li a:hover {
-  background: var(--ztc-bg-bg-3);
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.3) 0%, rgba(78, 43, 90, 0.5) 100%);
   transition: all 0.4s;
 }
 
