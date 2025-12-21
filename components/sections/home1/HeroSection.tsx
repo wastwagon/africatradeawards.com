@@ -31,14 +31,25 @@ export default function HeroSection() {
 				<source src="/assets/video/hero-video.mp4" type="video/mp4" />
 			</video>
 			
-			{/* Overlay for better text readability */}
+			{/* Premium Silver-Purple Gradient Overlay */}
 			<div style={{
 				position: 'absolute',
 				top: 0,
 				left: 0,
 				right: 0,
 				bottom: 0,
-				background: 'linear-gradient(135deg, rgba(78, 43, 90, 0.7) 0%, rgba(61, 34, 71, 0.6) 50%, rgba(90, 111, 216, 0.5) 100%)',
+				background: 'linear-gradient(135deg, rgba(192, 192, 192, 0.25) 0%, rgba(78, 43, 90, 0.85) 30%, rgba(78, 43, 90, 0.9) 60%, rgba(192, 192, 192, 0.2) 100%)',
+				pointerEvents: 'none',
+				zIndex: 1
+			}} />
+			{/* Additional Premium Gradient Layer */}
+			<div style={{
+				position: 'absolute',
+				top: 0,
+				left: 0,
+				right: 0,
+				bottom: 0,
+				background: 'radial-gradient(circle at 20% 50%, rgba(192, 192, 192, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(78, 43, 90, 0.6) 0%, transparent 50%)',
 				pointerEvents: 'none',
 				zIndex: 1
 			}} />
