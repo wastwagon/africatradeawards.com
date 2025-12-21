@@ -20,11 +20,7 @@ export default function HeroContentSection() {
 						<div className="premium-hero-wrapper" style={{ textAlign: 'left' }}>
 							{/* Premium Badge */}
 							<div className="premium-year-badge" data-aos="fade-up" data-aos-duration={600}>
-								<span>
-									<span className="badge-year">2026</span>
-									<span className="badge-separator">•</span>
-									<span className="badge-name">Africa Trade Awards</span>
-								</span>
+								<span>2026 Africa Trade Awards</span>
 							</div>
 							
 							<div className="space24" />
