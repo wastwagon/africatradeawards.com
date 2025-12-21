@@ -8,17 +8,9 @@ export default function HeroContentSection() {
 				<div className="row align-items-center">
 					{/* Images Column - Left */}
 					<div className="col-lg-6 order-lg-1 order-2">
-						<div className="overview-image-layout" data-aos="fade-right" data-aos-duration={800}>
-							<div className="main-image">
+						<div className="premium-hero-image-layout" data-aos="fade-right" data-aos-duration={800}>
+							<div className="premium-main-image">
 								<img src="/assets/img/all-images/about/about-img8.png" alt="Africa Trade Awards" />
-							</div>
-							<div className="secondary-images">
-								<div className="secondary-image">
-									<img src="/assets/img/all-images/about/about-img1.png" alt="Trade Excellence" />
-								</div>
-								<div className="secondary-image">
-									<img src="/assets/img/all-images/about/about-img2.png" alt="Industrial Champions" />
-								</div>
 							</div>
 						</div>
 					</div>
