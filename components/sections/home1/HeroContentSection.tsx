@@ -57,30 +57,6 @@ export default function HeroContentSection() {
 								</div>
 							</div>
 
-							<div className="space50" />
-
-							{/* Enhanced Descriptive Content */}
-							<div className="premium-hero-description-enhanced" data-aos="fade-up" data-aos-duration={1200}>
-								<div className="space40" />
-								
-								{/* Premium Event Details Card */}
-								<div className="premium-event-details-card" data-aos="fade-up" data-aos-duration={1400}>
-									<div className="event-details-header">
-										<i className="fa-solid fa-calendar-days"></i>
-										<span className="event-details-label">Event Details</span>
-									</div>
-									<div className="event-details-content">
-										<div className="event-detail-item">
-											<i className="fa-solid fa-calendar"></i>
-											<span>28th and 29th January 2026</span>
-										</div>
-										<div className="event-detail-item">
-											<i className="fa-solid fa-location-dot"></i>
-											<span>Kempinski Gold Coast City Hotel, Accra</span>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
