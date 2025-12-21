@@ -170,12 +170,12 @@ html {
 
 						&:hover>a {
 							transition: all .4s;
-							color: #4e2b5a !important;
+							color: #ffffff !important;
 							position: relative;
 							text-decoration: none;
 							border-bottom: none;
 							font-weight: var(--ztc-weight-semibold);
-							text-shadow: 0 2px 8px rgba(78, 43, 90, 0.2);
+							text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 						}
 
 						&.active>a {
