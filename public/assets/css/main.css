@@ -8681,10 +8681,11 @@ html {
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a {
   transition: all 0.4s;
-  color: #ffffff !important;
+  color: rgba(192, 192, 192, 0.95) !important;
   position: relative;
   text-decoration: none;
   border-bottom: none;
+  text-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li.active > a {
   transition: all 0.4s;
@@ -9079,9 +9080,9 @@ html {
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li:hover > a {
   transition: all 0.4s;
-  color: rgba(192, 192, 192, 0.95) !important;
-  font-weight: var(--ztc-weight-medium);
-  text-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
+  color: #4e2b5a !important;
+  font-weight: var(--ztc-weight-semibold);
+  text-shadow: 0 2px 8px rgba(78, 43, 90, 0.3);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li .tp-submenu {
   visibility: hidden;
