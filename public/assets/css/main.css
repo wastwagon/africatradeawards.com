@@ -8963,9 +8963,9 @@ html {
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link {
   padding-left: 20px;
-  color: #4e2b5a;
+  color: #4e2b5a !important;
   font-weight: var(--ztc-weight-semibold);
-  background: linear-gradient(90deg, rgba(78, 43, 90, 0.08) 0%, rgba(78, 43, 90, 0.12) 100%);
+  background: linear-gradient(90deg, rgba(78, 43, 90, 0.15) 0%, rgba(78, 43, 90, 0.2) 100%) !important;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::after, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a.active-link::after {
   border-radius: 0 4px 4px 0;
@@ -8973,13 +8973,13 @@ html {
   transition: all 0.4s;
   opacity: 1;
   left: 0;
-  background: linear-gradient(135deg, rgba(78, 43, 90, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.8) 0%, rgb(78, 43, 90) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a {
   padding-left: 20px;
-  color: #4e2b5a;
+  color: #4e2b5a !important;
   font-weight: var(--ztc-weight-semibold);
-  background: linear-gradient(90deg, rgba(78, 43, 90, 0.1) 0%, rgba(78, 43, 90, 0.15) 100%);
+  background: linear-gradient(90deg, rgba(78, 43, 90, 0.18) 0%, rgba(78, 43, 90, 0.25) 100%) !important;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a::before, .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li.active a::after {
   border-radius: 0 4px 4px 0;
@@ -8987,7 +8987,7 @@ html {
   transition: all 0.4s;
   opacity: 1;
   left: 0;
-  background: linear-gradient(135deg, rgba(78, 43, 90, 0.7) 0%, rgba(78, 43, 90, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.85) 0%, rgb(78, 43, 90) 100%);
 }
 
 .header-area.homepage1.sticky {
@@ -9322,9 +9322,9 @@ html {
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover {
   padding-left: 15px;
-  color: #4e2b5a;
+  color: #4e2b5a !important;
   font-weight: var(--ztc-weight-semibold);
-  background: rgba(78, 43, 90, 0.08);
+  background: rgba(78, 43, 90, 0.15) !important;
   transition: all 0.4s;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::after {
@@ -9333,7 +9333,7 @@ html {
   transition: all 0.4s;
   opacity: 1;
   left: 0;
-  background: linear-gradient(135deg, rgba(78, 43, 90, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.8) 0%, rgb(78, 43, 90) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .btn-area {
   display: flex;
