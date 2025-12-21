@@ -1,11 +1,11 @@
-/* Error: unmatched "}".
+/* Error: expected "}".
  *      ,
- * 1370 | }
- *      | ^
+ * 2764 | /*============= HERO CSS AREA ===============*∕
+ *      |                                                ^
  *      '
- *   public/assets/scss/components/_hero.scss 1370:1  @forward
- *   public/assets/scss/components/_index.scss 3:1    @forward
- *   public/assets/scss/main.scss 13:1                root stylesheet */
+ *   public/assets/scss/components/_hero.scss 2764:48  @forward
+ *   public/assets/scss/components/_index.scss 3:1     @forward
+ *   public/assets/scss/main.scss 13:1                 root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -15,5 +15,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: unmatched "}".\a      \2577 \a 1370 \2502  }\a      \2502  ^\a      \2575 \a   public/assets/scss/components/_hero.scss 1370:1  @forward\a   public/assets/scss/components/_index.scss 3:1    @forward\a   public/assets/scss/main.scss 13:1                root stylesheet';
+  content: 'Error: expected "}".\a      \2577 \a 2764 \2502  /*============= HERO CSS AREA ===============*/\a      \2502                                                 ^\a      \2575 \a   public/assets/scss/components/_hero.scss 2764:48  @forward\a   public/assets/scss/components/_index.scss 3:1     @forward\a   public/assets/scss/main.scss 13:1                 root stylesheet';
 }
