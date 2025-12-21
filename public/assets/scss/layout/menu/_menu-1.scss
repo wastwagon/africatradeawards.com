@@ -146,7 +146,7 @@ html {
 										transition: all .4s;
 										position: relative;
 										z-index: 1;
-										background: var(--ztc-bg-bg-3);
+										background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(78, 43, 90, 0.4) 100%);
 										padding: 16px 20px;
 										display: inline-block;
 										border-radius: 8px;
@@ -257,8 +257,9 @@ html {
 
 						&:hover>a {
 							transition: all .4s;
-							color: var(--ztc-text-text-4) !important;
+							color: rgba(192, 192, 192, 0.95) !important;
 							font-weight: var(--ztc-weight-medium);
+							text-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
 						}
 
 						.tp-submenu {
@@ -304,15 +305,15 @@ html {
 								&:hover>a {
 									transition: all .4s;
 									padding-left: 15px;
-									color: var(--ztc-text-text-4);
+									color: #4e2b5a;
 								}
 
 								&:hover>a::after {
-									background: var(--ztc-text-text-4);
+									background: linear-gradient(135deg, rgba(192, 192, 192, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
 									transition: all .4s;
 									visibility: visible;
 									opacity: 1;
-									color: var(--ztc-text-text-4);
+									color: #4e2b5a;
 								}
 							}
 
@@ -344,7 +345,7 @@ html {
 										display: inline-block;
 										visibility: hidden;
 										opacity: 0;
-										background: var(--ztc-text-text-4);
+										background: linear-gradient(135deg, rgba(192, 192, 192, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
 									}
 
 									&:hover {
@@ -398,7 +399,7 @@ html {
 							margin: 0 6px 0 0;
 
 							&:hover {
-								background: var(--ztc-bg-bg-3);
+								background: linear-gradient(135deg, rgba(192, 192, 192, 0.3) 0%, rgba(78, 43, 90, 0.5) 100%);
 								transition: all .4s;
 							}
 						}
