@@ -24,26 +24,7 @@ export default function AboutSection() {
 						</div>
 						<div className="col-lg-6">
 							<div className="overview-content">
-								<h2 className="overview-heading">
-									Celebrating Visionaries Transforming Africa&apos;s Economy
-								</h2>
-								<div className="space12" />
-								<div className="overview-description">
-									<p>The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders.</p>
-									<div className="space12" />
-									<p>As the flagship recognition platform of the Africa Trade Summit, the Awards honour individuals and institutions advancing enterprise, policy, and investment that drive the continent&apos;s trade, industrialisation, and economic integration.</p>
-								</div>
-								
-								<div className="space24" />
-								
-								{/* Our Mission */}
-								<div className="mission-content">
-									<div className="mission-badge">
-										<span>MISSION</span>
-									</div>
-									<div className="space12" />
-									<p className="mission-description">To celebrate and promote excellence, innovation, and responsible leadership in African trade and industrial development, while fostering cross-border partnerships that advance the goals of the AfCFTA and Agenda 2063.</p>
-								</div>
+								{/* Content moved to HeroContentSection */}
 							</div>
 						</div>
 					</div>

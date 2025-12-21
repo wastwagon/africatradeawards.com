@@ -54,6 +54,21 @@ export default function HeroContentSection() {
 									</Link>
 								</div>
 							</div>
+
+							<div className="space50" />
+
+							{/* Descriptive Content */}
+							<div className="premium-hero-description" data-aos="fade-up" data-aos-duration={1200}>
+								<h2 className="premium-description-heading">
+									Celebrating Visionaries Transforming Africa&apos;s Economy
+								</h2>
+								<div className="space20" />
+								<div className="premium-description-text">
+									<p>The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders.</p>
+									<div className="space16" />
+									<p>As the flagship recognition platform of the Africa Trade Summit, the Awards honour individuals and institutions advancing enterprise, policy, and investment that drive the continent&apos;s trade, industrialisation, and economic integration.</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
