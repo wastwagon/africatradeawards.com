@@ -9,8 +9,10 @@ export default function HeroContentSection() {
 					{/* Images Column - Left */}
 					<div className="col-lg-6 order-lg-1 order-2">
 						<div className="premium-hero-image-layout" data-aos="fade-right" data-aos-duration={800}>
-							<div className="premium-main-image">
-								<img src="/assets/img/all-images/about/about-img8.png" alt="Africa Trade Awards" />
+							<div className="premium-main-image premium-3d-circle">
+								<div className="circle-gradient-border"></div>
+								<div className="circle-inner-shadow"></div>
+								<img src="/assets/img/all-images/award-winner.webp" alt="Award Winner - Africa Trade Awards" />
 							</div>
 						</div>
 					</div>
@@ -30,16 +32,6 @@ export default function HeroContentSection() {
 								<p className="premium-hero-subtitle-text">
 									The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders.
 								</p>
-							</div>
-							
-							<div className="space24" />
-							
-							{/* Main Title with Enhanced Styling */}
-							<div className="premium-hero-heading" data-aos="fade-up" data-aos-duration={800}>
-								<h1 className="premium-hero-title-enhanced">
-									Celebrating Africa&apos;s Trade Excellence <br className="d-lg-block d-none" />
-									and Industrial Champions
-								</h1>
 							</div>
 							
 							<div className="space40" />
