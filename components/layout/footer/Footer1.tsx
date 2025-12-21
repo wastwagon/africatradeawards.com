@@ -122,8 +122,6 @@ export default function Footer1() {
 						<div className="col-lg-12">
 							<div className="copyright">
 								<p>© 2026 African Trade Chamber & Agile Media Solutions. All Rights Reserved.</p>
-								<p style={{ marginTop: '8px', fontSize: '14px' }}>Designed and Powered by <Link href="https://agilemediasolutions.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Agile Media Solutions</Link> in partnership with the <Link href="https://africantradechamber.org" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>African Trade Chamber</Link>.</p>
-								<p style={{ marginTop: '8px', fontSize: '12px', opacity: 0.8 }}>An official initiative of the African Trade Chamber in partnership with Agile Media Solutions. Independently audited by Forvis Mazars Ghana.</p>
 							</div>
 						</div>
 					</div>

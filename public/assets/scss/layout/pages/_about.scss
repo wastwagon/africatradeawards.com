@@ -1933,11 +1933,26 @@
 				&:hover {
 					.step-node {
 						.node-circle {
-							border-color: rgba(78, 43, 90, 0.25);
-							box-shadow: 0 8px 30px rgba(78, 43, 90, 0.2);
+							border-color: rgba(78, 43, 90, 0.3);
+							box-shadow: 
+								0 8px 30px rgba(78, 43, 90, 0.25),
+								inset 0 1px 0 rgba(255, 255, 255, 0.9),
+								0 0 0 1px rgba(120, 80, 140, 0.15);
+							background: linear-gradient(135deg, 
+								rgba(255, 255, 255, 0.98) 0%, 
+								rgba(192, 192, 192, 0.05) 50%, 
+								rgba(255, 255, 255, 0.98) 100%);
+
+							&::before {
+								opacity: 1;
+							}
 
 							.node-icon {
-								background: linear-gradient(135deg, rgba(78, 43, 90, 0.08) 0%, rgba(90, 111, 216, 0.08) 100%);
+								background: linear-gradient(135deg, 
+									rgba(78, 43, 90, 0.12) 0%, 
+									rgba(120, 80, 140, 0.1) 40%, 
+									rgba(192, 192, 192, 0.08) 70%, 
+									rgba(120, 80, 140, 0.1) 100%);
 							}
 						}
 					}
@@ -1960,30 +1975,66 @@
 						width: 90px;
 						height: 90px;
 						border-radius: 50%;
-						background: #ffffff;
-						border: 4px solid rgba(78, 43, 90, 0.1);
+						background: linear-gradient(135deg, 
+							rgba(255, 255, 255, 0.95) 0%, 
+							rgba(192, 192, 192, 0.03) 50%, 
+							rgba(255, 255, 255, 0.95) 100%);
+						border: 4px solid rgba(78, 43, 90, 0.15);
 						display: flex;
 						align-items: center;
 						justify-content: center;
 						position: relative;
 						transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-						box-shadow: 0 4px 20px rgba(78, 43, 90, 0.12);
+						box-shadow: 
+							0 4px 20px rgba(78, 43, 90, 0.12),
+							inset 0 1px 0 rgba(255, 255, 255, 0.8),
+							0 0 0 1px rgba(120, 80, 140, 0.1);
+
+						&::before {
+							content: '';
+							position: absolute;
+							top: -4px;
+							left: -4px;
+							right: -4px;
+							bottom: -4px;
+							border-radius: 50%;
+							background: linear-gradient(135deg, 
+								rgba(78, 43, 90, 0.2) 0%, 
+								rgba(120, 80, 140, 0.15) 40%, 
+								rgba(192, 192, 192, 0.1) 70%, 
+								rgba(120, 80, 140, 0.15) 100%);
+							z-index: -1;
+							opacity: 0;
+							transition: opacity 0.4s ease;
+						}
 
 						@media #{$xs} {
 							width: 70px;
 							height: 70px;
 							border-width: 3px;
+
+							&::before {
+								top: -3px;
+								left: -3px;
+								right: -3px;
+								bottom: -3px;
+							}
 						}
 
 						.node-icon {
 							width: 70px;
 							height: 70px;
 							border-radius: 50%;
-							background: rgba(78, 43, 90, 0.05);
+							background: linear-gradient(135deg, 
+								rgba(78, 43, 90, 0.08) 0%, 
+								rgba(120, 80, 140, 0.06) 40%, 
+								rgba(192, 192, 192, 0.05) 70%, 
+								rgba(120, 80, 140, 0.06) 100%);
 							display: flex;
 							align-items: center;
 							justify-content: center;
 							transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+							box-shadow: inset 0 2px 4px rgba(78, 43, 90, 0.05);
 
 							@media #{$xs} {
 								width: 54px;
@@ -1992,7 +2043,13 @@
 
 							i {
 								font-size: 28px;
-								color: #4e2b5a;
+								background: linear-gradient(135deg, 
+									rgba(78, 43, 90, 0.95) 0%, 
+									rgba(120, 80, 140, 0.85) 50%, 
+									rgba(78, 43, 90, 0.9) 100%);
+								-webkit-background-clip: text;
+								-webkit-text-fill-color: transparent;
+								background-clip: text;
 								transition: all 0.3s ease;
 
 								@media #{$xs} {
@@ -2007,7 +2064,13 @@
 						font-family: var(--grotesk);
 						font-size: var(--ztc-font-size-font-s14);
 						font-weight: var(--ztc-weight-bold);
-						color: #4e2b5a;
+						background: linear-gradient(135deg, 
+							rgba(78, 43, 90, 0.9) 0%, 
+							rgba(120, 80, 140, 0.8) 50%, 
+							rgba(78, 43, 90, 0.85) 100%);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+						background-clip: text;
 						letter-spacing: 0.5px;
 
 						@media #{$xs} {
@@ -2019,36 +2082,99 @@
 
 				// Step Content
 				.step-content {
-					background: #ffffff;
+					background: rgba(255, 255, 255, 0.95);
+					backdrop-filter: blur(10px);
 					border-radius: 16px;
 					padding: 24px 20px;
-					box-shadow: 0 8px 32px rgba(78, 43, 90, 0.08),
-								0 0 0 1px rgba(78, 43, 90, 0.08);
-					transition: all 0.3s ease;
+					border: 1px solid rgba(78, 43, 90, 0.1);
+					box-shadow: 
+						0 8px 32px rgba(78, 43, 90, 0.08),
+						0 2px 8px rgba(78, 43, 90, 0.04),
+						inset 0 1px 0 rgba(255, 255, 255, 0.8),
+						0 0 0 1px rgba(120, 80, 140, 0.05);
+					transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 					width: 100%;
 					text-align: center;
 					min-height: 180px;
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
+					position: relative;
+					overflow: hidden;
+
+					&::before {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						height: 3px;
+						background: linear-gradient(90deg, 
+							rgba(78, 43, 90, 0.6) 0%, 
+							rgba(120, 80, 140, 0.4) 40%, 
+							rgba(192, 192, 192, 0.3) 70%, 
+							rgba(120, 80, 140, 0.4) 100%);
+						opacity: 0;
+						transition: opacity 0.4s ease;
+					}
+
+					&::after {
+						content: '';
+						position: absolute;
+						top: -1px;
+						left: -1px;
+						right: -1px;
+						bottom: -1px;
+						border-radius: 16px;
+						background: linear-gradient(135deg, 
+							rgba(78, 43, 90, 0.1) 0%, 
+							rgba(120, 80, 140, 0.08) 40%, 
+							rgba(192, 192, 192, 0.06) 70%, 
+							rgba(120, 80, 140, 0.08) 100%);
+						z-index: -1;
+						opacity: 0;
+						transition: opacity 0.4s ease;
+					}
 
 					@media #{$xs} {
 						padding: 20px 16px;
 						border-radius: 12px;
 						min-height: 160px;
+
+						&::after {
+							border-radius: 12px;
+						}
 					}
 
 					&:hover {
-						box-shadow: 0 12px 40px rgba(78, 43, 90, 0.15),
-									0 0 0 1px rgba(78, 43, 90, 0.12);
+						box-shadow: 
+							0 12px 40px rgba(78, 43, 90, 0.15),
+							0 4px 12px rgba(78, 43, 90, 0.08),
+							inset 0 1px 0 rgba(255, 255, 255, 0.9),
+							0 0 0 1px rgba(120, 80, 140, 0.1);
 						transform: translateY(-4px);
+						border-color: rgba(78, 43, 90, 0.2);
+
+						&::before {
+							opacity: 1;
+						}
+
+						&::after {
+							opacity: 1;
+						}
 					}
 
 					.step-title {
 						font-family: var(--grotesk);
 						font-size: var(--ztc-font-size-font-s20);
 						font-weight: var(--ztc-weight-bold);
-						color: var(--ztc-text-text-2);
+						background: linear-gradient(135deg, 
+							rgba(78, 43, 90, 0.95) 0%, 
+							rgba(120, 80, 140, 0.85) 50%, 
+							rgba(78, 43, 90, 0.9) 100%);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+						background-clip: text;
 						line-height: 1.3;
 						margin-bottom: 12px;
 						letter-spacing: -0.3px;

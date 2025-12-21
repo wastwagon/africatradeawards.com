@@ -45,13 +45,12 @@ export default function BackToTop({ target }: any) {
 						<svg className="progress-ring" width="60" height="60">
 							<circle
 								className="progress-ring-circle"
-								stroke="#ffffff"
+								stroke="rgba(255, 255, 255, 0.4)"
 								strokeWidth="2.5"
 								fill="transparent"
 								r="26"
 								cx="30"
 								cy="30"
-								opacity="0.3"
 								style={{
 									strokeDasharray: `${2 * Math.PI * 26}`,
 									strokeDashoffset: `${2 * Math.PI * 26 * (1 - scrollProgress / 100)}`,

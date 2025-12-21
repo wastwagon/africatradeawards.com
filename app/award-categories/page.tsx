@@ -1,7 +1,7 @@
 'use client'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
-import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
+import AllAwardCategoriesSection from '@/components/sections/home1/AllAwardCategoriesSection'
 
 export default function AwardCategories() {
 	return (
@@ -20,8 +20,8 @@ export default function AwardCategories() {
 						</div>
 					</div>
 				</div>
-				{/* Homepage Award Categories Section */}
-				<AwardCategoriesSection />
+				{/* All Award Categories Section */}
+				<AllAwardCategoriesSection />
 			</div>
 		</Layout>
 	)

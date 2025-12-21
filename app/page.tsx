@@ -19,8 +19,8 @@ export default function Home() {
 				<AwardCategoriesSection />
 				<HowToNominateSection />
 				<PartnersSection />
-				<OfficialPartnersSection />
 				<MediaSection />
+				<OfficialPartnersSection />
 			</Layout>
 			
 			{/* <Popup /> */} {/* Temporarily disabled */}

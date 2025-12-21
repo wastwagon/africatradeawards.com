@@ -40,9 +40,15 @@ export default function PartnersSection() {
 								<div className="space12" />
 								<p className="section-description" data-aos="fade-up" data-aos-duration={1000} data-aos-once="true">Becoming a partner is a declaration of commitment to Africa&apos;s prosperity, sustainability, and self-determined growth. Choose from Title Sponsor, Platinum, Gold, Silver, Category Sponsor, or Media Partner tiers.</p>
 								<div className="space16" />
+								<Link href="/contact" className="view-all-categories-btn" data-aos="fade-up" data-aos-duration={1000}>
+									Contact Us
+									<i className="fa-solid fa-arrow-right"></i>
+								</Link>
 							</div>
 						</div>
 					</div>
+					
+					<div className="space32" />
 					
 					{/* Partnership Tier Cards */}
 					<div className="partnership-cards-grid">
@@ -54,10 +60,6 @@ export default function PartnersSection() {
 								<div className="tier-description">
 									<p>{tier.description}</p>
 								</div>
-								<Link href="/contact" className="tier-contact-btn">
-									<span>Contact Us</span>
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						))}
 					</div>
