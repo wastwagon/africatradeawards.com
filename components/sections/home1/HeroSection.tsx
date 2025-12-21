@@ -44,15 +44,15 @@ export default function HeroSection() {
 			}} />
 			
 			<div className="container" style={{ position: 'relative', zIndex: 10 }}>
-				<div className="row justify-content-center">
-					{/* Content Column - Centered */}
-					<div className="col-lg-10 col-xl-8">
-						<div className="hero1-header heading1 text-center" style={{ color: 'white' }}>
-							<h5 data-aos="fade-up" data-aos-duration={800}>
+				<div className="row">
+					{/* Content Column - Left Aligned */}
+					<div className="col-lg-8 col-xl-7">
+						<div className="hero1-header heading1" style={{ color: 'white', textAlign: 'left' }}>
+							<h5 data-aos="fade-up" data-aos-duration={800} style={{ textAlign: 'left' }}>
 								Africa Trade Awards 2026
 							</h5>
 							<div className="space16" />
-							<h1 className="text-anime-style-3" style={{ color: 'white', fontSize: 'clamp(0.95rem, 2vw, 1.5rem)', fontWeight: 'bold', lineHeight: '1.3' }}>
+							<h1 className="text-anime-style-3" style={{ color: 'white', fontSize: 'clamp(0.95rem, 2vw, 1.5rem)', fontWeight: 'bold', lineHeight: '1.3', textAlign: 'left' }}>
 								Celebrating Africa&apos;s Trade Excellence <br className="d-lg-block d-none" />
 								and Industrial Champions
 							</h1>
