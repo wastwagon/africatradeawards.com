@@ -1335,31 +1335,57 @@
 
 .premium-hero-image-layout {
 	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	
 	.premium-main-image {
-		border-radius: 12px;
+		width: 100%;
+		max-width: 500px;
+		aspect-ratio: 1;
+		border-radius: 50%;
 		overflow: hidden;
 		box-shadow: 0 20px 60px rgba(78, 43, 90, 0.15);
-		transition: transform 0.4s ease;
+		transition: transform 0.4s ease, box-shadow 0.4s ease;
+		position: relative;
+		
+		&::before {
+			content: '';
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			right: -2px;
+			bottom: -2px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, rgba(192, 192, 192, 0.3), rgba(78, 43, 90, 0.4), rgba(192, 192, 192, 0.3));
+			z-index: -1;
+			opacity: 0;
+			transition: opacity 0.4s ease;
+		}
 		
 		&:hover {
-			transform: translateY(-4px);
-			box-shadow: 0 24px 70px rgba(78, 43, 90, 0.2);
+			transform: translateY(-4px) scale(1.02);
+			box-shadow: 0 24px 70px rgba(78, 43, 90, 0.25);
+			
+			&::before {
+				opacity: 1;
+			}
 		}
 		
 		img {
 			width: 100%;
-			height: auto;
+			height: 100%;
 			display: block;
 			object-fit: cover;
-			
-			@media #{$xs} {
-				max-height: 400px;
-			}
-			
-			@media #{$md} {
-				max-height: 500px;
-			}
+			border-radius: 50%;
+		}
+		
+		@media #{$xs} {
+			max-width: 300px;
+		}
+		
+		@media #{$md} {
+			max-width: 400px;
 		}
 	}
 }
