@@ -14,10 +14,10 @@ export default function HeroContentSection() {
 							</div>
 							<div className="secondary-images">
 								<div className="secondary-image">
-									<img src="/assets/img/all-images/about/about-img8.png" alt="Trade Excellence" />
+									<img src="/assets/img/all-images/about/about-img1.png" alt="Trade Excellence" />
 								</div>
 								<div className="secondary-image">
-									<img src="/assets/img/all-images/about/about-img8.png" alt="Industrial Champions" />
+									<img src="/assets/img/all-images/about/about-img2.png" alt="Industrial Champions" />
 								</div>
 							</div>
 						</div>
