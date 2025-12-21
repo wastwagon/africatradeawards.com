@@ -1132,6 +1132,51 @@
 		z-index: 1;
 	}
 
+	/*============= PREMIUM HERO STYLES ===============*/
+	.premium-hero-wrapper {
+		position: relative;
+		z-index: 10;
+	}
+
+	.premium-year-badge {
+		margin-bottom: 0;
+	}
+
+	.premium-hero-heading {
+		margin-bottom: 0;
+	}
+
+	.premium-theme-card {
+		position: relative;
+		
+		&::before {
+			content: '';
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			right: -2px;
+			bottom: -2px;
+			background: linear-gradient(135deg, rgba(192, 192, 192, 0.3), rgba(78, 43, 90, 0.5), rgba(192, 192, 192, 0.3));
+			border-radius: 20px;
+			z-index: -1;
+			opacity: 0;
+			transition: opacity 0.4s ease;
+		}
+		
+		&:hover::before {
+			opacity: 1;
+		}
+	}
+
+	@keyframes shine {
+		0% {
+			left: -100%;
+		}
+		50%, 100% {
+			left: 100%;
+		}
+	}
+
 	.heading1 {
 		text-align: center;
 		

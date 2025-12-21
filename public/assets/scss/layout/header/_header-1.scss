@@ -350,9 +350,10 @@ html {
 	animation-duration: 1s;
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
-	background: #4e2b5a;
+	background: linear-gradient(135deg, rgba(78, 43, 90, 0.98) 0%, rgba(78, 43, 90, 0.95) 50%, rgba(192, 192, 192, 0.1) 100%);
+	backdrop-filter: blur(20px);
 	transition: all .4s;
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+	box-shadow: 0 8px 32px rgba(78, 43, 90, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
 	.header-elements {
 		.main-menu {
@@ -362,12 +363,18 @@ html {
 						color: #ffffff;
 
 						&:hover {
-							color: #ffffff !important;
+							color: rgba(255, 255, 255, 0.95) !important;
+							text-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
 						}
 					}
 
 					&.active>a {
 						color: #ffffff !important;
+						
+						&::after {
+							background: linear-gradient(90deg, rgba(192, 192, 192, 0.8) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(192, 192, 192, 0.8) 100%);
+							box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);
+						}
 					}
 				}
 			}
