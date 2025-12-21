@@ -59,7 +59,7 @@ export default function HeroContentSection() {
 									</p>
 								</div>
 								
-								<div className="space24" />
+								<div className="space12" />
 								
 								<div className="description-details">
 									<p className="details-text">

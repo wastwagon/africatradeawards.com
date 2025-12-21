@@ -1189,10 +1189,10 @@
 	
 	.premium-hero-title-enhanced {
 		font-family: var(--grotesk);
-		font-size: clamp(1.5rem, 4vw, 2.5rem);
+		font-size: clamp(1.25rem, 3.2vw, 2rem);
 		font-weight: var(--ztc-weight-bold);
-		line-height: 1.2;
-		letter-spacing: -0.5px;
+		line-height: 1.25;
+		letter-spacing: -0.3px;
 		text-align: left;
 		margin: 0;
 		background: linear-gradient(135deg, #4e2b5a 0%, rgba(78, 43, 90, 0.95) 50%, #4e2b5a 100%);
@@ -1200,26 +1200,26 @@
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
 		position: relative;
-		padding-bottom: 20px;
+		padding-bottom: 18px;
 		
 		&::after {
 			content: '';
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			width: 70px;
+			width: 60px;
 			height: 3px;
 			background: linear-gradient(90deg, rgba(78, 43, 90, 0.8), rgba(192, 192, 192, 0.6));
 			border-radius: 2px;
 		}
 		
 		@media #{$xs} {
-			font-size: clamp(1.4rem, 6vw, 2rem);
-			line-height: 1.25;
-			padding-bottom: 16px;
+			font-size: clamp(1.2rem, 5vw, 1.75rem);
+			line-height: 1.3;
+			padding-bottom: 14px;
 			
 			&::after {
-				width: 50px;
+				width: 45px;
 				height: 2px;
 			}
 		}
