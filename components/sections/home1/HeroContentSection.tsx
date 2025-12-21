@@ -28,8 +28,7 @@ export default function HeroContentSection() {
 							{/* Main Title with Enhanced Styling */}
 							<div className="premium-hero-heading" data-aos="fade-up" data-aos-duration={800}>
 								<h1 className="premium-hero-title-enhanced">
-									Celebrating Africa&apos;s <br className="d-lg-block d-none" />
-									Trade Excellence <br className="d-lg-block d-none" />
+									Celebrating Africa&apos;s Trade Excellence <br className="d-lg-block d-none" />
 									and Industrial Champions
 								</h1>
 							</div>
