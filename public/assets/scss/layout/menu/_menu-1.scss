@@ -345,13 +345,14 @@ html {
 										display: inline-block;
 										visibility: hidden;
 										opacity: 0;
-										background: linear-gradient(135deg, rgba(192, 192, 192, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
+										background: linear-gradient(135deg, rgba(78, 43, 90, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
 									}
 
 									&:hover {
 										padding-left: 15px;
-										color: var(--ztc-text-text-2);
-										font-weight: var(--ztc-weight-medium);
+										color: #4e2b5a !important;
+										font-weight: var(--ztc-weight-semibold);
+										background: rgba(78, 43, 90, 0.15) !important;
 										transition: all .4s;
 
 										&::after {
@@ -360,6 +361,7 @@ html {
 											transition: all .4s;
 											opacity: 1;
 											left: 0;
+											background: linear-gradient(135deg, rgba(78, 43, 90, 0.8) 0%, rgba(78, 43, 90, 1) 100%);
 										}
 									}
 								}

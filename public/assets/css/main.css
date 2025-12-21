@@ -9318,12 +9318,13 @@ html {
   display: inline-block;
   visibility: hidden;
   opacity: 0;
-  background: linear-gradient(135deg, rgba(192, 192, 192, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover {
   padding-left: 15px;
-  color: var(--ztc-text-text-2);
-  font-weight: var(--ztc-weight-medium);
+  color: #4e2b5a;
+  font-weight: var(--ztc-weight-semibold);
+  background: rgba(78, 43, 90, 0.08);
   transition: all 0.4s;
 }
 .homepage1-body .header-area.homepage1 .header-elements .main-menu ul li ul.dropdown-padding li a:hover::after {
@@ -9332,6 +9333,7 @@ html {
   transition: all 0.4s;
   opacity: 1;
   left: 0;
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
 }
 .homepage1-body .header-area.homepage1 .header-elements .btn-area {
   display: flex;

@@ -315,9 +315,9 @@ html {
 									&:hover,
 									&.active-link {
 										padding-left: 20px;
-										color: #4e2b5a;
+										color: #4e2b5a !important;
 										font-weight: var(--ztc-weight-semibold);
-										background: linear-gradient(90deg, rgba(78, 43, 90, 0.08) 0%, rgba(78, 43, 90, 0.12) 100%);
+										background: linear-gradient(90deg, rgba(78, 43, 90, 0.15) 0%, rgba(78, 43, 90, 0.2) 100%) !important;
 
 										&::before,
 										&::after {
@@ -326,7 +326,7 @@ html {
 											transition: all .4s;
 											opacity: 1;
 											left: 0;
-											background: linear-gradient(135deg, rgba(78, 43, 90, 0.6) 0%, rgba(78, 43, 90, 0.9) 100%);
+											background: linear-gradient(135deg, rgba(78, 43, 90, 0.8) 0%, rgba(78, 43, 90, 1) 100%);
 										}
 									}
 								}
@@ -334,9 +334,9 @@ html {
 								&.active {
 									a {
 										padding-left: 20px;
-										color: #4e2b5a;
+										color: #4e2b5a !important;
 										font-weight: var(--ztc-weight-semibold);
-										background: linear-gradient(90deg, rgba(78, 43, 90, 0.1) 0%, rgba(78, 43, 90, 0.15) 100%);
+										background: linear-gradient(90deg, rgba(78, 43, 90, 0.18) 0%, rgba(78, 43, 90, 0.25) 100%) !important;
 
 										&::before,
 										&::after {
@@ -345,7 +345,7 @@ html {
 											transition: all .4s;
 											opacity: 1;
 											left: 0;
-											background: linear-gradient(135deg, rgba(78, 43, 90, 0.7) 0%, rgba(78, 43, 90, 0.9) 100%);
+											background: linear-gradient(135deg, rgba(78, 43, 90, 0.85) 0%, rgba(78, 43, 90, 1) 100%);
 										}
 									}
 								}
