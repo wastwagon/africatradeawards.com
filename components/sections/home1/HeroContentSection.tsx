@@ -18,52 +18,73 @@ export default function HeroContentSection() {
 					{/* Content Column - Right */}
 					<div className="col-lg-6 order-lg-2 order-1">
 						<div className="premium-hero-wrapper" style={{ textAlign: 'left' }}>
-							{/* Single Main Title */}
+							{/* Premium Badge */}
+							<div className="premium-year-badge" data-aos="fade-up" data-aos-duration={600}>
+								<span>2026</span>
+							</div>
+							
+							<div className="space24" />
+							
+							{/* Main Title with Enhanced Styling */}
 							<div className="premium-hero-heading" data-aos="fade-up" data-aos-duration={800}>
-								<h1 className="premium-hero-title">
+								<h1 className="premium-hero-title-enhanced">
 									Celebrating Africa&apos;s <br className="d-lg-block d-none" />
 									Trade Excellence <br className="d-lg-block d-none" />
 									and Industrial Champions
 								</h1>
 							</div>
 							
-							<div className="space32" />
+							<div className="space40" />
 							
-							{/* Premium Theme Card */}
-							<div className="premium-theme-card" data-aos="fade-up" data-aos-duration={1000}>
-								{/* Shine effect */}
+							{/* Premium Theme Card - Enhanced */}
+							<div className="premium-theme-card-enhanced" data-aos="fade-up" data-aos-duration={1000}>
 								<div className="card-shine-effect"></div>
-								
-								<strong className="theme-label">
-									Theme 2026
-								</strong>
-								<p className="theme-quote">
-									&quot;Honouring the Champions of Africa&apos;s Trade and Industrialisation.&quot;
-								</p>
+								<div className="theme-content-wrapper">
+									<div className="theme-badge-small">
+										<span>THEME 2026</span>
+									</div>
+									<p className="theme-quote-enhanced">
+										&quot;Honouring the Champions of Africa&apos;s Trade and Industrialisation.&quot;
+									</p>
+								</div>
 							</div>
 
 							<div className="space50" />
 
-							{/* Descriptive Content */}
-							<div className="premium-hero-description" data-aos="fade-up" data-aos-duration={1200}>
-								<div className="premium-description-text">
-									<p>The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders.</p>
-									<div className="space16" />
-									<p>As the flagship recognition platform of the Africa Trade Summit, the Awards honour individuals and institutions advancing enterprise, policy, and investment that drive the continent&apos;s trade, industrialisation, and economic integration.</p>
+							{/* Enhanced Descriptive Content */}
+							<div className="premium-hero-description-enhanced" data-aos="fade-up" data-aos-duration={1200}>
+								<div className="description-intro">
+									<p className="intro-text">
+										The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders.
+									</p>
 								</div>
 								
-								<div className="space32" />
+								<div className="space24" />
 								
-								{/* Event Details - Moved Below Description */}
-								<div className="premium-event-details" data-aos="fade-up" data-aos-duration={1400}>
-									<Link href="/#" className="event-info-link">
-										<i className="fa-solid fa-calendar"></i>
-										<span>28th and 29th January 2026</span>
-									</Link>
-									<Link href="/#" className="event-info-link">
-										<i className="fa-solid fa-location-dot"></i>
-										<span>Kempinski Gold Coast City Hotel, Accra</span>
-									</Link>
+								<div className="description-details">
+									<p className="details-text">
+										As the flagship recognition platform of the Africa Trade Summit, the Awards honour individuals and institutions advancing enterprise, policy, and investment that drive the continent&apos;s trade, industrialisation, and economic integration.
+									</p>
+								</div>
+								
+								<div className="space40" />
+								
+								{/* Premium Event Details Card */}
+								<div className="premium-event-details-card" data-aos="fade-up" data-aos-duration={1400}>
+									<div className="event-details-header">
+										<i className="fa-solid fa-calendar-days"></i>
+										<span className="event-details-label">Event Details</span>
+									</div>
+									<div className="event-details-content">
+										<div className="event-detail-item">
+											<i className="fa-solid fa-calendar"></i>
+											<span>28th and 29th January 2026</span>
+										</div>
+										<div className="event-detail-item">
+											<i className="fa-solid fa-location-dot"></i>
+											<span>Kempinski Gold Coast City Hotel, Accra</span>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

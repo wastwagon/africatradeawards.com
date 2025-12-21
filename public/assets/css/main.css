@@ -3278,19 +3278,6 @@ Location:
 .premium-hero-description {
   margin-top: 0;
 }
-.premium-hero-description .premium-description-heading {
-  font-family: var(--grotesk);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: var(--ztc-weight-bold);
-  color: #4e2b5a;
-  line-height: 1.3;
-  margin-bottom: 0;
-}
-@media (max-width: 767px) {
-  .premium-hero-description .premium-description-heading {
-    font-size: clamp(1.25rem, 4vw, 1.75rem);
-  }
-}
 .premium-hero-description .premium-description-text p {
   font-family: var(--figtree);
   font-size: clamp(1rem, 1.2vw, 1.125rem);
