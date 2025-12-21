@@ -5,9 +5,26 @@ export default function HeroContentSection() {
 	return (
 		<section className="premium-hero-content-section">
 			<div className="container">
-				<div className="row">
-					{/* Content Column - Left Aligned */}
-					<div className="col-lg-8 col-xl-7">
+				<div className="row align-items-center">
+					{/* Images Column - Left */}
+					<div className="col-lg-6 order-lg-1 order-2">
+						<div className="overview-image-layout" data-aos="fade-right" data-aos-duration={800}>
+							<div className="main-image">
+								<img src="/assets/img/all-images/about/about-img8.png" alt="Africa Trade Awards" />
+							</div>
+							<div className="secondary-images">
+								<div className="secondary-image">
+									<img src="/assets/img/all-images/about/about-img8.png" alt="Trade Excellence" />
+								</div>
+								<div className="secondary-image">
+									<img src="/assets/img/all-images/about/about-img8.png" alt="Industrial Champions" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{/* Content Column - Right */}
+					<div className="col-lg-6 order-lg-2 order-1">
 						<div className="premium-hero-wrapper" style={{ textAlign: 'left' }}>
 							{/* Premium Badge */}
 							<div className="premium-year-badge" data-aos="fade-up" data-aos-duration={600}>
