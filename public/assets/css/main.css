@@ -3091,6 +3091,25 @@ Location:
   box-shadow: 0 12px 40px rgba(78, 43, 90, 0.25);
 }
 
+.premium-hero-subtitle-wrapper {
+  margin-bottom: 0;
+}
+.premium-hero-subtitle-wrapper .premium-hero-subtitle-text {
+  font-family: var(--figtree);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-weight: var(--ztc-weight-regular);
+  line-height: 1.7;
+  color: rgba(78, 43, 90, 0.85);
+  margin: 0;
+  text-align: left;
+}
+@media (max-width: 767px) {
+  .premium-hero-subtitle-wrapper .premium-hero-subtitle-text {
+    font-size: clamp(0.9375rem, 3vw, 1.1rem);
+    line-height: 1.65;
+  }
+}
+
 .premium-hero-heading {
   margin-bottom: 0;
 }
