@@ -58,14 +58,6 @@ export default function HeroContentSection() {
 									</p>
 								</div>
 								
-								<div className="space12" />
-								
-								<div className="description-details">
-									<p className="details-text">
-										As the flagship recognition platform of the Africa Trade Summit, the Awards honour individuals and institutions advancing enterprise, policy, and investment that drive the continent&apos;s trade, industrialisation, and economic integration.
-									</p>
-								</div>
-								
 								<div className="space40" />
 								
 								{/* Premium Event Details Card */}
