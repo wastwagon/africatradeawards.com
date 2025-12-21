@@ -44,34 +44,34 @@ export default function HeroSection() {
 			}} />
 			
 			<div className="container" style={{ position: 'relative', zIndex: 10 }}>
-				<div className="row">
-					{/* Left Column - Content */}
-					<div className="col-lg-6">
-						<div className="hero1-header heading1" style={{ color: 'white' }}>
-							<h5 data-aos="fade-left" data-aos-duration={800}>
+				<div className="row justify-content-center">
+					{/* Content Column - Centered */}
+					<div className="col-lg-10 col-xl-8">
+						<div className="hero1-header heading1 text-center" style={{ color: 'white' }}>
+							<h5 data-aos="fade-up" data-aos-duration={800}>
 								Africa Trade Awards 2026
 							</h5>
 							<div className="space16" />
-							<h1 className="text-anime-style-3" style={{ color: 'white', fontSize: 'clamp(0.95rem, 2vw, 1.5rem)', fontWeight: 'bold', lineHeight: '1.2' }}>
+							<h1 className="text-anime-style-3" style={{ color: 'white', fontSize: 'clamp(0.95rem, 2vw, 1.5rem)', fontWeight: 'bold', lineHeight: '1.3' }}>
 								Celebrating Africa&apos;s Trade Excellence <br className="d-lg-block d-none" />
 								and Industrial Champions
 							</h1>
-							<div className="space16" />
-							<div className="theme-badge" data-aos="fade-left" data-aos-duration={1000} style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', padding: '1.5rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.2)', color: 'white' }}>
-								<strong style={{ color: 'white', display: 'block', marginBottom: '12px' }}>Theme 2026:</strong>
-								<p style={{ color: 'rgba(255, 255, 255, 0.9)', marginBottom: '16px' }}>
+							<div className="space24" />
+							<div className="theme-badge" data-aos="fade-up" data-aos-duration={1000} style={{ color: 'white', padding: '0', textAlign: 'left' }}>
+								<strong style={{ color: 'white', display: 'block', marginBottom: '12px', fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)' }}>Theme 2026:</strong>
+								<p style={{ color: 'rgba(255, 255, 255, 0.9)', marginBottom: '20px', fontSize: 'clamp(0.85rem, 1.3vw, 1rem)', lineHeight: '1.5' }}>
 									&quot;Honouring the Champions of Africa&apos;s Trade and Industrialisation.&quot;
 								</p>
-								<div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)', paddingTop: '16px', marginTop: '16px' }}>
-									<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block', marginBottom: '12px', textDecoration: 'none' }}>
+								<div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)', paddingTop: '20px', marginTop: '20px' }}>
+									<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block', marginBottom: '12px', textDecoration: 'none', fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)' }}>
 										<i className="fa-solid fa-calendar" style={{ marginRight: '0.5rem' }}></i>
 										28th and 29th January 2026
 									</Link>
-									<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block', marginBottom: '16px', textDecoration: 'none' }}>
+									<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block', marginBottom: '16px', textDecoration: 'none', fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)' }}>
 										<i className="fa-solid fa-location-dot" style={{ marginRight: '0.5rem' }}></i>
 										Kempinski Gold Coast City Hotel, Accra
 									</Link>
-									<p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: 0 }}>
+									<p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: 0, fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)', lineHeight: '1.6' }}>
 										Join a historic moment of recognition, prestige, and progress. Nominate, partner, or attend the Awards and stand with the pioneers advancing Africa&apos;s trade and industrial future.
 									</p>
 								</div>
