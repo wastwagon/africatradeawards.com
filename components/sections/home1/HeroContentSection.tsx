@@ -25,6 +25,15 @@ export default function HeroContentSection() {
 							
 							<div className="space24" />
 							
+							{/* Subtitle */}
+							<div className="premium-hero-subtitle-wrapper" data-aos="fade-up" data-aos-duration={700}>
+								<p className="premium-hero-subtitle-text">
+									The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders.
+								</p>
+							</div>
+							
+							<div className="space24" />
+							
 							{/* Main Title with Enhanced Styling */}
 							<div className="premium-hero-heading" data-aos="fade-up" data-aos-duration={800}>
 								<h1 className="premium-hero-title-enhanced">
@@ -52,12 +61,6 @@ export default function HeroContentSection() {
 
 							{/* Enhanced Descriptive Content */}
 							<div className="premium-hero-description-enhanced" data-aos="fade-up" data-aos-duration={1200}>
-								<div className="description-intro">
-									<p className="intro-text">
-										The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders.
-									</p>
-								</div>
-								
 								<div className="space40" />
 								
 								{/* Premium Event Details Card */}
