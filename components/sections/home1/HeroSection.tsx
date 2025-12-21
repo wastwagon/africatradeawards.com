@@ -67,13 +67,10 @@ export default function HeroSection() {
 										<i className="fa-solid fa-calendar" style={{ marginRight: '0.5rem' }}></i>
 										28th and 29th January 2026
 									</Link>
-									<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block', marginBottom: '16px', textDecoration: 'none', fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)' }}>
+									<Link href="/#" style={{ color: 'rgba(255, 255, 255, 0.9)', display: 'block', marginBottom: '0', textDecoration: 'none', fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)' }}>
 										<i className="fa-solid fa-location-dot" style={{ marginRight: '0.5rem' }}></i>
 										Kempinski Gold Coast City Hotel, Accra
 									</Link>
-									<p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: 0, fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)', lineHeight: '1.6' }}>
-										Join a historic moment of recognition, prestige, and progress. Nominate, partner, or attend the Awards and stand with the pioneers advancing Africa&apos;s trade and industrial future.
-									</p>
 								</div>
 							</div>
 						</div>
