@@ -16,7 +16,7 @@ export default function SpeakersSingle() {
 									<div className="heading1 text-center">
 										<h1>speakers Details</h1>
 										<div className="space20" />
-										<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Speakers Details</span></Link>
+										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Speakers Details</span></Link>
 									</div>
 								</div>
 							</div>
@@ -126,7 +126,7 @@ export default function SpeakersSingle() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
 																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -177,7 +177,7 @@ export default function SpeakersSingle() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
 																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -240,7 +240,7 @@ export default function SpeakersSingle() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
 																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>

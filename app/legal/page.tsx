@@ -81,7 +81,7 @@ export default function Legal() {
 								<div className="heading1 text-center">
 									<h1>Legal &amp; Administrative</h1>
 									<div className="space20" />
-									<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Legal &amp; Administrative</span></Link>
+									<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Legal &amp; Administrative</span></Link>
 								</div>
 							</div>
 						</div>
@@ -115,7 +115,7 @@ export default function Legal() {
 											{section.hasButton && (
 												<div className="legal-card-button">
 													<Link href={section.buttonLink || '#'} className="modern-legal-btn">
-														<span>{section.buttonText}</span>
+														<span className="breadcrumb-current">{section.buttonText}</span>
 														<i className="fa-solid fa-arrow-right"></i>
 													</Link>
 												</div>

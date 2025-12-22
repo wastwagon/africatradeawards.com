@@ -13,7 +13,7 @@ export default function IndependentAudit() {
 								<div className="heading1 text-center">
 									<h1>Independent Audit &amp; Verification</h1>
 									<div className="space20" />
-									<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Independent Audit</span></Link>
+									<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Independent Audit</span></Link>
 								</div>
 							</div>
 						</div>
@@ -206,15 +206,15 @@ export default function IndependentAudit() {
 							<div className="col-lg-10 m-auto">
 								<div className="trending-cta-group">
 									<Link href="/contact" className="elegant-btn">
-										<span>Download Verification Statement</span>
+										<span className="breadcrumb-current">Download Verification Statement</span>
 										<i className="fa-solid fa-paper-plane"></i>
 									</Link>
 									<Link href="/contact" className="elegant-btn">
-										<span>Meet Oversight Board</span>
+										<span className="breadcrumb-current">Meet Oversight Board</span>
 										<i className="fa-solid fa-paper-plane"></i>
 									</Link>
 									<Link href="/partnerships" className="elegant-btn">
-										<span>Partner with ATA</span>
+										<span className="breadcrumb-current">Partner with ATA</span>
 										<i className="fa-solid fa-paper-plane"></i>
 									</Link>
 								</div>

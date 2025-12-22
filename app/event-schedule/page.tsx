@@ -16,7 +16,7 @@ export default function EventSchedule() {
 									<div className="heading1 text-center">
 										<h1>Event Schedule</h1>
 										<div className="space20" />
-										<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Event Schedule</span></Link>
+										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Event Schedule</span></Link>
 									</div>
 								</div>
 							</div>
@@ -101,33 +101,33 @@ export default function EventSchedule() {
 											<tbody>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>Business Conferences<br /><span>By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span>By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span>By Event Organizer</span></td>
+													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
 												</tr>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>UI/UX Design<br /><span>By Event Organizer</span></td>
-													<td>Business Conferences<br /><span>By Event Organizer</span></td>
-													<td>Business Conferences<br /><span>By Event Organizer</span></td>
+													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
 												</tr>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>Business Conferences<br /><span>By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span>By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span>By Event Organizer</span></td>
+													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
 												</tr>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>UI/UX Design<br /><span>By Event Organizer</span></td>
-													<td>Business Conferences<br /><span>By Event Organizer</span></td>
-													<td>Business Conferences<br /><span>By Event Organizer</span></td>
+													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
 												</tr>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>Business Conferences<br /><span>By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span>By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span>By Event Organizer</span></td>
+													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
 												</tr>
 											</tbody>
 										</table>

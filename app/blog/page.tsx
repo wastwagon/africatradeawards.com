@@ -17,7 +17,7 @@ export default function Blog() {
 									<div className="heading1 text-center">
 										<h1>Our Blog</h1>
 										<div className="space20" />
-										<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Our Blog</span></Link>
+										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Our Blog</span></Link>
 									</div>
 								</div>
 							</div>
@@ -36,7 +36,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Beverly</Link>
@@ -60,7 +60,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Gisselle</Link>
@@ -84,7 +84,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Mertie</Link>
@@ -108,7 +108,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Beverly</Link>
@@ -132,7 +132,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Gisselle</Link>
@@ -156,7 +156,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Mertie</Link>
@@ -180,7 +180,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Beverly</Link>
@@ -204,7 +204,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Gisselle</Link>
@@ -228,7 +228,7 @@ export default function Blog() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Mertie</Link>

@@ -14,7 +14,7 @@ export default function AwardCategories() {
 								<div className="heading1 text-center">
 									<h1>Award Categories</h1>
 									<div className="space20" />
-									<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Award Categories</span></Link>
+									<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Award Categories</span></Link>
 								</div>
 							</div>
 						</div>

@@ -84,7 +84,7 @@ export default function MediaCentre() {
 								<div className="heading1 text-center">
 									<h1>Media Centre</h1>
 									<div className="space20" />
-									<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Media Centre</span></Link>
+									<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Media Centre</span></Link>
 								</div>
 							</div>
 						</div>

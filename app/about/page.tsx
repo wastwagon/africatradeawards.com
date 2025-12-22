@@ -16,7 +16,7 @@ export default function About() {
 									<div className="heading1 text-center">
 										<h1>About the Awards</h1>
 										<div className="space20" />
-										<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>About the Awards</span></Link>
+										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">About the Awards</span></Link>
 									</div>
 								</div>
 							</div>
@@ -59,7 +59,7 @@ export default function About() {
 										{/* Our Mission */}
 										<div className="mission-content">
 											<div className="mission-badge">
-												<span>MISSION</span>
+												<span className="breadcrumb-current">MISSION</span>
 											</div>
 											<div className="space12" />
 											<p className="mission-description">To celebrate and promote excellence, innovation, and responsible leadership in African trade and industrial development, while fostering cross-border partnerships that advance the goals of the AfCFTA and Agenda 2063.</p>
@@ -241,7 +241,7 @@ export default function About() {
 											<p className="quote-text">&quot;The Africa Trade Awards celebrates those who dare to build. Every innovation and partnership honoured here represents a step toward Africa&apos;s economic freedom.&quot;</p>
 											<div className="testimonial-author">
 												<h4>Benedicta Lasi</h4>
-												<span>Executive Chair – African Trade Chamber</span>
+												<span className="breadcrumb-current">Executive Chair – African Trade Chamber</span>
 											</div>
 										</div>
 										<div className="card-gradient-border"></div>
@@ -264,7 +264,7 @@ export default function About() {
 											<p className="quote-text">&quot;Through the Africa Trade Awards, we tell the story of Africa&apos;s excellence with the dignity, glamour, and global recognition it deserves.&quot;</p>
 											<div className="testimonial-author">
 												<h4>Chief Executive</h4>
-												<span>Agile Media Solutions</span>
+												<span className="breadcrumb-current">Agile Media Solutions</span>
 											</div>
 										</div>
 										<div className="card-gradient-border"></div>

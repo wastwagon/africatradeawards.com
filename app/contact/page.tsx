@@ -17,7 +17,7 @@ export default function Contact() {
 									<div className="heading1 text-center">
 										<h1>Contact Us</h1>
 										<div className="space20" />
-										<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Contact</span></Link>
+										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Contact</span></Link>
 									</div>
 								</div>
 							</div>
@@ -79,7 +79,7 @@ export default function Contact() {
 													<i className="fa-solid fa-location-dot"></i>
 												</div>
 												<h6>Location</h6>
-												<span>Accra, Ghana</span>
+												<span className="breadcrumb-current">Accra, Ghana</span>
 											</div>
 										</div>
 									</div>

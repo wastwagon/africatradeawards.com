@@ -13,7 +13,7 @@ export default function Jury() {
 								<div className="heading1 text-center">
 									<h1>Jury &amp; Evaluation</h1>
 									<div className="space20" />
-									<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Jury &amp; Evaluation</span></Link>
+									<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Jury &amp; Evaluation</span></Link>
 								</div>
 							</div>
 						</div>
@@ -91,7 +91,7 @@ export default function Jury() {
 							<div className="col-lg-6 m-auto">
 								<div className="btn-area1 text-center">
 									<Link href="/contact" className="elegant-btn">
-										<span>Meet the Jury</span>
+										<span className="breadcrumb-current">Meet the Jury</span>
 										<i className="fa-solid fa-paper-plane"></i>
 									</Link>
 								</div>

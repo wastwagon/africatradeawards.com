@@ -66,7 +66,7 @@ export default function TravelAccommodation() {
 								<div className="heading1 text-center">
 									<h1>Travel &amp; Accommodation</h1>
 									<div className="space20" />
-									<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Travel &amp; Accommodation</span></Link>
+									<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Travel &amp; Accommodation</span></Link>
 								</div>
 							</div>
 						</div>
@@ -182,7 +182,7 @@ export default function TravelAccommodation() {
 															href={btn.link} 
 															className={btn.primary ? "modern-legal-btn" : "modern-legal-btn secondary"}
 														>
-															<span>{btn.text}</span>
+															<span className="breadcrumb-current">{btn.text}</span>
 															<i className="fa-solid fa-arrow-right"></i>
 														</Link>
 													))}

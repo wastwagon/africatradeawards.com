@@ -20,7 +20,7 @@ export default function EventSingle() {
 									<div className="heading1 text-center">
 										<h1>Event single</h1>
 										<div className="space20" />
-										<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Event single</span></Link>
+										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Event single</span></Link>
 									</div>
 								</div>
 							</div>
@@ -153,7 +153,7 @@ export default function EventSingle() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -262,7 +262,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -314,7 +314,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -378,7 +378,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -439,7 +439,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -491,7 +491,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -555,7 +555,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -616,7 +616,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -668,7 +668,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
@@ -732,7 +732,7 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span> | </span></Link>
+																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
 																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>

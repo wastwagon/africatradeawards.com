@@ -16,7 +16,7 @@ export default function PricingPlan() {
 									<div className="heading1 text-center">
 										<h1>Pricing Plan</h1>
 										<div className="space20" />
-										<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Pricing Plan</span></Link>
+										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Pricing Plan</span></Link>
 									</div>
 								</div>
 							</div>
@@ -40,7 +40,7 @@ export default function PricingPlan() {
 									<div className="pricing-boxarea">
 										<h5>Basic Packages</h5>
 										<div className="space20" />
-										<h2>$29 <span>/One Person</span></h2>
+										<h2>$29 <span className="breadcrumb-current">/One Person</span></h2>
 										<div className="space8" />
 										<ul>
 											<li><img src="/assets/img/icons/check2.svg" alt="" />Regular Seating</li>
@@ -59,7 +59,7 @@ export default function PricingPlan() {
 									<div className="pricing-boxarea">
 										<h5>Standard Packages</h5>
 										<div className="space20" />
-										<h2>$49 <span>/One Person</span></h2>
+										<h2>$49 <span className="breadcrumb-current">/One Person</span></h2>
 										<div className="space8" />
 										<ul>
 											<li><img src="/assets/img/icons/check2.svg" alt="" />Venue rental</li>
@@ -78,7 +78,7 @@ export default function PricingPlan() {
 									<div className="pricing-boxarea">
 										<h5>Premium Packages</h5>
 										<div className="space20" />
-										<h2>$69 <span>/One Person</span></h2>
+										<h2>$69 <span className="breadcrumb-current">/One Person</span></h2>
 										<div className="space8" />
 										<ul>
 											<li><img src="/assets/img/icons/check2.svg" alt="" />Customized decor</li>

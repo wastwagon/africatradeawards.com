@@ -20,7 +20,7 @@ export default function BlogSingle() {
 									<div className="heading1 text-center">
 										<h1>Blog Details</h1>
 										<div className="space20" />
-										<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Blog Details</span></Link>
+										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Blog Details</span></Link>
 									</div>
 								</div>
 							</div>
@@ -39,10 +39,10 @@ export default function BlogSingle() {
 										<div className="space32" />
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 											</li>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Gisselle <span> | </span></Link>
+												<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Gisselle <span className="breadcrumb-current"> | </span></Link>
 											</li>
 											<li>
 												<Link href="/#"><img src="/assets/img/icons/comments1.svg" alt="" />2 Comments</Link>
@@ -207,7 +207,7 @@ export default function BlogSingle() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Beverly</Link>
@@ -231,7 +231,7 @@ export default function BlogSingle() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Gisselle</Link>
@@ -255,7 +255,7 @@ export default function BlogSingle() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span> | </span></Link>
+													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
 													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Mertie</Link>

@@ -70,7 +70,7 @@ export default function AwardsNight() {
 								<div className="heading1 text-center">
 									<h1>Awards Night Experience</h1>
 									<div className="space20" />
-									<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Awards Night</span></Link>
+									<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Awards Night</span></Link>
 								</div>
 							</div>
 						</div>

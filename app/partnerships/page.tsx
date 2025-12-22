@@ -47,7 +47,7 @@ export default function Partnerships() {
 								<div className="heading1 text-center">
 									<h1>Partnerships &amp; Sponsorship</h1>
 									<div className="space20" />
-									<Link href="/">Home <i className="fa-solid fa-angle-right" /> <span>Partnerships</span></Link>
+									<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Partnerships</span></Link>
 								</div>
 							</div>
 						</div>
@@ -135,15 +135,15 @@ export default function Partnerships() {
 									<div className="space32" />
 									<div className="cta-buttons-group">
 										<Link href="/contact" className="modern-cta-btn primary" data-aos="fade-up" data-aos-duration={1100}>
-											<span>Download Prospectus</span>
+											<span className="breadcrumb-current">Download Prospectus</span>
 											<i className="fa-solid fa-download"></i>
 										</Link>
 										<Link href="/contact" className="modern-cta-btn secondary" data-aos="fade-up" data-aos-duration={1200}>
-											<span>Become a Partner</span>
+											<span className="breadcrumb-current">Become a Partner</span>
 											<i className="fa-solid fa-arrow-right"></i>
 										</Link>
 										<Link href="/contact" className="modern-cta-btn secondary" data-aos="fade-up" data-aos-duration={1300}>
-											<span>Contact Our Team</span>
+											<span className="breadcrumb-current">Contact Our Team</span>
 											<i className="fa-solid fa-envelope"></i>
 										</Link>
 									</div>
