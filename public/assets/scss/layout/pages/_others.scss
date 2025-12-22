@@ -339,7 +339,7 @@
 
 		.section-title {
 			font-family: var(--grotesk);
-			font-size: var(--ztc-font-size-font-s22);
+			font-size: var(--ztc-font-size-font-s20);
 			font-weight: var(--ztc-weight-bold);
 			color: var(--ztc-text-text-2);
 			line-height: 1.3;
@@ -347,12 +347,12 @@
 			margin-bottom: 0;
 
 			@media #{$xs} {
-				font-size: var(--ztc-font-size-font-s22);
+				font-size: var(--ztc-font-size-font-s18);
 				line-height: 1.35;
 			}
 
 			@media #{$md} {
-				font-size: var(--ztc-font-size-font-s24);
+				font-size: var(--ztc-font-size-font-s20);
 			}
 		}
 
@@ -515,7 +515,7 @@
 
 		.section-title {
 			font-family: var(--grotesk);
-			font-size: var(--ztc-font-size-font-s22);
+			font-size: var(--ztc-font-size-font-s20);
 			font-weight: var(--ztc-weight-bold);
 			color: var(--ztc-text-text-2);
 			line-height: 1.3;
@@ -523,12 +523,12 @@
 			margin-bottom: 0;
 
 			@media #{$xs} {
-				font-size: var(--ztc-font-size-font-s22);
+				font-size: var(--ztc-font-size-font-s18);
 				line-height: 1.35;
 			}
 
 			@media #{$md} {
-				font-size: var(--ztc-font-size-font-s24);
+				font-size: var(--ztc-font-size-font-s20);
 			}
 		}
 
@@ -1293,7 +1293,7 @@
 
 		.section-title {
 			font-family: var(--grotesk);
-			font-size: var(--ztc-font-size-font-s22);
+			font-size: var(--ztc-font-size-font-s20);
 			font-weight: var(--ztc-weight-bold);
 			color: var(--ztc-text-text-2);
 			line-height: 1.3;
@@ -1301,12 +1301,12 @@
 			margin-bottom: 0;
 
 			@media #{$xs} {
-				font-size: var(--ztc-font-size-font-s22);
+				font-size: var(--ztc-font-size-font-s18);
 				line-height: 1.35;
 			}
 
 			@media #{$md} {
-				font-size: var(--ztc-font-size-font-s24);
+				font-size: var(--ztc-font-size-font-s20);
 			}
 		}
 
@@ -1400,7 +1400,7 @@
 
 		.section-title {
 			font-family: var(--grotesk);
-			font-size: var(--ztc-font-size-font-s22);
+			font-size: var(--ztc-font-size-font-s20);
 			font-weight: var(--ztc-weight-bold);
 			color: var(--ztc-text-text-2);
 			line-height: 1.3;
@@ -1408,12 +1408,12 @@
 			margin-bottom: 0;
 
 			@media #{$xs} {
-				font-size: var(--ztc-font-size-font-s22);
+				font-size: var(--ztc-font-size-font-s18);
 				line-height: 1.35;
 			}
 
 			@media #{$md} {
-				font-size: var(--ztc-font-size-font-s24);
+				font-size: var(--ztc-font-size-font-s20);
 			}
 		}
 
@@ -2181,20 +2181,20 @@
 			}
 
 			.modern-section-title {
-				font-size: var(--ztc-font-size-font-s42);
+				font-size: var(--ztc-font-size-font-s24);
 				line-height: 1.2;
 				color: var(--ztc-text-text-2);
 				font-weight: var(--ztc-weight-bold);
-				letter-spacing: -1px;
+				letter-spacing: -0.5px;
 				margin-bottom: 0;
 
 				@media #{$xs} {
-					font-size: var(--ztc-font-size-font-s28);
+					font-size: var(--ztc-font-size-font-s20);
 					line-height: 1.3;
 				}
 
 				@media #{$md} {
-					font-size: var(--ztc-font-size-font-s36);
+					font-size: var(--ztc-font-size-font-s22);
 				}
 			}
 
@@ -3115,18 +3115,18 @@
 		}
 
 		.premium-section-title {
-			font-size: var(--ztc-font-size-font-s22);
+			font-size: var(--ztc-font-size-font-s20);
 			line-height: 1.3;
 			color: var(--ztc-text-text-2);
 			font-weight: var(--ztc-weight-bold);
 
 			@media #{$xs} {
-				font-size: var(--ztc-font-size-font-s22);
+				font-size: var(--ztc-font-size-font-s18);
 				line-height: 1.35;
 			}
 
 			@media #{$md} {
-				font-size: var(--ztc-font-size-font-s24);
+				font-size: var(--ztc-font-size-font-s20);
 			}
 		}
 
