@@ -444,8 +444,20 @@ html {
 	animation-duration: 1s;
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
-	box-shadow: rgb(0 0 0 / 20%) 0px 20px 30px;
-	background: #4e2b5a;
+	background: linear-gradient(135deg, 
+		rgba(21, 21, 47, 0.98) 0%, 
+		rgba(22, 21, 50, 0.96) 10%, 
+		rgba(22, 21, 50, 0.94) 20%, 
+		rgba(78, 43, 90, 0.92) 30%, 
+		rgba(78, 43, 90, 0.9) 40%, 
+		rgba(120, 80, 140, 0.88) 50%, 
+		rgba(120, 80, 140, 0.86) 60%, 
+		rgba(78, 43, 90, 0.88) 70%, 
+		rgba(22, 21, 50, 0.9) 80%, 
+		rgba(22, 21, 50, 0.92) 90%, 
+		rgba(21, 21, 47, 0.94) 100%);
+	backdrop-filter: blur(20px);
+	box-shadow: 0 4px 20px rgba(21, 21, 47, 0.2);
 	transition: all .4s;
 }
 

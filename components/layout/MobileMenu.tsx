@@ -85,37 +85,6 @@ const handleAccordion = (key: any) => {
 										<Link href="mailto:info@africantradechamber.org">info@africantradechamber.org</Link>
 									</div>
 								</div>
-								<div className="single-footer">
-									<h3>Our Location</h3>
-									<div className="contact-info-single">
-										<div className="contact-info-icon">
-											<span><i className="fa-solid fa-location-dot" /></span>
-										</div>
-										<div className="contact-info-text">
-											<Link href="/#">Kempinski Gold Coast City Hotel<br />
-												Gamel Abdul Nasser Ave, Accra, Ghana</Link>
-										</div>
-									</div>
-								</div>
-								<div className="single-footer">
-									<h3>Social Links</h3>
-									<div className="social-links-mobile-menu">
-										<ul>
-											<li>
-												<Link href="//#"><i className="fa-brands fa-facebook-f" /></Link>
-											</li>
-											<li>
-												<Link href="//#"><i className="fa-brands fa-instagram" /></Link>
-											</li>
-											<li>
-												<Link href="//#"><i className="fa-brands fa-linkedin-in" /></Link>
-											</li>
-											<li>
-												<Link href="//#"><i className="fa-brands fa-youtube" /></Link>
-											</li>
-										</ul>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>

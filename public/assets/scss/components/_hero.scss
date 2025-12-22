@@ -1387,6 +1387,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 20px 0;
+	overflow: visible;
+	
+	@media #{$xs} {
+		padding: 30px 0 20px;
+		min-height: 320px;
+	}
 	
 	.premium-main-image {
 		width: 100%;
@@ -1396,6 +1403,11 @@
 		overflow: visible;
 		position: relative;
 		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		margin: 20px auto;
+		
+		@media #{$xs} {
+			margin: 30px auto 20px;
+		}
 		
 		// 3D Gradient Border - Outer Ring
 		&::before {

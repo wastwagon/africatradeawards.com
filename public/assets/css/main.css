@@ -3254,6 +3254,14 @@ Location:
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 0;
+  overflow: visible;
+}
+@media (max-width: 767px) {
+  .premium-hero-image-layout {
+    padding: 30px 0 20px;
+    min-height: 320px;
+  }
 }
 .premium-hero-image-layout .premium-main-image {
   width: 100%;
@@ -3263,6 +3271,12 @@ Location:
   overflow: visible;
   position: relative;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 20px auto;
+}
+@media (max-width: 767px) {
+  .premium-hero-image-layout .premium-main-image {
+    margin: 30px auto 20px;
+  }
 }
 .premium-hero-image-layout .premium-main-image::before {
   content: "";
@@ -4917,11 +4931,11 @@ Location:
   left: 0;
   right: 0;
   width: 100%;
-  background: #ffffff;
-  border-top: 1px solid rgba(78, 43, 90, 0.1);
-  box-shadow: 0 -4px 20px rgba(78, 43, 90, 0.08);
+  background: linear-gradient(135deg, rgb(21, 21, 47) 0%, rgba(22, 21, 50, 0.98) 10%, rgba(22, 21, 50, 0.96) 20%, rgba(78, 43, 90, 0.95) 30%, rgba(78, 43, 90, 0.94) 40%, rgba(120, 80, 140, 0.92) 50%, rgba(120, 80, 140, 0.9) 60%, rgba(78, 43, 90, 0.92) 70%, rgba(22, 21, 50, 0.95) 80%, rgba(22, 21, 50, 0.97) 90%, rgba(21, 21, 47, 0.99) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -4px 24px rgba(21, 21, 47, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   z-index: 999;
-  padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+  padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
   display: none;
 }
 @media (max-width: 991px) {
@@ -4945,7 +4959,7 @@ Location:
   justify-content: center;
   padding: 8px 4px;
   text-decoration: none;
-  color: rgba(78, 43, 90, 0.6);
+  color: rgba(255, 255, 255, 0.85);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   min-width: 0;
@@ -4966,6 +4980,7 @@ Location:
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 2;
+  color: rgba(255, 255, 255, 0.85);
 }
 .mobile-bottom-nav .mobile-bottom-nav-item .mobile-nav-icon-wrapper .mobile-nav-indicator {
   position: absolute;
@@ -4974,7 +4989,7 @@ Location:
   transform: translateX(-50%);
   width: 4px;
   height: 4px;
-  background: linear-gradient(135deg, #4e2b5a 0%, #5a6fd8 100%);
+  background: linear-gradient(135deg, rgb(21, 21, 47) 0%, rgba(22, 21, 50, 0.98) 10%, rgba(78, 43, 90, 0.94) 30%, rgba(120, 80, 140, 0.9) 50%, rgba(78, 43, 90, 0.94) 70%, rgba(22, 21, 50, 0.98) 90%, rgb(21, 21, 47) 100%);
   border-radius: 50%;
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -4993,32 +5008,37 @@ Location:
   max-width: 100%;
 }
 .mobile-bottom-nav .mobile-bottom-nav-item.active {
-  color: #4e2b5a;
+  color: #ffffff;
 }
 .mobile-bottom-nav .mobile-bottom-nav-item.active .mobile-nav-icon-wrapper i {
-  color: #4e2b5a;
-  transform: scale(1.1);
+  color: #ffffff;
+  transform: scale(1.15);
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.3));
 }
 .mobile-bottom-nav .mobile-bottom-nav-item.active .mobile-nav-icon-wrapper .mobile-nav-indicator {
   opacity: 1;
-  transform: translateX(-50%) scale(1.2);
+  transform: translateX(-50%) scale(1.3);
+  box-shadow: 0 0 8px rgba(120, 80, 140, 0.6);
 }
 .mobile-bottom-nav .mobile-bottom-nav-item.active .mobile-nav-label {
-  color: #4e2b5a;
+  color: #ffffff;
   font-weight: var(--ztc-weight-bold);
+  text-shadow: 0 1px 2px rgba(21, 21, 47, 0.3);
 }
 .mobile-bottom-nav .mobile-bottom-nav-item:hover:not(.active) {
-  color: rgba(78, 43, 90, 0.8);
+  color: rgba(255, 255, 255, 0.9);
 }
 .mobile-bottom-nav .mobile-bottom-nav-item:hover:not(.active) .mobile-nav-icon-wrapper i {
-  color: rgba(78, 43, 90, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
+}
+.mobile-bottom-nav .mobile-bottom-nav-item:hover:not(.active) .mobile-nav-label {
+  color: rgba(255, 255, 255, 0.9);
 }
 @supports (backdrop-filter: blur(10px)) {
   .mobile-bottom-nav {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
 
@@ -5029,7 +5049,9 @@ Location:
 }
 /*============= MOBILE MENU CSS AREA ===============*/
 .mobile-header.mobile-haeder1 {
-  background: #4e2b5a;
+  background: linear-gradient(135deg, rgba(21, 21, 47, 0.98) 0%, rgba(22, 21, 50, 0.96) 10%, rgba(22, 21, 50, 0.94) 20%, rgba(78, 43, 90, 0.92) 30%, rgba(78, 43, 90, 0.9) 40%, rgba(120, 80, 140, 0.88) 50%, rgba(120, 80, 140, 0.86) 60%, rgba(78, 43, 90, 0.88) 70%, rgba(22, 21, 50, 0.9) 80%, rgba(22, 21, 50, 0.92) 90%, rgba(21, 21, 47, 0.94) 100%);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(21, 21, 47, 0.2);
   position: fixed;
 }
 .mobile-header.mobile-haeder1 .mobile-logo {
@@ -5038,37 +5060,58 @@ Location:
   object-fit: contain;
 }
 .mobile-header.mobile-haeder1 .dots-menu {
-  color: var(--ztc-bg-bg-1);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+.mobile-header.mobile-haeder1 .dots-menu:hover {
+  color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
 }
 
 .mobile-sidebar.mobile-sidebar1 {
-  background: #fff;
+  background: linear-gradient(135deg, rgba(21, 21, 47, 0.98) 0%, rgba(22, 21, 50, 0.96) 10%, rgba(22, 21, 50, 0.94) 20%, rgba(78, 43, 90, 0.92) 30%, rgba(78, 43, 90, 0.9) 40%, rgba(120, 80, 140, 0.88) 50%, rgba(120, 80, 140, 0.86) 60%, rgba(78, 43, 90, 0.88) 70%, rgba(22, 21, 50, 0.9) 80%, rgba(22, 21, 50, 0.92) 90%, rgba(21, 21, 47, 0.94) 100%);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(21, 21, 47, 0.2);
 }
 .mobile-sidebar.mobile-sidebar1 .menu-close {
-  color: var(--ztc-bg-bg-2);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+.mobile-sidebar.mobile-sidebar1 .menu-close:hover {
+  color: rgba(255, 255, 255, 0.8);
+  transform: rotate(90deg);
 }
 .mobile-sidebar.mobile-sidebar1 .mobile-nav.mobile-nav1 ul span.submenu-button:before {
-  background: var(--ztc-text-text-2);
+  background: rgba(255, 255, 255, 0.8);
 }
 .mobile-sidebar.mobile-sidebar1 .mobile-nav.mobile-nav1 ul span.submenu-button::after {
-  background: var(--ztc-text-text-2);
+  background: rgba(255, 255, 255, 0.8);
 }
 .mobile-sidebar.mobile-sidebar1 .mobile-nav.mobile-nav1 ul li a {
-  color: var(--ztc-bg-bg-2);
+  color: rgba(255, 255, 255, 0.95);
   font-family: var(--grotesk) !important;
+  transition: all 0.3s ease;
+}
+.mobile-sidebar.mobile-sidebar1 .mobile-nav.mobile-nav1 ul li a:hover {
+  color: #ffffff;
+  padding-left: 8px;
 }
 .mobile-sidebar.mobile-sidebar1 .allmobilesection .vl-btn1 {
   width: 100%;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 24px;
+  background: linear-gradient(135deg, rgb(21, 21, 47) 0%, rgba(22, 21, 50, 0.98) 10%, rgba(22, 21, 50, 0.96) 20%, rgba(78, 43, 90, 0.94) 30%, rgba(78, 43, 90, 0.92) 40%, rgba(120, 80, 140, 0.9) 50%, rgba(120, 80, 140, 0.88) 60%, rgba(78, 43, 90, 0.9) 70%, rgba(22, 21, 50, 0.92) 80%, rgba(22, 21, 50, 0.94) 90%, rgba(21, 21, 47, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(21, 21, 47, 0.3);
 }
 .mobile-sidebar.mobile-sidebar1 .single-footer h3 {
   font-family: var(--grotesk);
-  font-size: var(--ztc-font-size-font-s24);
-  line-height: var(--ztc-font-size-font-s20);
+  font-size: var(--ztc-font-size-font-s20);
+  line-height: 1.3;
   font-weight: var(--ztc-weight-bold);
-  color: var(--ztc-bg-bg-2);
-  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 24px;
+  margin-bottom: 12px;
 }
 .mobile-sidebar.mobile-sidebar1 .footer1-contact-info .contact-info-single {
   display: flex;
@@ -5076,48 +5119,65 @@ Location:
   margin-top: 16px;
 }
 .mobile-sidebar.mobile-sidebar1 .footer1-contact-info .contact-info-single .contact-info-icon span {
-  height: 30px;
-  width: 30px;
+  height: 36px;
+  width: 36px;
   text-align: center;
-  line-height: 30px;
+  line-height: 36px;
   border-radius: 50%;
-  background: var(--ztc-bg-bg-2);
-  color: var(--ztc-bg-bg-1);
-  transition: all 0.4s;
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.3) 0%, rgba(120, 80, 140, 0.25) 50%, rgba(78, 43, 90, 0.3) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
   display: inline-block;
   font-size: 14px;
+  box-shadow: 0 2px 8px rgba(21, 21, 47, 0.2);
+}
+.mobile-sidebar.mobile-sidebar1 .footer1-contact-info .contact-info-single .contact-info-icon span:hover {
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.4) 0%, rgba(120, 80, 140, 0.35) 50%, rgba(78, 43, 90, 0.4) 100%);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(21, 21, 47, 0.3);
 }
 .mobile-sidebar.mobile-sidebar1 .footer1-contact-info .contact-info-single .contact-info-text a {
   font-family: var(--figtree);
   font-size: var(--ztc-font-size-font-s16);
-  line-height: var(--ztc-font-size-font-s20);
+  line-height: 1.5;
   font-weight: var(--ztc-weight-regular);
-  color: var(--ztc-bg-bg-2);
-  transition: all 0.4s;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 12px;
+}
+.mobile-sidebar.mobile-sidebar1 .footer1-contact-info .contact-info-single .contact-info-text a:hover {
+  color: #ffffff;
 }
 .mobile-sidebar.mobile-sidebar1 .footer1-contact-info .social-links-mobile-menu ul {
   margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 .mobile-sidebar.mobile-sidebar1 .footer1-contact-info .social-links-mobile-menu ul li {
   display: inline-block;
 }
 .mobile-sidebar.mobile-sidebar1 .footer1-contact-info .social-links-mobile-menu ul li a {
-  height: 40px;
-  width: 40px;
+  height: 44px;
+  width: 44px;
   text-align: center;
-  line-height: 23px;
+  line-height: 44px;
   display: inline-block;
-  background: var(--ztc-bg-bg-3);
-  color: var(--ztc-bg-bg-2);
-  transition: all 0.4s;
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.3) 0%, rgba(120, 80, 140, 0.25) 50%, rgba(78, 43, 90, 0.3) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
   border-radius: 50%;
-  margin: 0 6px 0 0;
+  box-shadow: 0 2px 8px rgba(21, 21, 47, 0.2);
 }
 .mobile-sidebar.mobile-sidebar1 .footer1-contact-info .social-links-mobile-menu ul li a:hover {
-  transform: translateY(-5px);
-  transition: all 0.4s;
+  background: linear-gradient(135deg, rgba(78, 43, 90, 0.5) 0%, rgba(120, 80, 140, 0.45) 50%, rgba(78, 43, 90, 0.5) 100%);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 6px 16px rgba(21, 21, 47, 0.3);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .mobile-header.mobile-haeder2 {
@@ -9437,6 +9497,7 @@ html {
   background: linear-gradient(135deg, rgba(21, 21, 47, 0.98) 0%, rgba(22, 21, 50, 0.96) 10%, rgba(22, 21, 50, 0.94) 20%, rgba(78, 43, 90, 0.92) 30%, rgba(78, 43, 90, 0.9) 40%, rgba(120, 80, 140, 0.88) 50%, rgba(120, 80, 140, 0.86) 60%, rgba(78, 43, 90, 0.88) 70%, rgba(22, 21, 50, 0.9) 80%, rgba(22, 21, 50, 0.92) 90%, rgba(21, 21, 47, 0.94) 100%);
   backdrop-filter: blur(20px);
   transition: all 0.4s;
+  box-shadow: 0 4px 20px rgba(21, 21, 47, 0.2);
   box-shadow: 0 8px 32px rgba(78, 43, 90, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .header-area.homepage1.sticky .header-elements .main-menu ul li a {
@@ -9826,8 +9887,9 @@ html {
   animation-duration: 1s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
-  background: #4e2b5a;
+  background: linear-gradient(135deg, rgba(21, 21, 47, 0.98) 0%, rgba(22, 21, 50, 0.96) 10%, rgba(22, 21, 50, 0.94) 20%, rgba(78, 43, 90, 0.92) 30%, rgba(78, 43, 90, 0.9) 40%, rgba(120, 80, 140, 0.88) 50%, rgba(120, 80, 140, 0.86) 60%, rgba(78, 43, 90, 0.88) 70%, rgba(22, 21, 50, 0.9) 80%, rgba(22, 21, 50, 0.92) 90%, rgba(21, 21, 47, 0.94) 100%);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(21, 21, 47, 0.2);
   transition: all 0.4s;
 }
 
@@ -27246,16 +27308,6 @@ html {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .about1-section-area.nomination-process-section .nomination-content h2 {
     font-size: var(--ztc-font-size-font-s20);
-  }
-}
-@media (max-width: 767px) {
-  .about1-section-area.nomination-process-section .nomination-content h2 {
-    font-size: var(--ztc-font-size-font-s28);
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .about1-section-area.nomination-process-section .nomination-content h2 {
-    font-size: var(--ztc-font-size-font-s36);
   }
 }
 .about1-section-area.nomination-process-section .nomination-content p {
