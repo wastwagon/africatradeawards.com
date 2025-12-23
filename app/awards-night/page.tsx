@@ -78,16 +78,16 @@ export default function AwardsNight() {
 				</div>
 				
 				{/*===== OVERVIEW =======*/}
-				<div className="about1-section-area sp1">
+				<div className="about1-section-area overview-section sp1">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Overview</h5>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Overview</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>The Pinnacle of Continental Recognition</h2>
 									<div className="space16" />
-									<h2 className="text-anime-style-3">The Pinnacle of Continental Recognition</h2>
-									<div className="space24" />
-									<p data-aos="fade-up" data-aos-duration={900}>The Africa Trade Awards Gala Night is the pinnacle of continental recognition—where policy meets enterprise and Africa&apos;s distinguished leaders gather under one roof to honour the power of trade.</p>
+									<p className="modern-section-subtitle" data-aos="fade-up" data-aos-duration={1000}>The Africa Trade Awards Gala Night is the pinnacle of continental recognition—where policy meets enterprise and Africa&apos;s distinguished leaders gather under one roof to honour the power of trade.</p>
 								</div>
 							</div>
 						</div>
@@ -119,10 +119,10 @@ export default function AwardsNight() {
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Evening Highlights</h5>
-									<div className="space18" />
-									<h2 className="text-anime-style-3">What to Expect</h2>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Evening Highlights</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>What to Expect</h2>
 								</div>
 							</div>
 						</div>

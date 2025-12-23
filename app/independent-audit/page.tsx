@@ -20,16 +20,16 @@ export default function IndependentAudit() {
 					</div>
 				</div>
 				{/*===== OVERVIEW AREA STARTS =======*/}
-				<div className="about1-section-area sp1">
+				<div className="about1-section-area overview-section sp1">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Overview</h5>
-									<div className="space18" />
-									<h2 className="text-anime-style-3" data-aos="fade-up" data-aos-duration={900}>Guaranteeing Integrity Through Independent Verification</h2>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Overview</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Guaranteeing Integrity Through Independent Verification</h2>
 									<div className="space16" />
-									<p data-aos="fade-up" data-aos-duration={1000}>To guarantee integrity, the Africa Trade Awards are independently audited by Forvis Mazars Ghana, the official Independent Process Verification Partner.</p>
+									<p className="modern-section-subtitle" data-aos="fade-up" data-aos-duration={1000}>To guarantee integrity, the Africa Trade Awards are independently audited by Forvis Mazars Ghana, the official Independent Process Verification Partner.</p>
 								</div>
 							</div>
 						</div>
@@ -40,10 +40,10 @@ export default function IndependentAudit() {
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Scope of Verification</h5>
-									<div className="space18" />
-									<h2 className="text-anime-style-3">What We Verify</h2>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Scope of Verification</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>What We Verify</h2>
 								</div>
 							</div>
 						</div>
@@ -121,12 +121,12 @@ export default function IndependentAudit() {
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-10 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Governance & Integrity</h5>
-									<div className="space18" />
-									<h2 className="text-anime-style-3">Transparency and Trust</h2>
-									<div className="space24" />
-									<p data-aos="fade-up" data-aos-duration={900} style={{ marginBottom: '40px', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Governance & Integrity</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Transparency and Trust</h2>
+									<div className="space16" />
+									<p className="modern-section-subtitle" data-aos="fade-up" data-aos-duration={1000} style={{ marginBottom: '40px', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
 										The Awards operate under a governance framework guaranteeing transparency and trust:
 									</p>
 								</div>

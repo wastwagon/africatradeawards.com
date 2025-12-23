@@ -55,16 +55,16 @@ export default function Partnerships() {
 				</div>
 				
 				{/*===== OVERVIEW AREA =======*/}
-				<div className="about1-section-area sp1">
+				<div className="about1-section-area overview-section sp1">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Overview</h5>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Overview</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>The Africa Trade Awards Thrives on Collaboration</h2>
 									<div className="space16" />
-									<h2 className="text-anime-style-3">The Africa Trade Awards Thrives on Collaboration</h2>
-									<div className="space24" />
-									<p data-aos="fade-up" data-aos-duration={900}>Becoming a partner is a declaration of commitment to Africa&apos;s prosperity, sustainability, and self-determined growth—anchored in the 2026 theme &quot;Honouring the Champions of Africa&apos;s Trade and Industrialisation.&quot;</p>
+									<p className="modern-section-subtitle" data-aos="fade-up" data-aos-duration={1000}>Becoming a partner is a declaration of commitment to Africa&apos;s prosperity, sustainability, and self-determined growth—anchored in the 2026 theme &quot;Honouring the Champions of Africa&apos;s Trade and Industrialisation.&quot;</p>
 								</div>
 							</div>
 						</div>
@@ -76,14 +76,14 @@ export default function Partnerships() {
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Why Partner</h5>
-									<div className="space18" />
-									<h2 className="text-anime-style-3">Benefits of Partnership</h2>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Why Partner</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Benefits of Partnership</h2>
 								</div>
 							</div>
 						</div>
-						<div className="row">
+						<div className="row g-4">
 							{benefits.map((benefit, index) => (
 								<div key={index} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={800 + (index * 100)}>
 									<div className="modern-benefit-card">
@@ -110,10 +110,10 @@ export default function Partnerships() {
 						<div className="row">
 							<div className="col-lg-10 m-auto">
 								<div className="contact-card-wrapper">
-									<div className="heading2 text-center">
-										<h5 data-aos="fade-up" data-aos-duration={800}>Get In Touch</h5>
-										<div className="space16" />
-										<h2 className="text-anime-style-3">Ready to Partner With Us?</h2>
+									<div className="modern-section-header text-center">
+										<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Get In Touch</span>
+										<div className="space20" />
+										<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Ready to Partner With Us?</h2>
 										<div className="space24" />
 									</div>
 									<div className="contact-info-grid">

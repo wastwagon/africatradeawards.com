@@ -28,17 +28,11 @@ export default function About() {
 						<div className="container">
 							<div className="row align-items-center">
 								<div className="col-lg-6">
-									<div className="overview-image-layout">
-										<div className="main-image">
-											<img src="/assets/img/all-images/about/about-img8.png" alt="Africa Trade Awards" />
-										</div>
-										<div className="secondary-images">
-											<div className="secondary-image">
-												<img src="/assets/img/all-images/about/about-img8.png" alt="Trade Excellence" />
-											</div>
-											<div className="secondary-image">
-												<img src="/assets/img/all-images/about/about-img8.png" alt="Industrial Champions" />
-											</div>
+									<div className="premium-hero-image-layout" data-aos="fade-right" data-aos-duration={800}>
+										<div className="premium-main-image premium-3d-circle">
+											<div className="circle-gradient-border"></div>
+											<div className="circle-inner-shadow"></div>
+											<img src="/assets/img/all-images/award-winner.webp" alt="Africa Trade Awards" />
 										</div>
 									</div>
 								</div>

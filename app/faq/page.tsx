@@ -36,11 +36,13 @@ const handleAccordion = (key: any) => {
 					<div className="faq-inner-section-area sp1">
 						<div className="container">
 							<div className="row">
-								<div className="col-lg-7 m-auto">
-									<div className="heading2 text-center space-margin60">
-										<h2>Frequently Asked Question</h2>
-									</div>
+							<div className="col-lg-7 m-auto">
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>FAQ</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Frequently Asked Questions</h2>
 								</div>
+							</div>
 							</div>
 							<div className="row">
 								<div className="col-lg-11">

@@ -27,11 +27,11 @@ export default function PricingPlan() {
 					<div className="pricing-lan-section-area sp1">
 						<div className="container">
 							<div className="row">
-								<div className="col-lg-5 m-auto">
-									<div className="heading2 text-center space-margin60">
-										<h5>ticket pricing</h5>
-										<div className="space18" />
-										<h2>Event Pass &amp; Tickets</h2>
+								<div className="col-lg-8 m-auto">
+									<div className="modern-section-header text-center space-margin60">
+										<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Ticket Pricing</span>
+										<div className="space20" />
+										<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Event Pass &amp; Tickets</h2>
 									</div>
 								</div>
 							</div>

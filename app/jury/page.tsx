@@ -20,7 +20,7 @@ export default function Jury() {
 					</div>
 				</div>
 				{/*===== OVERVIEW AREA STARTS =======*/}
-				<div className="about1-section-area sp1">
+				<div className="about1-section-area overview-section sp1">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">

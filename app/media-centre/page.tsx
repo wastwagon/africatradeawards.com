@@ -92,16 +92,16 @@ export default function MediaCentre() {
 				</div>
 				
 				{/*===== OVERVIEW =======*/}
-				<div className="about1-section-area sp1">
+				<div className="about1-section-area overview-section sp1">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Overview</h5>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Overview</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Official Communications Hub</h2>
 									<div className="space16" />
-									<h2 className="text-anime-style-3">Official Communications Hub</h2>
-									<div className="space24" />
-									<p data-aos="fade-up" data-aos-duration={900}>The Media Centre is the official communications hub for journalists, photographers, and broadcasters covering Africa&apos;s premier celebration of trade excellence.</p>
+									<p className="modern-section-subtitle" data-aos="fade-up" data-aos-duration={1000}>The Media Centre is the official communications hub for journalists, photographers, and broadcasters covering Africa&apos;s premier celebration of trade excellence.</p>
 								</div>
 							</div>
 						</div>
@@ -113,10 +113,10 @@ export default function MediaCentre() {
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-8 m-auto">
-								<div className="heading2 text-center space-margin60">
-									<h5 data-aos="fade-up" data-aos-duration={800}>Press Releases</h5>
-									<div className="space18" />
-									<h2 className="text-anime-style-3">Latest Updates</h2>
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Press Releases</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Latest Updates</h2>
 								</div>
 							</div>
 						</div>
