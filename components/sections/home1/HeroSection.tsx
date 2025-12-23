@@ -1,7 +1,21 @@
 'use client'
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 
 export default function HeroSection() {
+	const videoRef = useRef<HTMLVideoElement>(null)
+
+	useEffect(() => {
+		// Ensure video autoplays on mount
+		const video = videoRef.current
+		if (video) {
+			video.play().catch((error) => {
+				// Handle autoplay policy restrictions
+				console.warn('Video autoplay failed:', error)
+			})
+		}
+	}, [])
+
 	return (
 		<section className="hero1-section-area" 
 			style={{ 
@@ -14,10 +28,12 @@ export default function HeroSection() {
 			
 			{/* Video Background */}
 			<video
+				ref={videoRef}
 				autoPlay
 				loop
 				muted
 				playsInline
+				preload="auto"
 				style={{
 					position: 'absolute',
 					top: 0,

@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: africa-trade-awards-dev
     ports:
-      - "3003:3000"
+      - "3003:3003"
     volumes:
       - .:/app
       - /app/node_modules
