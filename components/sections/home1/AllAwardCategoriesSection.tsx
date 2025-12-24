@@ -1,5 +1,4 @@
 'use client'
-import Link from 'next/link'
 
 export default function AllAwardCategoriesSection() {
 	return (
@@ -15,7 +14,7 @@ export default function AllAwardCategoriesSection() {
 							</div>
 						</div>
 					</div>
-					<div className="space32" />
+					<div className="space16" />
 				</div>
 			</div>
 			<div className="image-cards-wrapper image-cards-wrapper-all">
@@ -33,10 +32,6 @@ export default function AllAwardCategoriesSection() {
 									<li>Continental trade integration</li>
 									<li>Visionary economic transformation</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 						<div className="image-card">
@@ -51,10 +46,6 @@ export default function AllAwardCategoriesSection() {
 									<li>Market dominance and growth</li>
 									<li>Industry transformation impact</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 						<div className="image-card">
@@ -69,10 +60,6 @@ export default function AllAwardCategoriesSection() {
 									<li>Entrepreneurial impact</li>
 									<li>Job creation and development</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 						<div className="image-card">
@@ -87,10 +74,6 @@ export default function AllAwardCategoriesSection() {
 									<li>Infrastructure support systems</li>
 									<li>Cross-border trade enablement</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 						<div className="image-card">
@@ -105,10 +88,6 @@ export default function AllAwardCategoriesSection() {
 									<li>Non-competitive distinctions</li>
 									<li>Legacy and impact recognition</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 					</div>

@@ -27,12 +27,12 @@ export default function Section9() {
 								
 								{/* CTA Buttons */}
 								<div className="cta-buttons-group" data-aos="fade-up" data-aos-duration={1000}>
-									<Link href="/nomination" className="elegant-btn large">
-										<span>Nominate Now</span>
-										<i className="fa-solid fa-paper-plane"></i>
-									</Link>
 									<Link href="/award-categories" className="elegant-btn large">
 										<span>View Categories</span>
+										<i className="fa-solid fa-paper-plane"></i>
+									</Link>
+									<Link href="/contact" className="elegant-btn large">
+										<span>Contact Us</span>
 										<i className="fa-solid fa-paper-plane"></i>
 									</Link>
 								</div>

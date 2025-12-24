@@ -35,8 +35,6 @@ export default function Footer1() {
 								<ul>
 									<li><Link href="/about">About The Awards</Link></li>
 									<li><Link href="/award-categories">Award Categories</Link></li>
-									<li><Link href="/nomination">Nomination Process</Link></li>
-									<li><Link href="/jury">Jury & Evaluation</Link></li>
 									<li><Link href="/awards-night">Awards Night</Link></li>
 									<li><Link href="/media-centre">Media Centre</Link></li>
 									<li><Link href="/contact">Contact Us</Link></li>

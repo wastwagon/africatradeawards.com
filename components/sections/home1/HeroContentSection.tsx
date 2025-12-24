@@ -25,7 +25,7 @@ export default function HeroContentSection() {
 								<span>2026 Africa Trade Awards</span>
 							</div>
 							
-							<div className="space24" />
+							<div className="space12" />
 							
 							{/* Subtitle */}
 							<div className="premium-hero-subtitle-wrapper" data-aos="fade-up" data-aos-duration={700}>
@@ -34,7 +34,7 @@ export default function HeroContentSection() {
 								</p>
 							</div>
 							
-							<div className="space40" />
+							<div className="space20" />
 							
 							{/* Premium Theme Card - Enhanced */}
 							<div className="premium-theme-card-enhanced" data-aos="fade-up" data-aos-duration={1000}>

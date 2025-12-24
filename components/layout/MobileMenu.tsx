@@ -38,18 +38,10 @@ const handleAccordion = (key: any) => {
 							<Link href="/about" className="hash-nav">About</Link>
 							<ul className={`sub-menu ${isAccordion == 1 ? "open-sub" : ""}`} style={{ display: `${isAccordion == 1 ? "block" : "none"}` }}>
 								<li className="hash-has-sub"><Link href="/about" className="hash-nav">About The Awards</Link></li>
-								<li className="hash-has-sub"><Link href="/jury" className="hash-nav">Jury & Evaluation</Link></li>
 								<li className="hash-has-sub"><Link href="/independent-audit" className="hash-nav">Independent Audit</Link></li>
 							</ul>
 						</li>
-						<li className="has-sub hash-has-sub">
-							<span className={`submenu-button ${isAccordion == 2 ? "submenu-opened" : ""}`} onClick={() => handleAccordion(2)}><em /></span>
-							<Link href="/award-categories" className="hash-nav">Awards</Link>
-							<ul className={`sub-menu ${isAccordion == 2 ? "open-sub" : ""}`} style={{ display: `${isAccordion == 2 ? "block" : "none"}` }}>
-								<li className="hash-has-sub"><Link href="/award-categories" className="hash-nav">Award Categories</Link></li>
-								<li className="hash-has-sub"><Link href="/nomination" className="hash-nav">Nomination Process</Link></li>
-							</ul>
-						</li>
+						<li className="hash-has-sub"><Link href="/award-categories" className="hash-nav">Awards</Link></li>
 						<li className="has-sub hash-has-sub">
 							<span className={`submenu-button ${isAccordion == 3 ? "submenu-opened" : ""}`} onClick={() => handleAccordion(3)}><em /></span>
 							<Link href="/awards-night" className="hash-nav">Event</Link>

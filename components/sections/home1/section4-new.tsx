@@ -222,12 +222,12 @@ export default function Section4New() {
 						<div className="col-lg-8 m-auto">
 							<div className="nomination-cta-wrapper text-center">
 								<div className="nomination-buttons">
-									<Link href="/nomination" className="nomination-btn-primary">
-										<span>Learn More</span>
+									<Link href="/award-categories" className="nomination-btn-primary">
+										<span>View Categories</span>
 										<i className="fa-solid fa-arrow-right"></i>
 									</Link>
-									<Link href="/nomination" className="nomination-btn-secondary">
-										<span>Submit Nomination</span>
+									<Link href="/contact" className="nomination-btn-secondary">
+										<span>Contact Us</span>
 										<i className="fa-solid fa-paper-plane"></i>
 									</Link>
 								</div>

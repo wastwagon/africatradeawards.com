@@ -36,7 +36,7 @@ export default function Section3New() {
 									<li>Continental trade integration</li>
 									<li>Visionary economic transformation</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
+								<Link href="/award-categories" className="card-nominate-btn">
 									Nominate Now
 									<i className="fa-solid fa-arrow-right"></i>
 								</Link>
@@ -57,7 +57,7 @@ export default function Section3New() {
 									<li>Market dominance and growth</li>
 									<li>Industry transformation impact</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
+								<Link href="/award-categories" className="card-nominate-btn">
 									Nominate Now
 									<i className="fa-solid fa-arrow-right"></i>
 								</Link>
@@ -78,7 +78,7 @@ export default function Section3New() {
 									<li>Entrepreneurial impact</li>
 									<li>Job creation and development</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
+								<Link href="/award-categories" className="card-nominate-btn">
 									Nominate Now
 									<i className="fa-solid fa-arrow-right"></i>
 								</Link>
@@ -99,7 +99,7 @@ export default function Section3New() {
 									<li>Infrastructure support systems</li>
 									<li>Cross-border trade enablement</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
+								<Link href="/award-categories" className="card-nominate-btn">
 									Nominate Now
 									<i className="fa-solid fa-arrow-right"></i>
 								</Link>
@@ -120,7 +120,7 @@ export default function Section3New() {
 									<li>Non-competitive distinctions</li>
 									<li>Legacy and impact recognition</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
+								<Link href="/award-categories" className="card-nominate-btn">
 									Nominate Now
 									<i className="fa-solid fa-arrow-right"></i>
 								</Link>

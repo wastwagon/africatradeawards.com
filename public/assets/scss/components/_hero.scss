@@ -1117,7 +1117,7 @@
 	overflow: hidden;
 	
 	@media #{$xs} {
-		padding: 100px 0 60px;
+		display: none !important;
 	}
 	
 	@media #{$md} {
@@ -1148,33 +1148,16 @@
 
 /*============= PREMIUM HERO CONTENT SECTION (Outside Hero) ===============*/
 .premium-hero-content-section {
-	background: linear-gradient(135deg, 
-		rgba(21, 21, 47, 0.02) 0%, 
-		rgba(22, 21, 50, 0.019) 10%, 
-		rgba(22, 21, 50, 0.018) 20%, 
-		rgba(78, 43, 90, 0.017) 30%, 
-		rgba(78, 43, 90, 0.016) 40%, 
-		rgba(120, 80, 140, 0.015) 50%, 
-		rgba(120, 80, 140, 0.016) 60%, 
-		rgba(78, 43, 90, 0.017) 70%, 
-		rgba(22, 21, 50, 0.018) 80%, 
-		rgba(22, 21, 50, 0.019) 90%, 
-		rgba(21, 21, 47, 0.02) 100%);
-	padding: 80px 0;
+	background: transparent;
+	padding: 40px 0;
 	position: relative;
 	
 	@media #{$xs} {
-		padding: 60px 0;
+		padding: 30px 0;
 	}
 	
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 1px;
-		background: linear-gradient(90deg, transparent, rgba(120, 80, 140, 0.03), rgba(192, 192, 192, 0.02), rgba(120, 80, 140, 0.03), transparent);
+	@media #{$md} {
+		padding: 35px 0;
 	}
 }
 
@@ -1601,9 +1584,7 @@
 			white-space: nowrap;
 			
 			@media #{$xs} {
-				font-size: clamp(14px, 3vw, 18px);
-				line-height: 1.35;
-				white-space: normal;
+				display: none !important;
 			}
 			
 			@media #{$md} {
@@ -1633,9 +1614,7 @@
 			}
 
 			@media #{$xs} {
-				font-size: 13px;
-				margin-top: 12px;
-				gap: 8px;
+				display: none !important;
 			}
 
 			// Badge style for "Home" link - white theme
@@ -1794,9 +1773,7 @@
 	}
 
 	@media #{$xs} {
-		font-size: 13px;
-		margin-top: 12px;
-		gap: 8px;
+		display: none !important;
 	}
 
 	// Badge style for "Home" link - white theme

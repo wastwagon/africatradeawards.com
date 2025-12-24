@@ -1,5 +1,4 @@
 'use client'
-import Link from 'next/link'
 
 export default function AwardCategoriesSection() {
 	return (
@@ -12,20 +11,15 @@ export default function AwardCategoriesSection() {
 								<h2 className="text-anime-style-3 premium-section-title">Honouring Excellence Across Five Tiers</h2>
 								<div className="space8" />
 								<p className="premium-section-description" data-aos="fade-up" data-aos-duration={900}>Under the 2026 theme &quot;Honouring the Champions of Africa&apos;s Trade and Industrialisation,&quot; the Awards recognise individuals, enterprises, and institutions across five thematic tiers.</p>
-								<div className="space16" />
-								<Link href="/award-categories" className="view-all-categories-btn" data-aos="fade-up" data-aos-duration={1000}>
-									View All Categories
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 					</div>
-					<div className="space32" />
+					<div className="space16" />
 				</div>
 			</div>
 			<div className="image-cards-wrapper">
 				<div className="container">
-					<div className="image-cards-grid">
+					<div className="image-cards-grid image-cards-grid-all">
 						<div className="image-card">
 							<div className="card-image-wrapper">
 								<img src="/assets/img/all-images/categories/Continental Leadership.jpg" alt="Continental Leadership" />
@@ -38,10 +32,6 @@ export default function AwardCategoriesSection() {
 									<li>Continental trade integration</li>
 									<li>Visionary economic transformation</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 						<div className="image-card">
@@ -56,10 +46,6 @@ export default function AwardCategoriesSection() {
 									<li>Market dominance and growth</li>
 									<li>Industry transformation impact</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 						<div className="image-card">
@@ -74,10 +60,6 @@ export default function AwardCategoriesSection() {
 									<li>Entrepreneurial impact</li>
 									<li>Job creation and development</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
 							</div>
 						</div>
 						<div className="image-card">
@@ -92,10 +74,20 @@ export default function AwardCategoriesSection() {
 									<li>Infrastructure support systems</li>
 									<li>Cross-border trade enablement</li>
 								</ul>
-								<Link href="/nomination" className="card-nominate-btn">
-									Nominate
-									<i className="fa-solid fa-arrow-right"></i>
-								</Link>
+							</div>
+						</div>
+						<div className="image-card">
+							<div className="card-image-wrapper">
+								<img src="/assets/img/all-images/categories/Special Recognition.jpg" alt="Special Recognition" />
+							</div>
+							<div className="card-content-box">
+								<h3 className="card-title">Special Recognition</h3>
+								<ul className="card-description">
+									<li>Lifetime achievement honours</li>
+									<li>Exceptional contributions</li>
+									<li>Non-competitive distinctions</li>
+									<li>Legacy and impact recognition</li>
+								</ul>
 							</div>
 						</div>
 					</div>

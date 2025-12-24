@@ -30,7 +30,7 @@ export default function Section1() {
 								</div>
 								<div className="space32" />
 								<div className="btn-area1" data-aos="fade-left" data-aos-duration={1100}>
-									<Link href="/nomination" className="vl-btn1">Nominate Now</Link>
+									<Link href="/award-categories" className="vl-btn1">View Awards</Link>
 								</div>
 							</div>
 						</div>

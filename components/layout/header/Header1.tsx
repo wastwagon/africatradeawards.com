@@ -32,30 +32,19 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSear
 											<li className={isActive('/') ? 'active' : ''}>
 												<Link href="/">Home</Link>
 											</li>
-											<li className={isParentActive(['/about', '/jury', '/independent-audit']) ? 'active' : ''}>
+											<li className={isParentActive(['/about', '/independent-audit']) ? 'active' : ''}>
 												<Link href="/about">About <i className="fa-solid fa-angle-down" /></Link>
 												<ul className="dropdown-padding">
 													<li className={isActive('/about') ? 'active' : ''}>
 														<Link href="/about" className={isActive('/about') ? 'active-link' : ''}>About The Awards</Link>
-													</li>
-													<li className={isActive('/jury') ? 'active' : ''}>
-														<Link href="/jury" className={isActive('/jury') ? 'active-link' : ''}>Jury & Evaluation</Link>
 													</li>
 													<li className={isActive('/independent-audit') ? 'active' : ''}>
 														<Link href="/independent-audit" className={isActive('/independent-audit') ? 'active-link' : ''}>Independent Audit</Link>
 													</li>
 												</ul>
 											</li>
-											<li className={isParentActive(['/award-categories', '/nomination']) ? 'active' : ''}>
-												<Link href="/award-categories">Awards <i className="fa-solid fa-angle-down" /></Link>
-												<ul className="dropdown-padding">
-													<li className={isActive('/award-categories') ? 'active' : ''}>
-														<Link href="/award-categories" className={isActive('/award-categories') ? 'active-link' : ''}>Award Categories</Link>
-													</li>
-													<li className={isActive('/nomination') ? 'active' : ''}>
-														<Link href="/nomination" className={isActive('/nomination') ? 'active-link' : ''}>Nomination Process</Link>
-													</li>
-												</ul>
+											<li className={isActive('/award-categories') ? 'active' : ''}>
+												<Link href="/award-categories">Awards</Link>
 											</li>
 											<li className={isParentActive(['/awards-night', '/travel-accommodation', '/media-centre']) ? 'active' : ''}>
 												<Link href="/awards-night">Event <i className="fa-solid fa-angle-down" /></Link>

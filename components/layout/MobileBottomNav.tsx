@@ -16,12 +16,6 @@ const navItems = [
 		activeIcon: 'fa-trophy'
 	},
 	{
-		href: '/nomination',
-		label: 'Nominate',
-		icon: 'fa-star',
-		activeIcon: 'fa-star'
-	},
-	{
 		href: '/partnerships',
 		label: 'Partner',
 		icon: 'fa-handshake',
