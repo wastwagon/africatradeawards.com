@@ -30,7 +30,7 @@ export default function HeroContentSection() {
 							{/* Subtitle */}
 							<div className="premium-hero-subtitle-wrapper" data-aos="fade-up" data-aos-duration={700}>
 								<p className="premium-hero-subtitle-text">
-									The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders.
+									The Africa Trade Awards are recognition honours established by the African Trade Chamber to acknowledge individuals, institutions, enterprises, and public authorities whose work has materially shaped Africa&apos;s trade and industrial landscape.
 								</p>
 							</div>
 							

@@ -5,9 +5,9 @@ import Link from 'next/link'
 export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 	const [isAccordion, setIsAccordion] = useState(1)
 
-const handleAccordion = (key: any) => {
-    setIsAccordion(prevState => prevState === key ? null : key)
-}
+	const handleAccordion = (key: any) => {
+		setIsAccordion(prevState => prevState === key ? null : key)
+	}
 	return (
 		<>
 			<div className="mobile-header mobile-haeder1 d-block d-lg-none">
@@ -33,27 +33,10 @@ const handleAccordion = (key: any) => {
 				<div className="mobile-nav mobile-nav1">
 					<ul className="mobile-nav-list nav-list1">
 						<li className="hash-has-sub"><Link href="/" className="hash-nav">Home</Link></li>
-						<li className="has-sub hash-has-sub">
-							<span className={`submenu-button ${isAccordion == 1 ? "submenu-opened" : ""}`} onClick={() => handleAccordion(1)}><em /></span>
-							<Link href="/about" className="hash-nav">About</Link>
-							<ul className={`sub-menu ${isAccordion == 1 ? "open-sub" : ""}`} style={{ display: `${isAccordion == 1 ? "block" : "none"}` }}>
-								<li className="hash-has-sub"><Link href="/about" className="hash-nav">About The Awards</Link></li>
-								<li className="hash-has-sub"><Link href="/independent-audit" className="hash-nav">Independent Audit</Link></li>
-							</ul>
-						</li>
-						<li className="hash-has-sub"><Link href="/award-categories" className="hash-nav">Awards</Link></li>
-						<li className="has-sub hash-has-sub">
-							<span className={`submenu-button ${isAccordion == 3 ? "submenu-opened" : ""}`} onClick={() => handleAccordion(3)}><em /></span>
-							<Link href="/awards-night" className="hash-nav">Event</Link>
-							<ul className={`sub-menu ${isAccordion == 3 ? "open-sub" : ""}`} style={{ display: `${isAccordion == 3 ? "block" : "none"}` }}>
-								<li className="hash-has-sub"><Link href="/awards-night" className="hash-nav">Awards Night</Link></li>
-								<li className="hash-has-sub"><Link href="/travel-accommodation" className="hash-nav">Travel & Accommodation</Link></li>
-								<li className="hash-has-sub"><Link href="/media-centre" className="hash-nav">Media Centre</Link></li>
-							</ul>
-						</li>
-						<li className="hash-has-sub"><Link href="/partnerships" className="hash-nav">Partnerships</Link></li>
-						<li className="hash-has-sub"><Link href="/legal" className="hash-nav">Legal</Link></li>
-						<li className="hash-has-sub"><Link href="/contact" className="hash-nav">Contact Us</Link></li>
+						<li className="hash-has-sub"><Link href="/about" className="hash-nav">About</Link></li>
+						<li className="hash-has-sub"><Link href="/awards-structure" className="hash-nav">Awards Structure</Link></li>
+						<li className="hash-has-sub"><Link href="/faq" className="hash-nav">FAQs</Link></li>
+						<li className="hash-has-sub"><Link href="/contact" className="hash-nav">Contact</Link></li>
 					</ul>
 
 					<div className="allmobilesection">
@@ -63,18 +46,18 @@ const handleAccordion = (key: any) => {
 							<div className="footer1-contact-info">
 								<div className="contact-info-single">
 									<div className="contact-info-icon">
-										<span><i className="fa-solid fa-phone-volume" /></span>
+										<span><i className="fa-solid fa-envelope" /></span>
 									</div>
 									<div className="contact-info-text">
-										<Link href="tel:+233505366200">+233 50 536 6200</Link>
+										<Link href="mailto:secretariat@africatradeawards.com">secretariat@africatradeawards.com</Link>
 									</div>
 								</div>
 								<div className="contact-info-single">
 									<div className="contact-info-icon">
-										<span><i className="fa-solid fa-envelope" /></span>
+										<span><i className="fa-solid fa-globe" /></span>
 									</div>
 									<div className="contact-info-text">
-										<Link href="mailto:info@africantradechamber.org">info@africantradechamber.org</Link>
+										<Link href="https://www.africatradeawards.com" target="_blank" rel="noopener noreferrer">www.africatradeawards.com</Link>
 									</div>
 								</div>
 							</div>

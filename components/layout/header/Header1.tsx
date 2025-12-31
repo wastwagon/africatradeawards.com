@@ -32,42 +32,17 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSear
 											<li className={isActive('/') ? 'active' : ''}>
 												<Link href="/">Home</Link>
 											</li>
-											<li className={isParentActive(['/about', '/independent-audit']) ? 'active' : ''}>
-												<Link href="/about">About <i className="fa-solid fa-angle-down" /></Link>
-												<ul className="dropdown-padding">
-													<li className={isActive('/about') ? 'active' : ''}>
-														<Link href="/about" className={isActive('/about') ? 'active-link' : ''}>About The Awards</Link>
-													</li>
-													<li className={isActive('/independent-audit') ? 'active' : ''}>
-														<Link href="/independent-audit" className={isActive('/independent-audit') ? 'active-link' : ''}>Independent Audit</Link>
-													</li>
-												</ul>
+											<li className={isActive('/about') ? 'active' : ''}>
+												<Link href="/about">About</Link>
 											</li>
-											<li className={isActive('/award-categories') ? 'active' : ''}>
-												<Link href="/award-categories">Awards</Link>
+											<li className={isActive('/awards-structure') ? 'active' : ''}>
+												<Link href="/awards-structure">Awards Structure</Link>
 											</li>
-											<li className={isParentActive(['/awards-night', '/travel-accommodation', '/media-centre']) ? 'active' : ''}>
-												<Link href="/awards-night">Event <i className="fa-solid fa-angle-down" /></Link>
-												<ul className="dropdown-padding">
-													<li className={isActive('/awards-night') ? 'active' : ''}>
-														<Link href="/awards-night" className={isActive('/awards-night') ? 'active-link' : ''}>Awards Night</Link>
-													</li>
-													<li className={isActive('/travel-accommodation') ? 'active' : ''}>
-														<Link href="/travel-accommodation" className={isActive('/travel-accommodation') ? 'active-link' : ''}>Travel & Accommodation</Link>
-													</li>
-													<li className={isActive('/media-centre') ? 'active' : ''}>
-														<Link href="/media-centre" className={isActive('/media-centre') ? 'active-link' : ''}>Media Centre</Link>
-													</li>
-												</ul>
-											</li>
-											<li className={isActive('/partnerships') ? 'active' : ''}>
-												<Link href="/partnerships">Partnerships</Link>
-											</li>
-											<li className={isActive('/legal') ? 'active' : ''}>
-												<Link href="/legal">Legal</Link>
+											<li className={isActive('/faq') ? 'active' : ''}>
+												<Link href="/faq">FAQs</Link>
 											</li>
 											<li className={isActive('/contact') ? 'active' : ''}>
-												<Link href="/contact">Contact Us</Link>
+												<Link href="/contact">Contact</Link>
 											</li>
 										</ul>
 									</div>
@@ -90,7 +65,6 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSear
 					</div>
 				</div>
 			</header>
-
 		</>
 	)
 }

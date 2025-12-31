@@ -5,13 +5,21 @@ export default function Footer1() {
 	return (
 		<>
 			<div className="footer1-sertion-area">
+				{/* Animated Decorative Elements */}
+				<div className="footer-sparkle sparkle-1"></div>
+				<div className="footer-sparkle sparkle-2"></div>
+				<div className="footer-sparkle sparkle-3"></div>
+				<div className="footer-sparkle sparkle-4"></div>
+				<div className="footer-sparkle sparkle-5"></div>
+				<div className="footer-sparkle sparkle-6"></div>
+				
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-4 col-md-6">
 							<div className="footer-logo-area">
 								<h3>About The Awards</h3>
 								<div className="space12" />
-								<p>The Africa Trade Awards celebrates the visionaries transforming Africa&apos;s economy—those who innovate, lead, and build pathways to prosperity across borders. As the flagship recognition platform of the Africa Trade Summit, the Awards honour individuals and institutions advancing enterprise, policy, and investment.</p>
+								<p>The Africa Trade Awards are recognition honours established by the African Trade Chamber to acknowledge individuals, institutions, enterprises, and public authorities whose work has materially shaped Africa&apos;s trade and industrial landscape.</p>
 								<div className="space16" />
 								<ul>
 									<li>
@@ -34,11 +42,9 @@ export default function Footer1() {
 								<h3>Quick Links</h3>
 								<ul>
 									<li><Link href="/about">About The Awards</Link></li>
-									<li><Link href="/award-categories">Award Categories</Link></li>
-									<li><Link href="/awards-night">Awards Night</Link></li>
-									<li><Link href="/media-centre">Media Centre</Link></li>
-									<li><Link href="/contact">Contact Us</Link></li>
-									<li><Link href="/legal">Legal & Administrative</Link></li>
+									<li><Link href="/awards-structure">Awards Structure</Link></li>
+									<li><Link href="/faq">FAQs</Link></li>
+									<li><Link href="/contact">Contact</Link></li>
 								</ul>
 							</div>
 						</div>
@@ -47,10 +53,7 @@ export default function Footer1() {
 								<h3>Contact Us</h3>
 								<ul>
 									<li>
-										<Link href="tel:+233505366200"><img src="/assets/img/icons/phn1.svg" alt="" />+233 50 536 6200</Link>
-									</li>
-									<li>
-										<Link href="mailto:info@africantradechamber.org"><img src="/assets/img/icons/mail1.svg" alt="" />info@africantradechamber.org</Link>
+										<Link href="mailto:secretariat@africatradeawards.com"><img src="/assets/img/icons/mail1.svg" alt="" />secretariat@africatradeawards.com</Link>
 									</li>
 									<li>
 										<Link href="https://www.africatradeawards.com" target="_blank" rel="noopener noreferrer"> <img src="/assets/img/icons/world1.svg" alt="" />www.africatradeawards.com</Link>
@@ -64,52 +67,6 @@ export default function Footer1() {
 								<div className="space12" />
 								<div className="row">
 									<div className="col-lg-4 col-md-4 col-4">
-										<div className="img1">
-											<img src="/assets/img/all-images/about/about-img8.png" alt="Event Gallery" />
-											<div className="icons">
-												<Link href="/media-centre"><i className="fa-brands fa-instagram" /></Link>
-											</div>
-										</div>
-									</div>
-									<div className="col-lg-4 col-md-4 col-4">
-										<div className="img1">
-											<img src="/assets/img/all-images/about/about-img8.png" alt="Event Gallery" />
-											<div className="icons">
-												<Link href="/media-centre"><i className="fa-brands fa-instagram" /></Link>
-											</div>
-										</div>
-									</div>
-									<div className="col-lg-4 col-md-4 col-4">
-										<div className="img1">
-											<img src="/assets/img/all-images/about/about-img8.png" alt="Event Gallery" />
-											<div className="icons">
-												<Link href="/media-centre"><i className="fa-brands fa-instagram" /></Link>
-											</div>
-										</div>
-									</div>
-									<div className="col-lg-4 col-md-4 col-4">
-										<div className="img1">
-											<img src="/assets/img/all-images/about/about-img8.png" alt="Event Gallery" />
-											<div className="icons">
-												<Link href="/media-centre"><i className="fa-brands fa-instagram" /></Link>
-											</div>
-										</div>
-									</div>
-									<div className="col-lg-4 col-md-4 col-4">
-										<div className="img1">
-											<img src="/assets/img/all-images/about/about-img8.png" alt="Event Gallery" />
-											<div className="icons">
-												<Link href="/media-centre"><i className="fa-brands fa-instagram" /></Link>
-											</div>
-										</div>
-									</div>
-									<div className="col-lg-4 col-md-4 col-4">
-										<div className="img1">
-											<img src="/assets/img/all-images/about/about-img8.png" alt="Event Gallery" />
-											<div className="icons">
-												<Link href="/media-centre"><i className="fa-brands fa-instagram" /></Link>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
