@@ -69,10 +69,6 @@ export default function About() {
 								</div>
 								<div className="col-lg-6">
 									<div className="overview-content">
-										<div className="modern-section-header">
-											<h2 className="modern-section-title">About the Awards</h2>
-										</div>
-										<div className="space24" />
 										<div className="overview-description">
 											<p>The Africa Trade Awards are recognition honours established by the African Trade Chamber to acknowledge individuals, institutions, enterprises, and public authorities whose work has materially shaped Africa&apos;s trade and industrial landscape.</p>
 											<div className="space16" />
@@ -97,7 +93,7 @@ export default function About() {
 										<div className="space20" />
 										<h2 className="modern-section-title">How Recognition Works</h2>
 									</div>
-									<div className="space40" />
+									<div className="space24" />
 									<div className="compact-silver-text-box">
 										<div className="compact-text-content">
 											<p>The 2026 Africa Trade Awards are conferred as recognition honours. They do not operate as competitive prizes and are not based on open nominations or public voting. Recognition is determined through a structured review process conducted by the Recognition and Validation Committee, drawing on evidence of delivered outcomes within the reference period.</p>
@@ -121,13 +117,13 @@ export default function About() {
 										<div className="space20" />
 										<h2 className="modern-section-title">Tiered Recognition Structure</h2>
 									</div>
-									<div className="space40" />
+									<div className="space24" />
 									<div className="compact-silver-text-box">
 										<div className="compact-text-content">
 											<p>The Awards are organised across a tiered framework, reflecting the different layers through which Africa&apos;s trade and industrial systems are developed and sustained. These range from continental leadership and industrial value chains to trade infrastructure, enterprise platforms, and policy execution.</p>
 										</div>
 									</div>
-									<div className="space40" />
+									<div className="space24" />
 									<div className="text-center">
 										<Link href="/awards-structure" className="premium-about-btn">
 											<span>Explore Awards Structure</span>
@@ -147,10 +143,8 @@ export default function About() {
 								<div className="col-lg-10 m-auto">
 									<div className="modern-section-header text-center space-margin60">
 										<span className="section-accent-label">Governance & Oversight</span>
-										<div className="space20" />
-										<h2 className="modern-section-title">Governance & Oversight</h2>
 									</div>
-									<div className="space40" />
+									<div className="space24" />
 									<div className="compact-silver-text-box">
 										<div className="compact-text-content">
 											<p>The Africa Trade Awards are governed through a structured oversight framework designed to ensure professional judgment, consistency, and institutional credibility in all recognition decisions.</p>
@@ -220,11 +214,8 @@ export default function About() {
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					{/*===== COMMITTEE PROFILES AREA STARTS =======*/}
-					<div className="about-governance-section sp2">
-						<div className="container">
+							
+							{/* Committee Member Profiles */}
 							<div className="row">
 								<div className="col-lg-10 m-auto">
 									<div className="space60" />
@@ -296,7 +287,6 @@ export default function About() {
 							</div>
 						</div>
 					</div>
-					{/*===== COMMITTEE PROFILES AREA ENDS =======*/}
 					{/*===== RECOGNITION & VALIDATION COMMITTEE AREA ENDS =======*/}
 					
 					{/*===== SUMMIT INFORMATION AREA STARTS =======*/}

@@ -10,16 +10,16 @@ const navItems = [
 		activeIcon: 'fa-house'
 	},
 	{
-		href: '/award-categories',
+		href: '/about',
+		label: 'About',
+		icon: 'fa-info-circle',
+		activeIcon: 'fa-info-circle'
+	},
+	{
+		href: '/awards-structure',
 		label: 'Awards',
 		icon: 'fa-trophy',
 		activeIcon: 'fa-trophy'
-	},
-	{
-		href: '/partnerships',
-		label: 'Partner',
-		icon: 'fa-handshake',
-		activeIcon: 'fa-handshake'
 	},
 	{
 		href: '/contact',

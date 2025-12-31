@@ -24,10 +24,6 @@ export default function AboutSection() {
 					</div>
 					<div className="col-lg-6">
 						<div className="overview-content">
-							<div className="modern-section-header" data-aos="fade-up" data-aos-duration={800}>
-								<h2 className="modern-section-title">About the Awards</h2>
-							</div>
-							<div className="space24" />
 							<div className="overview-description" data-aos="fade-up" data-aos-duration={900}>
 								<p>The Africa Trade Awards are recognition honours established by the African Trade Chamber to acknowledge individuals, institutions, enterprises, and public authorities whose work has materially shaped Africa&apos;s trade and industrial landscape.</p>
 								<div className="space12" />

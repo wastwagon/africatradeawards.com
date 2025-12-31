@@ -67,6 +67,77 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
+						
+						{/* Committee Member Profiles */}
+						<div className="row">
+							<div className="col-lg-10 m-auto">
+								<div className="space60" />
+								<div className="committee-profiles-circular-grid">
+									{/* Profile Card 1 */}
+									<div className="committee-profile-circular-card">
+										<div className="premium-hero-image-layout">
+											<div className="premium-main-image premium-3d-circle">
+												<div className="circle-gradient-border"></div>
+												<div className="circle-inner-shadow"></div>
+												<img src="https://ui-avatars.com/api/?name=Dr.+Sarah+Okafor&background=4e2b5a&color=fff&size=200&bold=true&font-size=0.5" alt="Dr. Sarah Okafor" />
+											</div>
+										</div>
+										<div className="profile-content">
+											<h4 className="profile-name">Dr. Sarah Okafor</h4>
+											<p className="profile-role">Senior Trade Policy Advisor</p>
+											<div className="profile-divider"></div>
+											<p className="profile-background">With over 20 years of experience in international trade policy and economic development across Africa, Dr. Okafor has advised multiple governments and regional bodies on trade facilitation and market integration strategies.</p>
+											<div className="profile-expertise">
+												<span className="expertise-label">Expertise:</span>
+												<span className="expertise-text">Trade Policy & Regional Integration</span>
+											</div>
+										</div>
+									</div>
+
+									{/* Profile Card 2 */}
+									<div className="committee-profile-circular-card">
+										<div className="premium-hero-image-layout">
+											<div className="premium-main-image premium-3d-circle">
+												<div className="circle-gradient-border"></div>
+												<div className="circle-inner-shadow"></div>
+												<img src="https://ui-avatars.com/api/?name=James+Kamau&background=4e2b5a&color=fff&size=200&bold=true&font-size=0.5" alt="James Kamau" />
+											</div>
+										</div>
+										<div className="profile-content">
+											<h4 className="profile-name">James Kamau</h4>
+											<p className="profile-role">Chief Financial Officer, Pan-African Bank</p>
+											<div className="profile-divider"></div>
+											<p className="profile-background">A seasoned finance executive with extensive experience in cross-border capital markets and infrastructure financing. Mr. Kamau has led financing initiatives for major industrial and trade infrastructure projects across the continent.</p>
+											<div className="profile-expertise">
+												<span className="expertise-label">Expertise:</span>
+												<span className="expertise-text">Finance & Infrastructure Investment</span>
+											</div>
+										</div>
+									</div>
+
+									{/* Profile Card 3 */}
+									<div className="committee-profile-circular-card">
+										<div className="premium-hero-image-layout">
+											<div className="premium-main-image premium-3d-circle">
+												<div className="circle-gradient-border"></div>
+												<div className="circle-inner-shadow"></div>
+												<img src="https://ui-avatars.com/api/?name=Prof.+Amina+Diop&background=4e2b5a&color=fff&size=200&bold=true&font-size=0.5" alt="Prof. Amina Diop" />
+											</div>
+										</div>
+										<div className="profile-content">
+											<h4 className="profile-name">Prof. Amina Diop</h4>
+											<p className="profile-role">Director, Industrial Development Institute</p>
+											<div className="profile-divider"></div>
+											<p className="profile-background">An academic and practitioner with deep expertise in industrial policy and value chain development. Prof. Diop has contributed to shaping manufacturing strategies and industrial transformation initiatives in multiple African economies.</p>
+											<div className="profile-expertise">
+												<span className="expertise-label">Expertise:</span>
+												<span className="expertise-text">Industrial Policy & Value Chains</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				{/*===== RECOGNITION & VALIDATION COMMITTEE BANNER SECTION ENDS =======*/}
