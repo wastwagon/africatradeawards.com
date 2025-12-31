@@ -1694,6 +1694,356 @@ body.css-loaded {
 	z-index: 1;
 }
 
+.about-governance-section {
+	background: linear-gradient(135deg, 
+		#ffffff 0%, 
+		#fafafa 25%, 
+		#ffffff 50%, 
+		#f8f9fa 75%, 
+		#ffffff 100%);
+	padding: 80px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.about-governance-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: 
+		radial-gradient(circle at 40% 40%, rgba(192, 192, 192, 0.03) 0%, transparent 50%),
+		radial-gradient(circle at 60% 60%, rgba(78, 43, 90, 0.015) 0%, transparent 50%);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.about-governance-section .container {
+	position: relative;
+	z-index: 1;
+}
+
+/* Modern Committee Banner Section */
+.committee-modern-banner-section {
+	padding: 80px 0;
+	position: relative;
+	overflow: hidden;
+	min-height: 500px;
+	display: flex;
+	align-items: center;
+}
+
+/* Background Image */
+.banner-background-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	overflow: hidden;
+}
+
+.banner-background-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+	filter: brightness(0.7);
+}
+
+/* Gradient Overlay */
+.banner-gradient-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, 
+		rgba(78, 43, 90, 0.85) 0%, 
+		rgba(120, 80, 140, 0.75) 25%,
+		rgba(150, 120, 170, 0.7) 50%,
+		rgba(120, 80, 140, 0.75) 75%,
+		rgba(78, 43, 90, 0.85) 100%);
+	z-index: 1;
+	pointer-events: none;
+}
+
+.committee-modern-banner-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: 
+		radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+		radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 50%),
+		radial-gradient(circle at 50% 50%, rgba(120, 80, 140, 0.08) 0%, transparent 60%);
+	pointer-events: none;
+	z-index: 2;
+}
+
+/* Decorative Background Shapes */
+.banner-shape {
+	position: absolute;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.1);
+	pointer-events: none;
+	z-index: 2;
+	animation: floatShape 20s ease-in-out infinite;
+}
+
+.banner-shape-1 {
+	width: 200px;
+	height: 200px;
+	top: -50px;
+	left: -50px;
+	background: rgba(255, 255, 255, 0.08);
+	animation-delay: 0s;
+}
+
+.banner-shape-2 {
+	width: 150px;
+	height: 150px;
+	bottom: 20%;
+	left: 10%;
+	background: rgba(255, 255, 255, 0.1);
+	animation-delay: 2s;
+}
+
+.banner-shape-3 {
+	width: 100px;
+	height: 100px;
+	top: 15%;
+	right: 15%;
+	background: rgba(255, 255, 255, 0.1);
+	animation-delay: 4s;
+}
+
+.banner-shape-4 {
+	width: 80px;
+	height: 80px;
+	bottom: 10%;
+	right: 5%;
+	background: rgba(255, 255, 255, 0.1);
+	animation-delay: 6s;
+}
+
+@keyframes floatShape {
+	0%, 100% {
+		transform: translateY(0) translateX(0) scale(1);
+		opacity: 0.6;
+	}
+	50% {
+		transform: translateY(-30px) translateX(20px) scale(1.1);
+		opacity: 0.8;
+	}
+}
+
+.committee-modern-banner-section .container {
+	position: relative;
+	z-index: 3;
+}
+
+/* Banner Image Area */
+.committee-banner-image-area {
+	position: relative;
+	z-index: 1;
+	padding: 20px;
+}
+
+.banner-image-wrapper {
+	position: relative;
+	border-radius: 20px;
+	overflow: visible;
+	background: linear-gradient(135deg, 
+		rgba(240, 240, 250, 0.85) 0%, 
+		rgba(245, 245, 255, 0.9) 25%,
+		rgba(250, 250, 255, 0.95) 50%,
+		rgba(245, 245, 255, 0.9) 75%,
+		rgba(240, 240, 250, 0.85) 100%);
+	backdrop-filter: blur(10px);
+	padding: 24px;
+	box-shadow: 
+		0 12px 40px rgba(0, 0, 0, 0.25),
+		0 4px 16px rgba(192, 192, 192, 0.25),
+		inset 0 2px 0 rgba(255, 255, 255, 0.8),
+		inset 0 -2px 0 rgba(192, 192, 192, 0.15);
+	border: 2px solid rgba(192, 192, 192, 0.3);
+}
+
+.banner-image-wrapper::before {
+	content: "";
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	border-radius: 20px;
+	background: linear-gradient(135deg, 
+		rgba(192, 192, 192, 0.3) 0%, 
+		rgba(220, 220, 230, 0.25) 50%,
+		rgba(192, 192, 192, 0.3) 100%);
+	z-index: -1;
+	opacity: 0.6;
+}
+
+.banner-image-wrapper img {
+	width: 100%;
+	height: auto;
+	border-radius: 16px;
+	display: block;
+	object-fit: cover;
+	filter: brightness(1.05) contrast(1.1);
+	transform: scale(1.1);
+	transition: transform 0.3s ease;
+}
+
+/* Banner Content */
+.committee-banner-content {
+	position: relative;
+	z-index: 1;
+	color: #ffffff;
+}
+
+.banner-main-title {
+	font-family: var(--grotesk);
+	font-size: var(--ztc-font-size-font-s28);
+	font-weight: var(--ztc-weight-bold);
+	color: #ffffff;
+	margin: 0;
+	line-height: 1.2;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.banner-description {
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s16);
+	font-weight: var(--ztc-weight-regular);
+	color: rgba(255, 255, 255, 0.95);
+	line-height: 1.7;
+	margin: 0;
+}
+
+.banner-subtitle {
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s18);
+	font-weight: var(--ztc-weight-semibold);
+	color: #ffffff;
+	margin: 0;
+}
+
+.banner-footer-text {
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s15);
+	font-weight: var(--ztc-weight-regular);
+	color: rgba(255, 255, 255, 0.9);
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* Benefits List with Checkmarks */
+.committee-benefits-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.committee-benefits-list li {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s16);
+	font-weight: var(--ztc-weight-medium);
+	color: rgba(255, 255, 255, 0.95);
+	line-height: 1.6;
+}
+
+.committee-benefits-list li i {
+	width: 24px;
+	height: 24px;
+	min-width: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	color: #ffffff;
+	font-size: 12px;
+	margin-top: 2px;
+	flex-shrink: 0;
+}
+
+.committee-benefits-list li span {
+	flex: 1;
+}
+
+@media (max-width: 991px) {
+	.committee-modern-banner-section {
+		padding: 60px 0;
+		min-height: auto;
+	}
+	
+	.committee-banner-image-area {
+		margin-bottom: 40px;
+		padding: 0;
+	}
+	
+	.banner-main-title {
+		font-size: var(--ztc-font-size-font-s22);
+	}
+	
+	.banner-description {
+		font-size: var(--ztc-font-size-font-s15);
+	}
+	
+	.committee-benefits-list li {
+		font-size: var(--ztc-font-size-font-s15);
+	}
+}
+
+@media (max-width: 767px) {
+	.committee-modern-banner-section {
+		padding: 50px 0;
+	}
+	
+	.banner-main-title {
+		font-size: var(--ztc-font-size-font-s20);
+	}
+	
+	.banner-description,
+	.banner-footer-text {
+		font-size: var(--ztc-font-size-font-s14);
+	}
+	
+	.banner-subtitle {
+		font-size: var(--ztc-font-size-font-s16);
+	}
+	
+	.committee-benefits-list {
+		gap: 12px;
+	}
+	
+	.committee-benefits-list li {
+		font-size: var(--ztc-font-size-font-s14);
+		gap: 10px;
+	}
+	
+	.committee-benefits-list li i {
+		width: 20px;
+		height: 20px;
+		min-width: 20px;
+		font-size: 10px;
+	}
+}
+
 /* Enhanced Overview Heading */
 .about-section-enhanced .overview-heading {
 	background: none !important;
@@ -1716,6 +2066,7 @@ body.css-loaded {
 	.about-section-enhanced,
 	.about-process-section,
 	.about-framework-section,
+	.about-governance-section,
 	.about-summit-section {
 		padding: 60px 0;
 	}
@@ -1773,6 +2124,647 @@ body.css-loaded {
 	letter-spacing: 0.2px;
 }
 
+.committee-role-list {
+	list-style: none;
+	padding: 0;
+	margin: 16px 0;
+}
+
+.committee-role-list li {
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s16);
+	font-weight: var(--ztc-weight-medium);
+	color: var(--ztc-text-text-2);
+	line-height: 1.7;
+	margin: 12px 0;
+	padding-left: 28px;
+	position: relative;
+	letter-spacing: 0.2px;
+}
+
+.committee-role-list li::before {
+	content: "•";
+	position: absolute;
+	left: 0;
+	color: rgba(78, 43, 90, 0.7);
+	font-size: 24px;
+	font-weight: var(--ztc-weight-bold);
+	line-height: 1.4;
+}
+
+/* Committee Profiles Section */
+.committee-profiles-title {
+	font-family: var(--grotesk);
+	font-size: var(--ztc-font-size-font-s28);
+	font-weight: var(--ztc-weight-bold);
+	color: var(--ztc-text-text-2);
+	margin: 0;
+	letter-spacing: -0.5px;
+}
+
+.committee-profiles-circular-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 32px;
+	margin-top: 40px;
+	perspective: 1200px;
+}
+
+.committee-profile-circular-card {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 24px 20px;
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.98) 0%, 
+		rgba(250, 250, 255, 0.95) 50%, 
+		rgba(255, 255, 255, 0.98) 100%);
+	border-radius: 16px;
+	box-shadow: 
+		0 4px 20px rgba(78, 43, 90, 0.08),
+		0 2px 8px rgba(192, 192, 192, 0.12),
+		inset 0 1px 0 rgba(255, 255, 255, 0.9);
+	border: 1px solid rgba(78, 43, 90, 0.1);
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.committee-profile-circular-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 
+		0 12px 40px rgba(78, 43, 90, 0.15),
+		0 4px 16px rgba(192, 192, 192, 0.2),
+		inset 0 1px 0 rgba(255, 255, 255, 0.95);
+	border-color: rgba(78, 43, 90, 0.2);
+}
+
+.committee-profile-circular-card .premium-hero-image-layout {
+	width: 100%;
+	max-width: 110px;
+	margin: 0 auto 16px;
+	position: relative;
+	z-index: 2;
+}
+
+.committee-profile-circular-card .premium-main-image {
+	width: 100%;
+	max-width: 110px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	overflow: visible;
+	position: relative;
+	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	margin: 0 auto;
+	animation: glowPulse 4s ease-in-out infinite;
+}
+
+.committee-profile-circular-card .premium-main-image::before {
+	content: "";
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	right: -5px;
+	bottom: -5px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.9) 0%, 
+		rgba(192, 192, 192, 0.8) 25%, 
+		rgba(78, 43, 90, 0.7) 50%, 
+		rgba(78, 43, 90, 0.9) 75%, 
+		rgba(192, 192, 192, 0.8) 100%);
+	z-index: 0;
+	box-shadow: 
+		0 0 0 1.5px rgba(255, 255, 255, 0.3), 
+		0 0 0 3px rgba(192, 192, 192, 0.2), 
+		0 0 0 4px rgba(78, 43, 90, 0.15), 
+		0 12px 36px rgba(78, 43, 90, 0.3), 
+		0 6px 18px rgba(78, 43, 90, 0.2), 
+		inset 0 1.5px 6px rgba(255, 255, 255, 0.4);
+	transition: all 0.5s ease;
+}
+
+.committee-profile-circular-card .premium-main-image::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 50%;
+	background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%), 
+		radial-gradient(circle at 70% 70%, rgba(78, 43, 90, 0.2) 0%, transparent 50%);
+	z-index: 2;
+	pointer-events: none;
+}
+
+.committee-profile-circular-card .circle-gradient-border {
+	position: absolute;
+	top: -4px;
+	left: -4px;
+	right: -4px;
+	bottom: -4px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, 
+		rgba(78, 43, 90, 0.95) 0%, 
+		rgba(192, 192, 192, 0.85) 30%, 
+		rgba(255, 255, 255, 0.9) 50%, 
+		rgba(192, 192, 192, 0.85) 70%, 
+		rgba(78, 43, 90, 0.95) 100%);
+	z-index: 1;
+	padding: 2.5px;
+	box-shadow: 
+		inset 0 1.5px 5px rgba(255, 255, 255, 0.5), 
+		inset 0 -1.5px 5px rgba(78, 43, 90, 0.3), 
+		0 2.5px 12px rgba(78, 43, 90, 0.25);
+	animation: rotateBorder 20s linear infinite;
+}
+
+.committee-profile-circular-card .circle-gradient-border::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: calc(100% - 8px);
+	height: calc(100% - 8px);
+	border-radius: 50%;
+	background: transparent;
+	box-shadow: inset 0 0 20px rgba(78, 43, 90, 0.2);
+}
+
+.committee-profile-circular-card .circle-inner-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 50%;
+	background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.4) 0%, transparent 40%), 
+		radial-gradient(circle at 75% 75%, rgba(78, 43, 90, 0.3) 0%, transparent 50%);
+	z-index: 3;
+	pointer-events: none;
+	mix-blend-mode: overlay;
+}
+
+.committee-profile-circular-card .premium-main-image:hover {
+	transform: translateY(-8px) rotateY(5deg) rotateX(-5deg);
+}
+
+.committee-profile-circular-card .premium-main-image:hover::before {
+	box-shadow: 
+		0 0 0 2px rgba(255, 255, 255, 0.4), 
+		0 0 0 4px rgba(192, 192, 192, 0.3), 
+		0 0 0 6px rgba(78, 43, 90, 0.2), 
+		0 30px 80px rgba(78, 43, 90, 0.4), 
+		0 15px 40px rgba(78, 43, 90, 0.3), 
+		inset 0 2px 15px rgba(255, 255, 255, 0.5);
+}
+
+.committee-profile-circular-card .premium-main-image:hover .circle-gradient-border {
+	box-shadow: 
+		inset 0 3px 10px rgba(255, 255, 255, 0.6), 
+		inset 0 -3px 10px rgba(78, 43, 90, 0.4), 
+		0 6px 30px rgba(78, 43, 90, 0.35);
+}
+
+.committee-profile-circular-card .premium-main-image img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+	object-position: center center;
+	border-radius: 50%;
+	position: relative;
+	z-index: 2;
+	filter: brightness(1.05) contrast(1.1);
+	transition: filter 0.5s ease, transform 0.5s ease;
+	animation: subtleFloat 6s ease-in-out infinite;
+}
+
+.committee-profile-circular-card .premium-main-image:hover img {
+	filter: brightness(1.1) contrast(1.15);
+}
+
+.committee-profiles-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 32px;
+	margin-top: 40px;
+	perspective: 1200px;
+}
+
+.committee-profile-card {
+	background: linear-gradient(135deg, 
+		rgba(240, 240, 250, 0.95) 0%, 
+		rgba(245, 245, 255, 0.98) 15%,
+		rgba(250, 248, 255, 1) 30%,
+		rgba(245, 240, 255, 0.98) 45%,
+		rgba(240, 235, 250, 0.95) 60%,
+		rgba(235, 230, 245, 0.92) 75%,
+		rgba(240, 240, 250, 0.95) 100%);
+	border-radius: 24px;
+	padding: 32px 28px;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	overflow: visible;
+	box-shadow: 
+		0 8px 32px rgba(78, 43, 90, 0.12),
+		0 4px 16px rgba(192, 192, 192, 0.15),
+		0 2px 8px rgba(78, 43, 90, 0.08),
+		inset 0 1px 0 rgba(255, 255, 255, 0.9),
+		inset 0 -1px 0 rgba(78, 43, 90, 0.05);
+	border: 2px solid;
+	border-image: linear-gradient(135deg, 
+		rgba(78, 43, 90, 0.2) 0%, 
+		rgba(120, 80, 140, 0.15) 25%,
+		rgba(192, 192, 192, 0.25) 50%,
+		rgba(120, 80, 140, 0.15) 75%,
+		rgba(78, 43, 90, 0.2) 100%) 1;
+	background-size: 200% 200%;
+	animation: profileGradientShift 8s ease infinite;
+}
+
+@keyframes profileGradientShift {
+	0%, 100% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+}
+
+.committee-profile-card::before {
+	content: "";
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	background: linear-gradient(135deg, 
+		rgba(78, 43, 90, 0.4) 0%, 
+		rgba(120, 80, 140, 0.3) 25%,
+		rgba(192, 192, 192, 0.4) 50%,
+		rgba(120, 80, 140, 0.3) 75%,
+		rgba(78, 43, 90, 0.4) 100%);
+	border-radius: 24px;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	filter: blur(8px);
+}
+
+.committee-profile-card::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 5px;
+	background: linear-gradient(90deg, 
+		rgba(78, 43, 90, 0.5) 0%, 
+		rgba(120, 80, 140, 0.4) 25%,
+		rgba(192, 192, 192, 0.5) 50%,
+		rgba(120, 80, 140, 0.4) 75%,
+		rgba(78, 43, 90, 0.5) 100%);
+	border-radius: 24px 24px 0 0;
+	background-size: 200% 100%;
+	animation: shimmerBorder 3s ease infinite;
+}
+
+@keyframes shimmerBorder {
+	0%, 100% {
+		background-position: 0% 0%;
+	}
+	50% {
+		background-position: 100% 0%;
+	}
+}
+
+.committee-profile-card:hover {
+	transform: translateY(-12px) rotateX(2deg) rotateY(-1deg) scale(1.02);
+	box-shadow: 
+		0 20px 60px rgba(78, 43, 90, 0.25),
+		0 8px 24px rgba(192, 192, 192, 0.3),
+		0 4px 12px rgba(78, 43, 90, 0.15),
+		inset 0 2px 0 rgba(255, 255, 255, 0.95),
+		inset 0 -2px 0 rgba(78, 43, 90, 0.1);
+	border-image: linear-gradient(135deg, 
+		rgba(78, 43, 90, 0.4) 0%, 
+		rgba(120, 80, 140, 0.3) 25%,
+		rgba(192, 192, 192, 0.4) 50%,
+		rgba(120, 80, 140, 0.3) 75%,
+		rgba(78, 43, 90, 0.4) 100%) 1;
+}
+
+.committee-profile-card:hover::before {
+	opacity: 0.6;
+}
+
+.profile-avatar-wrapper {
+	width: 120px;
+	height: 120px;
+	margin: 0 auto 24px;
+	position: relative;
+	z-index: 2;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+}
+
+.profile-avatar {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 5px solid;
+	border-image: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.95) 0%, 
+		rgba(240, 240, 250, 0.9) 25%,
+		rgba(192, 192, 200, 0.85) 50%,
+		rgba(240, 240, 250, 0.9) 75%,
+		rgba(255, 255, 255, 0.95) 100%) 1;
+	box-shadow: 
+		0 12px 40px rgba(78, 43, 90, 0.2),
+		0 6px 20px rgba(192, 192, 192, 0.25),
+		0 2px 8px rgba(78, 43, 90, 0.15),
+		inset 0 0 0 4px rgba(78, 43, 90, 0.1),
+		inset 0 0 20px rgba(120, 80, 140, 0.1);
+	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	transform: translateZ(20px);
+	position: relative;
+}
+
+.profile-avatar::before {
+	content: "";
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	right: -5px;
+	bottom: -5px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, 
+		rgba(78, 43, 90, 0.3) 0%, 
+		rgba(120, 80, 140, 0.25) 50%,
+		rgba(192, 192, 192, 0.3) 100%);
+	z-index: -1;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	filter: blur(12px);
+}
+
+.committee-profile-card:hover .profile-avatar {
+	transform: translateZ(30px) scale(1.08) rotateY(5deg);
+	box-shadow: 
+		0 20px 60px rgba(78, 43, 90, 0.3),
+		0 10px 30px rgba(192, 192, 192, 0.35),
+		0 4px 12px rgba(78, 43, 90, 0.2),
+		inset 0 0 0 4px rgba(78, 43, 90, 0.15),
+		inset 0 0 30px rgba(120, 80, 140, 0.15);
+	border-image: linear-gradient(135deg, 
+		rgba(255, 255, 255, 1) 0%, 
+		rgba(240, 240, 250, 0.95) 25%,
+		rgba(192, 192, 200, 0.9) 50%,
+		rgba(240, 240, 250, 0.95) 75%,
+		rgba(255, 255, 255, 1) 100%) 1;
+}
+
+.committee-profile-card:hover .profile-avatar::before {
+	opacity: 0.7;
+}
+
+.profile-content {
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	transform-style: preserve-3d;
+	width: 100%;
+	max-width: 100%;
+	padding: 0 8px;
+}
+
+.committee-profile-circular-card .profile-content {
+	padding: 0;
+	width: 100%;
+}
+
+.profile-name {
+	font-family: var(--grotesk);
+	font-size: var(--ztc-font-size-font-s18);
+	font-weight: var(--ztc-weight-bold);
+	color: var(--ztc-text-text-2);
+	margin: 0 0 4px 0;
+	letter-spacing: -0.3px;
+	line-height: 1.3;
+	transition: all 0.3s ease;
+}
+
+.committee-profile-circular-card:hover .profile-name {
+	color: rgba(78, 43, 90, 0.95);
+}
+
+.profile-role {
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s12);
+	font-weight: var(--ztc-weight-semibold);
+	color: rgba(78, 43, 90, 0.85);
+	margin: 0 0 12px 0;
+	line-height: 1.4;
+	transition: all 0.3s ease;
+}
+
+.committee-profile-circular-card:hover .profile-role {
+	color: rgba(78, 43, 90, 0.95);
+}
+
+.profile-divider {
+	width: 50px;
+	height: 2px;
+	background: linear-gradient(90deg, 
+		transparent 0%, 
+		rgba(78, 43, 90, 0.4) 50%,
+		transparent 100%);
+	margin: 0 auto 12px;
+	border-radius: 2px;
+	position: relative;
+	transition: all 0.4s ease;
+}
+
+.committee-profile-circular-card:hover .profile-divider {
+	width: 60px;
+	background: linear-gradient(90deg, 
+		transparent 0%, 
+		rgba(78, 43, 90, 0.5) 50%,
+		transparent 100%);
+}
+
+.profile-background {
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s14);
+	font-weight: var(--ztc-weight-regular);
+	color: var(--ztc-text-text-3);
+	line-height: 1.6;
+	margin: 0 0 14px 0;
+	text-align: center;
+}
+
+.profile-expertise {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 10px 14px;
+	background: linear-gradient(135deg, 
+		rgba(240, 240, 250, 0.8) 0%, 
+		rgba(245, 240, 255, 0.9) 50%,
+		rgba(240, 240, 250, 0.8) 100%);
+	border-radius: 10px;
+	border: 1px solid rgba(78, 43, 90, 0.12);
+	margin-top: 0;
+	position: relative;
+	transition: all 0.3s ease;
+	box-shadow: 
+		0 2px 8px rgba(78, 43, 90, 0.06),
+		inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.committee-profile-circular-card:hover .profile-expertise {
+	box-shadow: 
+		0 4px 12px rgba(78, 43, 90, 0.1),
+		inset 0 1px 0 rgba(255, 255, 255, 0.8);
+	border-color: rgba(78, 43, 90, 0.18);
+	background: linear-gradient(135deg, 
+		rgba(240, 240, 250, 0.9) 0%, 
+		rgba(245, 240, 255, 0.95) 50%,
+		rgba(240, 240, 250, 0.9) 100%);
+}
+
+.expertise-label {
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s12);
+	font-weight: var(--ztc-weight-semibold);
+	color: rgba(78, 43, 90, 0.7);
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	text-align: left;
+}
+
+.expertise-text {
+	font-family: var(--figtree);
+	font-size: var(--ztc-font-size-font-s14);
+	font-weight: var(--ztc-weight-medium);
+	color: var(--ztc-text-text-2);
+	text-align: left;
+	line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+	.committee-profiles-circular-grid {
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 40px;
+	}
+	
+	.committee-profile-circular-card {
+		padding: 20px 18px;
+	}
+	
+	.committee-profile-circular-card .premium-hero-image-layout {
+		max-width: 100px;
+		margin-bottom: 18px;
+	}
+	
+	.committee-profile-circular-card .premium-main-image {
+		max-width: 100px;
+	}
+	
+	.committee-profiles-grid {
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 28px;
+	}
+	
+	.committee-profile-card {
+		padding: 28px 24px;
+	}
+	
+	.profile-avatar-wrapper {
+		width: 110px;
+		height: 110px;
+		margin-bottom: 20px;
+	}
+	
+	.committee-profiles-title {
+		font-size: var(--ztc-font-size-font-s24);
+	}
+}
+
+@media (max-width: 767px) {
+	.committee-profiles-circular-grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+		margin-top: 32px;
+	}
+	
+	.committee-profile-circular-card {
+		padding: 18px 16px;
+	}
+	
+	.committee-profile-circular-card .premium-hero-image-layout {
+		max-width: 90px;
+		margin-bottom: 16px;
+	}
+	
+	.committee-profile-circular-card .premium-main-image {
+		max-width: 90px;
+	}
+	
+	.profile-name {
+		font-size: var(--ztc-font-size-font-s17);
+	}
+	
+	.profile-role {
+		font-size: var(--ztc-font-size-font-s11);
+	}
+	
+	.profile-background {
+		font-size: var(--ztc-font-size-font-s13);
+		line-height: 1.6;
+	}
+	
+	.committee-profiles-grid {
+		grid-template-columns: 1fr;
+		gap: 24px;
+		margin-top: 32px;
+	}
+	
+	.committee-profile-card {
+		padding: 24px 20px;
+		border-radius: 16px;
+	}
+	
+	.profile-avatar-wrapper {
+		width: 100px;
+		height: 100px;
+		margin-bottom: 18px;
+	}
+	
+	.profile-name {
+		font-size: var(--ztc-font-size-font-s16);
+	}
+	
+	.profile-role {
+		font-size: var(--ztc-font-size-font-s11);
+	}
+	
+	.profile-background {
+		font-size: var(--ztc-font-size-font-s13);
+		line-height: 1.65;
+	}
+	
+	.committee-profiles-title {
+		font-size: var(--ztc-font-size-font-s22);
+	}
+}
+
 @media (max-width: 991px) {
 	.compact-silver-text-box {
 		padding: 20px 28px;
@@ -1782,6 +2774,12 @@ body.css-loaded {
 	.compact-text-content p {
 		font-size: var(--ztc-font-size-font-s15);
 		line-height: 1.65;
+	}
+	
+	.committee-role-list li {
+		font-size: var(--ztc-font-size-font-s15);
+		line-height: 1.65;
+		padding-left: 24px;
 	}
 }
 
@@ -1794,6 +2792,17 @@ body.css-loaded {
 	.compact-text-content p {
 		font-size: var(--ztc-font-size-font-s14);
 		line-height: 1.6;
+	}
+	
+	.committee-role-list li {
+		font-size: var(--ztc-font-size-font-s14);
+		line-height: 1.6;
+		padding-left: 22px;
+		margin: 10px 0;
+	}
+	
+	.committee-role-list li::before {
+		font-size: 20px;
 	}
 }
 
@@ -1826,11 +2835,11 @@ body.css-loaded {
 	display: inline-block;
 	color: rgba(78, 43, 90, 0.95);
 	font-family: var(--grotesk);
-	font-size: var(--ztc-font-size-font-s13);
+	font-size: var(--ztc-font-size-font-s11);
 	font-weight: var(--ztc-weight-bold);
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	text-transform: uppercase;
-	padding: 8px 20px;
+	padding: 6px 16px;
 	background: linear-gradient(135deg, rgba(78, 43, 90, 0.08) 0%, rgba(120, 80, 140, 0.06) 50%, rgba(192, 192, 192, 0.04) 100%);
 	border-radius: 30px;
 	margin-bottom: 0;
@@ -1838,22 +2847,22 @@ body.css-loaded {
 
 @media (max-width: 767px) {
 	.about1-section-area .modern-section-header .section-accent-label {
-		font-size: var(--ztc-font-size-font-s12);
-		padding: 6px 16px;
-		letter-spacing: 2px;
+		font-size: var(--ztc-font-size-font-s10);
+		padding: 5px 14px;
+		letter-spacing: 1.5px;
 	}
 }
 
 .about1-section-area .modern-section-header .modern-section-title,
 .about1-section-area .modern-section-header h2.modern-section-title {
-	font-size: var(--ztc-font-size-font-s20) !important;
+	font-size: var(--ztc-font-size-font-s18) !important;
 	line-height: 1.3 !important;
 	color: #ffffff !important;
 	font-weight: var(--ztc-weight-bold) !important;
-	letter-spacing: 0.8px !important;
+	letter-spacing: 0.6px !important;
 	margin-bottom: 0 !important;
 	display: inline-block !important;
-	padding: 12px 28px !important;
+	padding: 10px 24px !important;
 	background: linear-gradient(135deg, rgba(78, 43, 90, 0.98) 0%, rgba(95, 59, 124, 0.96) 25%, rgba(120, 80, 140, 0.94) 50%, rgba(95, 59, 124, 0.96) 75%, rgba(78, 43, 90, 0.98) 100%) !important;
 	border-radius: 50px !important;
 	box-shadow: 0 4px 16px rgba(78, 43, 90, 0.3), 0 2px 8px rgba(78, 43, 90, 0.2), 0 0 0 1px rgba(192, 192, 192, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
@@ -1865,9 +2874,9 @@ body.css-loaded {
 @media (max-width: 767px) {
 	.about1-section-area .modern-section-header .modern-section-title,
 	.about1-section-area .modern-section-header h2.modern-section-title {
-		font-size: var(--ztc-font-size-font-s18) !important;
-		padding: 10px 24px !important;
-		letter-spacing: 0.6px !important;
+		font-size: var(--ztc-font-size-font-s16) !important;
+		padding: 8px 20px !important;
+		letter-spacing: 0.5px !important;
 	}
 }
 
@@ -2169,6 +3178,142 @@ body.css-loaded {
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(192, 192, 192, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
 }
 
+/* Modern Award Card Design - Circular Image Style */
+.award-card-modern {
+	background: #ffffff !important;
+	border-radius: 16px !important;
+	padding: 0 !important;
+	border: 1px solid rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+	transition: all 0.3s ease !important;
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: center !important;
+	overflow: hidden !important;
+}
+
+.award-card-modern:hover {
+	transform: translateY(-4px) !important;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+	border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.award-card-modern .circular-image-top {
+	width: 100% !important;
+	height: 320px !important;
+	overflow: visible !important;
+	position: relative !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	border-radius: 0 !important;
+	display: flex !important;
+	align-items: flex-start !important;
+	justify-content: center !important;
+	padding-top: 30px !important;
+}
+
+.award-card-modern .circular-image-top::before {
+	display: none !important;
+}
+
+.award-card-modern .circular-image-top::after {
+	display: none !important;
+}
+
+.award-card-modern .circular-image-top img {
+	width: 220px !important;
+	height: 260px !important;
+	object-fit: cover !important;
+	object-position: center top !important;
+	margin: 0 auto !important;
+	display: block !important;
+	border: none !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+	transition: all 0.3s ease !important;
+	clip-path: polygon(50% 0%, 0% 0%, 0% 65%, 5% 75%, 10% 82%, 15% 88%, 20% 92%, 25% 95%, 30% 97%, 35% 98.5%, 40% 99.5%, 45% 100%, 50% 100%, 55% 100%, 60% 99.5%, 65% 98.5%, 70% 97%, 75% 95%, 80% 92%, 85% 88%, 90% 82%, 95% 75%, 100% 65%, 100% 0%) !important;
+	-webkit-clip-path: polygon(50% 0%, 0% 0%, 0% 65%, 5% 75%, 10% 82%, 15% 88%, 20% 92%, 25% 95%, 30% 97%, 35% 98.5%, 40% 99.5%, 45% 100%, 50% 100%, 55% 100%, 60% 99.5%, 65% 98.5%, 70% 97%, 75% 95%, 80% 92%, 85% 88%, 90% 82%, 95% 75%, 100% 65%, 100% 0%) !important;
+	position: relative !important;
+	border-radius: 0 !important;
+}
+
+.award-card-modern:hover .circular-image-top img {
+	transform: scale(1.05) translateY(-5px) !important;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.award-card-modern .card-content-box {
+	padding: 24px 28px 32px !important;
+	text-align: center !important;
+	width: 100% !important;
+	background: transparent !important;
+	position: relative !important;
+}
+
+.award-card-modern .card-content-box::before {
+	display: none !important;
+}
+
+.award-card-modern .card-content-box .card-title {
+	color: #000000 !important;
+	font-size: var(--ztc-font-size-font-s20) !important;
+	font-weight: var(--ztc-weight-bold) !important;
+	font-family: var(--grotesk) !important;
+	margin: 0 0 16px 0 !important;
+	line-height: 1.3 !important;
+	-webkit-text-fill-color: #000000 !important;
+	background: none !important;
+	-webkit-background-clip: unset !important;
+	background-clip: unset !important;
+}
+
+.award-card-modern .card-description {
+	margin: 0 0 20px 0 !important;
+}
+
+.award-card-modern .card-description p {
+	font-family: var(--figtree) !important;
+	font-size: var(--ztc-font-size-font-s15) !important;
+	font-weight: var(--ztc-weight-regular) !important;
+	color: rgba(0, 0, 0, 0.7) !important;
+	line-height: 1.6 !important;
+	margin-bottom: 0 !important;
+	padding: 0 !important;
+	text-align: left !important;
+}
+
+.award-card-modern .card-description .tier-highlight-text {
+	display: none !important;
+}
+
+.award-card-modern .card-read-more {
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 8px !important;
+	font-family: var(--figtree) !important;
+	font-size: var(--ztc-font-size-font-s14) !important;
+	font-weight: var(--ztc-weight-semibold) !important;
+	color: rgba(78, 43, 90, 0.9) !important;
+	text-decoration: none !important;
+	transition: all 0.3s ease !important;
+	margin-top: 8px !important;
+}
+
+.award-card-modern .card-read-more:hover {
+	color: rgba(78, 43, 90, 1) !important;
+	gap: 12px !important;
+}
+
+.award-card-modern .card-read-more i {
+	font-size: 12px !important;
+	transition: transform 0.3s ease !important;
+}
+
+.award-card-modern .card-read-more:hover i {
+	transform: translateX(4px) !important;
+}
+
 .awards-structure-section .image-card .card-content-box .card-title,
 .elegant-cta-section .image-card .card-content-box .card-title {
 	color: #000000 !important;
@@ -2180,6 +3325,29 @@ body.css-loaded {
 }
 
 @media (max-width: 767px) {
+	.award-card-modern .circular-image-top {
+		height: 280px !important;
+		padding-top: 20px !important;
+	}
+	
+	.award-card-modern .circular-image-top img {
+		width: 180px !important;
+		height: 180px !important;
+		margin: 0 auto !important;
+	}
+	
+	.award-card-modern .card-content-box {
+		padding: 20px 24px 28px !important;
+	}
+	
+	.award-card-modern .card-content-box .card-title {
+		font-size: var(--ztc-font-size-font-s18) !important;
+	}
+	
+	.award-card-modern .card-description p {
+		font-size: var(--ztc-font-size-font-s14) !important;
+	}
+	
 	.awards-structure-section .image-card .card-content-box .card-title,
 	.elegant-cta-section .image-card .card-content-box .card-title {
 		font-size: var(--ztc-font-size-font-s16) !important;
