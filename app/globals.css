@@ -4480,6 +4480,48 @@ body.css-loaded {
 	}
 }
 
+/* Tier Read More Link */
+.tier-read-more {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-family: var(--grotesk);
+	font-size: var(--ztc-font-size-font-s14);
+	font-weight: var(--ztc-weight-semibold);
+	color: #4e2b5a;
+	text-decoration: none;
+	margin-top: auto;
+	padding-top: 20px;
+	border-top: 1px solid rgba(78, 43, 90, 0.1);
+	transition: all 0.3s ease;
+}
+
+.tier-read-more:hover {
+	color: #78508c;
+	gap: 12px;
+}
+
+.tier-read-more i {
+	font-size: 12px;
+	transition: transform 0.3s ease;
+}
+
+.tier-read-more:hover i {
+	transform: translateX(4px);
+}
+
+.compact-awards-structure-section .tier-body-elegant {
+	display: flex;
+	flex-direction: column;
+}
+
+@media (max-width: 767px) {
+	.tier-read-more {
+		font-size: var(--ztc-font-size-font-s13);
+		padding-top: 16px;
+	}
+}
+
 /* Recognition & Governance Cards Section - Purple Compact Design */
 .about1-section-area.recognition-governance-cards-section {
 	position: relative;

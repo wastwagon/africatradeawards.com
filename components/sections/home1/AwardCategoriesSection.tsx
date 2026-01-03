@@ -67,7 +67,7 @@ export default function AwardCategoriesSection() {
 				</div>
 				<div className="space32" />
 				<div className="elegant-tiers-grid">
-					{tiers.slice(0, 3).map((tier, index) => (
+					{tiers.map((tier, index) => (
 						<div 
 							key={tier.id} 
 							className="elegant-tier-card"
@@ -88,6 +88,11 @@ export default function AwardCategoriesSection() {
 									<h3 className="tier-name-elegant">{tier.title}</h3>
 									<div className="space16" />
 									<p className="tier-text-elegant">{tier.description}</p>
+									<div className="space20" />
+									<Link href="/awards-structure" className="tier-read-more">
+										<span>Read More</span>
+										<i className="fa-solid fa-arrow-right"></i>
+									</Link>
 								</div>
 
 								{/* Bottom Border */}
