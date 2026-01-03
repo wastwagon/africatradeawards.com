@@ -83,49 +83,27 @@ export default function About() {
 					{/*===== OVERVIEW AREA ENDS =======*/}
 					
 					{/*===== RECOGNITION PROCESS & GOVERNANCE CARDS AREA STARTS =======*/}
-					<div className="about1-section-area recognition-governance-cards-section sp2 about-section-silver">
-						{/* Animated Decorative Elements */}
-						<div className="animated-sparkle sparkle-1"></div>
-						<div className="animated-sparkle sparkle-2"></div>
-						<div className="animated-sparkle sparkle-3"></div>
-						<div className="animated-sparkle sparkle-4"></div>
-						<div className="animated-sparkle sparkle-5"></div>
-						
-						<div className="container">
-							<div className="elegant-tiers-grid">
-								{/* Recognition Process Card */}
-								<div className="elegant-tier-card" data-aos="fade-up" data-aos-duration={800}>
-									<div className="tier-card-elegant">
-										<div className="tier-body-elegant">
-											<h3 className="tier-name-elegant">How Recognition Works</h3>
-											<div className="tier-text-elegant">
-												<p>The 2026 Africa Trade Awards are conferred as recognition honours. They do not operate as competitive prizes and are not based on open nominations or public voting. Recognition is determined through a structured review process conducted by the Recognition and Validation Committee, drawing on evidence of delivered outcomes within the reference period.</p>
-												<p className="tier-text-highlight">Consideration is given to the scale, durability, and relevance of each contribution, including its effect on production capacity, trade execution, industrial value chains, or policy and regulatory systems. The emphasis is on work whose impact is visible in operation—through facilities built, systems deployed, capital mobilised, or reforms implemented.</p>
-											</div>
-											<div className="tier-card-address">
-												<div className="address-label">Africa Trade Awards Secretariat</div>
-												<div className="address-org">African Trade Chamber</div>
-												<div className="address-location">Accra, Ghana</div>
-											</div>
-										</div>
+					<div className="about1-section-area recognition-governance-cards-section sp2">
+						<div className="recognition-governance-unified-card">
+							<div className="recognition-governance-content-wrapper">
+								{/* Left Column - Recognition Process */}
+								<div className="recognition-column" data-aos="fade-up" data-aos-duration={800}>
+									<h3 className="tier-name-elegant">How Recognition Works</h3>
+									<div className="tier-text-elegant">
+										<p>The 2026 Africa Trade Awards are conferred as recognition honours. They do not operate as competitive prizes and are not based on open nominations or public voting. Recognition is determined through a structured review process conducted by the Recognition and Validation Committee, drawing on evidence of delivered outcomes within the reference period.</p>
+										<p className="tier-text-highlight">Consideration is given to the scale, durability, and relevance of each contribution, including its effect on production capacity, trade execution, industrial value chains, or policy and regulatory systems. The emphasis is on work whose impact is visible in operation—through facilities built, systems deployed, capital mobilised, or reforms implemented.</p>
 									</div>
 								</div>
 
-								{/* Governance & Oversight Card */}
-								<div className="elegant-tier-card" data-aos="fade-up" data-aos-duration={900}>
-									<div className="tier-card-elegant">
-										<div className="tier-body-elegant">
-											<h3 className="tier-name-elegant">Governance & Oversight</h3>
-											<div className="tier-text-elegant">
-												<p>The Africa Trade Awards are governed through a structured oversight framework designed to ensure professional judgment, consistency, and institutional credibility in all recognition decisions.</p>
-												<p className="tier-text-highlight">Governance arrangements reflect the nature of the Awards as recognition honours, grounded in evidence of delivered outcomes and assessed through informed, independent review.</p>
-											</div>
-											<div className="tier-card-address">
-												<div className="address-label">Africa Trade Awards Secretariat</div>
-												<div className="address-org">African Trade Chamber</div>
-												<div className="address-location">Accra, Ghana</div>
-											</div>
-										</div>
+								{/* Divider */}
+								<div className="recognition-governance-divider"></div>
+
+								{/* Right Column - Governance & Oversight */}
+								<div className="governance-column" data-aos="fade-up" data-aos-duration={900}>
+									<h3 className="tier-name-elegant">Governance & Oversight</h3>
+									<div className="tier-text-elegant">
+										<p>The Africa Trade Awards are governed through a structured oversight framework designed to ensure professional judgment, consistency, and institutional credibility in all recognition decisions.</p>
+										<p className="tier-text-highlight">Governance arrangements reflect the nature of the Awards as recognition honours, grounded in evidence of delivered outcomes and assessed through informed, independent review.</p>
 									</div>
 								</div>
 							</div>
