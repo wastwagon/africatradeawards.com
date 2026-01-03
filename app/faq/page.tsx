@@ -130,7 +130,6 @@ export default function Faq() {
 							<div className="row">
 								<div className="col-lg-9 m-auto">
 									<div className="heading1 text-center">
-										<h1>Frequently Asked Questions</h1>
 										<div className="space20" />
 										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Frequently Asked Questions</span></Link>
 									</div>

@@ -18,7 +18,7 @@ export default function AboutSection() {
 							<div className="premium-main-image premium-3d-circle">
 								<div className="circle-gradient-border"></div>
 								<div className="circle-inner-shadow"></div>
-								<img src="/assets/img/all-images/award-winner.webp" alt="Africa Trade Awards" />
+								<img src="/assets/img/all-images/about.jpeg" alt="Africa Trade Awards" />
 							</div>
 						</div>
 					</div>

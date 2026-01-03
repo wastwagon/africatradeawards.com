@@ -111,8 +111,6 @@ export default function ContactForm() {
 							<div className="form-header">
 								<div className="heading2 text-center">
 									<h5 data-aos="fade-up" data-aos-duration={800}>Send Us a Message</h5>
-									<div className="space18" />
-									<h2 className="text-anime-style-3">Get In Touch</h2>
 									<div className="space16" />
 									<p data-aos="fade-up" data-aos-duration={900}>
 										Have questions or want to learn more? Fill out the form below and we&apos;ll get back to you as soon as possible.

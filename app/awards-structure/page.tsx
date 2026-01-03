@@ -35,7 +35,6 @@ export default function AwardsStructure() {
 							<div className="row">
 								<div className="col-lg-4 m-auto">
 									<div className="heading1 text-center">
-										<h1>Awards Structure</h1>
 										<div className="space20" />
 										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Awards Structure</span></Link>
 									</div>
@@ -45,26 +44,18 @@ export default function AwardsStructure() {
 					</div>
 					
 					{/*===== OVERVIEW AREA STARTS =======*/}
-					<div className="about1-section-area overview-section sp1">
+					<div className="compact-awards-structure-section">
 						<div className="container">
 							<div className="row">
 								<div className="col-lg-10 m-auto">
-									<div className="modern-section-header text-center space-margin60">
-										<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Structure</span>
-										<div className="space20" />
-										<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Tiered Recognition Framework</h2>
+									<div className="awards-header-compact text-center" data-aos="fade-up" data-aos-duration={800}>
+										<h2 className="awards-title-compact">Tiered Recognition Framework</h2>
 										<div className="space16" />
-										<div className="compact-silver-text-box">
-											<div className="compact-text-content">
-												<p>The Africa Trade Awards are organised across a tiered structure designed to reflect the different layers through which Africa&apos;s trade and industrial systems are shaped, delivered, and sustained.</p>
-											</div>
-										</div>
+										<p className="awards-intro-compact">The Africa Trade Awards are organised across a tiered structure designed to reflect the different layers through which Africa&apos;s trade and industrial systems are shaped, delivered, and sustained.</p>
 									</div>
 									<div className="space40" />
-									<div className="compact-silver-text-box">
-										<div className="compact-text-content">
-											<p>The structure recognises that trade outcomes are not produced by a single set of actors, but by the interaction of leadership decisions, industrial production, enabling markets, infrastructure, finance, and policy execution. Each tier therefore focuses on a distinct dimension of contribution, while collectively reflecting the full architecture of Africa&apos;s trade and industrial development.</p>
-										</div>
+									<div className="awards-header-compact text-center">
+										<p className="awards-intro-compact">The structure recognises that trade outcomes are not produced by a single set of actors, but by the interaction of leadership decisions, industrial production, enabling markets, infrastructure, finance, and policy execution. Each tier therefore focuses on a distinct dimension of contribution, while collectively reflecting the full architecture of Africa&apos;s trade and industrial development.</p>
 									</div>
 								</div>
 							</div>
@@ -73,80 +64,113 @@ export default function AwardsStructure() {
 					{/*===== OVERVIEW AREA ENDS =======*/}
 					
 					{/*===== TIERS GRID AREA STARTS =======*/}
-					<div className="elegant-cta-section">
-						<div className="image-cards-wrapper">
+					<div className="compact-awards-structure-section">
 						<div className="container">
-								<div className="image-cards-grid image-cards-grid-all">
-									{/* Tier I - Continental Leadership */}
-									<div className="image-card" data-aos="fade-up" data-aos-duration={800}>
-										<div className="card-image-wrapper">
-											<img src="/assets/img/all-images/categories/Continental Leadership.jpg" alt="Tier I – Continental Leadership" />
+							<div className="elegant-tiers-grid">
+								{/* Tier I - Continental Leadership */}
+								<div className="elegant-tier-card" data-aos="fade-up" data-aos-duration={800}>
+									<div className="tier-card-elegant">
+										<div className="tier-top-elegant">
+											<div className="tier-number-elegant" style={{ color: '#4e2b5a' }}>
+												<span className="tier-roman-elegant">I</span>
+											</div>
 										</div>
-										<div className="card-content-box">
-											<h3 className="card-title">Tier I – Continental Leadership</h3>
-											<div className="card-description tier-full-description">
+										<div className="tier-body-elegant">
+											<h3 className="tier-name-elegant">Continental Leadership</h3>
+											<div className="space16" />
+											<div className="tier-text-elegant">
 												<p>Tier I recognitions acknowledge leadership exercised at continental or multi-regional scale. They honour individuals and institutions whose strategic decisions influenced how trade and industrial activity are financed, organised, or executed across multiple African markets.</p>
-												<p className="tier-highlight-text">Recognition under this tier reflects contributions that shaped market structures, industrial platforms, or financial architectures with effects extending beyond a single country or sector.</p>
+												<div className="space12" />
+												<p style={{ fontWeight: 'var(--ztc-weight-semibold)', color: 'var(--ztc-text-text-2)' }}>Recognition under this tier reflects contributions that shaped market structures, industrial platforms, or financial architectures with effects extending beyond a single country or sector.</p>
 											</div>
 										</div>
+										<div className="tier-border-elegant" style={{ backgroundColor: '#4e2b5a' }}></div>
 									</div>
+								</div>
 
-									{/* Tier II - Industry & Value Chains */}
-									<div className="image-card" data-aos="fade-up" data-aos-duration={900}>
-										<div className="card-image-wrapper">
-											<img src="/assets/img/all-images/categories/Industry Excellence.jpg" alt="Tier II – Industry & Value Chains" />
+								{/* Tier II - Industry & Value Chains */}
+								<div className="elegant-tier-card" data-aos="fade-up" data-aos-duration={900}>
+									<div className="tier-card-elegant">
+										<div className="tier-top-elegant">
+											<div className="tier-number-elegant" style={{ color: '#78508c' }}>
+												<span className="tier-roman-elegant">II</span>
+											</div>
 										</div>
-										<div className="card-content-box">
-											<h3 className="card-title">Tier II – Industry & Value Chains</h3>
-											<div className="card-description tier-full-description">
+										<div className="tier-body-elegant">
+											<h3 className="tier-name-elegant">Industry & Value Chains</h3>
+											<div className="space16" />
+											<div className="tier-text-elegant">
 												<p>Tier II recognitions focus on the development of industrial production and strategic value chains. They honour enterprises and projects that established or expanded manufacturing capacity, energy systems, agro-industrial platforms, health production, or industrial technology essential to sustained economic activity.</p>
-												<p className="tier-highlight-text">The emphasis is on operational scale, continuity of production, and the integration of value chains that retain economic value within Africa.</p>
+												<div className="space12" />
+												<p style={{ fontWeight: 'var(--ztc-weight-semibold)', color: 'var(--ztc-text-text-2)' }}>The emphasis is on operational scale, continuity of production, and the integration of value chains that retain economic value within Africa.</p>
 											</div>
 										</div>
+										<div className="tier-border-elegant" style={{ backgroundColor: '#78508c' }}></div>
 									</div>
+								</div>
 
-									{/* Tier III - Markets & Enterprise */}
-									<div className="image-card" data-aos="fade-up" data-aos-duration={1000}>
-										<div className="card-image-wrapper">
-											<img src="/assets/img/all-images/categories/Enterprise Awards.webp" alt="Tier III – Markets & Enterprise" />
+								{/* Tier III - Markets & Enterprise */}
+								<div className="elegant-tier-card" data-aos="fade-up" data-aos-duration={1000}>
+									<div className="tier-card-elegant">
+										<div className="tier-top-elegant">
+											<div className="tier-number-elegant" style={{ color: '#4e2b5a' }}>
+												<span className="tier-roman-elegant">III</span>
+											</div>
 										</div>
-										<div className="card-content-box">
-											<h3 className="card-title">Tier III – Markets & Enterprise</h3>
-											<div className="card-description tier-full-description">
+										<div className="tier-body-elegant">
+											<h3 className="tier-name-elegant">Markets & Enterprise</h3>
+											<div className="space16" />
+											<div className="tier-text-elegant">
 												<p>Tier III recognitions address the systems that enable trade to function in practice. They focus on trade infrastructure, logistics networks, financial platforms, payment systems, and enterprise mechanisms that support cross-border commerce.</p>
-												<p className="tier-highlight-text">This tier recognises contributions that improved market connectivity, reduced friction in trade execution, or enabled enterprises—large and small—to operate across African markets.</p>
+												<div className="space12" />
+												<p style={{ fontWeight: 'var(--ztc-weight-semibold)', color: 'var(--ztc-text-text-2)' }}>This tier recognises contributions that improved market connectivity, reduced friction in trade execution, or enabled enterprises—large and small—to operate across African markets.</p>
 											</div>
 										</div>
+										<div className="tier-border-elegant" style={{ backgroundColor: '#4e2b5a' }}></div>
 									</div>
+								</div>
 
-									{/* Tier IV - Trade Policy & Systems */}
-									<div className="image-card" data-aos="fade-up" data-aos-duration={1100}>
-										<div className="card-image-wrapper">
-											<img src="/assets/img/all-images/categories/Institutional & Enabler.jpg.avif" alt="Tier IV – Trade Policy & Systems" />
+								{/* Tier IV - Trade Policy & Systems */}
+								<div className="elegant-tier-card" data-aos="fade-up" data-aos-duration={1100}>
+									<div className="tier-card-elegant">
+										<div className="tier-top-elegant">
+											<div className="tier-number-elegant" style={{ color: '#78508c' }}>
+												<span className="tier-roman-elegant">IV</span>
+											</div>
 										</div>
-										<div className="card-content-box">
-											<h3 className="card-title">Tier IV – Trade Policy & Systems</h3>
-											<div className="card-description tier-full-description">
+										<div className="tier-body-elegant">
+											<h3 className="tier-name-elegant">Trade Policy & Systems</h3>
+											<div className="space16" />
+											<div className="tier-text-elegant">
 												<p>Tier IV recognitions acknowledge public-sector execution where national or regional policy decisions led to measurable improvements in trade facilitation, corridor performance, or market usability.</p>
-												<p className="tier-highlight-text">They recognise that effective trade integration depends on implemented policies, functioning systems, and coordinated institutions that support predictable and efficient cross-border movement of goods and services.</p>
+												<div className="space12" />
+												<p style={{ fontWeight: 'var(--ztc-weight-semibold)', color: 'var(--ztc-text-text-2)' }}>They recognise that effective trade integration depends on implemented policies, functioning systems, and coordinated institutions that support predictable and efficient cross-border movement of goods and services.</p>
 											</div>
 										</div>
+										<div className="tier-border-elegant" style={{ backgroundColor: '#78508c' }}></div>
 									</div>
+								</div>
 
-									{/* Tier V - Distinguished Recognition */}
-									<div className="image-card tier-card-featured" data-aos="fade-up" data-aos-duration={1200}>
-										<div className="card-image-wrapper">
-											<img src="/assets/img/all-images/categories/Special Recognition.jpg" alt="Tier V – Distinguished Recognition" />
+								{/* Tier V - Distinguished Recognition */}
+								<div className="elegant-tier-card" data-aos="fade-up" data-aos-duration={1200}>
+									<div className="tier-card-elegant">
+										<div className="tier-top-elegant">
+											<div className="tier-number-elegant" style={{ color: '#4e2b5a' }}>
+												<span className="tier-roman-elegant">V</span>
+											</div>
 										</div>
-										<div className="card-content-box">
-											<h3 className="card-title">Tier V – Distinguished Recognition</h3>
-											<div className="card-description tier-full-description">
+										<div className="tier-body-elegant">
+											<h3 className="tier-name-elegant">Distinguished Recognition</h3>
+											<div className="space16" />
+											<div className="tier-text-elegant">
 												<p>Tier V is reserved for exceptional recognition of cumulative, long-term contribution to Africa&apos;s trade and industrial development. It honours work whose influence has been sustained over time and has shaped institutions, markets, or integration pathways at a foundational level.</p>
 											</div>
 										</div>
+										<div className="tier-border-elegant" style={{ backgroundColor: '#4e2b5a' }}></div>
 									</div>
 								</div>
 							</div>
+							<div className="space50" />
 						</div>
 					</div>
 					{/*===== TIERS GRID AREA ENDS =======*/}

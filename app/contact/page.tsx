@@ -36,7 +36,6 @@ export default function Contact() {
 							<div className="row">
 								<div className="col-lg-6 m-auto">
 									<div className="heading1 text-center">
-										<h1>Contact</h1>
 										<div className="space20" />
 										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Contact</span></Link>
 									</div>
@@ -55,42 +54,39 @@ export default function Contact() {
 					<div className="modern-contact-section sp2">
 						<div className="container">
 							<div className="row">
-								<div className="col-lg-10 m-auto">
-									<div className="compact-contact-card-wrapper">
-										<div className="modern-section-header text-center">
-											<span className="section-accent-label">Contact</span>
-											<div className="space16" />
-											<h2 className="modern-section-title">Africa Trade Awards Secretariat</h2>
-											<div className="space16" />
-											<p className="compact-org-name">
-												<strong>African Trade Chamber</strong><br />
-												<span className="compact-location">Accra, Ghana</span>
-											</p>
-										</div>
-										<div className="compact-contact-info-grid">
-											<div className="compact-contact-item">
-												<div className="compact-contact-icon-wrapper">
-													<i className="fa-solid fa-envelope"></i>
-												</div>
-												<div className="compact-contact-content">
-													<h6>Email</h6>
-													<Link href="mailto:secretariat@africatradeawards.com" className="compact-contact-link">secretariat@africatradeawards.com</Link>
-												</div>
-											</div>
-											<div className="compact-contact-item">
-												<div className="compact-contact-icon-wrapper">
-													<i className="fa-solid fa-location-dot"></i>
-												</div>
-												<div className="compact-contact-content">
-													<h6>Location</h6>
-													<span className="compact-contact-text">Accra, Ghana</span>
-												</div>
+								<div className="col-lg-8 m-auto">
+									<div className="appealing-contact-card">
+										<div className="contact-card-header">
+											<span className="contact-label">Contact</span>
+											<div className="contact-title-badge">
+												<h2>Africa Trade Awards Secretariat</h2>
 											</div>
 										</div>
-										<div className="space30" />
-										<div className="compact-contact-description">
-											<p>For further information on the Africa Trade Awards 2026, please contact the Awards Secretariat of the African Trade Chamber.</p>
-											<p>Information on the Africa Trade Summit 2026, during which the Awards will be conferred, is available through the African Trade Chamber Secretariat.</p>
+										<div className="contact-card-body">
+											<div className="contact-org-info">
+												<p className="org-name">African Trade Chamber</p>
+												<p className="org-location">Accra, Ghana</p>
+											</div>
+											<div className="contact-info-items">
+												<div className="contact-info-item">
+													<div className="contact-icon-box">
+														<i className="fa-solid fa-envelope"></i>
+													</div>
+													<div className="contact-info-content">
+														<span className="info-label">Email</span>
+														<Link href="mailto:secretariat@africatradeawards.com" className="info-value">secretariat@africatradeawards.com</Link>
+													</div>
+												</div>
+												<div className="contact-info-item">
+													<div className="contact-icon-box">
+														<i className="fa-solid fa-location-dot"></i>
+													</div>
+													<div className="contact-info-content">
+														<span className="info-label">Location</span>
+														<span className="info-value">Accra, Ghana</span>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
