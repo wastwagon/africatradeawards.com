@@ -2078,8 +2078,8 @@ body.css-loaded {
 
 .committee-banner-section .committee-profiles-grid {
 	display: grid !important;
-	grid-template-columns: repeat(6, 1fr) !important;
-	gap: 8px !important;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+	gap: 24px !important;
 	justify-items: center !important;
 	align-items: start !important;
 	max-width: 1400px !important;
@@ -2089,6 +2089,25 @@ body.css-loaded {
 	padding: 30px 0 !important;
 }
 
+@media (min-width: 1200px) {
+	.committee-banner-section .committee-profiles-grid {
+		grid-template-columns: repeat(5, 1fr) !important;
+	}
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+	.committee-banner-section .committee-profiles-grid {
+		grid-template-columns: repeat(3, 1fr) !important;
+	}
+}
+
+@media (max-width: 767px) {
+	.committee-banner-section .committee-profiles-grid {
+		grid-template-columns: repeat(2, 1fr) !important;
+		gap: 20px !important;
+	}
+}
+
 .committee-banner-section .committee-profile-card {
 	display: flex !important;
 	flex-direction: column !important;
@@ -2096,6 +2115,7 @@ body.css-loaded {
 	text-align: center !important;
 	width: 100% !important;
 	max-width: 200px !important;
+	height: 100% !important;
 	background: transparent !important;
 	border: none !important;
 	padding: 0 !important;
@@ -2169,37 +2189,71 @@ body.css-loaded {
 		inset 0 2px 0 rgba(255, 255, 255, 0.7) !important;
 }
 
-.committee-banner-section .profile-image-wrapper img {
+.committee-banner-section .profile-image-wrapper img,
+.committee-banner-section .profile-image-wrapper .profile-image {
 	width: 100% !important;
 	height: 100% !important;
 	object-fit: cover !important;
+	object-position: center center !important;
 	display: block !important;
-	filter: grayscale(100%) contrast(1.1) brightness(0.95) !important;
+	filter: grayscale(30%) contrast(1.05) brightness(0.98) !important;
 	transition: all 0.4s ease !important;
 	border-radius: 50% !important;
 	position: relative !important;
 	z-index: 1 !important;
 }
 
-.committee-banner-section .committee-profile-card:hover .profile-image-wrapper img {
+/* Specific adjustments for Beenzu N. Muleya (second image) - adjust to show face better */
+.committee-banner-section .profile-image-wrapper.profile-image-adjust-top .profile-image.adjust-top,
+.committee-banner-section .profile-image-wrapper.profile-image-adjust-top img.adjust-top {
+	object-position: center 20% !important;
+	object-fit: cover !important;
+	transform: scale(1.1) !important;
+}
+
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper.profile-image-adjust-top .profile-image.adjust-top,
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper.profile-image-adjust-top img.adjust-top {
+	transform: scale(1.12) !important;
+}
+
+/* Specific adjustments for Nana Ama Kusi-Appouh (third image) - adjust to show face better */
+.committee-banner-section .profile-image-wrapper.profile-image-adjust-center .profile-image.adjust-center,
+.committee-banner-section .profile-image-wrapper.profile-image-adjust-center img.adjust-center {
+	object-position: center 25% !important;
+	object-fit: cover !important;
+	transform: scale(1.08) !important;
+}
+
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper.profile-image-adjust-center .profile-image.adjust-center,
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper.profile-image-adjust-center img.adjust-center {
+	transform: scale(1.1) !important;
+}
+
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper img:not(.adjust-top):not(.adjust-center),
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper .profile-image:not(.adjust-top):not(.adjust-center) {
 	filter: grayscale(0%) contrast(1.05) brightness(1.05) !important;
 	transform: scale(1.02) !important;
+}
+
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper img.adjust-top,
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper .profile-image.adjust-top {
+	filter: grayscale(0%) contrast(1.05) brightness(1.05) !important;
+}
+
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper img.adjust-center,
+.committee-banner-section .committee-profile-card:hover .profile-image-wrapper .profile-image.adjust-center {
+	filter: grayscale(0%) contrast(1.05) brightness(1.05) !important;
 }
 
 .committee-banner-section .profile-avatar {
 	width: 100% !important;
 	height: 100% !important;
 	border-radius: 50% !important;
-	display: block !important;
+	display: none !important;
 	background: #ffffff !important;
 	transition: all 0.4s ease !important;
 	position: relative !important;
 	z-index: 1 !important;
-}
-
-.committee-banner-section .committee-profile-card:hover .profile-avatar {
-	background: #ffffff !important;
-	transform: scale(1.02) !important;
 }
 
 .committee-banner-section .profile-info {
@@ -2217,28 +2271,28 @@ body.css-loaded {
 	font-weight: var(--ztc-weight-bold) !important;
 	color: #000000 !important;
 	line-height: 1.4 !important;
-	margin: 0 0 12px 0 !important;
+	margin: 0 0 10px 0 !important;
 	text-transform: uppercase !important;
 	letter-spacing: 1px !important;
 	position: relative !important;
-	display: inline-block !important;
-	padding: 0 4px !important;
+	display: block !important;
+	padding: 0 !important;
 	text-shadow: none !important;
 	filter: none !important;
+	flex-shrink: 0 !important;
+	text-align: left !important;
+	width: 100% !important;
 }
 
 .committee-banner-section .profile-name::after {
 	content: "" !important;
 	position: absolute !important;
 	bottom: -4px !important;
-	left: 50% !important;
-	transform: translateX(-50%) !important;
+	left: 0 !important;
+	transform: none !important;
 	width: 40px !important;
 	height: 2px !important;
-	background: linear-gradient(90deg, 
-		transparent 0%, 
-		rgba(78, 43, 90, 0.6) 50%, 
-		transparent 100%) !important;
+	background: rgba(78, 43, 90, 0.6) !important;
 	border-radius: 2px !important;
 	transition: width 0.3s ease !important;
 }
@@ -2251,10 +2305,7 @@ body.css-loaded {
 
 .committee-banner-section .committee-profile-card:hover .profile-name::after {
 	width: 60px !important;
-	background: linear-gradient(90deg, 
-		transparent 0%, 
-		rgba(78, 43, 90, 0.8) 50%, 
-		transparent 100%) !important;
+	background: rgba(78, 43, 90, 0.8) !important;
 }
 
 .committee-banner-section .profile-title {
@@ -2263,7 +2314,7 @@ body.css-loaded {
 	font-weight: var(--ztc-weight-regular) !important;
 	color: #000000 !important;
 	line-height: 1.7 !important;
-	margin: 0 !important;
+	margin: 0 0 8px 0 !important;
 	text-shadow: none !important;
 	position: relative !important;
 	padding: 0 !important;
@@ -2274,6 +2325,33 @@ body.css-loaded {
 	transition: all 0.3s ease !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
+	min-height: 48px !important;
+	display: -webkit-box !important;
+	-webkit-line-clamp: 3 !important;
+	-webkit-box-orient: vertical !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	flex-shrink: 0 !important;
+	text-align: left !important;
+	width: 100% !important;
+}
+
+.committee-banner-section .profile-short-bio {
+	font-family: var(--figtree) !important;
+	font-size: 10px !important;
+	font-weight: var(--ztc-weight-regular) !important;
+	color: #666666 !important;
+	line-height: 1.5 !important;
+	margin: 0 0 auto 0 !important;
+	display: -webkit-box !important;
+	-webkit-line-clamp: 3 !important;
+	-webkit-box-orient: vertical !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	flex: 1 1 auto !important;
+	min-height: 45px !important;
+	text-align: left !important;
+	width: 100% !important;
 }
 
 .committee-banner-section .committee-profile-card:hover .profile-title {
@@ -2281,6 +2359,543 @@ body.css-loaded {
 	border: none !important;
 	box-shadow: none !important;
 	color: #000000 !important;
+}
+
+/* Profile Read Button - Equal Height */
+.committee-banner-section .profile-info {
+	display: flex !important;
+	flex-direction: column !important;
+	flex: 1 !important;
+	min-height: 200px !important;
+	width: 100% !important;
+	align-items: flex-start !important;
+	text-align: left !important;
+}
+
+.committee-banner-section .profile-read-btn {
+	font-family: var(--figtree) !important;
+	font-size: 11px !important;
+	font-weight: var(--ztc-weight-semibold) !important;
+	color: rgba(78, 43, 90, 1) !important;
+	background: transparent !important;
+	border: none !important;
+	border-radius: 0 !important;
+	padding: 8px 0 !important;
+	margin-top: auto !important;
+	margin-bottom: 0 !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.5px !important;
+	box-shadow: none !important;
+	width: auto !important;
+	min-height: auto !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	gap: 8px !important;
+	align-self: flex-start !important;
+}
+
+.committee-banner-section .profile-read-btn span {
+	display: inline-block !important;
+}
+
+.committee-banner-section .profile-read-btn i {
+	font-size: 10px !important;
+	transition: transform 0.2s ease !important;
+}
+
+.committee-banner-section .profile-read-btn:hover {
+	color: rgba(78, 43, 90, 0.8) !important;
+	background: transparent !important;
+	transform: none !important;
+	box-shadow: none !important;
+}
+
+.committee-banner-section .profile-read-btn:hover i {
+	transform: translateX(4px) !important;
+}
+
+.committee-banner-section .profile-read-btn:active {
+	color: rgba(78, 43, 90, 0.9) !important;
+	transform: none !important;
+}
+
+/* Profile Modal Styles */
+.profile-modal-backdrop {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	background: rgba(0, 0, 0, 0.85) !important;
+	backdrop-filter: blur(8px) !important;
+	-webkit-backdrop-filter: blur(8px) !important;
+	z-index: 9998 !important;
+	opacity: 0 !important;
+	visibility: hidden !important;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.profile-modal-backdrop.active {
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.profile-modal-container {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	z-index: 9999 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	padding: 20px !important;
+	opacity: 0 !important;
+	visibility: hidden !important;
+	pointer-events: none !important;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.profile-modal-container.active {
+	opacity: 1 !important;
+	visibility: visible !important;
+	pointer-events: all !important;
+}
+
+.profile-modal-content {
+	background: #ffffff !important;
+	border-radius: 20px !important;
+	max-width: 750px !important;
+	width: 100% !important;
+	max-height: 85vh !important;
+	overflow-y: auto !important;
+	overflow-x: hidden !important;
+	position: relative !important;
+	box-shadow: 
+		0 20px 60px rgba(0, 0, 0, 0.3),
+		0 8px 24px rgba(0, 0, 0, 0.2),
+		0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+	transform: scale(0.9) translateY(20px) !important;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+	scrollbar-width: thin !important;
+	scrollbar-color: rgba(78, 43, 90, 0.3) transparent !important;
+	z-index: 10000 !important;
+}
+
+.profile-modal-content::-webkit-scrollbar {
+	width: 8px !important;
+}
+
+.profile-modal-content::-webkit-scrollbar-track {
+	background: transparent !important;
+}
+
+.profile-modal-content::-webkit-scrollbar-thumb {
+	background: rgba(78, 43, 90, 0.3) !important;
+	border-radius: 4px !important;
+}
+
+.profile-modal-content::-webkit-scrollbar-thumb:hover {
+	background: rgba(78, 43, 90, 0.5) !important;
+}
+
+.profile-modal-container.active .profile-modal-content {
+	transform: scale(1) translateY(0) !important;
+}
+
+.profile-modal-close {
+	position: absolute !important;
+	top: 12px !important;
+	right: 12px !important;
+	width: 36px !important;
+	height: 36px !important;
+	border-radius: 50% !important;
+	background: #ffffff !important;
+	border: 2px solid rgba(78, 43, 90, 0.3) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	cursor: pointer !important;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+	z-index: 10002 !important;
+	color: #333333 !important;
+	font-size: 18px !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.profile-modal-close:hover {
+	background: rgba(78, 43, 90, 0.1) !important;
+	border-color: rgba(78, 43, 90, 0.5) !important;
+	color: rgba(78, 43, 90, 1) !important;
+	transform: rotate(90deg) scale(1.1) !important;
+	box-shadow: 0 6px 16px rgba(78, 43, 90, 0.3) !important;
+}
+
+.profile-modal-close:active {
+	transform: rotate(90deg) scale(1.05) !important;
+}
+
+.profile-modal-header {
+	display: flex !important;
+	align-items: flex-start !important;
+	gap: 24px !important;
+	padding: 28px 28px 24px 28px !important;
+	padding-top: 48px !important;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+	background: linear-gradient(135deg, rgba(78, 43, 90, 0.02) 0%, rgba(255, 255, 255, 1) 100%) !important;
+	position: relative !important;
+}
+
+.profile-modal-image-wrapper {
+	position: relative !important;
+	flex-shrink: 0 !important;
+	z-index: 1 !important;
+}
+
+.profile-modal-image {
+	width: 160px !important;
+	height: 160px !important;
+	border-radius: 50% !important;
+	object-fit: cover !important;
+	object-position: center center !important;
+	border: 3px solid rgba(78, 43, 90, 0.1) !important;
+	box-shadow: 
+		0 6px 20px rgba(0, 0, 0, 0.12),
+		0 3px 10px rgba(78, 43, 90, 0.08) !important;
+	position: relative !important;
+	z-index: 2 !important;
+}
+
+/* Specific adjustments for Beenzu N. Muleya (second image) in modal */
+.profile-modal-image-wrapper.modal-image-adjust-top .profile-modal-image.modal-adjust-top {
+	object-position: center 20% !important;
+	object-fit: cover !important;
+	transform: scale(1.1) !important;
+}
+
+/* Specific adjustments for Nana Ama Kusi-Appouh (third image) in modal */
+.profile-modal-image-wrapper.modal-image-adjust-center .profile-modal-image.modal-adjust-center {
+	object-position: center 25% !important;
+	object-fit: cover !important;
+	transform: scale(1.08) !important;
+}
+
+.profile-modal-image-glow {
+	position: absolute !important;
+	top: -8px !important;
+	left: -8px !important;
+	right: -8px !important;
+	bottom: -8px !important;
+	border-radius: 50% !important;
+	background: linear-gradient(135deg, 
+		rgba(78, 43, 90, 0.15) 0%, 
+		rgba(78, 43, 90, 0.05) 50%,
+		rgba(78, 43, 90, 0.15) 100%) !important;
+	z-index: 1 !important;
+	animation: pulse-glow 3s ease-in-out infinite !important;
+	pointer-events: none !important;
+}
+
+@keyframes pulse-glow {
+	0%, 100% {
+		opacity: 0.5;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.8;
+		transform: scale(1.05);
+	}
+}
+
+.profile-modal-header-content {
+	flex: 1 !important;
+	padding-top: 4px !important;
+}
+
+.profile-modal-name {
+	font-family: var(--grotesk) !important;
+	font-size: 26px !important;
+	font-weight: var(--ztc-weight-bold) !important;
+	color: #000000 !important;
+	margin: 0 0 6px 0 !important;
+	line-height: 1.2 !important;
+	letter-spacing: -0.4px !important;
+}
+
+.profile-modal-country {
+	font-family: var(--figtree) !important;
+	font-size: 12px !important;
+	font-weight: var(--ztc-weight-medium) !important;
+	color: rgba(78, 43, 90, 0.8) !important;
+	margin: 0 0 10px 0 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.8px !important;
+}
+
+.profile-modal-title {
+	font-family: var(--figtree) !important;
+	font-size: 16px !important;
+	font-weight: var(--ztc-weight-semibold) !important;
+	color: #333333 !important;
+	margin: 0 0 6px 0 !important;
+	line-height: 1.4 !important;
+}
+
+.profile-modal-role {
+	font-family: var(--figtree) !important;
+	font-size: 12px !important;
+	font-weight: var(--ztc-weight-regular) !important;
+	color: rgba(78, 43, 90, 0.7) !important;
+	margin: 0 !important;
+	line-height: 1.4 !important;
+	font-style: italic !important;
+}
+
+.profile-modal-body {
+	padding: 24px 28px !important;
+}
+
+/* Expertise Section */
+.profile-modal-expertise {
+	margin-bottom: 24px !important;
+	padding-bottom: 24px !important;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.profile-modal-expertise-title {
+	font-family: var(--grotesk) !important;
+	font-size: 16px !important;
+	font-weight: var(--ztc-weight-bold) !important;
+	color: #000000 !important;
+	margin: 0 0 12px 0 !important;
+	line-height: 1.3 !important;
+	letter-spacing: -0.3px !important;
+}
+
+.profile-modal-expertise-tags {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	gap: 10px !important;
+}
+
+.profile-modal-expertise-tag {
+	font-family: var(--figtree) !important;
+	font-size: 12px !important;
+	font-weight: var(--ztc-weight-medium) !important;
+	color: rgba(78, 43, 90, 0.9) !important;
+	background: rgba(78, 43, 90, 0.08) !important;
+	border: 1px solid rgba(78, 43, 90, 0.15) !important;
+	border-radius: 18px !important;
+	padding: 5px 14px !important;
+	line-height: 1.4 !important;
+	transition: all 0.2s ease !important;
+}
+
+.profile-modal-expertise-tag:hover {
+	background: rgba(78, 43, 90, 0.12) !important;
+	border-color: rgba(78, 43, 90, 0.25) !important;
+	transform: translateY(-1px) !important;
+}
+
+.profile-modal-bio {
+	margin-top: 0 !important;
+}
+
+.profile-modal-bio-text {
+	font-family: var(--figtree) !important;
+	font-size: 14px !important;
+	font-weight: var(--ztc-weight-regular) !important;
+	color: #444444 !important;
+	line-height: 1.7 !important;
+	margin: 0 0 16px 0 !important;
+	text-align: justify !important;
+}
+
+.profile-modal-bio-text:last-child {
+	margin-bottom: 0 !important;
+}
+
+.profile-modal-footer {
+	padding: 20px 28px 24px 28px !important;
+	border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+	display: flex !important;
+	justify-content: flex-end !important;
+	background: rgba(78, 43, 90, 0.01) !important;
+}
+
+.profile-modal-close-btn {
+	font-family: var(--figtree) !important;
+	font-size: 13px !important;
+	font-weight: var(--ztc-weight-semibold) !important;
+	color: rgba(78, 43, 90, 1) !important;
+	background: transparent !important;
+	border: none !important;
+	border-radius: 0 !important;
+	padding: 10px 0 !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.5px !important;
+	box-shadow: none !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	gap: 8px !important;
+}
+
+.profile-modal-close-btn span {
+	display: inline-block !important;
+}
+
+.profile-modal-close-btn i {
+	font-size: 12px !important;
+	transition: transform 0.2s ease !important;
+}
+
+.profile-modal-close-btn:hover {
+	color: rgba(78, 43, 90, 0.8) !important;
+	background: transparent !important;
+	transform: none !important;
+	box-shadow: none !important;
+}
+
+.profile-modal-close-btn:hover i {
+	transform: rotate(90deg) !important;
+}
+
+.profile-modal-close-btn:active {
+	color: rgba(78, 43, 90, 0.9) !important;
+	transform: none !important;
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+	.profile-modal-content {
+		max-width: 95% !important;
+		border-radius: 20px !important;
+		max-height: 95vh !important;
+		margin: 10px !important;
+	}
+
+	.profile-modal-header {
+		flex-direction: column !important;
+		align-items: center !important;
+		text-align: center !important;
+		padding: 40px 20px 20px 20px !important;
+		padding-top: 50px !important;
+		gap: 20px !important;
+	}
+
+	.profile-modal-image {
+		width: 140px !important;
+		height: 140px !important;
+	}
+
+	/* Modal image adjustments on mobile */
+	.profile-modal-image-wrapper.modal-image-adjust-top .profile-modal-image.modal-adjust-top {
+		object-position: center 20% !important;
+		transform: scale(1.1) !important;
+	}
+
+	.profile-modal-image-wrapper.modal-image-adjust-center .profile-modal-image.modal-adjust-center {
+		object-position: center 25% !important;
+		transform: scale(1.08) !important;
+	}
+
+	.profile-modal-name {
+		font-size: 22px !important;
+	}
+
+	.profile-modal-title {
+		font-size: 15px !important;
+	}
+
+	.profile-modal-body {
+		padding: 20px !important;
+	}
+
+	.profile-modal-expertise {
+		margin-bottom: 20px !important;
+		padding-bottom: 20px !important;
+	}
+
+	.profile-modal-expertise-title {
+		font-size: 15px !important;
+		margin-bottom: 10px !important;
+	}
+
+	.profile-modal-expertise-tags {
+		gap: 8px !important;
+	}
+
+	.profile-modal-expertise-tag {
+		font-size: 11px !important;
+		padding: 4px 12px !important;
+	}
+
+	.profile-modal-bio-text {
+		font-size: 14px !important;
+		text-align: left !important;
+		line-height: 1.6 !important;
+		margin-bottom: 14px !important;
+	}
+
+	.profile-modal-footer {
+		padding: 16px 20px 20px 20px !important;
+	}
+
+	.profile-modal-close-btn {
+		width: auto !important;
+		padding: 10px 0 !important;
+		font-size: 12px !important;
+		justify-content: center !important;
+	}
+
+	.profile-modal-close {
+		top: 10px !important;
+		right: 10px !important;
+		width: 36px !important;
+		height: 36px !important;
+		font-size: 18px !important;
+		background: #ffffff !important;
+		border: 2px solid rgba(78, 43, 90, 0.3) !important;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+		z-index: 10002 !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.profile-modal-content {
+		max-width: 80% !important;
+	}
+
+	.profile-modal-header {
+		padding: 24px 24px 20px 24px !important;
+		gap: 20px !important;
+	}
+
+	.profile-modal-image {
+		width: 150px !important;
+		height: 150px !important;
+	}
+
+	.profile-modal-body {
+		padding: 22px 24px !important;
+	}
+
+	.profile-modal-footer {
+		padding: 18px 24px 22px 24px !important;
+	}
 }
 
 /* Partners Section - White Background */

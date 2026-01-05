@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout"
 import HeroSection from '@/components/sections/home1/HeroSection'
 import AboutSection from '@/components/sections/home1/AboutSection'
 import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
+import CommitteeProfiles from '@/components/sections/CommitteeProfiles'
 
 export default function Home() {
 	return (
@@ -63,70 +64,7 @@ export default function Home() {
 					<div className="container">
 						<div className="row">
 							<div className="col-12">
-								{/* Committee Members Profiles */}
-								<div className="committee-profiles-section" data-aos="fade-up" data-aos-duration={800} data-aos-delay={200}>
-									<div className="committee-profiles-grid">
-										<div className="committee-profile-card">
-											<div className="profile-image-wrapper">
-												<div className="profile-avatar"></div>
-											</div>
-											<div className="profile-info">
-												<h3 className="profile-name">MOHAMADOU HAYATOU</h3>
-												<p className="profile-title">Investment & Asset Management Consultant</p>
-											</div>
-										</div>
-										
-										<div className="committee-profile-card">
-											<div className="profile-image-wrapper">
-												<div className="profile-avatar"></div>
-											</div>
-											<div className="profile-info">
-												<h3 className="profile-name">Nana Ama Kusi-Appouh, Esq.</h3>
-												<p className="profile-title">Barrister & Solicitor (Ghana), Solicitor (England & Wales), Group Head of Legal & Company Secretary, GOIL PLC</p>
-											</div>
-										</div>
-										
-										<div className="committee-profile-card">
-											<div className="profile-image-wrapper">
-												<div className="profile-avatar"></div>
-											</div>
-											<div className="profile-info">
-												<h3 className="profile-name">Dr. Seyram Kekessie</h3>
-												<p className="profile-title">Founder & CEO, Insightis Africa, Market Intelligence & Consumer Insights Specialist Member</p>
-											</div>
-										</div>
-										
-										<div className="committee-profile-card">
-											<div className="profile-image-wrapper">
-												<div className="profile-avatar"></div>
-											</div>
-											<div className="profile-info">
-												<h3 className="profile-name">Beenzu N. Muleya</h3>
-												<p className="profile-title">Trade Finance Manager - Lending Operations, Eastern and Southern African Trade and Development Bank (TDB)</p>
-											</div>
-										</div>
-										
-										<div className="committee-profile-card">
-											<div className="profile-image-wrapper">
-												<div className="profile-avatar"></div>
-											</div>
-											<div className="profile-info">
-												<h3 className="profile-name">Peter Mireku</h3>
-												<p className="profile-title">Former Chief Executive Officer, Ghana Gaming Commission, Management Consultant | Regulatory & Institutional Governance</p>
-											</div>
-										</div>
-										
-										<div className="committee-profile-card">
-											<div className="profile-image-wrapper">
-												<div className="profile-avatar"></div>
-											</div>
-											<div className="profile-info">
-												<h3 className="profile-name">Ms. Yvonne Botchey</h3>
-												<p className="profile-title">Managing Director, World Trade Centre Accra | Global Brand & Strategy Leader | Award-Winning Marketing Innovator</p>
-											</div>
-										</div>
-									</div>
-								</div>
+								<CommitteeProfiles />
 							</div>
 						</div>
 					</div>
