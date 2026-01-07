@@ -34138,3 +34138,51 @@ h2.premium-section-title::after,
     filter: none !important;
     max-height: 100% !important;
 }
+
+/* REDUCE TIER CARD FONT SIZES - CURSOR */
+.compact-awards-structure-section .elegant-tiers-grid .elegant-tier-card .tier-top-elegant .tier-number-elegant .tier-roman-elegant {
+    font-size: 32px !important;
+}
+
+.compact-awards-structure-section .elegant-tiers-grid .elegant-tier-card .tier-body-elegant .tier-name-elegant {
+    font-size: 20px !important;
+}
+
+@media (max-width: 767px) {
+    .compact-awards-structure-section .elegant-tiers-grid .elegant-tier-card .tier-top-elegant .tier-number-elegant .tier-roman-elegant {
+        font-size: 28px !important;
+    }
+    
+    .compact-awards-structure-section .elegant-tiers-grid .elegant-tier-card .tier-body-elegant .tier-name-elegant {
+        font-size: 18px !important;
+    }
+}
+
+/* REDUCE MAIN SECTION TITLE FONT SIZES - CURSOR */
+.committee-text-title,
+.sponsors-hero-title,
+.awards-title-compact,
+.modern-section-title,
+h2.modern-section-title {
+    font-size: 24px !important;
+}
+
+@media (max-width: 991px) {
+    .committee-text-title,
+    .sponsors-hero-title,
+    .awards-title-compact,
+    .modern-section-title,
+    h2.modern-section-title {
+        font-size: 22px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .committee-text-title,
+    .sponsors-hero-title,
+    .awards-title-compact,
+    .modern-section-title,
+    h2.modern-section-title {
+        font-size: 20px !important;
+    }
+}
