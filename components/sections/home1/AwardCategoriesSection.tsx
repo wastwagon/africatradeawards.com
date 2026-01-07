@@ -101,7 +101,6 @@ export default function AwardCategoriesSection() {
 						</div>
 					))}
 				</div>
-				<div className="space50" />
 			</div>
 		</div>
 	)

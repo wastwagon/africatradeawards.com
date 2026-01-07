@@ -3,6 +3,7 @@ import HeroSection from '@/components/sections/home1/HeroSection'
 import AboutSection from '@/components/sections/home1/AboutSection'
 import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
 import CommitteeProfiles from '@/components/sections/CommitteeProfiles'
+import SponsorsSection from '@/components/sections/SponsorsSection'
 
 export default function Home() {
 	return (
@@ -70,6 +71,10 @@ export default function Home() {
 					</div>
 				</div>
 				{/*===== RECOGNITION & VALIDATION COMMITTEE SECTION ENDS =======*/}
+
+				{/*===== SPONSORS & PARTNERS SECTION =======*/}
+				<SponsorsSection />
+				{/*===== SPONSORS & PARTNERS SECTION ENDS =======*/}
 			</Layout>
 		</>
 	)

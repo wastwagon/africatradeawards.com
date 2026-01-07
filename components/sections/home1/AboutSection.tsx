@@ -31,9 +31,9 @@ export default function AboutSection() {
 							</div>
 							<div className="space24" />
 							<div className="btn-area1" data-aos="fade-up" data-aos-duration={1000}>
-								<Link href="/about" className="elegant-btn premium-about-btn">
+								<Link href="/about" className="elegant-btn premium-about-btn" style={{ padding: '10px 20px', fontSize: '13px', minHeight: 'auto', height: 'auto' }}>
 									<span>Learn More</span>
-									<i className="fa-solid fa-arrow-right"></i>
+									<i className="fa-solid fa-arrow-right" style={{ fontSize: '11px' }}></i>
 								</Link>
 							</div>
 						</div>

@@ -33991,3 +33991,150 @@ h2.premium-section-title::after,
 /*============= MEMORY CSS AREA ===============*/
 
 /*# sourceMappingURL=main.css.map */
+
+/* CURSOR FIXES - UNIFIED SPACING & COMPACT BUTTONS */
+.about1-section-area.about-section-silver.overview-section,
+.compact-awards-structure-section,
+.committee-text-section,
+.sponsors-partners-section-premium.sp4 {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+}
+
+.committee-text-section {
+    padding-bottom: 20px !important;
+}
+
+.committee-banner-section {
+    padding-top: 0 !important;
+    padding-bottom: 50px !important;
+}
+
+.committee-profiles-section {
+    margin-bottom: 0px !important;
+}
+
+.elegant-btn, .profile-read-btn, .view-all-btn, .tier-read-more, .premium-about-btn, .elegant-btn.premium-about-btn {
+    padding: 8px 16px !important;
+    font-size: 12px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    line-height: 1 !important;
+}
+
+.elegant-btn i, .profile-read-btn i, .view-all-btn i, .tier-read-more i {
+    font-size: 10px !important;
+}
+
+.header-area.homepage1 .header-elements .btn-area ul li a {
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.header-area.homepage1 .header-elements .btn-area ul li a i {
+    font-size: 14px !important;
+}
+
+.site-logo img, .mobile-logo img {
+    max-height: 60px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* Sponsors Page Centering & Compactness */
+.category-card-header {
+    text-align: center !important;
+    margin-bottom: 16px !important;
+}
+
+.category-card-title::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+.category-logos-grid {
+    justify-content: center !important;
+    gap: 20px !important;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 220px)) !important;
+}
+
+.sponsors-category-card {
+    padding: 16px !important;
+    border-radius: 16px !important;
+}
+
+.premium-logo-wrapper {
+    height: 130px !important;
+    padding: 20px 16px !important;
+    border-radius: 12px !important;
+}
+
+/* TRUE CENTERING FOR LOGO GRIDS - CURSOR */
+.category-logos-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    grid-template-columns: none !important;
+}
+
+.premium-logo-card {
+    width: 220px !important;
+    flex: 0 0 auto !important;
+}
+
+@media (max-width: 767px) {
+    .premium-logo-card {
+        width: 160px !important;
+    }
+}
+
+/* FOOTER ALIGNMENT & SPACING - CURSOR */
+.footer1-sertion-area .link-content {
+    padding-left: 30px !important;
+}
+
+@media (max-width: 991px) {
+    .footer1-sertion-area .link-content {
+        padding-left: 0 !important;
+        margin-top: 30px !important;
+    }
+}
+
+.footer-sponsors-grid img {
+    max-height: 30px !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.footer-sponsors-grid img:hover {
+    opacity: 1 !important;
+}
+
+/* ENHANCED FOOTER SPONSORS - CURSOR */
+.footer-sponsors-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+}
+
+.footer-sponsors-grid img {
+    max-height: 45px !important;
+    opacity: 1 !important;
+    filter: brightness(0) invert(1) !important;
+}
+
+/* FOOTER LOGO CARDS - CURSOR */
+.footer-logo-card {
+    transition: transform 0.3s ease !important;
+}
+
+.footer-logo-card:hover {
+    transform: translateY(-3px) !important;
+}
+
+.footer-sponsors-grid img {
+    filter: none !important;
+    max-height: 100% !important;
+}
