@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: 'export',
+	output: 'standalone',
 	images: {
-		unoptimized: true, // Required for static export
+		unoptimized: true,
 	},
-	trailingSlash: true, // Optional: adds trailing slash to URLs
+	trailingSlash: true,
 };
 
 export default nextConfig;
