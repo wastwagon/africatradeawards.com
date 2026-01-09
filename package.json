@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3003",
-    "build": "next build",
-    "export": "next build",
+    "build": "npm run sass:build && next build",
+    "export": "npm run sass:build && next build",
     "start": "next start -p 3003",
     "lint": "next lint",
     "sass": "sass --watch public/assets/scss/main.scss:public/assets/css/main.css",

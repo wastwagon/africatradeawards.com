@@ -58,18 +58,23 @@ This project is configured for static export, making it suitable for hosting on 
 
 ## 🌐 Deployment
 
-### Render (Using Blueprint)
+### Coolify (VPS Deployment)
 
-This repository includes a `render.yaml` blueprint file for easy deployment on Render:
+This project is configured for deployment on Coolify. See [COOLIFY_DEPLOYMENT.md](./COOLIFY_DEPLOYMENT.md) for detailed instructions.
 
-1. Connect your GitHub repository to Render
-2. Render will automatically detect the `render.yaml` file
-3. The static site will be built and deployed automatically
+**Quick Start:**
+1. Connect your Git repository to Coolify
+2. Use `Dockerfile.static` as the Dockerfile
+3. Deploy and enjoy!
 
 ### Manual Deployment
 
 1. Build the static site: `npm run build`
-2. Upload the `out` directory to your hosting provider
+2. Upload the `out` directory to your hosting provider (nginx, Apache, etc.)
+
+### Legacy: Render
+
+The `render.yaml` file is kept for reference but is no longer the primary deployment method.
 
 ## 📁 Project Structure
 
