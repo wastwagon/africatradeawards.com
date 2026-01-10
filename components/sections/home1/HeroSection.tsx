@@ -232,6 +232,10 @@ export default function HeroSection() {
 					display: flex;
 					justify-content: center;
 					align-items: center;
+					width: 100%;
+					max-width: 100%;
+					overflow: hidden;
+					box-sizing: border-box;
 				}
 
 				/* Elegant Image Frame */
@@ -239,9 +243,9 @@ export default function HeroSection() {
 					position: relative;
 					width: 100%;
 					max-width: 320px;
-					max-height: 480px;
-					aspect-ratio: 2/3;
-					margin: 0;
+					height: auto;
+					aspect-ratio: 2 / 3;
+					margin: 0 auto;
 					padding: 12px;
 					background: rgba(255, 255, 255, 0.12);
 					border-radius: 16px;
@@ -250,6 +254,17 @@ export default function HeroSection() {
 					box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset,
 								0 0 20px rgba(255, 255, 255, 0.1),
 								0 8px 32px rgba(0, 0, 0, 0.3);
+					overflow: hidden;
+					box-sizing: border-box;
+					display: flex;
+					flex-direction: column;
+				}
+
+				@supports not (aspect-ratio: 2 / 3) {
+					.elegant-image-frame {
+						height: 0;
+						padding-bottom: 150%;
+					}
 				}
 
 				.elegant-image-frame:hover {
@@ -259,10 +274,10 @@ export default function HeroSection() {
 
 				.frame-outer-glow {
 					position: absolute;
-					top: -3px;
-					left: -3px;
-					right: -3px;
-					bottom: -3px;
+					top: -2px;
+					left: -2px;
+					right: -2px;
+					bottom: -2px;
 					background: linear-gradient(135deg, 
 						rgba(255, 255, 255, 0.25) 0%,
 						rgba(255, 255, 255, 0.18) 25%,
@@ -275,6 +290,8 @@ export default function HeroSection() {
 					z-index: 0;
 					box-shadow: 0 0 30px rgba(255, 255, 255, 0.15),
 								0 0 60px rgba(255, 255, 255, 0.08);
+					pointer-events: none;
+					overflow: hidden;
 				}
 
 				.elegant-image-frame:hover .frame-outer-glow {
@@ -312,32 +329,59 @@ export default function HeroSection() {
 					position: relative;
 					width: 100%;
 					height: 100%;
+					min-width: 0;
+					min-height: 0;
 					border-radius: 12px;
 					overflow: hidden;
 					background: rgba(255, 255, 255, 0.05);
 					z-index: 2;
+					box-sizing: border-box;
+					flex: 1 1 auto;
+				}
+
+				@supports not (aspect-ratio: 2 / 3) {
+					.image-wrapper-elegant {
+						position: absolute;
+						top: 12px;
+						left: 12px;
+						right: 12px;
+						bottom: 12px;
+						width: auto;
+						height: auto;
+					}
 				}
 
 				.image-inner-frame {
 					position: relative;
 					width: 100%;
 					height: 100%;
+					max-width: 100%;
+					max-height: 100%;
 					overflow: hidden;
+					box-sizing: border-box;
 				}
 
 				.image-inner-frame img {
 					width: 100%;
 					height: 100%;
+					max-width: 100%;
+					max-height: 100%;
+					min-width: 0;
+					min-height: 0;
 					display: block;
 					object-fit: cover;
 					object-position: center top;
 					filter: brightness(1.03) contrast(1.06) saturate(1.05);
 					transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+					box-sizing: border-box;
+					border: none;
+					outline: none;
+					vertical-align: middle;
 				}
 
 				.elegant-image-frame:hover .image-inner-frame img {
 					filter: brightness(1.06) contrast(1.09) saturate(1.08);
-					transform: scale(1.03);
+					transform: scale(1.01);
 				}
 
 				/* Elegant bottom accent */
@@ -570,7 +614,12 @@ export default function HeroSection() {
 
 					.elegant-image-frame {
 						max-width: 300px;
-						max-height: 450px;
+					}
+					
+					@supports not (aspect-ratio: 2 / 3) {
+						.elegant-image-frame {
+							padding-bottom: 150%;
+						}
 					}
 				}
 
@@ -622,7 +671,12 @@ export default function HeroSection() {
 
 					.elegant-image-frame {
 						max-width: 280px;
-						max-height: 420px;
+					}
+					
+					@supports not (aspect-ratio: 2 / 3) {
+						.elegant-image-frame {
+							padding-bottom: 150%;
+						}
 					}
 
 					.hero-slider-prev {
@@ -677,7 +731,12 @@ export default function HeroSection() {
 
 					.elegant-image-frame {
 						max-width: 240px;
-						max-height: 360px;
+					}
+					
+					@supports not (aspect-ratio: 2 / 3) {
+						.elegant-image-frame {
+							padding-bottom: 150%;
+						}
 					}
 
 					.hero-slider-nav {
