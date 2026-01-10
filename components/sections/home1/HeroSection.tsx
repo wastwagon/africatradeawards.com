@@ -77,11 +77,6 @@ export default function HeroSection() {
 
 									{/* Right Column - Content */}
 									<div className="hero-content-section">
-										{/* Theme Title */}
-										<div className="hero-title-section">
-											<h1 className="hero-theme-title">Honouring The Champions Of Africa&apos;s Trade And Industrialisation</h1>
-										</div>
-
 										{/* Speaker Information */}
 										<div className="hero-speaker-section">
 											<div className="speaker-info-wrapper">
@@ -351,24 +346,6 @@ export default function HeroSection() {
 					max-width: 750px;
 				}
 
-				/* Title Section */
-				.hero-title-section {
-					margin-bottom: 0;
-				}
-
-				.hero-theme-title {
-					font-size: clamp(16px, 2.2vw, 24px) !important;
-					font-weight: 400;
-					color: #FFFFFF;
-					line-height: 1.4;
-					margin: 0;
-					text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
-					font-family: 'Cormorant Garamond', 'Playfair Display', 'Georgia', serif;
-					letter-spacing: 0.6px;
-					text-transform: none;
-					font-style: normal;
-				}
-
 				/* Speaker Section */
 				.hero-speaker-section {
 					margin-top: 0;
@@ -508,10 +485,6 @@ export default function HeroSection() {
 						padding-left: 20px;
 					}
 
-					.hero-theme-title {
-						font-size: clamp(15px, 2.1vw, 22px) !important;
-					}
-
 					.speaker-name {
 						font-size: clamp(20px, 2.6vw, 30px) !important;
 					}
@@ -535,11 +508,6 @@ export default function HeroSection() {
 						max-width: 100%;
 					}
 
-					.hero-theme-title {
-						text-align: center;
-						font-size: clamp(15px, 2.1vw, 22px) !important;
-					}
-
 					.speaker-info-wrapper {
 						text-align: center;
 						align-items: center;
@@ -560,7 +528,6 @@ export default function HeroSection() {
 						align-items: center;
 					}
 
-					.hero-title-section,
 					.hero-speaker-section {
 						width: 100%;
 						max-width: 600px;
@@ -589,16 +556,6 @@ export default function HeroSection() {
 					.hero-content-section {
 						gap: 24px;
 						padding-left: 0;
-					}
-
-					.hero-title-section {
-						margin-bottom: 0;
-					}
-
-					.hero-theme-title {
-						font-size: clamp(14px, 2vw, 20px) !important;
-						text-align: center;
-						line-height: 1.4;
 					}
 
 					.speaker-info-wrapper {
