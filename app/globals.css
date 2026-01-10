@@ -2078,11 +2078,11 @@ body.css-loaded {
 
 .committee-banner-section .committee-profiles-grid {
 	display: grid !important;
-	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
-	gap: 24px !important;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+	gap: 40px !important;
 	justify-items: center !important;
 	align-items: start !important;
-	max-width: 1400px !important;
+	max-width: 1600px !important;
 	margin: 0 auto !important;
 	overflow-x: hidden !important;
 	overflow-y: visible !important;
@@ -2091,7 +2091,8 @@ body.css-loaded {
 
 @media (min-width: 1200px) {
 	.committee-banner-section .committee-profiles-grid {
-		grid-template-columns: repeat(5, 1fr) !important;
+		grid-template-columns: repeat(3, 1fr) !important;
+		gap: 50px !important;
 	}
 }
 
@@ -2111,10 +2112,10 @@ body.css-loaded {
 .committee-banner-section .committee-profile-card {
 	display: flex !important;
 	flex-direction: column !important;
-	align-items: center !important;
-	text-align: center !important;
+	align-items: flex-start !important;
+	text-align: left !important;
 	width: 100% !important;
-	max-width: 200px !important;
+	max-width: 100% !important;
 	height: 100% !important;
 	background: transparent !important;
 	border: none !important;
@@ -2137,7 +2138,7 @@ body.css-loaded {
 	height: 160px !important;
 	border-radius: 50% !important;
 	overflow: hidden !important;
-	margin-bottom: 20px !important;
+	margin: 0 0 20px 0 !important;
 	border: 2px solid rgba(192, 192, 192, 0.7) !important;
 	box-shadow: 
 		0 6px 18px rgba(0, 0, 0, 0.15),
@@ -2267,11 +2268,11 @@ body.css-loaded {
 
 .committee-banner-section .profile-name {
 	font-family: var(--grotesk) !important;
-	font-size: 12px !important;
+	font-size: 14px !important;
 	font-weight: var(--ztc-weight-bold) !important;
 	color: #000000 !important;
 	line-height: 1.4 !important;
-	margin: 0 0 10px 0 !important;
+	margin: 0 0 12px 0 !important;
 	text-transform: uppercase !important;
 	letter-spacing: 1px !important;
 	position: relative !important;
@@ -2282,6 +2283,7 @@ body.css-loaded {
 	flex-shrink: 0 !important;
 	text-align: left !important;
 	width: 100% !important;
+	white-space: normal !important;
 }
 
 .committee-banner-section .profile-name::after {
@@ -2310,11 +2312,11 @@ body.css-loaded {
 
 .committee-banner-section .profile-title {
 	font-family: var(--figtree) !important;
-	font-size: 11px !important;
+	font-size: 12px !important;
 	font-weight: var(--ztc-weight-regular) !important;
 	color: #000000 !important;
 	line-height: 1.7 !important;
-	margin: 0 0 8px 0 !important;
+	margin: 0 0 12px 0 !important;
 	text-shadow: none !important;
 	position: relative !important;
 	padding: 0 !important;
@@ -2325,12 +2327,10 @@ body.css-loaded {
 	transition: all 0.3s ease !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
-	min-height: 48px !important;
-	display: -webkit-box !important;
-	-webkit-line-clamp: 3 !important;
-	-webkit-box-orient: vertical !important;
-	overflow: hidden !important;
-	text-overflow: ellipsis !important;
+	min-height: auto !important;
+	display: block !important;
+	overflow: visible !important;
+	text-overflow: clip !important;
 	flex-shrink: 0 !important;
 	text-align: left !important;
 	width: 100% !important;
@@ -2338,18 +2338,16 @@ body.css-loaded {
 
 .committee-banner-section .profile-short-bio {
 	font-family: var(--figtree) !important;
-	font-size: 10px !important;
+	font-size: 11px !important;
 	font-weight: var(--ztc-weight-regular) !important;
 	color: #666666 !important;
-	line-height: 1.5 !important;
-	margin: 0 0 auto 0 !important;
-	display: -webkit-box !important;
-	-webkit-line-clamp: 3 !important;
-	-webkit-box-orient: vertical !important;
-	overflow: hidden !important;
-	text-overflow: ellipsis !important;
+	line-height: 1.6 !important;
+	margin: 0 0 16px 0 !important;
+	display: block !important;
+	overflow: visible !important;
+	text-overflow: clip !important;
 	flex: 1 1 auto !important;
-	min-height: 45px !important;
+	min-height: auto !important;
 	text-align: left !important;
 	width: 100% !important;
 }
@@ -2366,10 +2364,11 @@ body.css-loaded {
 	display: flex !important;
 	flex-direction: column !important;
 	flex: 1 !important;
-	min-height: 200px !important;
+	min-height: auto !important;
 	width: 100% !important;
 	align-items: flex-start !important;
 	text-align: left !important;
+	padding: 0 5px !important;
 }
 
 .committee-banner-section .profile-read-btn {
@@ -2997,7 +2996,7 @@ body.css-loaded {
 @media (max-width: 1200px) {
 	.committee-banner-section .committee-profiles-grid {
 		grid-template-columns: repeat(3, 1fr) !important;
-		gap: 15px !important;
+		gap: 35px !important;
 	}
 	
 	.committee-banner-section .committee-profile-card {
@@ -3020,7 +3019,7 @@ body.css-loaded {
 	
 	.committee-banner-section .committee-profiles-grid {
 		grid-template-columns: repeat(3, 1fr) !important;
-		gap: 20px 12px !important;
+		gap: 30px 20px !important;
 	}
 	
 	.committee-banner-section .committee-profile-card {
@@ -3030,7 +3029,7 @@ body.css-loaded {
 	.committee-banner-section .profile-image-wrapper {
 		width: 140px !important;
 		height: 140px !important;
-		margin-bottom: 16px !important;
+		margin: 0 0 16px 0 !important;
 		border: 2px solid rgba(192, 192, 192, 0.7) !important;
 		padding: 2px !important;
 	}
@@ -3040,7 +3039,7 @@ body.css-loaded {
 	}
 	
 	.committee-banner-section .profile-name {
-		font-size: 12px !important;
+		font-size: 13px !important;
 		margin-bottom: 10px !important;
 		letter-spacing: 0.8px !important;
 		padding: 0 3px !important;
@@ -3056,7 +3055,7 @@ body.css-loaded {
 	}
 	
 	.committee-banner-section .profile-title {
-		font-size: 10px !important;
+		font-size: 11px !important;
 		padding: 6px 10px !important;
 		line-height: 1.6 !important;
 	}
@@ -3133,7 +3132,7 @@ body.css-loaded {
 	.committee-banner-section .profile-image-wrapper {
 		width: 120px !important;
 		height: 120px !important;
-		margin-bottom: 14px !important;
+		margin: 0 0 14px 0 !important;
 		border: 2px solid rgba(192, 192, 192, 0.7) !important;
 		padding: 2px !important;
 	}
@@ -3147,7 +3146,7 @@ body.css-loaded {
 	}
 	
 	.committee-banner-section .profile-name {
-		font-size: 11px !important;
+		font-size: 12px !important;
 		margin-bottom: 8px !important;
 		letter-spacing: 0.6px !important;
 		padding: 0 2px !important;
@@ -3164,7 +3163,7 @@ body.css-loaded {
 	}
 	
 	.committee-banner-section .profile-title {
-		font-size: 9px !important;
+		font-size: 10px !important;
 		padding: 5px 8px !important;
 		line-height: 1.5 !important;
 		border-radius: 6px !important;
@@ -3837,7 +3836,7 @@ body.css-loaded {
 
 .committee-profiles-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	grid-template-columns: repeat(3, 1fr);
 	gap: 32px;
 	margin-top: 40px;
 	perspective: 1200px;
@@ -4146,6 +4145,13 @@ body.css-loaded {
 	line-height: 1.5;
 }
 
+@media (max-width: 1199px) and (min-width: 992px) {
+	.committee-profiles-grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 28px;
+	}
+}
+
 @media (max-width: 991px) {
 	.committee-profiles-circular-grid {
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -4166,7 +4172,7 @@ body.css-loaded {
 	}
 	
 	.committee-profiles-grid {
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 		gap: 28px;
 	}
 	
@@ -4939,18 +4945,18 @@ body.css-loaded {
 
 /* Footer - Sticky Header Gradient Style */
 .footer1-sertion-area {
-	background: linear-gradient(135deg, 
-		rgba(21, 21, 47, 0.98) 0%, 
-		rgba(22, 21, 50, 0.96) 10%, 
-		rgba(22, 21, 50, 0.94) 20%, 
-		rgba(78, 43, 90, 0.92) 30%, 
-		rgba(78, 43, 90, 0.9) 40%, 
-		rgba(120, 80, 140, 0.88) 50%, 
-		rgba(120, 80, 140, 0.86) 60%, 
-		rgba(78, 43, 90, 0.88) 70%, 
-		rgba(22, 21, 50, 0.9) 80%, 
-		rgba(22, 21, 50, 0.92) 90%, 
-		rgba(21, 21, 47, 0.94) 100%) !important;
+	background: linear-gradient(180deg, 
+		#2a1832 0%, 
+		#32203a 15%, 
+		#3d2545 30%, 
+		#4a2d55 45%, 
+		#543562 55%, 
+		#563764 60%, 
+		#543562 65%, 
+		#4a2d55 75%, 
+		#3d2545 85%, 
+		#32203a 92%, 
+		#2a1832 100%) !important;
 	backdrop-filter: blur(20px) !important;
 	-webkit-backdrop-filter: blur(20px) !important;
 	box-shadow: 0 -8px 32px rgba(78, 43, 90, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;

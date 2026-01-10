@@ -5,22 +5,22 @@ const contactInfo = [
 	{
 		icon: 'fa-solid fa-envelope',
 		title: 'General Inquiries',
-		content: 'info@africantradechamber.org',
-		link: 'mailto:info@africantradechamber.org',
+		content: 'secretariat@africatradeawards.com',
+		link: 'mailto:secretariat@africatradeawards.com',
 		type: 'email'
 	},
 	{
 		icon: 'fa-solid fa-phone',
 		title: 'Call/Message',
-		content: '+233 50 536 6200',
-		link: 'tel:+233505366200',
+		content: '+233 55 401 4753',
+		link: 'tel:+233554014753',
 		type: 'phone'
 	},
 	{
 		icon: 'fa-solid fa-handshake',
 		title: 'Partnerships',
-		content: 'partnerships@africantradechamber.org',
-		link: 'mailto:partnerships@africantradechamber.org',
+		content: 'secretariat@africatradeawards.com',
+		link: 'mailto:secretariat@africatradeawards.com',
 		type: 'email'
 	},
 	{

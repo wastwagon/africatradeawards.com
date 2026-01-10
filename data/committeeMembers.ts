@@ -15,7 +15,7 @@ export const committeeMembers: CommitteeMember[] = [
 		id: 'mohamadou-hayatou',
 		name: 'Mohamadou Hayatou',
 		country: 'Cameroon',
-		title: 'Investment & Asset Management Specialist',
+		title: 'Investment & Asset Management Consultant',
 		role: 'Member, Recognition & Validation Committee – Africa Trade Awards 2026',
 		image: '/assets/img/committee/mohamadou-hayatou.jpeg',
 		expertise: [
@@ -37,7 +37,7 @@ export const committeeMembers: CommitteeMember[] = [
 		id: 'beenzu-muleya',
 		name: 'Beenzu N. Muleya',
 		country: 'Zambia',
-		title: 'Trade Finance Manager – Lending Operations',
+		title: 'Trade Finance Manager - Lending Operations, Eastern and Southern African Trade and Development Bank (TDB)',
 		role: 'Member, Recognition & Validation Committee – Africa Trade Awards 2026',
 		image: '/assets/img/committee/beenzu-muleya.jpeg',
 		expertise: [
@@ -58,7 +58,7 @@ export const committeeMembers: CommitteeMember[] = [
 		id: 'nana-ama-kusi-appouh',
 		name: 'Nana Ama Kusi-Appouh, Esq.',
 		country: 'Ghana',
-		title: 'Barrister & Solicitor (Ghana) | Solicitor (England & Wales)',
+		title: 'Barrister & Solicitor (Ghana) | Solicitor (England & Wales) | Group Head of Legal & Company Secretary, GOIL PLC',
 		role: 'Member, Recognition & Validation Committee – Africa Trade Awards 2026',
 		image: '/assets/img/committee/nana-ama-kusi-appouh.jpeg',
 		expertise: [
@@ -79,7 +79,7 @@ export const committeeMembers: CommitteeMember[] = [
 		id: 'seyram-kekessie',
 		name: 'Dr. Seyram Kekessie',
 		country: 'Ghana',
-		title: 'Founder & CEO, Insightis Africa',
+		title: 'Founder & CEO, Insightis Africa | Market Intelligence & Consumer Insights Specialist',
 		role: 'Member, Recognition & Validation Committee – Africa Trade Awards 2026',
 		image: '/assets/img/committee/seyram-kekessie.jpeg',
 		expertise: [
@@ -100,7 +100,7 @@ export const committeeMembers: CommitteeMember[] = [
 		id: 'peter-mireku',
 		name: 'Peter Mireku',
 		country: 'Ghana',
-		title: 'Former Chief Executive Officer, Ghana Gaming Commission',
+		title: 'Former Chief Executive Officer, Ghana Gaming Commission | Management Consultant | Regulatory & Institutional Governance',
 		role: 'Member, Recognition & Validation Committee – Africa Trade Awards 2026',
 		image: '/assets/img/committee/peter-mireku.jpeg',
 		expertise: [
@@ -115,6 +115,27 @@ export const committeeMembers: CommitteeMember[] = [
 			'Peter Mireku is a senior regulatory and management professional with over twenty years of experience across public sector leadership, institutional governance, and management consulting in Ghana and the United Kingdom. He previously served as Chief Executive Officer of the Ghana Gaming Commission, where he led regulatory oversight, licensing frameworks, compliance enforcement, and institutional reform within a highly regulated industry.',
 			'In addition to his public sector leadership, he works as a management consultant, advising organizations on regulatory compliance, governance frameworks, operational transformation, and stakeholder management. His work is grounded in practical executive experience and a strong understanding of risk, accountability, and institutional performance.',
 			'He brings to the Recognition and Validation Committee a disciplined, governance-led perspective, combining regulatory judgment with strategic and operational insight in the assessment of institutional credibility and leadership excellence across Africa\'s trade and business landscape.'
+		]
+	},
+	{
+		id: 'yvonne-botchey',
+		name: 'Ms. Yvonne Botchey',
+		country: 'Ghana',
+		title: 'Managing Director, World Trade Centre Accra | Business & Legal Executive',
+		role: 'Member, Recognition & Validation Committee – Africa Trade Awards 2026',
+		image: '/assets/img/committee/yvonne-botchey.jpeg',
+		expertise: [
+			'Corporate Governance',
+			'Regulatory Compliance',
+			'Trade Development',
+			'Enterprise Risk Management',
+			'Cross-border Transactions'
+		],
+		shortBio: 'Senior business and legal executive with extensive experience across banking, financial services, and international trade sectors, leading strategic initiatives as Managing Director of World Trade Centre Accra.',
+		bio: [
+			'Yvonne Botchey is a senior business and legal executive with extensive experience across banking, financial services, and international trade sectors. She holds advanced degrees in law and business administration from globally recognized institutions.',
+			'She serves as Managing Director of the World Trade Centre Accra, where she leads strategic initiatives to promote trade, investment, and business development across West Africa. She provides guidance on corporate governance, regulatory compliance, cross-border commercial transactions, and enterprise risk management, ensuring operational excellence and sustainable growth.',
+			'Yvonne applies a governance-led, integrity-focused approach to strategic leadership, corporate stewardship, and stakeholder engagement, consistently driving impactful outcomes across the African business and trade landscape.'
 		]
 	}
 ]

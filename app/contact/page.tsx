@@ -79,6 +79,15 @@ export default function Contact() {
 												</div>
 												<div className="contact-info-item">
 													<div className="contact-icon-box">
+														<i className="fa-solid fa-phone"></i>
+													</div>
+													<div className="contact-info-content">
+														<span className="info-label">Phone</span>
+														<Link href="tel:+233554014753" className="info-value">+233 55 401 4753</Link>
+													</div>
+												</div>
+												<div className="contact-info-item">
+													<div className="contact-icon-box">
 														<i className="fa-solid fa-location-dot"></i>
 													</div>
 													<div className="contact-info-content">

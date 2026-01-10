@@ -53,6 +53,9 @@ export default function Footer1() {
 								<h3>Contact Us</h3>
 								<ul>
 									<li>
+										<Link href="tel:+233554014753"><img src="/assets/img/icons/phn1.svg" alt="" />+233 55 401 4753</Link>
+									</li>
+									<li>
 										<Link href="mailto:secretariat@africatradeawards.com"><img src="/assets/img/icons/mail1.svg" alt="" />secretariat@africatradeawards.com</Link>
 									</li>
 									<li>

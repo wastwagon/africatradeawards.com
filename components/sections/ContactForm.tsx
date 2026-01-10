@@ -168,7 +168,7 @@ export default function ContactForm() {
 											value={formData.phone}
 											onChange={handleChange}
 											className={errors.phone ? 'error' : ''}
-											placeholder="+233 50 536 6200"
+											placeholder="+233 55 401 4753"
 										/>
 										{errors.phone && <span className="error-message">{errors.phone}</span>}
 									</div>
