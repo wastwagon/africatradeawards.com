@@ -64,8 +64,6 @@ export default function HeroSection() {
 									{/* Left Column - Speaker Image */}
 									<div className="hero-image-section">
 										<div className="elegant-image-frame">
-											<div className="frame-outer-glow"></div>
-											<div className="frame-main-border"></div>
 											<div className="image-wrapper-elegant">
 												<div className="image-inner-frame">
 													<img 
@@ -73,7 +71,6 @@ export default function HeroSection() {
 														alt={slide.name}
 													/>
 												</div>
-												<div className="image-bottom-accent"></div>
 											</div>
 										</div>
 									</div>
@@ -238,22 +235,24 @@ export default function HeroSection() {
 					box-sizing: border-box;
 				}
 
-				/* Elegant Image Frame */
+				/* Premium Image Frame - Elegant Design */
 				.elegant-image-frame {
 					position: relative;
 					width: 100%;
-					max-width: 320px;
+					max-width: 350px;
 					height: auto;
 					aspect-ratio: 2 / 3;
 					margin: 0 auto;
-					padding: 12px;
-					background: rgba(255, 255, 255, 0.12);
-					border-radius: 16px;
-					backdrop-filter: blur(15px);
-					transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-					box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-								0 0 20px rgba(255, 255, 255, 0.1),
-								0 8px 32px rgba(0, 0, 0, 0.3);
+					padding: 20px;
+					background: rgba(255, 255, 255, 0.1);
+					border: 2px solid rgba(255, 255, 255, 0.25);
+					border-radius: 24px;
+					backdrop-filter: blur(40px);
+					transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+					box-shadow: 
+						0 25px 70px rgba(0, 0, 0, 0.45),
+						0 12px 35px rgba(0, 0, 0, 0.35),
+						inset 0 1px 1px rgba(255, 255, 255, 0.3);
 					overflow: hidden;
 					box-sizing: border-box;
 					display: flex;
@@ -268,61 +267,13 @@ export default function HeroSection() {
 				}
 
 				.elegant-image-frame:hover {
-					transform: translateY(-6px);
-					background: rgba(255, 255, 255, 0.12);
-				}
-
-				.frame-outer-glow {
-					position: absolute;
-					top: -2px;
-					left: -2px;
-					right: -2px;
-					bottom: -2px;
-					background: linear-gradient(135deg, 
-						rgba(255, 255, 255, 0.25) 0%,
-						rgba(255, 255, 255, 0.18) 25%,
-						rgba(255, 255, 255, 0.25) 50%,
-						rgba(255, 255, 255, 0.18) 75%,
-						rgba(255, 255, 255, 0.25) 100%);
-					border-radius: 18px;
-					opacity: 0.6;
-					transition: opacity 0.5s ease;
-					z-index: 0;
-					box-shadow: 0 0 30px rgba(255, 255, 255, 0.15),
-								0 0 60px rgba(255, 255, 255, 0.08);
-					pointer-events: none;
-					overflow: hidden;
-				}
-
-				.elegant-image-frame:hover .frame-outer-glow {
-					opacity: 0.9;
-					box-shadow: 0 0 40px rgba(255, 255, 255, 0.2),
-								0 0 80px rgba(255, 255, 255, 0.12);
-				}
-
-				.frame-main-border {
-					position: absolute;
-					top: 0;
-					left: 0;
-					right: 0;
-					bottom: 0;
-					border: 2px solid rgba(255, 255, 255, 0.35);
-					border-radius: 16px;
+					transform: translateY(-10px);
+					background: rgba(255, 255, 255, 0.14);
+					border-color: rgba(255, 255, 255, 0.35);
 					box-shadow: 
-						0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-						0 0 0 2px rgba(255, 255, 255, 0.05),
-						0 12px 48px rgba(0, 0, 0, 0.4),
-						0 6px 16px rgba(0, 0, 0, 0.25);
-					transition: all 0.5s ease;
-					z-index: 1;
-				}
-
-				.elegant-image-frame:hover .frame-main-border {
-					border-color: rgba(255, 255, 255, 0.4);
-					box-shadow: 
-						0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-						0 15px 60px rgba(0, 0, 0, 0.45),
-						0 6px 20px rgba(0, 0, 0, 0.3);
+						0 35px 90px rgba(0, 0, 0, 0.55),
+						0 18px 45px rgba(0, 0, 0, 0.45),
+						inset 0 1px 2px rgba(255, 255, 255, 0.4);
 				}
 
 				.image-wrapper-elegant {
@@ -331,21 +282,27 @@ export default function HeroSection() {
 					height: 100%;
 					min-width: 0;
 					min-height: 0;
-					border-radius: 12px;
+					border-radius: 18px;
 					overflow: hidden;
-					background: rgba(255, 255, 255, 0.05);
+					background: rgba(0, 0, 0, 0.05);
 					z-index: 2;
 					box-sizing: border-box;
 					flex: 1 1 auto;
+					box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+					transition: all 0.6s ease;
+				}
+
+				.elegant-image-frame:hover .image-wrapper-elegant {
+					box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.25);
 				}
 
 				@supports not (aspect-ratio: 2 / 3) {
 					.image-wrapper-elegant {
 						position: absolute;
-						top: 12px;
-						left: 12px;
-						right: 12px;
-						bottom: 12px;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
 						width: auto;
 						height: auto;
 					}
@@ -382,59 +339,6 @@ export default function HeroSection() {
 				.elegant-image-frame:hover .image-inner-frame img {
 					filter: brightness(1.06) contrast(1.09) saturate(1.08);
 					transform: scale(1.01);
-				}
-
-				/* Elegant bottom accent */
-				.image-bottom-accent {
-					position: absolute;
-					bottom: 0;
-					left: 0;
-					right: 0;
-					height: 35%;
-					background: linear-gradient(180deg, 
-						transparent 0%,
-						rgba(42, 24, 50, 0.2) 30%,
-						rgba(42, 24, 50, 0.5) 70%,
-						rgba(42, 24, 50, 0.75) 100%);
-					pointer-events: none;
-					z-index: 3;
-					border-radius: 0 0 8px 8px;
-				}
-
-				/* Subtle corner accents */
-				.image-wrapper-elegant::before {
-					content: '';
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 40px;
-					height: 40px;
-					border-top: 2px solid rgba(255, 255, 255, 0.2);
-					border-left: 2px solid rgba(255, 255, 255, 0.2);
-					border-radius: 8px 0 0 0;
-					pointer-events: none;
-					z-index: 4;
-					transition: all 0.5s ease;
-				}
-
-				.image-wrapper-elegant::after {
-					content: '';
-					position: absolute;
-					top: 0;
-					right: 0;
-					width: 40px;
-					height: 40px;
-					border-top: 2px solid rgba(255, 255, 255, 0.2);
-					border-right: 2px solid rgba(255, 255, 255, 0.2);
-					border-radius: 0 8px 0 0;
-					pointer-events: none;
-					z-index: 4;
-					transition: all 0.5s ease;
-				}
-
-				.elegant-image-frame:hover .image-wrapper-elegant::before,
-				.elegant-image-frame:hover .image-wrapper-elegant::after {
-					border-color: rgba(255, 255, 255, 0.35);
 				}
 
 				/* Content Section */
@@ -613,13 +517,7 @@ export default function HeroSection() {
 					}
 
 					.elegant-image-frame {
-						max-width: 300px;
-					}
-					
-					@supports not (aspect-ratio: 2 / 3) {
-						.elegant-image-frame {
-							padding-bottom: 150%;
-						}
+						max-width: 320px;
 					}
 				}
 
@@ -670,13 +568,7 @@ export default function HeroSection() {
 					}
 
 					.elegant-image-frame {
-						max-width: 280px;
-					}
-					
-					@supports not (aspect-ratio: 2 / 3) {
-						.elegant-image-frame {
-							padding-bottom: 150%;
-						}
+						max-width: 300px;
 					}
 
 					.hero-slider-prev {
@@ -730,13 +622,7 @@ export default function HeroSection() {
 					}
 
 					.elegant-image-frame {
-						max-width: 240px;
-					}
-					
-					@supports not (aspect-ratio: 2 / 3) {
-						.elegant-image-frame {
-							padding-bottom: 150%;
-						}
+						max-width: 260px;
 					}
 
 					.hero-slider-nav {
