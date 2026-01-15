@@ -49,9 +49,9 @@ const categories: LogoCategory[] = [
 		]
 	},
 	{ 
-		name: 'Collaborators of ATS', 
+		name: 'Collaborators of Africa Trade Summit', 
 		folder: 'Collaborators of ATS', 
-		displayName: 'Collaborators of ATS',
+		displayName: 'Collaborators of Africa Trade Summit',
 		logos: [
 			'afcffta.png',
 			'ghana-investment-promotion-centre.png',
