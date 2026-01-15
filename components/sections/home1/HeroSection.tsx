@@ -495,6 +495,10 @@ export default function HeroSection() {
 				}
 
 				@media (max-width: 991px) {
+					.promotional-hero-section {
+						padding-top: 80px;
+					}
+
 					.hero-main-wrapper {
 						grid-template-columns: 1fr;
 						gap: 35px;
@@ -548,19 +552,30 @@ export default function HeroSection() {
 				}
 
 				@media (max-width: 575px) {
+					.promotional-hero-section {
+						padding-top: 70px;
+						min-height: 100vh;
+					}
+
+					.hero-slide .container {
+						padding-top: 0;
+					}
+
 					.hero-main-wrapper {
 						gap: 24px;
-						padding: 30px 20px;
+						padding: 20px 15px;
+						min-height: calc(100vh - 70px);
 					}
 
 					.hero-content-section {
-						gap: 24px;
+						gap: 20px;
 						padding-left: 0;
 					}
 
 					.speaker-info-wrapper {
 						gap: 12px;
 						align-items: center;
+						padding-top: 10px;
 					}
 
 					.badge-text {
@@ -569,17 +584,20 @@ export default function HeroSection() {
 					}
 
 					.speaker-name {
-						font-size: clamp(18px, 2.4vw, 26px) !important;
+						font-size: clamp(18px, 2.4vw, 24px) !important;
 						text-align: center;
+						line-height: 1.3;
+						margin-bottom: 8px;
 					}
 
 					.speaker-title {
-						font-size: clamp(14px, 1.6vw, 16px);
+						font-size: clamp(13px, 1.5vw, 15px);
 						text-align: center;
+						line-height: 1.5;
 					}
 
 					.elegant-image-frame {
-						max-width: 260px;
+						max-width: 240px;
 					}
 
 					.hero-slider-nav {
