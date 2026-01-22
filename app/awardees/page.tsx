@@ -197,6 +197,11 @@ export default function Awardees() {
 														</div>
 														<h3 className="awardee-name">{awardee.awardee}</h3>
 														
+														<div className="awardee-excerpt">
+															{awardee.citation.split('\n\n')[0].substring(0, 150)}
+															{awardee.citation.split('\n\n')[0].length > 150 ? '...' : ''}
+														</div>
+														
 														<button
 															className="awardee-citation-btn"
 															onClick={() => openCitation(awardee)}
@@ -231,9 +236,21 @@ export default function Awardees() {
 							#fafafa 50%, 
 							#f5f5f5 75%, 
 							#f8f8f8 100%);
-						padding: 80px 0 60px;
+						padding: 40px 0 30px;
 						position: relative;
 						overflow: hidden;
+					}
+
+					@media (min-width: 576px) {
+						.awardees-hero-section {
+							padding: 60px 0 40px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardees-hero-section {
+							padding: 80px 0 60px;
+						}
 					}
 
 					.awardees-hero-section::before {
@@ -275,7 +292,7 @@ export default function Awardees() {
 					}
 
 					.awardees-hero-title {
-						font-size: clamp(28px, 4vw, 42px);
+						font-size: clamp(20px, 2.5vw, 28px);
 						font-weight: 700;
 						color: #1a1a1a;
 						line-height: 1.3;
@@ -286,24 +303,38 @@ export default function Awardees() {
 					.awardees-basis-card {
 						background: #ffffff;
 						border-radius: 16px;
-						padding: 32px 40px;
-						margin-top: 40px;
+						padding: 20px;
+						margin-top: 24px;
 						box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 						border: 1px solid rgba(78, 43, 90, 0.1);
 						text-align: left;
 					}
 
+					@media (min-width: 576px) {
+						.awardees-basis-card {
+							padding: 24px 28px;
+							margin-top: 32px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardees-basis-card {
+							padding: 32px 40px;
+							margin-top: 40px;
+						}
+					}
+
 					.awardees-basis-title {
-						font-size: 20px;
+						font-size: clamp(16px, 2vw, 18px);
 						font-weight: 700;
 						color: #4e2b5a;
-						margin: 0 0 16px 0;
+						margin: 0 0 12px 0;
 						font-family: var(--grotesk);
 					}
 
 					.awardees-basis-text {
-						font-size: 16px;
-						line-height: 1.8;
+						font-size: clamp(14px, 1.8vw, 15px);
+						line-height: 1.7;
 						color: #4a4a4a;
 						margin: 0;
 						font-family: var(--figtree);
@@ -356,11 +387,35 @@ export default function Awardees() {
 							#fafafa 0%, 
 							#f5f5f5 50%, 
 							#fafafa 100%);
-						padding: 60px 0 100px;
+						padding: 30px 0 60px;
+					}
+
+					@media (min-width: 576px) {
+						.awardees-main-section {
+							padding: 40px 0 80px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardees-main-section {
+							padding: 60px 0 100px;
+						}
 					}
 
 					.awardees-tier-section {
-						margin-bottom: 80px;
+						margin-bottom: 40px;
+					}
+
+					@media (min-width: 576px) {
+						.awardees-tier-section {
+							margin-bottom: 60px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardees-tier-section {
+							margin-bottom: 80px;
+						}
 					}
 
 					.awardees-tier-section:last-child {
@@ -368,24 +423,53 @@ export default function Awardees() {
 					}
 
 					.awardees-tier-header {
-						margin-bottom: 40px;
+						margin-bottom: 24px;
 						text-align: center;
 					}
 
+					@media (min-width: 576px) {
+						.awardees-tier-header {
+							margin-bottom: 32px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardees-tier-header {
+							margin-bottom: 40px;
+						}
+					}
+
 					.awardees-tier-title {
-						font-size: clamp(24px, 3.5vw, 32px);
+						font-size: clamp(18px, 2.5vw, 24px);
 						font-weight: 700;
 						color: var(--tier-color, #4e2b5a);
 						margin: 0;
 						font-family: var(--grotesk);
 						text-transform: uppercase;
-						letter-spacing: 2px;
+						letter-spacing: 1.5px;
 					}
 
 					.awardees-grid {
 						display: grid;
-						grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-						gap: 32px;
+						grid-template-columns: 1fr;
+						gap: 20px;
+						align-items: stretch;
+					}
+
+					@media (min-width: 576px) {
+						.awardees-grid {
+							grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+							gap: 24px;
+							align-items: stretch;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardees-grid {
+							grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+							gap: 32px;
+							align-items: stretch;
+						}
 					}
 
 					.awardee-card {
@@ -397,6 +481,7 @@ export default function Awardees() {
 						transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 						display: flex;
 						flex-direction: column;
+						height: 100%;
 					}
 
 					.awardee-card:hover {
@@ -408,20 +493,50 @@ export default function Awardees() {
 					.awardee-image-wrapper {
 						width: 100%;
 						background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
-						padding: 40px 30px;
+						padding: 24px 20px;
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						min-height: 200px;
+						min-height: 160px;
+					}
+
+					@media (min-width: 576px) {
+						.awardee-image-wrapper {
+							padding: 32px 24px;
+							min-height: 180px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardee-image-wrapper {
+							padding: 40px 30px;
+							min-height: 200px;
+						}
 					}
 
 					.awardee-profile-image {
-						width: 180px;
-						height: 180px;
+						width: 120px;
+						height: 120px;
 						border-radius: 50%;
 						overflow: hidden;
-						border: 4px solid #ffffff;
-						box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+						border: 3px solid #ffffff;
+						box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+					}
+
+					@media (min-width: 576px) {
+						.awardee-profile-image {
+							width: 150px;
+							height: 150px;
+							border-width: 3px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardee-profile-image {
+							width: 180px;
+							height: 180px;
+							border-width: 4px;
+						}
 					}
 
 					.awardee-profile-image .awardee-image {
@@ -475,10 +590,22 @@ export default function Awardees() {
 					}
 
 					.awardee-content {
-						padding: 32px;
+						padding: 20px;
 						flex: 1;
 						display: flex;
 						flex-direction: column;
+					}
+
+					@media (min-width: 576px) {
+						.awardee-content {
+							padding: 24px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardee-content {
+							padding: 32px;
+						}
 					}
 
 					.awardee-category-badge {
@@ -498,30 +625,55 @@ export default function Awardees() {
 					}
 
 					.awardee-name {
-						font-size: 24px;
+						font-size: clamp(14px, 1.8vw, 18px);
 						font-weight: 700;
 						color: #1a1a1a;
-						margin: 0 0 24px 0;
+						margin: 0 0 12px 0;
 						line-height: 1.3;
 						font-family: var(--grotesk);
 					}
 
+					.awardee-excerpt {
+						font-size: clamp(13px, 1.6vw, 14px);
+						line-height: 1.6;
+						color: #666;
+						margin: 0 0 20px 0;
+						font-family: var(--figtree);
+						flex: 1;
+					}
+
 					.awardee-citation-btn {
-						padding: 12px 24px;
+						padding: 10px 20px;
 						background: transparent;
 						border: 2px solid var(--tier-color, #4e2b5a);
 						border-radius: 50px;
 						color: var(--tier-color, #4e2b5a);
-						font-size: 14px;
+						font-size: clamp(12px, 1.5vw, 13px);
 						font-weight: 600;
 						cursor: pointer;
 						transition: all 0.3s ease;
 						display: flex;
 						align-items: center;
 						justify-content: center;
-						gap: 8px;
+						gap: 6px;
 						font-family: var(--grotesk);
 						margin-top: auto;
+					}
+
+					@media (min-width: 576px) {
+						.awardee-citation-btn {
+							padding: 11px 22px;
+							font-size: 13px;
+							gap: 7px;
+						}
+					}
+
+					@media (min-width: 992px) {
+						.awardee-citation-btn {
+							padding: 12px 24px;
+							font-size: 14px;
+							gap: 8px;
+						}
 					}
 
 					.awardee-citation-btn:hover {
@@ -531,69 +683,55 @@ export default function Awardees() {
 						box-shadow: 0 4px 12px rgba(78, 43, 90, 0.2);
 					}
 
-					/* Responsive */
-					@media (max-width: 991px) {
-						.awardees-hero-section {
-							padding: 60px 0 40px;
-						}
+					/* Mobile-first responsive adjustments */
+					.awardees-filter-section {
+						padding: 16px 0;
+					}
 
-						.awardees-basis-card {
-							padding: 24px 28px;
-						}
-
-						.awardees-grid {
-							grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-							gap: 24px;
+					@media (min-width: 576px) {
+						.awardees-filter-section {
+							padding: 24px 0;
 						}
 					}
 
-					@media (max-width: 575px) {
-						.awardees-hero-section {
-							padding: 40px 0 30px;
-						}
-
-						.awardees-hero-title {
-							font-size: 24px;
-						}
-
-						.awardees-basis-card {
-							padding: 20px;
-						}
-
+					@media (min-width: 992px) {
 						.awardees-filter-section {
-							padding: 20px 0;
+							padding: 30px 0;
 						}
+					}
 
+					.awardees-filter-wrapper {
+						gap: 8px;
+					}
+
+					@media (min-width: 576px) {
 						.awardees-filter-wrapper {
-							gap: 8px;
+							gap: 10px;
 						}
+					}
 
+					@media (min-width: 992px) {
+						.awardees-filter-wrapper {
+							gap: 12px;
+						}
+					}
+
+					.awardees-filter-btn {
+						padding: 8px 16px;
+						font-size: 12px;
+					}
+
+					@media (min-width: 576px) {
 						.awardees-filter-btn {
-							padding: 8px 16px;
-							font-size: 12px;
+							padding: 9px 20px;
+							font-size: 13px;
 						}
+					}
 
-						.awardees-grid {
-							grid-template-columns: 1fr;
-							gap: 20px;
-						}
-
-						.awardee-image-wrapper {
-							padding: 30px 20px;
-							min-height: 160px;
-						}
-
-						.awardee-profile-image {
-							width: 140px;
-							height: 140px;
-						}
-
-						.awardee-content {
-							padding: 24px;
-						}
-
-						.awardee-name {
-							font-size: 20px;
+					@media (min-width: 992px) {
+						.awardees-filter-btn {
+							padding: 10px 24px;
+							font-size: 14px;
 						}
 					}
 				`}</style>
