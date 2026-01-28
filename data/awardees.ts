@@ -17,6 +17,7 @@ export const awardees: Awardee[] = [
 		category: 'Africa Trade Leader of the Year',
 		awardee: 'Prof. Benedict Oramah',
 		type: 'individual',
+		image: '/assets/img/awardees/prof-benedict-oramah.jpg',
 		citation: `Professor Benedict Oramah is recognised for his singular contribution to the quiet but consequential task of giving African trade a financial system capable of sustaining itself. His work did not seek to dramatise trade, but to make it dependable—less vulnerable to external withdrawal, and more firmly anchored in African institutions.
 
 When he assumed leadership of the African Export–Import Bank, African trade finance remained exposed to forces beyond the continent's control. Liquidity was episodic, confidence uneven, and intra-African commerce more often discussed than executed. Over time, and with deliberate intent, Professor Oramah set about changing those conditions. He understood that trade matures not through declarations, but through institutions that endure pressure and reward execution.
@@ -33,6 +34,7 @@ This award recognises a leader whose influence is best measured in resilience. T
 		category: 'Pan-African Industrial Leader of the Year',
 		awardee: 'Aliko Dangote',
 		type: 'individual',
+		image: '/assets/img/awardees/aliko-dangote.png',
 		citation: `Aliko Dangote is recognised for a body of work that has materially altered the landscape of African industry and, in doing so, reshaped assumptions about what African enterprise can build, own, and sustain. His industrial career has been guided by a clear and persistent idea: that Africa's economic strength depends on producing at scale what it has long imported, and on anchoring that production within its own markets.
 
 Over time, and with particular consequence in recent years, his investments in cement, fertiliser, refining, and associated infrastructure have established large-scale manufacturing capacity across multiple African countries. These were not isolated ventures, nor were they driven by short-term opportunity. They were the result of patient capital committed to assets whose value lies in durability, scale, and relevance to the continent's most basic economic needs.
@@ -49,6 +51,7 @@ This award recognises an industrialist whose influence is best measured not in v
 		category: 'Africa Trade Finance Architect of the Year',
 		awardee: 'African Export–Import Bank (Afreximbank)',
 		type: 'institution',
+		logo: '/assets/img/awardees/afreximbank.jpg',
 		citation: `The African Export–Import Bank is recognised for its decisive role in reshaping the financial conditions under which African trade is conducted. Over the past decade, and with particular force during periods of global disruption, the Bank has moved trade finance in Africa from a position of fragility towards one of institutional strength.
 
 Afreximbank's contribution lies not simply in the provision of capital, but in the manner in which that capital has been deployed. Its facilities were designed to absorb risk at moments when commercial appetite receded, allowing African trade to continue when confidence elsewhere faltered. In doing so, the Bank preserved the continuity of supply chains, protected industrial activity, and sustained the credibility of African counterparties in international and regional markets.
@@ -66,6 +69,7 @@ This award recognises Afreximbank as an institution that has quietly but decisiv
 		category: 'Resources-to-Industry Excellence Award',
 		awardee: 'ARISE Integrated Industrial Platforms',
 		type: 'institution',
+		logo: '/assets/img/awardees/arise-integrated-industrial-platforms.jpg',
 		citation: `ARISE Integrated Industrial Platforms is recognised for re-imagining how Africa's natural resources are translated into industrial value, and for doing so through systems that privilege execution over abstraction. Its work addresses one of the continent's most persistent economic shortcomings: the long separation between resource endowment and industrial outcome.
 
 Rather than approaching industrialisation as a sequence of isolated factories, ARISE built environments in which production could take place with fewer impediments. Across several African countries, it established integrated industrial parks that combine energy, logistics, regulatory coordination, and export infrastructure into a single operational setting. Within these spaces, timber, agricultural commodities, and minerals are processed and manufactured closer to their source, retaining value that would otherwise be exported in raw form.
@@ -82,6 +86,7 @@ This award recognises ARISE Integrated Industrial Platforms for converting Afric
 		category: 'Industrial Energy Project of the Year',
 		awardee: 'Grand Ethiopian Renaissance Dam (GERD)',
 		type: 'institution',
+		logo: '/assets/img/awardees/grand-ethiopian-renaissance-dam.jpg',
 		citation: `The Grand Ethiopian Renaissance Dam is recognised for its decisive contribution to the industrial foundations of the Horn of Africa and for altering, in durable ways, the relationship between energy supply and economic possibility in the region. Few projects on the continent have carried such far-reaching implications for production, trade, and long-term development.
 
 At its core, the Dam addressed a constraint that has long limited industrial ambition: the absence of reliable, large-scale power. By delivering substantial baseload electricity, GERD has strengthened Ethiopia's capacity to support manufacturing, processing, and logistics at scale. Energy, in this context, is not an abstract public good but a practical enabler of industry, employment, and export activity.
@@ -98,6 +103,7 @@ This award recognises the Grand Ethiopian Renaissance Dam not as a symbol, but a
 		category: 'Advanced Manufacturing Excellence Award',
 		awardee: 'Elsewedy Electric',
 		type: 'institution',
+		logo: '/assets/img/awardees/elsewedy-electric.jpg',
 		citation: `Elsewedy Electric is recognised for establishing advanced manufacturing capacity in Africa that combines technical precision with scale, and for doing so in a manner that has quietly but materially strengthened the continent's industrial base. Its contribution lies not in experimentation or pilot activity, but in sustained production carried out to international standards across multiple jurisdictions.
 
 Over time, Elsewedy Electric has built and operated manufacturing facilities producing cables, transformers, and electrical equipment essential to modern infrastructure and industry. These are products that demand consistency, engineering discipline, and rigorous quality control. By locating such manufacturing within Africa, the company has reduced reliance on imported industrial inputs while embedding technical capability in local economies.
@@ -114,6 +120,7 @@ This award recognises Elsewedy Electric for demonstrating that complex manufactu
 		category: 'Agro-Industrial Systems Award of the Year',
 		awardee: 'BUA Foods',
 		type: 'institution',
+		logo: '/assets/img/awardees/bua-foods.jpg',
 		citation: `BUA Foods is recognised for advancing a model of agro-industrial production that links African agriculture to industrial processing with clarity of purpose and scale of execution. Its work addresses a longstanding weakness in African economies: the separation between agricultural output and industrial value creation.
 
 Through sustained investment in sugar, flour, rice, edible oils, and related food processing, BUA Foods has built integrated systems that connect farming, processing, packaging, and distribution into a single operational chain. These systems have transformed agricultural inputs into reliable industrial supply, serving both domestic and regional markets while reducing dependence on imported staples.
@@ -130,6 +137,7 @@ This award recognises BUA Foods for translating agricultural potential into indu
 		category: 'Pharmaceutical & Health Manufacturing Excellence Award',
 		awardee: 'Aspen Pharmacare',
 		type: 'institution',
+		logo: '/assets/img/awardees/aspen-pharmacare.jpg',
 		citation: `Aspen Pharmacare is recognised for establishing and sustaining pharmaceutical manufacturing capacity in Africa at a level of technical depth and regulatory discipline rarely achieved on the continent. Its contribution lies not simply in the volume of medicines produced, but in the seriousness with which pharmaceutical manufacturing has been approached as an industrial and public responsibility.
 
 Over time, Aspen has built facilities capable of producing complex formulations, including sterile injectables and essential medicines, under stringent international standards. These are operations that demand precision, compliance, and continuity. By situating such manufacturing within Africa, the company has strengthened regional supply resilience and reduced reliance on external sources for critical health products.
@@ -146,6 +154,7 @@ This award recognises Aspen Pharmacare for demonstrating that Africa can host ph
 		category: 'Industrial Technology & Automation Award',
 		awardee: 'Bakhresa Group',
 		type: 'institution',
+		logo: '/assets/img/awardees/bakhresa-group.jpg',
 		citation: `Bakhresa Group is recognised for its disciplined application of industrial technology and automation across large-scale manufacturing operations in Africa. Its contribution lies not in technological novelty for its own sake, but in the practical deployment of systems that have improved consistency, efficiency, and scale within everyday production.
 
 Across food and consumer goods manufacturing, Bakhresa has integrated automated processing, packaging, and quality-control systems into its operations, enabling reliable output across multiple facilities and countries. These are industries in which margins are narrow and standards exacting, and where the absence of process control quickly undermines competitiveness. By investing in automation as a tool of discipline rather than display, the Group has embedded industrial rigour within sectors often overlooked in discussions of advanced manufacturing.
@@ -162,6 +171,7 @@ This award recognises Bakhresa Group for demonstrating how applied industrial te
 		category: 'Industrial Export Champion of the Year',
 		awardee: 'OCP Group',
 		type: 'institution',
+		logo: '/assets/img/awardees/ocp-group.jpg',
 		citation: `OCP Group is recognised for establishing one of Africa's most consequential industrial export platforms through the sustained production and global supply of phosphate rock, phosphoric acid, and phosphate-based fertilisers. Its work has repositioned Africa as a reliable industrial producer within global agricultural value chains, rather than solely a source of unprocessed mineral exports.
 
 Over time, OCP has built a fully integrated value chain encompassing phosphate extraction, chemical processing, fertiliser manufacturing, and international distribution. This integration enabled the Group to move decisively beyond raw material exports into the large-scale supply of finished and semi-finished fertiliser products serving agricultural markets across Africa, Europe, the Americas, and Asia. In doing so, OCP established a consistent African presence in a sector central to global food security.
@@ -179,6 +189,7 @@ This award recognises OCP Group for demonstrating how African industry can compe
 		category: 'Trade Infrastructure & Logistics Excellence Award',
 		awardee: 'Africa Global Logistics',
 		type: 'institution',
+		logo: '/assets/img/awardees/africa-global-logistics.jpg',
 		citation: `Africa Global Logistics is recognised for its role in giving practical form to the movement of trade across the African continent. Its contribution lies in the operation of logistics systems that work consistently, across borders and corridors, and that translate infrastructure into usable commercial capacity.
 
 Across ports, inland terminals, and transport corridors, Africa Global Logistics has built and operated integrated logistics platforms that reduce delay, fragmentation, and uncertainty in the movement of goods. These systems do not merely move cargo; they impose order on complex trade routes, enabling exporters, manufacturers, and importers to plan with greater confidence and reliability.
@@ -195,6 +206,7 @@ This award recognises Africa Global Logistics for making trade movement dependab
 		category: 'SME Trade Expansion Platform of the Year',
 		awardee: 'Flutterwave',
 		type: 'institution',
+		logo: '/assets/img/awardees/flutterwave.jpg',
 		citation: `Flutterwave is recognised for its role in making cross-border trade practicable for African small and medium-sized enterprises that had long been constrained by the mechanics of payment and settlement. Its contribution lies not in advocacy for inclusion, but in the construction of a platform through which inclusion could occur as a matter of routine business practice.
 
 For many African enterprises, the principal obstacle to regional and international trade has not been the absence of markets, but the difficulty of receiving payment across borders with certainty, speed, and reasonable cost. Flutterwave addressed this constraint directly by building payment infrastructure that allows African businesses to transact across currencies and jurisdictions without recourse to complex intermediary arrangements.
@@ -211,6 +223,7 @@ This award recognises Flutterwave for translating digital infrastructure into ex
 		category: 'Intra-African Trade Systems Champion of the Year',
 		awardee: 'Rwanda',
 		type: 'country',
+		logo: '/assets/img/awardees/rwanda.jpg',
 		citation: `The Republic of Rwanda is recognised for demonstrating how national systems, when coherently designed and consistently executed, can materially improve the functioning of regional trade. Its contribution lies not in the scale of its economy, but in the seriousness with which trade facilitation has been treated as a matter of institutional practice rather than policy declaration.
 
 Over time, Rwanda has developed an integrated trade execution framework that links customs efficiency, border management, standards enforcement, and private-sector enablement into a single operational logic. Measures such as the effective use of electronic single-window systems and the practical operation of one-stop border posts have reduced clearance times and improved predictability for traders moving goods across regional corridors.
@@ -227,6 +240,7 @@ This award recognises Rwanda for showing that intra-African trade advances not o
 		category: 'Trade & Industrial Finance Institution of the Year',
 		awardee: 'Trade & Development Bank',
 		type: 'institution',
+		logo: '/assets/img/awardees/trade-development-bank.jpg',
 		citation: `The Trade and Development Bank is recognised for its sustained role in enabling trade and industrial activity across Eastern and Southern Africa through finance that is both patient and practical. Its contribution lies not in scale for its own sake, but in the consistency with which it has supported enterprises, corridors, and projects that require long-term commitment rather than episodic capital.
 
 Operating in a region where cross-border trade is often shaped by infrastructure gaps and varying market conditions, TDB has focused on financing that connects rather than fragments. Its facilities have supported manufacturing, agriculture, energy, and trade corridors, allowing enterprises to operate across borders with greater continuity and predictability. In particular, the Bank's structured trade finance and project finance instruments have bridged the needs of land-linked economies and coastal gateways, strengthening regional market access.
@@ -243,6 +257,7 @@ This award recognises the Trade and Development Bank for its quiet but consequen
 		category: 'Enterprise and Expansion Award',
 		awardee: 'Ethiopian Airlines',
 		type: 'institution',
+		logo: '/assets/img/awardees/ethiopian-airlines.jpg',
 		citation: `Ethiopian Airlines is recognised for building, with consistency and foresight, one of Africa's most consequential enterprises in trade connectivity and logistics. Its expansion over recent years has not been incidental growth, but the outcome of a disciplined strategy that treats aviation as economic infrastructure rather than as transport alone.
 
 While much of global aviation contracted during periods of disruption, Ethiopian Airlines strengthened its cargo operations, logistics hubs, fleet capability, and route networks. In doing so, it assumed a role that extended beyond commercial aviation into the practical maintenance of supply chains—supporting the movement of medical supplies, industrial cargo, and time-sensitive goods across African markets and beyond.
@@ -259,6 +274,7 @@ This award recognises Ethiopian Airlines for demonstrating how an African enterp
 		category: 'Women in Trade & Industry Leadership Award',
 		awardee: 'Patricia Poku-Diaby',
 		type: 'individual',
+		image: '/assets/img/awardees/patricia-poku-diaby.jpg',
 		citation: `Patricia Poku-Diaby is recognised for her leadership in advancing industrial value addition within African agriculture, and for doing so through enterprise rather than advocacy. Her work has demonstrated how executive authority, when exercised with clarity and discipline, can translate primary production into industrial output capable of serving regional and international markets.
 
 As founder and chief executive of Plot Enterprise Group, she led the development of large-scale agro-processing operations in cocoa and food manufacturing—sectors long characterised by export of raw material and limited domestic transformation. Under her direction, processing capacity was expanded, supply chains professionalised, and African agricultural inputs repositioned as industrial products rather than commodities in transit.
@@ -276,6 +292,7 @@ This award recognises Patricia Poku-Diaby for demonstrating how industrial leade
 		category: 'Trade Facilitation & Systems Transformation Award',
 		awardee: 'GhanaLink Network Services Limited',
 		type: 'institution',
+		logo: '/assets/img/awardees/ghanalink.jpg',
 		citation: `GhanaLink Network Services Limited is recognised for effecting a structural transformation in the way trade is facilitated, managed, and executed at Ghana's ports and borders. Its contribution lies not in policy advocacy, but in the disciplined deployment of systems that have altered daily administrative practice and improved the reliability of trade operations.
 
 Through the design and implementation of integrated digital platforms supporting customs clearance, cargo tracking, transit management, and inter-agency coordination, GhanaLink addressed long-standing inefficiencies that had imposed cost, delay, and uncertainty on traders. These systems replaced fragmented manual processes with coherent digital workflows, reducing discretion and improving transparency across the trade chain.
@@ -292,6 +309,7 @@ This award recognises GhanaLink for demonstrating how technology, when applied w
 		category: 'Regional Trade Integration Award',
 		awardee: 'East African Community (EAC)',
 		type: 'institution',
+		logo: '/assets/img/awardees/east-african-community.jpg',
 		citation: `The East African Community is recognised for translating regional integration from declaration into practice through the disciplined enforcement of its Non-Tariff Barrier reporting and resolution mechanism. In a region where regulatory fragmentation and informal barriers have long undermined the promise of a common market, the EAC's approach marked a notable shift toward operational seriousness.
 
 Non-tariff barriers are often acknowledged but rarely resolved. The EAC's intervention lay in treating such barriers not as unavoidable frictions, but as administrative failures requiring correction. By establishing a formal system through which traders could report obstacles—and by attaching timelines, escalation procedures, and institutional accountability to their resolution—the Community altered the incentives surrounding compliance.
@@ -308,6 +326,7 @@ This award recognises the East African Community for demonstrating that regional
 		category: 'Trade Infrastructure & Systems Impact Award',
 		awardee: 'Pan-African Payment and Settlement System (PAPSS)',
 		type: 'institution',
+		logo: '/assets/img/awardees/papss.jpg',
 		citation: `The Pan-African Payment and Settlement System is recognised for addressing one of the most persistent and least visible constraints on African trade: the difficulty of settling transactions between African countries without recourse to external currencies and correspondent banking systems. Its contribution lies in transforming payment from a structural obstacle into a functional enabler of intra-African commerce.
 
 For decades, African firms trading with one another were compelled to route transactions through third-party currencies, incurring avoidable cost, delay, and risk. PAPSS altered this condition by enabling cross-border settlement in local currencies, allowing African businesses to transact directly and with greater certainty. In doing so, it reduced dependency on external financial systems and improved the practicality of regional trade.
@@ -325,6 +344,7 @@ This award recognises PAPSS for quietly re-engineering the financial plumbing of
 		category: 'Africa Trade Legacy Award',
 		awardee: 'Gervais Djondo',
 		type: 'individual',
+		image: '/assets/img/awardees/gervais-djondo.jpg',
 		citation: `Gervais Djondo is recognised for a lifetime devoted to the patient construction of Africa's trade and private-sector institutions, and for a form of leadership whose influence is measured less by visibility than by durability. His work belongs to a generation of builders who understood that African commerce would only mature when supported by institutions capable of outlasting personalities and political cycles.
 
 Over several decades, Mr Djondo played a formative role in creating platforms through which African enterprise could organise itself, engage governments, and participate with confidence in regional and international markets. As a co-founder of Ecobank, he helped establish a pan-African financial institution at a time when cross-border banking on the continent was more aspiration than practice. Later, as founder and chairman of ASKY Airlines, he contributed to restoring reliable regional air connectivity, addressing a practical constraint on trade, mobility, and integration that had long undermined economic cooperation.
