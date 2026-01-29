@@ -110,8 +110,8 @@ export default function HeroSection() {
 				.promotional-hero-section {
 					position: relative;
 					width: 100%;
-					height: 100vh;
-					min-height: 800px;
+					height: 92vh;
+					min-height: 720px;
 					overflow: hidden;
 				}
 
@@ -216,7 +216,7 @@ export default function HeroSection() {
 					align-items: center;
 					max-width: 1400px;
 					margin: 0 auto;
-					padding: 50px 40px;
+					padding: 72px 40px 50px;
 				}
 
 				/* Image Section */
@@ -472,12 +472,12 @@ export default function HeroSection() {
 				@media (max-width: 1199px) {
 					.promotional-hero-section {
 						height: auto;
-						min-height: 100vh;
+						min-height: 92vh;
 					}
 
 					.hero-main-wrapper {
 						gap: 40px;
-						padding: 45px 30px;
+						padding: 64px 30px 45px;
 					}
 
 					.hero-content-section {
@@ -502,7 +502,7 @@ export default function HeroSection() {
 					.hero-main-wrapper {
 						grid-template-columns: 1fr;
 						gap: 35px;
-						padding: 45px 30px;
+						padding: 64px 30px 45px;
 					}
 
 					.hero-content-section {
@@ -554,7 +554,7 @@ export default function HeroSection() {
 				@media (max-width: 575px) {
 					.promotional-hero-section {
 						padding-top: 70px;
-						min-height: 100vh;
+						min-height: 88vh;
 					}
 
 					.hero-slide .container {
@@ -563,8 +563,8 @@ export default function HeroSection() {
 
 					.hero-main-wrapper {
 						gap: 24px;
-						padding: 20px 15px;
-						min-height: calc(100vh - 70px);
+						padding: 56px 15px 20px;
+						min-height: calc(88vh - 70px);
 					}
 
 					.hero-content-section {

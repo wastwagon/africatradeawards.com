@@ -123,6 +123,13 @@ body.css-loaded {
 	padding: 28px 0 !important;
 }
 
+@media (max-width: 767px) {
+	.about1-section-area.about-section-silver.overview-section {
+		padding-top: 8px !important;
+		padding-bottom: 20px !important;
+	}
+}
+
 .about1-section-area.about-section-silver.overview-section .container {
 	position: relative;
 	z-index: 1;

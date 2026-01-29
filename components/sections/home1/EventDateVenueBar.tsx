@@ -35,67 +35,75 @@ export default function EventDateVenueBar() {
 						inset 0 1px 0 rgba(255, 255, 255, 0.6),
 						inset 0 -1px 0 rgba(0, 0, 0, 0.06),
 						0 2px 8px rgba(0, 0, 0, 0.06);
-					padding: 14px 0;
+					padding: 10px 12px;
 					position: relative;
 					z-index: 5;
+					max-width: 640px;
+					margin: 0 auto;
+					border-radius: 8px;
+				}
+				.event-date-venue-bar .container {
+					max-width: 100%;
+					padding-left: 12px;
+					padding-right: 12px;
 				}
 				.event-date-venue-inner {
 					display: flex;
 					flex-wrap: nowrap;
 					align-items: flex-start;
 					justify-content: center;
-					gap: 12px 16px;
-					padding: 0 12px;
+					gap: 8px 12px;
+					padding: 0;
 				}
 				.event-date-venue-item {
 					display: flex;
 					align-items: center;
-					gap: 8px;
+					gap: 6px;
 					flex-shrink: 0;
 				}
 				.event-date-venue-item-venue {
 					flex: 1 1 auto;
 					min-width: 0;
-					align-items: flex-start;
+					align-items: center;
 				}
 				.event-date-venue-item-venue .event-date-venue-icon {
 					flex-shrink: 0;
-					margin-top: 2px;
+					align-self: center;
 				}
 				.event-date-venue-item-venue .event-date-venue-text {
 					white-space: normal;
 					word-break: break-word;
 				}
 				.event-date-venue-icon {
-					width: 36px;
-					height: 36px;
-					min-width: 36px;
+					width: 28px;
+					height: 28px;
+					min-width: 28px;
 					border-radius: 50%;
 					background: rgba(94, 59, 138, 0.12);
-					border: 2px solid rgba(94, 59, 138, 0.35);
+					border: 1.5px solid rgba(94, 59, 138, 0.35);
 					display: flex;
 					align-items: center;
 					justify-content: center;
 					box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 				}
 				.event-date-venue-icon i {
-					font-size: 14px;
+					font-size: 11px;
 					color: #5e3b8a;
 				}
 				.event-date-venue-text {
-					font-size: 12px;
+					font-size: 11px;
 					font-weight: 600;
 					color: #5e3b8a;
-					letter-spacing: 0.15px;
-					line-height: 1.35;
+					letter-spacing: 0.1px;
+					line-height: 1.3;
 				}
 				.event-date-venue-item:not(.event-date-venue-item-venue) .event-date-venue-text {
 					white-space: nowrap;
 				}
 				.event-date-venue-divider {
 					width: 1px;
-					height: 28px;
-					min-height: 28px;
+					height: 22px;
+					min-height: 22px;
 					background: linear-gradient(
 						to bottom,
 						transparent,
@@ -107,11 +115,15 @@ export default function EventDateVenueBar() {
 				}
 				@media (min-width: 576px) {
 					.event-date-venue-bar {
-						padding: 20px 0;
+						padding: 12px 20px;
+						max-width: 560px;
+					}
+					.event-date-venue-bar .container {
+						padding-left: 0;
+						padding-right: 0;
 					}
 					.event-date-venue-inner {
-						gap: 24px 40px;
-						padding: 0;
+						gap: 12px 20px;
 						align-items: center;
 					}
 					.event-date-venue-item-venue {
@@ -123,37 +135,68 @@ export default function EventDateVenueBar() {
 						margin-top: 0;
 					}
 					.event-date-venue-item {
-						gap: 14px;
+						gap: 8px;
 					}
 					.event-date-venue-icon {
-						width: 44px;
-						height: 44px;
-						min-width: 44px;
+						width: 32px;
+						height: 32px;
+						min-width: 32px;
 					}
 					.event-date-venue-icon i {
-						font-size: 18px;
+						font-size: 13px;
 					}
 					.event-date-venue-text {
-						font-size: 15px;
+						font-size: 12px;
+					}
+					.event-date-venue-divider {
+						height: 24px;
+						min-height: 24px;
 					}
 				}
 				@media (min-width: 992px) {
 					.event-date-venue-bar {
-						padding: 24px 0;
+						padding: 14px 0;
+						max-width: none;
+						width: 100%;
+						border-radius: 0;
+					}
+					.event-date-venue-bar .container {
+						max-width: 1140px;
+						margin: 0 auto;
+						padding-left: 16px;
+						padding-right: 16px;
 					}
 					.event-date-venue-inner {
-						gap: 32px 56px;
+						gap: 24px 48px;
+						align-items: center;
+						justify-content: center;
+					}
+					.event-date-venue-item {
+						align-items: center;
+						gap: 10px;
+					}
+					.event-date-venue-item-venue {
+						align-items: center;
+					}
+					.event-date-venue-item-venue .event-date-venue-icon {
+						flex-shrink: 0;
 					}
 					.event-date-venue-icon {
-						width: 48px;
-						height: 48px;
-						min-width: 48px;
+						width: 36px;
+						height: 36px;
+						min-width: 36px;
 					}
 					.event-date-venue-icon i {
-						font-size: 20px;
+						font-size: 15px;
 					}
 					.event-date-venue-text {
-						font-size: 17px;
+						font-size: 13px;
+						line-height: 1.4;
+					}
+					.event-date-venue-divider {
+						height: 28px;
+						min-height: 28px;
+						align-self: center;
 					}
 				}
 			`}</style>
