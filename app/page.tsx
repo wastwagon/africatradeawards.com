@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout"
 import HeroSection from '@/components/sections/home1/HeroSection'
+import EventDateVenueBar from '@/components/sections/home1/EventDateVenueBar'
 import AboutSection from '@/components/sections/home1/AboutSection'
 import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
 import CommitteeProfiles from '@/components/sections/CommitteeProfiles'
@@ -10,6 +11,7 @@ export default function Home() {
 		<>
 			<Layout headerStyle={1} footerStyle={1}>
 				<HeroSection />
+				<EventDateVenueBar />
 				<AboutSection />
 				<AwardCategoriesSection />
 				
