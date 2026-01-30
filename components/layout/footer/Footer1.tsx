@@ -55,13 +55,13 @@ export default function Footer1() {
 								<h3>Contact Us</h3>
 								<ul>
 									<li>
-										<Link href="tel:+233554014753"><img src="/assets/img/icons/phn1.svg" alt="" />+233 55 401 4753</Link>
+										<Link href="tel:+233554014753"><img src="/assets/img/icons/phn1.svg" alt="" loading="lazy" decoding="async" />+233 55 401 4753</Link>
 									</li>
 									<li>
-										<Link href="mailto:secretariat@africatradeawards.com"><img src="/assets/img/icons/mail1.svg" alt="" />secretariat@africatradeawards.com</Link>
+										<Link href="mailto:secretariat@africatradeawards.com"><img src="/assets/img/icons/mail1.svg" alt="" loading="lazy" decoding="async" />secretariat@africatradeawards.com</Link>
 									</li>
 									<li>
-										<Link href="https://www.africatradeawards.com" target="_blank" rel="noopener noreferrer"> <img src="/assets/img/icons/world1.svg" alt="" />www.africatradeawards.com</Link>
+										<Link href="https://www.africatradeawards.com" target="_blank" rel="noopener noreferrer"> <img src="/assets/img/icons/world1.svg" alt="" loading="lazy" decoding="async" />www.africatradeawards.com</Link>
 									</li>
 								</ul>
 							</div>
@@ -76,16 +76,16 @@ export default function Footer1() {
 									gap: '10px'
 								}}>
 									<div className="footer-logo-card" style={{ background: '#fff', borderRadius: '8px', padding: '8px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-										<img src="/assets/img/sponsors-partners/Sponsors/bank hospital.png" alt="Bank Hospital" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+										<img src="/assets/img/sponsors-partners/Sponsors/bank hospital.png" alt="Bank Hospital" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
 									</div>
 									<div className="footer-logo-card" style={{ background: '#fff', borderRadius: '8px', padding: '8px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-										<img src="/assets/img/sponsors-partners/Sponsors/blowgrouplogo-300x103.png" alt="Blow Group" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+										<img src="/assets/img/sponsors-partners/Sponsors/blowgrouplogo-300x103.png" alt="Blow Group" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
 									</div>
 									<div className="footer-logo-card" style={{ background: '#fff', borderRadius: '8px', padding: '8px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-										<img src="/assets/img/sponsors-partners/Sponsors/FEDCO-PLC.png" alt="FEDCO PLC" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+										<img src="/assets/img/sponsors-partners/Sponsors/FEDCO-PLC.png" alt="FEDCO PLC" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
 									</div>
 									<div className="footer-logo-card" style={{ background: '#fff', borderRadius: '8px', padding: '8px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-										<img src="/assets/img/sponsors-partners/Sponsors/kgl.png" alt="KGL Group" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+										<img src="/assets/img/sponsors-partners/Sponsors/kgl.png" alt="KGL Group" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
 									</div>
 								</div>
 							</div>
