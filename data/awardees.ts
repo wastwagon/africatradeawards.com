@@ -10,12 +10,12 @@ export interface Awardee {
 }
 
 export const awardees: Awardee[] = [
-	// Tier I
+	// TIER I – CONTINENTAL LEADERSHIP RECOGNITIONS
 	{
 		id: 'tier-i-1',
 		tier: 'Tier I',
 		category: 'Africa Trade Leader of the Year',
-		awardee: 'Prof. Benedict Oramah',
+		awardee: 'Prof. Benedict Oramah (Former President of Afreximbank)',
 		type: 'individual',
 		image: '/assets/img/awardees/prof-benedict-oramah.jpg',
 		citation: `Professor Benedict Oramah is recognised for his singular contribution to the quiet but consequential task of giving African trade a financial system capable of sustaining itself. His work did not seek to dramatise trade, but to make it dependable—less vulnerable to external withdrawal, and more firmly anchored in African institutions.
@@ -31,25 +31,8 @@ This award recognises a leader whose influence is best measured in resilience. T
 	{
 		id: 'tier-i-2',
 		tier: 'Tier I',
-		category: 'Pan-African Industrial Leader of the Year',
-		awardee: 'Aliko Dangote',
-		type: 'individual',
-		image: '/assets/img/awardees/aliko-dangote.png',
-		citation: `Aliko Dangote is recognised for a body of work that has materially altered the landscape of African industry and, in doing so, reshaped assumptions about what African enterprise can build, own, and sustain. His industrial career has been guided by a clear and persistent idea: that Africa's economic strength depends on producing at scale what it has long imported, and on anchoring that production within its own markets.
-
-Over time, and with particular consequence in recent years, his investments in cement, fertiliser, refining, and associated infrastructure have established large-scale manufacturing capacity across multiple African countries. These were not isolated ventures, nor were they driven by short-term opportunity. They were the result of patient capital committed to assets whose value lies in durability, scale, and relevance to the continent's most basic economic needs.
-
-What distinguishes Mr Dangote's contribution is the coherence of the industrial system he has assembled. Energy underpins manufacturing; fertiliser strengthens agricultural productivity; cement supports infrastructure. Each element reinforces the other, creating a production ecosystem that serves several economies at once. By embedding these capacities within Africa, his enterprises have reduced exposure to external supply disruptions and strengthened regional trade in essential industrial inputs.
-
-The execution of such projects required technical complexity, regulatory navigation, and sustained operational discipline across borders. Their success has demonstrated that African-owned firms can deliver industrial undertakings of a scale and sophistication often assumed to be beyond their reach.
-
-This award recognises an industrialist whose influence is best measured not in visibility or declaration, but in factories operating, supply chains stabilised, and a continent better equipped to produce for itself and trade with itself.`
-	},
-	{
-		id: 'tier-i-3',
-		tier: 'Tier I',
 		category: 'Africa Trade Finance Architect of the Year',
-		awardee: 'African Export–Import Bank (Afreximbank)',
+		awardee: 'Afreximbank',
 		type: 'institution',
 		logo: '/assets/img/awardees/afreximbank.jpg',
 		citation: `The African Export–Import Bank is recognised for its decisive role in reshaping the financial conditions under which African trade is conducted. Over the past decade, and with particular force during periods of global disruption, the Bank has moved trade finance in Africa from a position of fragility towards one of institutional strength.
@@ -62,26 +45,9 @@ What distinguishes Afreximbank's role is the coherence of its approach. Finance 
 
 This award recognises Afreximbank as an institution that has quietly but decisively altered how African trade is financed—shifting it from dependence on external cycles towards systems rooted in African capacity, judgement, and resilience.`
 	},
-	// Tier II
+	// TIER II – INDUSTRY & STRATEGIC VALUE CHAIN RECOGNITIONS
 	{
 		id: 'tier-ii-1',
-		tier: 'Tier II',
-		category: 'Resources-to-Industry Excellence Award',
-		awardee: 'ARISE Integrated Industrial Platforms',
-		type: 'institution',
-		logo: '/assets/img/awardees/arise-integrated-industrial-platforms.jpg',
-		citation: `ARISE Integrated Industrial Platforms is recognised for re-imagining how Africa's natural resources are translated into industrial value, and for doing so through systems that privilege execution over abstraction. Its work addresses one of the continent's most persistent economic shortcomings: the long separation between resource endowment and industrial outcome.
-
-Rather than approaching industrialisation as a sequence of isolated factories, ARISE built environments in which production could take place with fewer impediments. Across several African countries, it established integrated industrial parks that combine energy, logistics, regulatory coordination, and export infrastructure into a single operational setting. Within these spaces, timber, agricultural commodities, and minerals are processed and manufactured closer to their source, retaining value that would otherwise be exported in raw form.
-
-What distinguishes ARISE's contribution is its attention to the conditions that allow industry to function. By relieving manufacturers of the burden of fragmented infrastructure and administrative uncertainty, it enabled enterprises—local and international alike—to focus on production, scale, and market access. In doing so, ARISE accelerated the movement from extraction to transformation, and from potential to output.
-
-The platforms developed under its direction have generated employment, strengthened export capacity, and embedded industrial activity within host economies. They have also demonstrated that industrialisation need not be improvised or episodic, but can be delivered as a repeatable, disciplined system across jurisdictions.
-
-This award recognises ARISE Integrated Industrial Platforms for converting Africa's resource wealth into functioning industrial value chains, and for proving that value addition is most durable when it is planned, coordinated, and executed with care.`
-	},
-	{
-		id: 'tier-ii-2',
 		tier: 'Tier II',
 		category: 'Industrial Energy Project of the Year',
 		awardee: 'Grand Ethiopian Renaissance Dam (GERD)',
@@ -98,7 +64,7 @@ Equally notable is the character of the undertaking itself. The Dam represents a
 This award recognises the Grand Ethiopian Renaissance Dam not as a symbol, but as a working asset—one that has materially strengthened the conditions under which industry can emerge, trade can expand, and regional economies can plan with greater certainty.`
 	},
 	{
-		id: 'tier-ii-3',
+		id: 'tier-ii-2',
 		tier: 'Tier II',
 		category: 'Advanced Manufacturing Excellence Award',
 		awardee: 'Elsewedy Electric',
@@ -115,24 +81,7 @@ The company's operations reflect an understanding that advanced manufacturing de
 This award recognises Elsewedy Electric for demonstrating that complex manufacturing can be designed, executed, and sustained within Africa at scale, contributing to industrial self-reliance and strengthening the foundations upon which trade and infrastructure depend.`
 	},
 	{
-		id: 'tier-ii-4',
-		tier: 'Tier II',
-		category: 'Agro-Industrial Systems Award of the Year',
-		awardee: 'BUA Foods',
-		type: 'institution',
-		logo: '/assets/img/awardees/bua-foods.jpg',
-		citation: `BUA Foods is recognised for advancing a model of agro-industrial production that links African agriculture to industrial processing with clarity of purpose and scale of execution. Its work addresses a longstanding weakness in African economies: the separation between agricultural output and industrial value creation.
-
-Through sustained investment in sugar, flour, rice, edible oils, and related food processing, BUA Foods has built integrated systems that connect farming, processing, packaging, and distribution into a single operational chain. These systems have transformed agricultural inputs into reliable industrial supply, serving both domestic and regional markets while reducing dependence on imported staples.
-
-What distinguishes BUA Foods' contribution is its insistence on structure. Production is not left to seasonal uncertainty alone, but supported by processing capacity, storage, logistics, and predictable market access. In this way, agriculture functions not merely as subsistence or raw supply, but as an industrial input capable of supporting food security, manufacturing demand, and cross-border trade.
-
-The company's operations have strengthened regional supply chains, stabilised pricing, and created industrial demand for agricultural producers. By embedding processing capacity close to source, BUA Foods has retained value within African economies and demonstrated the commercial viability of large-scale agro-industrial integration.
-
-This award recognises BUA Foods for translating agricultural potential into industrial reality, and for showing that food systems, when properly structured, can support both economic resilience and regional trade.`
-	},
-	{
-		id: 'tier-ii-5',
+		id: 'tier-ii-3',
 		tier: 'Tier II',
 		category: 'Pharmaceutical & Health Manufacturing Excellence Award',
 		awardee: 'Aspen Pharmacare',
@@ -149,7 +98,7 @@ The significance of this contribution became especially clear during periods of 
 This award recognises Aspen Pharmacare for demonstrating that Africa can host pharmaceutical manufacturing of the highest order, and for strengthening the industrial foundations upon which health security and regional trade increasingly depend.`
 	},
 	{
-		id: 'tier-ii-6',
+		id: 'tier-ii-4',
 		tier: 'Tier II',
 		category: 'Industrial Technology & Automation Award',
 		awardee: 'Bakhresa Group',
@@ -166,7 +115,7 @@ The cumulative effect of these systems has been the quiet normalisation of indus
 This award recognises Bakhresa Group for demonstrating how applied industrial technology, when thoughtfully implemented, can strengthen manufacturing performance and embed operational resilience within African industry.`
 	},
 	{
-		id: 'tier-ii-7',
+		id: 'tier-ii-5',
 		tier: 'Tier II',
 		category: 'Industrial Export Champion of the Year',
 		awardee: 'OCP Group',
@@ -182,7 +131,7 @@ OCP's export leadership has also carried continental relevance. By expanding fer
 
 This award recognises OCP Group for demonstrating how African industry can compete globally through integrated production, disciplined execution, and sustained delivery of essential industrial products.`
 	},
-	// Tier III
+	// TIER III – MARKETS, CAPITAL & ENTERPRISE RECOGNITIONS
 	{
 		id: 'tier-iii-1',
 		tier: 'Tier III',
@@ -285,43 +234,9 @@ Her leadership has also carried broader significance. By occupying and exercisin
 
 This award recognises Patricia Poku-Diaby for demonstrating how industrial leadership, grounded in execution and market relevance, can contribute materially to Africa's trade capacity and economic resilience.`
 	},
-	// Tier IV
+	// TIER IV – TRADE POLICY, SYSTEMS & MARKET IMPACT
 	{
 		id: 'tier-iv-1',
-		tier: 'Tier IV',
-		category: 'Trade Facilitation & Systems Transformation Award',
-		awardee: 'GhanaLink Network Services Limited',
-		type: 'institution',
-		logo: '/assets/img/awardees/ghanalink.jpg',
-		citation: `GhanaLink Network Services Limited is recognised for effecting a structural transformation in the way trade is facilitated, managed, and executed at Ghana's ports and borders. Its contribution lies not in policy advocacy, but in the disciplined deployment of systems that have altered daily administrative practice and improved the reliability of trade operations.
-
-Through the design and implementation of integrated digital platforms supporting customs clearance, cargo tracking, transit management, and inter-agency coordination, GhanaLink addressed long-standing inefficiencies that had imposed cost, delay, and uncertainty on traders. These systems replaced fragmented manual processes with coherent digital workflows, reducing discretion and improving transparency across the trade chain.
-
-What distinguishes GhanaLink's work is the seriousness with which execution was pursued. The systems introduced were not parallel or experimental; they became central to how trade is processed. By embedding technology into the operational core of port and border management, GhanaLink helped standardise procedures, strengthen data integrity, and improve predictability for both domestic and regional traders.
-
-The impact of this transformation extends beyond national convenience. Ghana's ports serve as gateways for multiple land-linked economies in the sub-region, and improvements in clearance and transit systems have strengthened the performance of regional trade corridors. In this sense, GhanaLink's contribution functions as shared trade infrastructure, supporting commerce across borders rather than within them alone.
-
-This award recognises GhanaLink for demonstrating how technology, when applied with institutional discipline, can transform trade facilitation from a source of friction into a dependable system—one that supports efficiency, accountability, and regional integration.`
-	},
-	{
-		id: 'tier-iv-2',
-		tier: 'Tier IV',
-		category: 'Regional Trade Integration Award',
-		awardee: 'East African Community (EAC)',
-		type: 'institution',
-		logo: '/assets/img/awardees/east-african-community.jpg',
-		citation: `The East African Community is recognised for translating regional integration from declaration into practice through the disciplined enforcement of its Non-Tariff Barrier reporting and resolution mechanism. In a region where regulatory fragmentation and informal barriers have long undermined the promise of a common market, the EAC's approach marked a notable shift toward operational seriousness.
-
-Non-tariff barriers are often acknowledged but rarely resolved. The EAC's intervention lay in treating such barriers not as unavoidable frictions, but as administrative failures requiring correction. By establishing a formal system through which traders could report obstacles—and by attaching timelines, escalation procedures, and institutional accountability to their resolution—the Community altered the incentives surrounding compliance.
-
-What distinguishes this mechanism is not its design alone, but its use. Reported barriers were tracked, addressed, and, in many cases, removed. This produced measurable improvements along key trade corridors, reducing delays, uncertainty, and informal costs borne by traders. Over time, the system strengthened confidence in the regional market by signalling that rules would be enforced rather than merely proclaimed.
-
-The benefits of this approach extended beyond individual transactions. By normalising the expectation that barriers would be identified and resolved, the EAC improved the practical usability of its regional market for manufacturers, logistics operators, and exporters operating across borders.
-
-This award recognises the East African Community for demonstrating that regional integration advances not only through treaties, but through mechanisms that work consistently, transparently, and with institutional resolve.`
-	},
-	{
-		id: 'tier-iv-3',
 		tier: 'Tier IV',
 		category: 'Trade Infrastructure & Systems Impact Award',
 		awardee: 'Pan-African Payment and Settlement System (PAPSS)',
@@ -337,15 +252,15 @@ The effects of PAPSS extend beyond efficiency. By lowering transaction costs and
 
 This award recognises PAPSS for quietly re-engineering the financial plumbing of African trade, and for laying foundations upon which deeper market integration and commercial confidence can be built.`
 	},
-	// Tier V
+	// TIER V – DISTINGUISHED RECOGNITION
 	{
 		id: 'tier-v-1',
 		tier: 'Tier V',
-		category: 'Africa Trade Legacy Award',
-		awardee: 'Gervais Djondo',
+		category: 'Distinguished Recognition',
+		awardee: 'Gervais Koffi Djondo',
 		type: 'individual',
 		image: '/assets/img/awardees/gervais-djondo.jpg',
-		citation: `Gervais Djondo is recognised for a lifetime devoted to the patient construction of Africa's trade and private-sector institutions, and for a form of leadership whose influence is measured less by visibility than by durability. His work belongs to a generation of builders who understood that African commerce would only mature when supported by institutions capable of outlasting personalities and political cycles.
+		citation: `Gervais Koffi Djondo is recognised for a lifetime devoted to the patient construction of Africa's trade and private-sector institutions, and for a form of leadership whose influence is measured less by visibility than by durability. His work belongs to a generation of builders who understood that African commerce would only mature when supported by institutions capable of outlasting personalities and political cycles.
 
 Over several decades, Mr Djondo played a formative role in creating platforms through which African enterprise could organise itself, engage governments, and participate with confidence in regional and international markets. As a co-founder of Ecobank, he helped establish a pan-African financial institution at a time when cross-border banking on the continent was more aspiration than practice. Later, as founder and chairman of ASKY Airlines, he contributed to restoring reliable regional air connectivity, addressing a practical constraint on trade, mobility, and integration that had long undermined economic cooperation.
 
@@ -353,6 +268,6 @@ What distinguishes his legacy is not any single enterprise, but a consistent com
 
 His contribution reflects a long view of integration. Rather than pursuing immediate advantage, he invested in trust, institutional memory, and continuity—elements without which regional trade cannot be sustained. Many of today's trade initiatives and business platforms rest, in part, on foundations laid through such steady effort.
 
-This award recognises Gervais Djondo for a legacy defined by institution-building rather than prominence, and for helping to establish the conditions under which African trade could develop with confidence, coherence, and purpose.`
+This award recognises Gervais Koffi Djondo for a legacy defined by institution-building rather than prominence, and for helping to establish the conditions under which African trade could develop with confidence, coherence, and purpose.`
 	}
 ]
