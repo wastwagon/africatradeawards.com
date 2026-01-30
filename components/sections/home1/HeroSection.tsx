@@ -14,35 +14,44 @@ export default function HeroSection() {
 				.hero-banner-section {
 					position: relative;
 					width: 100%;
-					height: 92vh;
-					min-height: 560px;
-					max-height: 900px;
+					height: 52vh;
+					min-height: 320px;
+					max-height: 480px;
 					overflow: hidden;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background: #1a1518;
 				}
 				.hero-banner-image-wrapper {
 					position: absolute;
 					inset: 0;
 					width: 100%;
 					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
 				}
 				.hero-banner-image {
 					width: 100%;
 					height: 100%;
-					object-fit: cover;
+					object-fit: contain;
 					object-position: center center;
 					display: block;
 					vertical-align: middle;
 				}
 				@media (max-width: 991px) {
 					.hero-banner-section {
-						min-height: 50vh;
-						height: 70vh;
+						height: 45vh;
+						min-height: 280px;
+						max-height: 400px;
 					}
 				}
 				@media (max-width: 575px) {
 					.hero-banner-section {
-						min-height: 45vh;
-						height: 60vh;
+						height: 40vh;
+						min-height: 220px;
+						max-height: 340px;
 					}
 				}
 			`}</style>
