@@ -14,9 +14,10 @@ export default function HeroSection() {
 				.hero-banner-section {
 					position: relative;
 					width: 100%;
-					height: 52vh;
-					min-height: 320px;
-					max-height: 480px;
+					max-width: 100vw;
+					height: 88vh;
+					min-height: 520px;
+					max-height: 920px;
 					overflow: hidden;
 					display: flex;
 					align-items: center;
@@ -42,16 +43,16 @@ export default function HeroSection() {
 				}
 				@media (max-width: 991px) {
 					.hero-banner-section {
-						height: 45vh;
-						min-height: 280px;
-						max-height: 400px;
+						height: 75vh;
+						min-height: 400px;
+						max-height: 700px;
 					}
 				}
 				@media (max-width: 575px) {
 					.hero-banner-section {
-						height: 40vh;
-						min-height: 220px;
-						max-height: 340px;
+						height: 65vh;
+						min-height: 320px;
+						max-height: 500px;
 					}
 				}
 			`}</style>
