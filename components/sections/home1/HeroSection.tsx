@@ -43,16 +43,20 @@ export default function HeroSection() {
 				}
 				@media (max-width: 991px) {
 					.hero-banner-section {
-						height: 75vh;
-						min-height: 400px;
-						max-height: 700px;
+						height: 80vh;
+						min-height: 420px;
+						max-height: 720px;
 					}
 				}
 				@media (max-width: 575px) {
 					.hero-banner-section {
-						height: 65vh;
-						min-height: 320px;
-						max-height: 500px;
+						height: 82vh;
+						min-height: 380px;
+						max-height: none;
+					}
+					.hero-banner-image {
+						object-fit: contain;
+						object-position: center center;
 					}
 				}
 			`}</style>
