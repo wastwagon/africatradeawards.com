@@ -259,7 +259,7 @@ This award recognises PAPSS for quietly re-engineering the financial plumbing of
 		category: 'Distinguished Recognition',
 		awardee: 'Gervais Koffi Djondo',
 		type: 'individual',
-		image: '/assets/img/awardees/gervais-djondo.jpg',
+		image: '/assets/img/awardees/gervais-koffi-djondo.jpg',
 		citation: `Gervais Koffi Djondo is recognised for a lifetime devoted to the patient construction of Africa's trade and private-sector institutions, and for a form of leadership whose influence is measured less by visibility than by durability. His work belongs to a generation of builders who understood that African commerce would only mature when supported by institutions capable of outlasting personalities and political cycles.
 
 Over several decades, Mr Djondo played a formative role in creating platforms through which African enterprise could organise itself, engage governments, and participate with confidence in regional and international markets. As a co-founder of Ecobank, he helped establish a pan-African financial institution at a time when cross-border banking on the continent was more aspiration than practice. Later, as founder and chairman of ASKY Airlines, he contributed to restoring reliable regional air connectivity, addressing a practical constraint on trade, mobility, and integration that had long undermined economic cooperation.

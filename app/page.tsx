@@ -3,19 +3,41 @@ import HeroSection from '@/components/sections/home1/HeroSection'
 import EventDateVenueBar from '@/components/sections/home1/EventDateVenueBar'
 import AboutSection from '@/components/sections/home1/AboutSection'
 import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
+import AwardeesCTASection from '@/components/sections/home1/AwardeesCTASection'
 import CommitteeProfiles from '@/components/sections/CommitteeProfiles'
+import GallerySection from '@/components/sections/home1/GallerySection'
 import SponsorsSection from '@/components/sections/SponsorsSection'
+
+/**
+ * Homepage content flow (audience journey):
+ * 1. Hero + Event bar — Attention: first impression, when/where
+ * 2. About — Understanding: what the awards are
+ * 3. Award structure — Understanding: how recognition is organized
+ * 4. Awardees CTA — Recognition intro + CTA to awardees page
+ * 5. Gallery — Proof & emotion: moments from the event
+ * 6. Committee — Trust: who validates the outcomes
+ * 7. Sponsors — Support: who backs the awards
+ */
 
 export default function Home() {
 	return (
 		<>
 			<Layout headerStyle={1} footerStyle={1}>
+				{/* 1. Attention */}
 				<HeroSection />
 				<EventDateVenueBar />
+
+				{/* 2–3. Understanding */}
 				<AboutSection />
 				<AwardCategoriesSection />
-				
-				{/*===== RECOGNITION & VALIDATION COMMITTEE TEXT SECTION =======*/}
+
+				{/* 4. Recognition intro + CTA to awardees page */}
+				<AwardeesCTASection />
+
+				{/* 5. Proof & emotion: event moments */}
+				<GallerySection />
+
+				{/* 6. Trust: who validates */}
 				<div className="committee-text-section">
 					<div className="container">
 						<div className="row">
@@ -60,9 +82,6 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
-				{/*===== RECOGNITION & VALIDATION COMMITTEE TEXT SECTION ENDS =======*/}
-				
-				{/*===== RECOGNITION & VALIDATION COMMITTEE PROFILES SECTION =======*/}
 				<div className="committee-banner-section">
 					<div className="container">
 						<div className="row">
@@ -72,11 +91,9 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
-				{/*===== RECOGNITION & VALIDATION COMMITTEE SECTION ENDS =======*/}
 
-				{/*===== SPONSORS & PARTNERS SECTION =======*/}
+				{/* 7. Support: partners & sponsors */}
 				<SponsorsSection />
-				{/*===== SPONSORS & PARTNERS SECTION ENDS =======*/}
 			</Layout>
 		</>
 	)

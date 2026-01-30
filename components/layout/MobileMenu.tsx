@@ -35,7 +35,9 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 						<li className="hash-has-sub"><Link href="/" className="hash-nav">Home</Link></li>
 						<li className="hash-has-sub"><Link href="/about" className="hash-nav">About</Link></li>
 						<li className="hash-has-sub"><Link href="/awards-structure" className="hash-nav">Awards Structure</Link></li>
+						<li className="hash-has-sub"><Link href="/awardees" className="hash-nav">Awardees</Link></li>
 						<li className="hash-has-sub"><Link href="/sponsors-partners" className="hash-nav">Sponsors & Partners</Link></li>
+						<li className="hash-has-sub"><Link href="/gallery" className="hash-nav">Gallery</Link></li>
 						<li className="hash-has-sub"><Link href="/faq" className="hash-nav">FAQs</Link></li>
 						<li className="hash-has-sub"><Link href="/contact" className="hash-nav">Contact</Link></li>
 					</ul>

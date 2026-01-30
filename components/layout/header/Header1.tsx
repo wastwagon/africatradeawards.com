@@ -38,8 +38,14 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSear
 											<li className={isActive('/awards-structure') ? 'active' : ''}>
 												<Link href="/awards-structure">Awards Structure</Link>
 											</li>
+											<li className={isActive('/awardees') ? 'active' : ''}>
+												<Link href="/awardees">Awardees</Link>
+											</li>
 											<li className={isActive('/sponsors-partners') ? 'active' : ''}>
 												<Link href="/sponsors-partners">Sponsors & Partners</Link>
+											</li>
+											<li className={isActive('/gallery') ? 'active' : ''}>
+												<Link href="/gallery">Gallery</Link>
 											</li>
 											<li className={isActive('/faq') ? 'active' : ''}>
 												<Link href="/faq">FAQs</Link>
