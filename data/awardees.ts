@@ -69,7 +69,7 @@ This award recognises the Grand Ethiopian Renaissance Dam not as a symbol, but a
 		category: 'Advanced Manufacturing Excellence Award',
 		awardee: 'Elsewedy Electric',
 		type: 'institution',
-		logo: '/assets/img/awardees/elsewedy-electric.jpg',
+		logo: '/assets/img/awardees/Elsewedy Electric.png',
 		citation: `Elsewedy Electric is recognised for establishing advanced manufacturing capacity in Africa that combines technical precision with scale, and for doing so in a manner that has quietly but materially strengthened the continent's industrial base. Its contribution lies not in experimentation or pilot activity, but in sustained production carried out to international standards across multiple jurisdictions.
 
 Over time, Elsewedy Electric has built and operated manufacturing facilities producing cables, transformers, and electrical equipment essential to modern infrastructure and industry. These are products that demand consistency, engineering discipline, and rigorous quality control. By locating such manufacturing within Africa, the company has reduced reliance on imported industrial inputs while embedding technical capability in local economies.
