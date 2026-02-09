@@ -4,10 +4,11 @@ import { useEffect } from 'react'
 export default function CriticalCSS() {
 	useEffect(() => {
 		// Load CSS files immediately - this runs as soon as component mounts
+		// Cache-bust main.css so theme updates (e.g. publications purple) are always fetched
 		const cssFiles = [
 			'/assets/css/vendor/bootstrap.min.css',
 			'/assets/css/vendor/fontawesome.css',
-			'/assets/css/main.css',
+			'/assets/css/main.css?v=purple',
 			'/assets/css/vendor/aos.css',
 			'/assets/css/vendor/magnific-popup.css',
 			'/assets/css/vendor/mobile.css',

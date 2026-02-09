@@ -47,6 +47,9 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSear
 											<li className={isActive('/gallery') ? 'active' : ''}>
 												<Link href="/gallery">Gallery</Link>
 											</li>
+											<li className={isActive('/publications') ? 'active' : ''}>
+												<Link href="/publications">Publications</Link>
+											</li>
 											<li className={isActive('/faq') ? 'active' : ''}>
 												<Link href="/faq">FAQs</Link>
 											</li>

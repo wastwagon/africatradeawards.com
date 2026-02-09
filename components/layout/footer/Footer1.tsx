@@ -45,6 +45,7 @@ export default function Footer1() {
 									<li><Link href="/awards-structure">Awards Structure</Link></li>
 									<li><Link href="/awardees">Awardees</Link></li>
 									<li><Link href="/gallery">Gallery</Link></li>
+									<li><Link href="/publications">Publications</Link></li>
 									<li><Link href="/faq">FAQs</Link></li>
 									<li><Link href="/contact">Contact</Link></li>
 								</ul>
