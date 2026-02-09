@@ -327,7 +327,7 @@ $pub-border: #E5E7EB;
 .press-release-contact {
 	margin-top: 48px;
 	padding: 32px 36px;
-	background: linear-gradient(135deg, $pub-primary 0%, $pub-bg-dark 100%);
+	background: linear-gradient(135deg, $pub-purple 0%, $pub-purple-light 100%);
 	border-radius: 16px;
 	color: #fff;
 
@@ -341,7 +341,7 @@ $pub-border: #E5E7EB;
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
 		margin-bottom: 8px;
-		color: $pub-purple-light;
+		color: #fff;
 	}
 
 	.press-release-contact-org {

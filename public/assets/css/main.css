@@ -34305,7 +34305,7 @@ h2.premium-section-title::after,
 .press-release-contact {
   margin-top: 48px;
   padding: 32px 36px;
-  background: linear-gradient(135deg, #032530 0%, #131E20 100%);
+  background: linear-gradient(135deg, #4e2b5a 0%, #78508c 100%);
   border-radius: 16px;
   color: #fff;
 }
@@ -34320,7 +34320,7 @@ h2.premium-section-title::after,
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 8px;
-  color: #78508c;
+  color: #fff;
 }
 .press-release-contact .press-release-contact-org {
   font-size: 18px;
