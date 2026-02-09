@@ -10,7 +10,8 @@
     "lint": "next lint",
     "sass": "sass --watch public/assets/scss/main.scss:public/assets/css/main.css",
     "sass:build": "sass public/assets/scss/main.scss:public/assets/css/main.css",
-    "copy-elsewedy": "node scripts/copy-elsewedy-image.js"
+    "copy-elsewedy": "node scripts/copy-elsewedy-image.js",
+    "serve:check": "./scripts/serve-and-check.sh 3080"
   },
   "dependencies": {
     "aos": "^2.3.4",

@@ -2,8 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination, EffectFade } from 'swiper/modules'
-import Image from 'next/image'
-import { heroBannerImages } from '@/data/heroBanner'
+import { heroBannerImages } from '@/app/assets/hero'
 
 const swiperOptions = {
 	modules: [Autoplay, Navigation, Pagination, EffectFade],
@@ -31,13 +30,13 @@ export default function HeroSection() {
 				{heroBannerImages.map((src, i) => (
 					<SwiperSlide key={i}>
 						<div className="hero-banner-slide">
-							<Image
+							{/* eslint-disable-next-line @next/next/no-img-element */}
+							<img
 								src={src}
 								alt={`Africa Trade Awards 2026 ${i + 1}`}
-								fill
-								sizes="100vw"
 								className="hero-banner-slide-img"
-								priority={i === 0}
+								loading={i === 0 ? 'eager' : 'lazy'}
+								decoding="async"
 							/>
 						</div>
 					</SwiperSlide>
@@ -77,6 +76,10 @@ export default function HeroSection() {
 					height: 100%;
 				}
 				:global(.hero-banner-slide-img) {
+					position: absolute;
+					inset: 0;
+					width: 100%;
+					height: 100%;
 					object-fit: cover !important;
 					object-position: center center !important;
 				}
