@@ -1,13 +1,15 @@
 # Africa Trade Awards 2026
 
-Official website for the Africa Trade Awards 2026 - Celebrating Africa's Trade Excellence and Industrial Champions.
+Official digital platform for the Africa Trade Awards 2026, covering the public website plus entrant, judging, voting, event operations, and admin workflows.
 
 ## 🚀 Tech Stack
 
-- **Framework**: Next.js 14.2.15 (App Router)
+- **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript 5.x
-- **Styling**: SCSS/SASS, Bootstrap, Tailwind CSS
-- **Build Tool**: Next.js Static Export
+- **Styling**: SCSS/SASS, Bootstrap
+- **Backend/Data**: Prisma ORM + PostgreSQL
+- **Caching/Queues**: Redis + worker process
+- **Authentication**: JWT session auth with role-based access
 
 ## 📋 Prerequisites
 
@@ -42,9 +44,39 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## ✅ End-to-End Tests (Playwright)
+
+Critical flows now have Playwright coverage under `tests/e2e/`:
+
+- nomination lifecycle (submit -> review -> convert)
+- super-admin impersonation flow
+
+Set admin credentials for E2E login (defaults shown):
+
+```bash
+export E2E_BASE_URL=http://127.0.0.1:3003
+export E2E_ADMIN_EMAIL=admin@local.test
+export E2E_ADMIN_PASSWORD=ChangeMe_Local_12345
+```
+
+Run tests:
+
+```bash
+npm run test:e2e
+```
+
+If browsers are not installed yet:
+
+```bash
+npx playwright install
+```
+
+CI is configured in `.github/workflows/e2e.yml` and runs this suite on pull requests and on pushes to `main`.
+Fast feedback checks are configured in `.github/workflows/quick-checks.yml` (lint + typecheck).
+
 ## 🏗️ Building for Production
 
-Build the static site:
+Build the application:
 
 ```bash
 npm run build
@@ -52,25 +84,29 @@ npm run build
 
 The static files will be generated in the `out` directory.
 
-## 📦 Static Export
+## 📦 Runtime Modes
 
-This project is configured for static export, making it suitable for hosting on static hosting platforms like Render, Vercel, Netlify, etc.
+This project supports two modes:
+
+- **Fullstack server mode** (`STATIC_EXPORT=false`): required for API routes, admin, voting, judging, and event operations.
+- **Static export mode** (`STATIC_EXPORT=true`): for limited brochure-style deployment only.
 
 ## 🌐 Deployment
 
-### Coolify (VPS Deployment)
+### Coolify (Recommended Fullstack Deployment)
 
-This project is configured for deployment on Coolify. See [COOLIFY_DEPLOYMENT.md](./COOLIFY_DEPLOYMENT.md) for detailed instructions.
+Use the fullstack deployment path documented in [COOLIFY_FULLSTACK_SETUP.md](./COOLIFY_FULLSTACK_SETUP.md).
 
 **Quick Start:**
-1. Connect your Git repository to Coolify
-2. Use `Dockerfile.static` as the Dockerfile
-3. Deploy and enjoy!
+1. Configure environment variables from `.env.coolify.example`
+2. Deploy with `docker-compose.coolify.yml`
+3. Run database migrations on deploy (`npm run prisma:migrate:deploy`)
 
 ### Manual Deployment
 
-1. Build the static site: `npm run build`
-2. Upload the `out` directory to your hosting provider (nginx, Apache, etc.)
+1. Provision PostgreSQL and Redis
+2. Configure required environment variables
+3. Run `npm run build && npm run start`
 
 ### Legacy: Render
 
@@ -98,9 +134,9 @@ The `render.yaml` file is kept for reference but is no longer the primary deploy
 
 ## 📝 Notes
 
-- This is the frontend-only version
-- Backend integration will be added in future updates
-- All CSS is compiled from SCSS before deployment
+- The current repository is a fullstack platform (not frontend-only).
+- API routes, role-based access, and operational workflows are active.
+- SCSS is compiled as part of build scripts before deployment.
 
 ## 📄 License
 

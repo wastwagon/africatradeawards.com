@@ -1,0 +1,79 @@
+/* Shared @keyframes used by globals-site.css (gradients, shimmer, glow, etc.) */
+
+/* Loading spinner animation */
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* About Section Silver Background */
+/* Animated Background Gradient Keyframes */
+@keyframes gradientShift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes radialPulse {
+	0%, 100% {
+		opacity: 0.15;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.25;
+		transform: scale(1.1);
+	}
+}
+
+@keyframes floatParticle {
+	0% {
+		transform: translateY(0) translateX(0);
+		opacity: 0;
+	}
+	10% {
+		opacity: 0.6;
+	}
+	90% {
+		opacity: 0.6;
+	}
+	100% {
+		transform: translateY(-100vh) translateX(20px);
+		opacity: 0;
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -1000px 0;
+	}
+	100% {
+		background-position: 1000px 0;
+	}
+}
+
+@keyframes shimmerSlide {
+	0% {
+		left: -100%;
+	}
+	50% {
+		left: 100%;
+	}
+	100% {
+		left: 100%;
+	}
+}
+
+@keyframes glowPulse {
+	0%, 100% {
+		box-shadow: 0 0 20px rgba(192, 192, 192, 0.1), 0 0 40px rgba(192, 192, 192, 0.05);
+	}
+	50% {
+		box-shadow: 0 0 30px rgba(192, 192, 192, 0.2), 0 0 60px rgba(192, 192, 192, 0.1);
+	}
+}

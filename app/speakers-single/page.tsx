@@ -1,4 +1,5 @@
 
+import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
@@ -7,7 +8,7 @@ export default function SpeakersSingle() {
 	return (
 		<>
 
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg7.png)' }}>
 						<div className="container">
@@ -32,16 +33,16 @@ export default function SpeakersSingle() {
 											<div className="col-lg-5">
 												<div className="our-team-boxarea">
 													<div className="team-widget-area">
-														<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-														<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+														<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+														<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 														<div className="img1">
-															<img src="/assets/img/all-images/team/team-img12.png" alt="" className="team-img4" />
+															<Image src="/assets/img/all-images/team/team-img12.png" alt="" className="team-img4" width={450} height={520} />
 														</div>
 													</div>
 													<div className="content-area">
 														<Link href="/#">Adresy Ineasta</Link>
 														<div className="space16" />
-														<p>UI/UX Designer</p>
+														<p>Awards Speaker</p>
 														<div className="space24" />
 														<ul>
 															<li>
@@ -86,7 +87,7 @@ export default function SpeakersSingle() {
 															<div className="heading2">
 																<h3>Personal Information</h3>
 																<div className="space16" />
-																<p>His passion for fostering creativity and driving strategic change has made him a sought-after speaker at top business conferences around the world. At meet Eventify 2024, Kireon will share his the unique insights on future-proofing best businesses, offering practical strategies to help organizations stay agile and on competitive in a rapidly changing meet environment knowledge and real-world.</p>
+																<p>His passion for fostering creativity and driving strategic change has made him a sought-after speaker at top business conferences around the world. At Africa Trade Awards 2026, Kireon will share unique insights on future-proofing businesses, offering practical strategies to help organizations stay agile and competitive in a rapidly changing environment.</p>
 															</div>
 														</div>
 													</div>
@@ -117,7 +118,7 @@ export default function SpeakersSingle() {
 													<div className="row align-items-center">
 														<div className="col-lg-5">
 															<div className="img1">
-																<img src="/assets/img/all-images/event/event-img4.png" alt="" />
+																<Image src="/assets/img/all-images/event/event-img4.png" alt="" width={900} height={600} />
 															</div>
 														</div>
 														<div className="col-lg-1" />
@@ -125,10 +126,10 @@ export default function SpeakersSingle() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																	</li>
 																</ul>
 																<div className="space20" />
@@ -137,17 +138,17 @@ export default function SpeakersSingle() {
 																<div className="author-area">
 																	<div className="autho-name-area">
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alex Roberton</Link>
 																			<div className="space8" />
-																			<p>UI/UX Designer</p>
+																			<p>Awards Speaker</p>
 																		</div>
 																	</div>
 																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alexys Archer</Link>
@@ -158,7 +159,7 @@ export default function SpeakersSingle() {
 																</div>
 																<div className="space24" />
 																<div className="btn-area1">
-																	<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																</div>
 															</div>
 														</div>
@@ -176,10 +177,10 @@ export default function SpeakersSingle() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																	</li>
 																</ul>
 																<div className="space20" />
@@ -188,17 +189,17 @@ export default function SpeakersSingle() {
 																<div className="author-area">
 																	<div className="autho-name-area">
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alex Roberton</Link>
 																			<div className="space8" />
-																			<p>UI/UX Designer</p>
+																			<p>Awards Speaker</p>
 																		</div>
 																	</div>
 																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alexys Archer</Link>
@@ -209,14 +210,14 @@ export default function SpeakersSingle() {
 																</div>
 																<div className="space24" />
 																<div className="btn-area1">
-																	<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																</div>
 															</div>
 															<div className="space30 d-lg-none d-block" />
 														</div>
 														<div className="col-lg-5">
 															<div className="img1">
-																<img src="/assets/img/all-images/event/event-img5.png" alt="" />
+																<Image src="/assets/img/all-images/event/event-img5.png" alt="" width={900} height={600} />
 															</div>
 														</div>
 													</div>
@@ -231,7 +232,7 @@ export default function SpeakersSingle() {
 													<div className="row align-items-center">
 														<div className="col-lg-5">
 															<div className="img1">
-																<img src="/assets/img/all-images/event/event-img6.png" alt="" />
+																<Image src="/assets/img/all-images/event/event-img6.png" alt="" width={900} height={600} />
 															</div>
 														</div>
 														<div className="col-lg-1" />
@@ -239,10 +240,10 @@ export default function SpeakersSingle() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																	</li>
 																</ul>
 																<div className="space20" />
@@ -251,17 +252,17 @@ export default function SpeakersSingle() {
 																<div className="author-area">
 																	<div className="autho-name-area">
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alex Roberton</Link>
 																			<div className="space8" />
-																			<p>UI/UX Designer</p>
+																			<p>Awards Speaker</p>
 																		</div>
 																	</div>
 																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alexys Archer</Link>
@@ -272,7 +273,7 @@ export default function SpeakersSingle() {
 																</div>
 																<div className="space24" />
 																<div className="btn-area1">
-																	<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																</div>
 															</div>
 														</div>
@@ -295,15 +296,15 @@ export default function SpeakersSingle() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>
@@ -321,15 +322,15 @@ export default function SpeakersSingle() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>

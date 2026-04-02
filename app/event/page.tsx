@@ -1,4 +1,5 @@
 
+import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
@@ -7,7 +8,7 @@ export default function Event() {
 	return (
 		<>
 
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg8.png)' }}>
 						<div className="container">
@@ -44,7 +45,7 @@ export default function Event() {
 													<div className="row align-items-center">
 														<div className="col-lg-5">
 															<div className="img1">
-																<img src="/assets/img/all-images/event/event-img4.png" alt="" />
+																<Image src="/assets/img/all-images/event/event-img4.png" alt="" width={900} height={600} />
 															</div>
 														</div>
 														<div className="col-lg-1" />
@@ -52,10 +53,10 @@ export default function Event() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																	</li>
 																</ul>
 																<div className="space20" />
@@ -64,17 +65,17 @@ export default function Event() {
 																<div className="author-area">
 																	<div className="autho-name-area">
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alex Roberton</Link>
 																			<div className="space8" />
-																			<p>UI/UX Designer</p>
+																			<p>Awards Speaker</p>
 																		</div>
 																	</div>
 																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alexys Archer</Link>
@@ -85,7 +86,7 @@ export default function Event() {
 																</div>
 																<div className="space24" />
 																<div className="btn-area1">
-																	<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																</div>
 															</div>
 														</div>
@@ -103,10 +104,10 @@ export default function Event() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																	</li>
 																</ul>
 																<div className="space20" />
@@ -115,17 +116,17 @@ export default function Event() {
 																<div className="author-area">
 																	<div className="autho-name-area">
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alex Roberton</Link>
 																			<div className="space8" />
-																			<p>UI/UX Designer</p>
+																			<p>Awards Speaker</p>
 																		</div>
 																	</div>
 																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alexys Archer</Link>
@@ -136,14 +137,14 @@ export default function Event() {
 																</div>
 																<div className="space24" />
 																<div className="btn-area1">
-																	<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																</div>
 															</div>
 															<div className="space30 d-lg-none d-block" />
 														</div>
 														<div className="col-lg-5">
 															<div className="img1">
-																<img src="/assets/img/all-images/event/event-img5.png" alt="" />
+																<Image src="/assets/img/all-images/event/event-img5.png" alt="" width={900} height={600} />
 															</div>
 														</div>
 													</div>
@@ -158,7 +159,7 @@ export default function Event() {
 													<div className="row align-items-center">
 														<div className="col-lg-5">
 															<div className="img1">
-																<img src="/assets/img/all-images/event/event-img6.png" alt="" />
+																<Image src="/assets/img/all-images/event/event-img6.png" alt="" width={900} height={600} />
 															</div>
 														</div>
 														<div className="col-lg-1" />
@@ -166,10 +167,10 @@ export default function Event() {
 															<div className="content-area">
 																<ul>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																	</li>
 																	<li>
-																		<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																	</li>
 																</ul>
 																<div className="space20" />
@@ -178,17 +179,17 @@ export default function Event() {
 																<div className="author-area">
 																	<div className="autho-name-area">
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alex Roberton</Link>
 																			<div className="space8" />
-																			<p>UI/UX Designer</p>
+																			<p>Awards Speaker</p>
 																		</div>
 																	</div>
 																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																		<div className="img1">
-																			<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
 																			<Link href="/speakers-single">Alexys Archer</Link>
@@ -199,7 +200,7 @@ export default function Event() {
 																</div>
 																<div className="space24" />
 																<div className="btn-area1">
-																	<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																</div>
 															</div>
 														</div>
@@ -243,15 +244,15 @@ export default function Event() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>
@@ -269,15 +270,15 @@ export default function Event() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>

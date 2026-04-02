@@ -1,43 +1,46 @@
-# Multi-stage build for Next.js Static Site with Nginx
-# This Dockerfile is optimized for Coolify deployment
+# Production image: Next.js standalone server (not nginx + missing `out/`).
+# Prisma engines are copied alongside the traced bundle.
 
-# Stage 1: Build the static site
-FROM node:18-alpine AS builder
+FROM node:20-bookworm-slim AS builder
 
 WORKDIR /app
 
-# Install dependencies
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+
 COPY package.json package-lock.json* ./
 RUN npm ci
 
-# Copy source files
 COPY . .
-
-# Compile SCSS to CSS
 RUN npm run sass:build
 
-# Build the static site
 ENV NEXT_TELEMETRY_DISABLED=1
+RUN npx prisma generate
 RUN npm run build
 
-# Stage 2: Serve with Nginx
-FROM nginx:alpine
+FROM node:20-bookworm-slim AS runner
 
-# Install wget for healthcheck
-RUN apk add --no-cache wget
+WORKDIR /app
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3003
+ENV HOSTNAME=0.0.0.0
 
-# Copy static files from builder
-COPY --from=builder /app/out /usr/share/nginx/html
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
-# Expose port 80
-EXPOSE 80
+RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 
-# Health check - increased start period to allow nginx to fully start
-HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://localhost/ || exit 1
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma/client ./node_modules/@prisma/client
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+USER nextjs
+
+EXPOSE 3003
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=45s --retries=3 \
+	CMD node -e "fetch('http://127.0.0.1:3003/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+
+CMD ["node", "server.js"]

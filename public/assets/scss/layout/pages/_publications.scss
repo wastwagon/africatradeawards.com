@@ -19,10 +19,10 @@ $pub-border: #E5E7EB;
 	.heading1 a,
 	.breadcrumb-home,
 	.breadcrumb-current {
-		color: #fff;
+		color: #fff !important; /* override inner-page / theme link colors */
 	}
 	.breadcrumb-home:hover {
-		color: $pub-purple-light;
+		color: $pub-purple-light !important;
 	}
 }
 
@@ -205,10 +205,10 @@ $pub-border: #E5E7EB;
 	.heading1 a,
 	.breadcrumb-home,
 	.breadcrumb-current {
-		color: #fff;
+		color: #fff !important;
 	}
 	.breadcrumb-home:hover {
-		color: $pub-purple-light;
+		color: $pub-purple-light !important;
 	}
 }
 

@@ -9,7 +9,7 @@ const AUTOPLAY_MS = 5500
 
 export default function GalleryPage() {
 	return (
-		<Layout headerStyle={1} footerStyle={1}>
+		<Layout>
 			{/* Page Header */}
 			<div className="inner-page-header">
 				<div className="container">

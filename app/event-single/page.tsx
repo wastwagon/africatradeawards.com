@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
@@ -11,7 +12,7 @@ export default function EventSingle() {
 	return (
 		<>
 
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg9.png)' }}>
 						<div className="container">
@@ -33,24 +34,24 @@ export default function EventSingle() {
 								<div className="col-lg-7">
 									<div className="event-side-images">
 										<div className="img1">
-											<img src="/assets/img/all-images/event/event-img8.png" alt="" />
+											<Image src="/assets/img/all-images/event/event-img8.png" alt="" width={1200} height={700} />
 										</div>
 										<div className="space32" />
 										<h3>Elevate User Experience Expertise</h3>
 										<div className="space16" />
-										<p>In today's digital landscape, exceptional user experience (UX) is the key to creating products and services that truly resonate with people. At Eventify, dive deep into the world of UX with expert-led sessions that explore and cutting-edge techniques, research-driven insights, and innovative tools.</p>
+										<p>In today&apos;s digital landscape, exceptional user experience (UX) is the key to creating products and services that truly resonate with people. At Africa Trade Awards, dive deep into the world of UX with expert-led sessions that explore cutting-edge techniques, research-driven insights, and innovative tools.</p>
 										<div className="space40" />
 										<h4>Event Speakers</h4>
 										<div className="row">
 											<div className="col-lg-4 col-md-6">
 												<div className="our-team-boxarea">
 													<div className="team-widget-area">
-														<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-														<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+														<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+														<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 														<div className="img1">
-															<img src="/assets/img/all-images/team/team-img12.png" alt="" className="team-img4" />
+															<Image src="/assets/img/all-images/team/team-img12.png" alt="" className="team-img4" width={450} height={520} />
 															<div className="share">
-																<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+																<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 															</div>
 															<ul>
 																<li>
@@ -72,19 +73,19 @@ export default function EventSingle() {
 													<div className="content-area">
 														<Link href="/speakers-single">Alex Robertson</Link>
 														<div className="space16" />
-														<p>UI/UX Designer</p>
+														<p>Awards Speaker</p>
 													</div>
 												</div>
 											</div>
 											<div className="col-lg-4 col-md-6">
 												<div className="our-team-boxarea">
 													<div className="team-widget-area">
-														<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-														<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+														<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+														<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 														<div className="img1">
-															<img src="/assets/img/all-images/team/team-img13.png" alt="" className="team-img4" />
+															<Image src="/assets/img/all-images/team/team-img13.png" alt="" className="team-img4" width={450} height={520} />
 															<div className="share">
-																<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+																<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 															</div>
 															<ul>
 																<li>
@@ -106,19 +107,19 @@ export default function EventSingle() {
 													<div className="content-area">
 														<Link href="/speakers-single">Alexy Sammony</Link>
 														<div className="space16" />
-														<p>UI/UX Designer</p>
+														<p>Awards Speaker</p>
 													</div>
 												</div>
 											</div>
 											<div className="col-lg-4 col-md-6">
 												<div className="our-team-boxarea">
 													<div className="team-widget-area">
-														<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-														<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+														<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+														<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 														<div className="img1">
-															<img src="/assets/img/all-images/team/team-img14.png" alt="" className="team-img4" />
+															<Image src="/assets/img/all-images/team/team-img14.png" alt="" className="team-img4" width={450} height={520} />
 															<div className="share">
-																<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+																<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 															</div>
 															<ul>
 																<li>
@@ -140,7 +141,7 @@ export default function EventSingle() {
 													<div className="content-area">
 														<Link href="/speakers-single">Kireon Pollardy</Link>
 														<div className="space16" />
-														<p>UI/UX Designer</p>
+														<p>Awards Speaker</p>
 													</div>
 												</div>
 											</div>
@@ -152,10 +153,10 @@ export default function EventSingle() {
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+													<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+													<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 												</li>
 											</ul>
 											<div className="space20" />
@@ -164,17 +165,17 @@ export default function EventSingle() {
 											<div className="author-area">
 												<div className="autho-name-area">
 													<div className="img1">
-														<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+														<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 													</div>
 													<div className="text">
 														<Link href="/speakers-single">Alex Roberton</Link>
 														<div className="space8" />
-														<p>UI/UX Designer</p>
+														<p>Awards Speaker</p>
 													</div>
 												</div>
 												<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 													<div className="img1">
-														<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+														<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 													</div>
 													<div className="text">
 														<Link href="/speakers-single">Alexys Archer</Link>
@@ -185,7 +186,7 @@ export default function EventSingle() {
 											</div>
 											<div className="space24" />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+												<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 											</div>
 										</div>
 										<div className="space30" />
@@ -215,7 +216,7 @@ export default function EventSingle() {
 										<ul className="nav nav-pills" id="pills-tab" role="tablist">
 											<li className="nav-item" onClick={() => handleTab(1)}>
 												<button className={isTab == 1 ? "nav-link active" : "nav-link"} id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-													<span className="calender"><img src="/assets/img/icons/calender2.svg" alt="" /></span>
+													<span className="calender"><Image src="/assets/img/icons/calender2.svg" alt="" width={18} height={18} /></span>
 													<span className="pl-8">
 														<span className="day">Day One</span>
 														<span className="date">May 25, 2024</span>
@@ -224,7 +225,7 @@ export default function EventSingle() {
 											</li>
 											<li className="nav-item" onClick={() => handleTab(2)}>
 												<button className={isTab == 2 ? "nav-link active" : "nav-link"} id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
-													<span className="calender"><img src="/assets/img/icons/calender2.svg" alt="" /></span>
+													<span className="calender"><Image src="/assets/img/icons/calender2.svg" alt="" width={18} height={18} /></span>
 													<span className="pl-8">
 														<span className="day">Day Two</span>
 														<span className="date">May 25, 2024</span>
@@ -233,7 +234,7 @@ export default function EventSingle() {
 											</li>
 											<li className="nav-item" onClick={() => handleTab(3)}>
 												<button className={isTab == 3 ? "nav-link m-0 active" : "nav-link m-0"} id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
-													<span className="calender"><img src="/assets/img/icons/calender2.svg" alt="" /> </span>
+													<span className="calender"><Image src="/assets/img/icons/calender2.svg" alt="" width={18} height={18} /> </span>
 													<span className="pl-8">
 														<span className="day">Day Three</span>
 														<span className="date">May 25, 2024</span>
@@ -253,7 +254,7 @@ export default function EventSingle() {
 															<div className="row align-items-center">
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img4.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img4.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 																<div className="col-lg-1" />
@@ -261,10 +262,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -273,17 +274,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -294,7 +295,7 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																</div>
@@ -313,10 +314,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -325,17 +326,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -346,14 +347,14 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																	<div className="space30 d-lg-none d-block" />
 																</div>
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img5.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img5.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 															</div>
@@ -369,7 +370,7 @@ export default function EventSingle() {
 															<div className="row align-items-center">
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img6.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img6.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 																<div className="col-lg-1" />
@@ -377,10 +378,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -389,17 +390,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -410,7 +411,7 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																</div>
@@ -430,7 +431,7 @@ export default function EventSingle() {
 															<div className="row align-items-center">
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img4.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img4.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 																<div className="col-lg-1" />
@@ -438,10 +439,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -450,17 +451,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -471,7 +472,7 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																</div>
@@ -490,10 +491,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -502,17 +503,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -523,14 +524,14 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																	<div className="space30 d-lg-none d-block" />
 																</div>
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img5.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img5.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 															</div>
@@ -546,7 +547,7 @@ export default function EventSingle() {
 															<div className="row align-items-center">
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img6.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img6.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 																<div className="col-lg-1" />
@@ -554,10 +555,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -566,17 +567,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -587,7 +588,7 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																</div>
@@ -607,7 +608,7 @@ export default function EventSingle() {
 															<div className="row align-items-center">
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img4.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img4.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 																<div className="col-lg-1" />
@@ -615,10 +616,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -627,17 +628,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -648,7 +649,7 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																</div>
@@ -667,10 +668,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -679,17 +680,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -700,14 +701,14 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																	<div className="space30 d-lg-none d-block" />
 																</div>
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img5.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img5.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 															</div>
@@ -723,7 +724,7 @@ export default function EventSingle() {
 															<div className="row align-items-center">
 																<div className="col-lg-5">
 																	<div className="img1">
-																		<img src="/assets/img/all-images/event/event-img6.png" alt="" />
+																		<Image src="/assets/img/all-images/event/event-img6.png" alt="" width={900} height={600} />
 																	</div>
 																</div>
 																<div className="col-lg-1" />
@@ -731,10 +732,10 @@ export default function EventSingle() {
 																	<div className="content-area">
 																		<ul>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/clock1.svg" alt="" />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
+																				<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
 																			</li>
 																			<li>
-																				<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />26/C Asana, New York </Link>
+																				<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 																			</li>
 																		</ul>
 																		<div className="space20" />
@@ -743,17 +744,17 @@ export default function EventSingle() {
 																		<div className="author-area">
 																			<div className="autho-name-area">
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alex Roberton</Link>
 																					<div className="space8" />
-																					<p>UI/UX Designer</p>
+																					<p>Awards Speaker</p>
 																				</div>
 																			</div>
 																			<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
 																				<div className="img1">
-																					<img src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" />
+																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
 																					<Link href="/speakers-single">Alexys Archer</Link>
@@ -764,7 +765,7 @@ export default function EventSingle() {
 																		</div>
 																		<div className="space24" />
 																		<div className="btn-area1">
-																			<Link href="/pricing-plan" className="vl-btn1"><span className="demo">purchase ticket Now</span></Link>
+																			<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
 																		</div>
 																	</div>
 																</div>
@@ -789,15 +790,15 @@ export default function EventSingle() {
 										<div className="timer-btn-area">
 											<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>
@@ -815,15 +816,15 @@ export default function EventSingle() {
 										<div className="timer-btn-area">
 											<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>

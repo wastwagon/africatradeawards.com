@@ -153,10 +153,10 @@
 	}
 }
 
-// Add padding to body when mobile bottom nav is visible
+/* Space for fixed bottom nav — only under marketing Layout (not /admin, etc.) */
 @media (max-width: 991px) {
-	body {
-		padding-bottom: 70px;
+	.site-layout-chrome {
+		padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
 	}
 }
 

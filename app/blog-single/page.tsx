@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image"
 import { useState } from 'react'
 import ModalVideo from 'react-modal-video'
 import "@/node_modules/react-modal-video/css/modal-video.css"
@@ -11,7 +12,7 @@ export default function BlogSingle() {
 	return (
 		<>
 
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg14.png)' }}>
 						<div className="container">
@@ -33,64 +34,64 @@ export default function BlogSingle() {
 								<div className="col-lg-8">
 									<div className="blog-deatils-content heading2">
 										<div className="img1">
-											<img src="/assets/img/all-images/blog/blog-img7.png" alt="" />
+											<Image src="/assets/img/all-images/blog/blog-img7.png" alt="" width={1200} height={700} />
 										</div>
 										<div className="space32" />
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 											</li>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Gisselle <span className="breadcrumb-current"> | </span></Link>
+												<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Gisselle <span className="breadcrumb-current"> | </span></Link>
 											</li>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/comments1.svg" alt="" />2 Comments</Link>
+												<Link href="/#"><Image src="/assets/img/icons/comments1.svg" alt="" width={18} height={18} />2 Comments</Link>
 											</li>
 										</ul>
 										<div className="space18" />
-										<h2>Step Into the Future of Business with Eventify</h2>
+										<h2>Step Into the Future of Business with Africa Trade Awards</h2>
 										<div className="space16" />
-										<p>At Eventify 2024, you'll join an exclusive gathering of business leaders and innovators shaping the future their industries. This one-day conference offers dynamic sessions on leadership, technology, and strategy to help you stay ahead in today's competitive market. Whether you're looking to unlock new opportunities or build lasting eventify partnerships, Eventify is where you need to be.</p>
+										<p>At Africa Trade Awards 2026, you&apos;ll join an exclusive gathering of business leaders and innovators shaping the future of their industries. This one-day conference offers dynamic sessions on leadership, technology, and strategy to help you stay ahead in today&apos;s competitive market. Whether you&apos;re looking to unlock new opportunities or build lasting partnerships, Africa Trade Awards is where you need to be.</p>
 										<div className="space48" />
 										<div className="row">
 											<div className="col-lg-6 col-md-6">
 												<div className="img1 image-anime">
-													<img src="/assets/img/all-images/blog/blog-img8.png" alt="" />
+													<Image src="/assets/img/all-images/blog/blog-img8.png" alt="" width={900} height={600} />
 												</div>
 											</div>
 											<div className="col-lg-6 col-md-6">
 												<div className="space30 d-md-none d-block" />
 												<div className="img1 image-anime">
-													<img src="/assets/img/all-images/blog/blog-img9.png" alt="" />
+													<Image src="/assets/img/all-images/blog/blog-img9.png" alt="" width={900} height={600} />
 												</div>
 											</div>
 										</div>
 										<div className="space32" />
-										<h3>Eventify: Your Gateway Strategic Growth</h3>
+										<h3>Africa Trade Awards: Your Gateway to Strategic Growth</h3>
 										<div className="space16" />
-										<p>Fuel an your business growth with actionable insights from world-class experts at Eventify 2024. This premier event brings together forward-thinking professionals to explore the latest trends, technologies, and strategies for success. From keynote speeches to interactive workshops, Eventify provides you with the tools you need.</p>
+										<p>Fuel your business growth with actionable insights from world-class experts at Africa Trade Awards 2026. This premier event brings together forward-thinking professionals to explore the latest trends, technologies, and strategies for success. From keynote speeches to interactive workshops, Africa Trade Awards provides you with the tools you need.</p>
 										<div className="space16" />
-										<p>"Join us at Eventify 2024, where innovation meets opportunity. This conference is the ultimate destination for business leaders seeking to push the boundaries of an what's possible. With sessions on disruptive technologies, leadership trends, and market strategies, you'll walk away with the knowledge and connections to lead.</p>
+										<p>&ldquo;Join us at Africa Trade Awards 2026, where innovation meets opportunity. This conference is the ultimate destination for business leaders seeking to push the boundaries of what&apos;s possible. With sessions on disruptive technologies, leadership trends, and market strategies, you&apos;ll walk away with the knowledge and connections to lead.&rdquo;</p>
 										<div className="space48" />
 										<div className="video-btn-area">
 											<div className="img1">
-												<img src="/assets/img/all-images/blog/blog-img10.png" alt="" />
+												<Image src="/assets/img/all-images/blog/blog-img10.png" alt="" width={1200} height={700} />
 											</div>
 											<div className="play">
 												<a onClick={() => setOpen(true)} className="popup-youtube"><i className="fa-solid fa-play" /></a>
 											</div>
 										</div>
 										<div className="space32" />
-										<h3>Reimagine Business Possibilities Eventify</h3>
+										<h3>Reimagine Business Possibilities at Africa Trade Awards</h3>
 										<div className="space16" />
-										<p>"Eventify 2024 is the ultimate destination for professionals eager to stay ahead in the evolving business landscape. This event brings together to innovators, meetup industry leaders, and experts to explore the future of business strategy technology.</p>
+										<p>&ldquo;Africa Trade Awards 2026 is the ultimate destination for professionals eager to stay ahead in the evolving business landscape. This event brings together innovators, industry leaders, and experts to explore the future of business strategy and technology.&rdquo;</p>
 										<div className="space32" />
 										<div className="tags-social-area">
 											<div className="tags">
 												<h4>Tags:</h4>
 												<ul>
 													<li><Link href="/#">#Conferences</Link></li>
-													<li><Link href="/#" className="m-0">#Meetup</Link></li>
+													<li><Link href="/#" className="m-0">#AfricaTradeAwards2026</Link></li>
 												</ul>
 											</div>
 											<div className="social">
@@ -152,11 +153,11 @@ export default function BlogSingle() {
 											<div className="space12" />
 											<ul>
 												<li><Link href="/#">#Conferences</Link></li>
-												<li><Link href="/#">#Meetup</Link></li>
+												<li><Link href="/#">#AfricaTradeAwards2026</Link></li>
 												<li><Link href="/#">#Event</Link></li>
 											</ul>
 											<ul>
-												<li><Link href="/#">#Eventify2024</Link></li>
+												<li><Link href="/#">#AfricaTradeAwards2026</Link></li>
 												<li><Link href="/#">#DigitalTransformation</Link></li>
 											</ul>
 											<ul>
@@ -169,16 +170,16 @@ export default function BlogSingle() {
 											<h3>Popular Author</h3>
 											<div className="space12" />
 											<ul>
-												<li><img src="/assets/img/all-images/blog/blog-img11.png" alt="" /></li>
-												<li><img src="/assets/img/all-images/blog/blog-img12.png" alt="" /></li>
-												<li><img src="/assets/img/all-images/blog/blog-img13.png" alt="" /></li>
-												<li><img src="/assets/img/all-images/blog/blog-img14.png" alt="" /></li>
+												<li><Image src="/assets/img/all-images/blog/blog-img11.png" alt="" width={80} height={80} /></li>
+												<li><Image src="/assets/img/all-images/blog/blog-img12.png" alt="" width={80} height={80} /></li>
+												<li><Image src="/assets/img/all-images/blog/blog-img13.png" alt="" width={80} height={80} /></li>
+												<li><Image src="/assets/img/all-images/blog/blog-img14.png" alt="" width={80} height={80} /></li>
 											</ul>
 											<ul>
-												<li><img src="/assets/img/all-images/blog/blog-img15.png" alt="" /></li>
-												<li><img src="/assets/img/all-images/blog/blog-img16.png" alt="" /></li>
-												<li><img src="/assets/img/all-images/blog/blog-img17.png" alt="" /></li>
-												<li><img src="/assets/img/all-images/blog/blog-img18.png" alt="" /></li>
+												<li><Image src="/assets/img/all-images/blog/blog-img15.png" alt="" width={80} height={80} /></li>
+												<li><Image src="/assets/img/all-images/blog/blog-img16.png" alt="" width={80} height={80} /></li>
+												<li><Image src="/assets/img/all-images/blog/blog-img17.png" alt="" width={80} height={80} /></li>
+												<li><Image src="/assets/img/all-images/blog/blog-img18.png" alt="" width={80} height={80} /></li>
 											</ul>
 										</div>
 									</div>
@@ -201,19 +202,19 @@ export default function BlogSingle() {
 								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={800}>
 									<div className="blog4-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img7.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img7.png" alt="" width={900} height={600} />
 										</div>
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
+													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Beverly</Link>
+													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Beverly</Link>
 												</li>
 											</ul>
 											<div className="space20" />
-											<Link href="/blog-single">Eventify 2024: Unlock the Future of Business</Link>
+											<Link href="/blog-single">Africa Trade Awards 2026: Unlock the Future of Business</Link>
 											<div className="space24" />
 											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
 											<div className="arrow">
@@ -225,19 +226,19 @@ export default function BlogSingle() {
 								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1000}>
 									<div className="blog4-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img8.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img8.png" alt="" width={900} height={600} />
 										</div>
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
+													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Gisselle</Link>
+													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Gisselle</Link>
 												</li>
 											</ul>
 											<div className="space20" />
-											<Link href="/blog-single">Where Vision Meetup Connect: Eventify 2024</Link>
+											<Link href="/blog-single">Where Vision Meets Opportunity: Africa Trade Awards 2026</Link>
 											<div className="space24" />
 											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
 											<div className="arrow">
@@ -249,19 +250,19 @@ export default function BlogSingle() {
 								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1200}>
 									<div className="blog4-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img9.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img9.png" alt="" width={900} height={600} />
 										</div>
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
+													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
 												</li>
 												<li>
-													<Link href="/#"><img src="/assets/img/icons/user1.svg" alt="" />Mertie</Link>
+													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Mertie</Link>
 												</li>
 											</ul>
 											<div className="space20" />
-											<Link href="/blog-single">Fuel Your Business Growth at Eventify</Link>
+											<Link href="/blog-single">Fuel Your Business Growth at Africa Trade Awards</Link>
 											<div className="space24" />
 											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
 											<div className="arrow">
@@ -283,15 +284,15 @@ export default function BlogSingle() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>
@@ -309,15 +310,15 @@ export default function BlogSingle() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>

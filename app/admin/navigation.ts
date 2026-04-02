@@ -1,0 +1,263 @@
+import { UserRole } from "@prisma/client";
+
+type AdminAudience = "auditor" | "manager" | "super_admin";
+
+export type AdminNavItem = {
+  id: string;
+  href: string;
+  label: string;
+  description?: string;
+  aliases?: string[];
+  audiences: AdminAudience[];
+  sidebar?: boolean;
+  palette?: boolean;
+  dashboardCard?: boolean;
+  quickActionLabel?: string;
+};
+
+const ADMIN_NAV_ITEMS: AdminNavItem[] = [
+  {
+    id: "dashboard",
+    href: "/admin/",
+    label: "Dashboard",
+    aliases: ["home"],
+    audiences: ["auditor", "manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+  },
+  {
+    id: "site-content",
+    href: "/admin/site-content",
+    label: "Site content",
+    description: "Manage public dates, venue lines, and event copy.",
+    aliases: ["content"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Update public event copy",
+  },
+  {
+    id: "programs",
+    href: "/admin/programs",
+    label: "Programs and categories",
+    description: "Configure programs, seasons, and award categories.",
+    aliases: ["programs"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Configure programs",
+  },
+  {
+    id: "entries",
+    href: "/admin/entries",
+    label: "Entries and judge assignment",
+    description: "Assign judges and move entries through statuses.",
+    aliases: ["submissions"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Assign judges now",
+  },
+  {
+    id: "nominations",
+    href: "/admin/nominations",
+    label: "Nominations review",
+    description: "Review nominations, approve outcomes, and convert to entries.",
+    aliases: ["nomination", "awardee", "convert"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Review nominations",
+  },
+  {
+    id: "events",
+    href: "/admin/events",
+    label: "Event operations",
+    description: "Run registration, QR ticketing, and onsite check-in control.",
+    aliases: ["attendance", "registrations"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "event-checkin",
+    href: "/admin/events/checkin",
+    label: "Check-in scanner desk",
+    description: "Operate camera-based QR scan check-in with offline queue sync.",
+    aliases: ["scanner", "onsite", "desk", "checkin"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Open check-in desk",
+  },
+  {
+    id: "event-badge",
+    href: "/admin/events/badge",
+    label: "Badge studio",
+    description: "Print attendee badge templates and maintain print audit trail.",
+    aliases: ["badge", "print", "name tag"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Open badge studio",
+  },
+  {
+    id: "event-onsite",
+    href: "/admin/events/onsite",
+    label: "Onsite analytics",
+    description: "Track gate throughput, scanner failures, and reprint risk.",
+    aliases: ["throughput", "gates", "checkin report"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Open onsite analytics",
+  },
+  {
+    id: "leaderboard",
+    href: "/admin/leaderboard",
+    label: "Judging leaderboard",
+    description: "Track score averages across judged entries.",
+    aliases: ["scores"],
+    audiences: ["auditor", "manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "voting",
+    href: "/admin/voting",
+    label: "Public voting results",
+    description: "Monitor ranking outcomes by entry and category.",
+    aliases: ["votes"],
+    audiences: ["auditor", "manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "voting-fraud",
+    href: "/admin/voting-fraud",
+    label: "Voting fraud analytics",
+    description: "Inspect suspicious activity and abuse signals.",
+    aliases: ["risk"],
+    audiences: ["auditor", "manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Open fraud analytics",
+  },
+  {
+    id: "voting-quarantine",
+    href: "/admin/voting-quarantine",
+    label: "Vote quarantine queue",
+    description: "Review quarantined votes and audit context.",
+    aliases: ["queue", "quarantine"],
+    audiences: ["auditor", "manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Review quarantine queue",
+  },
+  {
+    id: "certificates",
+    href: "/admin/certificates",
+    label: "Winner certificates",
+    description: "Generate and manage recognition certificates.",
+    aliases: ["certs"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "advanced",
+    href: "/admin/advanced",
+    label: "Advanced workflow tools",
+    description: "Run moderation and broadcast operations.",
+    aliases: ["tools"],
+    audiences: ["manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "exports",
+    href: "/admin/exports",
+    label: "Data exports",
+    description: "Download CSV and ZIP datasets for reporting.",
+    aliases: ["csv", "zip"],
+    audiences: ["auditor", "manager", "super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+    quickActionLabel: "Download exports",
+  },
+  {
+    id: "users",
+    href: "/admin/users",
+    label: "Staff users",
+    description: "Provision and role-assign admin, manager, auditor, judge, and entrant users.",
+    aliases: ["staff", "users"],
+    audiences: ["super_admin"],
+    sidebar: true,
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "entrant-portal",
+    href: "/portal/entrant",
+    label: "Entrant portal",
+    description: "Open entrant-side workspace and submissions flow.",
+    aliases: ["entrant"],
+    audiences: ["manager", "super_admin"],
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "nominator-portal",
+    href: "/portal/nominator",
+    label: "Nominator portal",
+    description: "Open nominator-side workspace and nomination flow.",
+    aliases: ["nominator", "nominate", "awardee"],
+    audiences: ["manager", "super_admin"],
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "judge-portal",
+    href: "/portal/judge",
+    label: "Judge portal",
+    description: "Open judge-side scoring and review workspace.",
+    aliases: ["judge"],
+    audiences: ["manager", "super_admin"],
+    palette: true,
+    dashboardCard: true,
+  },
+  {
+    id: "public-vote",
+    href: "/vote",
+    label: "Public voting page",
+    description: "Open the public-facing voting experience.",
+    audiences: ["auditor", "manager", "super_admin"],
+    dashboardCard: true,
+  },
+];
+
+function roleAudience(role: UserRole): AdminAudience {
+  if (role === UserRole.AUDITOR) return "auditor";
+  if (role === UserRole.SUPER_ADMIN) return "super_admin";
+  return "manager";
+}
+
+export function getAdminNavItems(role: UserRole): AdminNavItem[] {
+  const audience = roleAudience(role);
+  return ADMIN_NAV_ITEMS.filter((item) => item.audiences.includes(audience));
+}

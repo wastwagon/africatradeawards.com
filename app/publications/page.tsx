@@ -1,12 +1,14 @@
 'use client'
 
 import Layout from '@/components/layout/Layout'
+import { DEFAULT_PUBLICATIONS } from '@/lib/cms-defaults'
 import Link from 'next/link'
-import { useEffect, useRef } from 'react'
-import { publications } from '@/data/publications'
+import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 
 export default function PublicationsPage() {
 	const videoRef = useRef<HTMLVideoElement>(null)
+	const [publications, setPublications] = useState(DEFAULT_PUBLICATIONS)
 
 	useEffect(() => {
 		const video = videoRef.current
@@ -17,8 +19,33 @@ export default function PublicationsPage() {
 		}
 	}, [])
 
+	useEffect(() => {
+		void (async () => {
+			try {
+				const res = await fetch('/api/site/publications', { cache: 'no-store' })
+				const data = await res.json()
+				if (!res.ok || !Array.isArray(data.publications)) return
+				setPublications(
+					data.publications.map((item: Record<string, unknown>) => ({
+						slug: String(item.slug ?? ''),
+						title: String(item.title ?? ''),
+						excerpt: String(item.excerpt ?? ''),
+						dateText: String(item.dateText ?? item.date ?? ''),
+						dateline: String(item.dateline ?? ''),
+						image: String(item.image ?? ''),
+						href: String(item.href ?? `/publications/${item.slug ?? ''}`),
+						sortOrder: Number(item.sortOrder ?? 0),
+						published: Boolean(item.published ?? true),
+					}))
+				)
+			} catch {
+				// Keep defaults on failure.
+			}
+		})()
+	}, [])
+
 	return (
-		<Layout headerStyle={1} footerStyle={1}>
+		<Layout>
 			<div>
 				<div className="inner-page-header publications-page-header">
 					<video
@@ -69,12 +96,17 @@ export default function PublicationsPage() {
 									data-aos-duration={600}
 									data-aos-delay={index * 100}
 								>
-									<Link href={`/publications/${pub.slug}`} className="publication-card-link">
+									<Link href={pub.href || `/publications/${pub.slug}`} className="publication-card-link">
 										<article className="publication-card">
 											<div className="publication-card-accent" />
 											{pub.image && (
 												<div className="publication-card-image">
-													<img src={pub.image} alt="" />
+													<Image
+														src={pub.image}
+														alt={pub.title}
+														width={1200}
+														height={700}
+													/>
 												</div>
 											)}
 											<div className="publication-card-body">
@@ -83,7 +115,7 @@ export default function PublicationsPage() {
 												<p className="publication-card-excerpt">{pub.excerpt}</p>
 												<div className="publication-card-meta">
 													<span className="publication-card-date">
-														<i className="fa-solid fa-calendar-days" /> {pub.dateline && `${pub.dateline} | `}{pub.date}
+														<i className="fa-solid fa-calendar-days" /> {pub.dateline && `${pub.dateline} | `}{pub.dateText}
 													</span>
 												</div>
 												<span className="publication-card-cta">

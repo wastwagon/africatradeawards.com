@@ -1261,4 +1261,39 @@
 	}
 }
 
+/* Shared primary CTA (Awardees, Gallery) — brand purple */
+.cta-btn-primary {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 14px 32px;
+	background: #4e2b5a !important;
+	color: #fff !important;
+	font-size: 15px !important;
+	font-weight: 600 !important;
+	border-radius: 10px;
+	text-decoration: none !important;
+	border: none;
+	box-shadow: 0 4px 16px rgba(78, 43, 90, 0.35);
+	transition: all 0.25s ease;
+	cursor: pointer;
+
+	&:hover {
+		background: #3d2245 !important;
+		color: #fff !important;
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(78, 43, 90, 0.45);
+	}
+
+	i {
+		font-size: 13px;
+		transition: transform 0.25s ease;
+	}
+
+	&:hover i {
+		transform: translateX(4px);
+	}
+}
+
 /*============= CTA CSS AREA ENDS===============*/

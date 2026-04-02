@@ -52,7 +52,7 @@ export default function Awardees() {
 
 	return (
 		<>
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					{/* Page Header */}
 					<div className="inner-page-header">
@@ -81,12 +81,12 @@ export default function Awardees() {
 										<div className="awardees-year-badge">
 											<span>AFRICA TRADE AWARDS 2026</span>
 										</div>
-										<h1 className="awardees-hero-title">Recognition Honours for Africa's Trade and Industrialization</h1>
+										<h1 className="awardees-hero-title">Recognition Honours for Africa&apos;s Trade and Industrialization</h1>
 										<div className="space24" />
 										<div className="awardees-basis-card">
 											<h3 className="awardees-basis-title">Awards Basis</h3>
 											<p className="awardees-basis-text">
-												The Africa Trade Awards are recognition honours, conferred to acknowledge demonstrated contribution and delivered outcomes that have advanced Africa's trade, industrial capacity, and market integration. The Awards do not operate as competitive prizes and do not involve ranking or comparison. Recognition is conferred at the discretion of the Awards Committee, based on evidence of substantive impact within the reference period.
+												The Africa Trade Awards are recognition honours, conferred to acknowledge demonstrated contribution and delivered outcomes that have advanced Africa&apos;s trade, industrial capacity, and market integration. The Awards do not operate as competitive prizes and do not involve ranking or comparison. Recognition is conferred at the discretion of the Awards Committee, based on evidence of substantive impact within the reference period.
 											</p>
 										</div>
 									</div>

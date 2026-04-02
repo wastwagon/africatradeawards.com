@@ -1,4 +1,4 @@
-
+import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
@@ -7,7 +7,7 @@ export default function Memories() {
 	return (
 		<>
 
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg11.png)' }}>
 						<div className="container">
@@ -29,12 +29,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img4.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img4.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -44,12 +44,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img5.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img5.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -59,12 +59,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img6.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img6.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -74,12 +74,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img7.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img7.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -89,12 +89,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img8.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img8.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -104,12 +104,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img9.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img9.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -119,12 +119,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img10.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img10.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -134,12 +134,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img11.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img11.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -149,12 +149,12 @@ export default function Memories() {
 								<div className="col-lg-4 col-md-6">
 									<div className="memory3-boxarea">
 										<div className="img1">
-											<img src="/assets/img/all-images/memory/memory-img12.png" alt="" />
+											<Image src="/assets/img/all-images/memory/memory-img12.png" alt="" width={800} height={600} />
 										</div>
 										<div className="content-area">
-											<p>Event 2024</p>
+											<p>Africa Trade Awards 2026</p>
 											<div className="space12" />
-											<Link href="/event-single">Freelancer Meetup</Link>
+											<Link href="/event-single">Awards Night Highlights</Link>
 											<div className="plus">
 												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
 											</div>
@@ -195,15 +195,15 @@ export default function Memories() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>
@@ -221,15 +221,15 @@ export default function Memories() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>

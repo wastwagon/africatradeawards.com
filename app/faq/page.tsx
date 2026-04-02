@@ -1,11 +1,13 @@
 'use client'
 import Layout from "@/components/layout/Layout"
+import { DEFAULT_FAQS } from "@/lib/cms-defaults"
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
 
 export default function Faq() {
 	const [activeCard, setActiveCard] = useState<number | null>(null)
 	const [searchQuery, setSearchQuery] = useState("")
+	const [faqs, setFaqs] = useState(DEFAULT_FAQS.map((item, index) => ({ id: index + 1, ...item, icon: "fa-circle-question" })))
 	const videoRef = useRef<HTMLVideoElement>(null)
 
 	// Reset active card when search changes
@@ -21,72 +23,26 @@ export default function Faq() {
 			})
 		}
 	}, [])
-
-	const faqs = [
-		{
-			id: 1,
-			question: "What are the Africa Trade Awards?",
-			answer: "The Africa Trade Awards are recognition honours established by the African Trade Chamber to acknowledge individuals, institutions, enterprises, and public authorities whose work has had a material impact on Africa's trade and industrial development.",
-			icon: "fa-trophy",
-			category: "About"
-		},
-		{
-			id: 2,
-			question: "Are the Awards competitive?",
-			answer: "No. The Africa Trade Awards are conferred as recognition honours. They do not operate as competitive prizes and are not based on open nominations, rankings, or public voting.",
-			icon: "fa-medal",
-			category: "Process"
-		},
-		{
-			id: 3,
-			question: "How are recognition decisions made?",
-			answer: "Recognition decisions are made through a structured review process conducted by the Recognition & Validation Committee. The Committee assesses evidence of delivered outcomes within the reference period, drawing on professional judgment and sector expertise.",
-			icon: "fa-clipboard-check",
-			category: "Process"
-		},
-		{
-			id: 4,
-			question: "What types of contributions are recognised?",
-			answer: "The Awards recognise contributions that strengthened trade execution, industrial production, market connectivity, trade finance, infrastructure, payment systems, or policy implementation. Recognition is grounded in work that is operational and in use.",
-			icon: "fa-handshake",
-			category: "Eligibility"
-		},
-		{
-			id: 5,
-			question: "Who is eligible for recognition?",
-			answer: "Recognition may be conferred on individuals, enterprises, financial institutions, public authorities, and regional or continental bodies whose work falls within the scope of Africa's trade and industrial systems.",
-			icon: "fa-users",
-			category: "Eligibility"
-		},
-		{
-			id: 6,
-			question: "Is there a nomination or application process?",
-			answer: "No. Recognition is not based on applications or public nominations. Consideration is guided by evidence of impact and professional assessment by the Recognition & Validation Committee.",
-			icon: "fa-file-circle-question",
-			category: "Process"
-		},
-		{
-			id: 7,
-			question: "What is the reference period for assessment?",
-			answer: "The reference period for assessment is communicated as part of the Awards framework and reflects recent, demonstrable contributions relevant to the recognition year.",
-			icon: "fa-calendar-days",
-			category: "Process"
-		},
-		{
-			id: 8,
-			question: "Who oversees the Awards process?",
-			answer: "The Awards are overseen by the Recognition & Validation Committee, with independent professional support provided by Forvis Mazars as Independent Partner of the Awards.",
-			icon: "fa-shield-halved",
-			category: "Governance"
-		},
-		{
-			id: 9,
-			question: "When and where are the Awards conferred?",
-			answer: "The Africa Trade Awards 2026 will be conferred during the Africa Trade Summit 2026, convened by the African Trade Chamber in Accra, Ghana.",
-			icon: "fa-location-dot",
-			category: "Event"
-		}
-	]
+	useEffect(() => {
+		void (async () => {
+			try {
+				const res = await fetch('/api/site/faqs', { cache: 'no-store' })
+				const data = await res.json()
+				if (!res.ok || !Array.isArray(data.faqs)) return
+				setFaqs(
+					data.faqs.map((item: Record<string, unknown>, index: number) => ({
+						id: index + 1,
+						question: String(item.question ?? ''),
+						answer: String(item.answer ?? ''),
+						category: String(item.category ?? 'General'),
+						icon: "fa-circle-question",
+					}))
+				)
+			} catch {
+				// Keep defaults on failure.
+			}
+		})()
+	}, [])
 
 	// Filter FAQs based on search
 	const filteredFaqs = faqs.filter(faq =>
@@ -112,7 +68,7 @@ export default function Faq() {
 
 	return (
 		<>
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header">
 						<video

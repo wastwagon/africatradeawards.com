@@ -1,23 +1,14 @@
-# Development Dockerfile for Next.js application
+# Dev image: dependencies only — source code comes from bind mount for hot reload.
+FROM node:20-alpine
 
-FROM node:18-alpine
+RUN apk add --no-cache libc6-compat openssl
 
 WORKDIR /app
 
-# Install dependencies
-COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* ./
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
-  else npm install; \
-  fi
+COPY package.json package-lock.json* ./
+RUN npm ci
 
-# Copy application files
-COPY . .
+EXPOSE 3003
 
-# Expose port
-EXPOSE 3000
-
-# Start development server
-CMD ["npm", "run", "dev"]
+# Default CMD overridden by docker-compose.dev.yml
+CMD ["npm", "run", "dev:docker"]

@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout"
 import HeroSection from '@/components/sections/home1/HeroSection'
 import EventDateVenueBar from '@/components/sections/home1/EventDateVenueBar'
+import EngagePlatformSection from '@/components/sections/home1/EngagePlatformSection'
 import AboutSection from '@/components/sections/home1/AboutSection'
 import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
 import AwardeesCTASection from '@/components/sections/home1/AwardeesCTASection'
@@ -10,7 +11,7 @@ import SponsorsSection from '@/components/sections/SponsorsSection'
 
 /**
  * Homepage content flow (audience journey):
- * 1. Hero + Event bar — Attention: first impression, when/where
+ * 1. Hero + Event bar + Engage hub — Attention, when/where, direct links to vote / entry / sign-in
  * 2. About — Understanding: what the awards are
  * 3. Award structure — Understanding: how recognition is organized
  * 4. Awardees CTA — Recognition intro + CTA to awardees page
@@ -22,10 +23,11 @@ import SponsorsSection from '@/components/sections/SponsorsSection'
 export default function Home() {
 	return (
 		<>
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				{/* 1. Attention */}
 				<HeroSection />
 				<EventDateVenueBar />
+				<EngagePlatformSection />
 
 				{/* 2–3. Understanding */}
 				<AboutSection />

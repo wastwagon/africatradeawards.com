@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image"
 import { useEffect, useState } from "react"
 
 const msInSecond = 1000
@@ -111,27 +112,27 @@ export default function Countdown({ style }: any) {
 				<div className="row">
 					<div className="col-lg-3 col-md-6">
 						<div className="cta-counter-box">
-							<img src="/assets/img/elements/elements23.png" alt="" className="elements23 keyframe5" />
+							<Image src="/assets/img/elements/elements23.png" alt="" className="elements23 keyframe5" width={64} height={64} />
 							<h2><span id="days1" className="time-value">{timeParts.days} <span>DAYS</span></span></h2>
 						</div>
 						<div className="space50 d-lg-none d-block" />
 					</div>
 					<div className="col-lg-3 col-md-6">
 						<div className="cta-counter-box">
-							<img src="/assets/img/elements/elements23.png" alt="" className="elements23 keyframe5" />
+							<Image src="/assets/img/elements/elements23.png" alt="" className="elements23 keyframe5" width={64} height={64} />
 							<h2><span id="hours1" className="time-value">{timeParts.hours} <span>Hours</span> </span></h2>
 						</div>
 						<div className="space50 d-lg-none d-block" />
 					</div>
 					<div className="col-lg-3 col-md-6">
 						<div className="cta-counter-box">
-							<img src="/assets/img/elements/elements23.png" alt="" className="elements23 keyframe5" />
+							<Image src="/assets/img/elements/elements23.png" alt="" className="elements23 keyframe5" width={64} height={64} />
 							<h2><span id="minutes1" className="time-value">{timeParts.minutes}<span>Minutes</span></span></h2>
 						</div>
 					</div>
 					<div className="col-lg-3 col-md-6">
 						<div className="cta-counter-box">
-							<img src="/assets/img/elements/elements23.png" alt="" className="elements23 keyframe5" />
+							<Image src="/assets/img/elements/elements23.png" alt="" className="elements23 keyframe5" width={64} height={64} />
 							<h2><span id="seconds1" className="time-value">{timeParts.seconds}<span>Seconds</span></span></h2>
 						</div>
 					</div>

@@ -1,0 +1,144 @@
+/* Shared styling for login, vote, portals — matches main site tokens */
+.homepage1-body {
+	.platform-shell {
+		min-height: 55vh;
+		padding-bottom: 80px;
+		position: relative;
+		background: linear-gradient(
+			180deg,
+			#fffaf6 0%,
+			#f9f5fc 35%,
+			#ffffff 100%
+		);
+	}
+
+	.platform-page {
+		padding: clamp(32px, 5vw, 72px) 0 clamp(48px, 8vw, 100px);
+	}
+
+	.platform-page-header {
+		text-align: center;
+		max-width: 720px;
+		margin: 0 auto clamp(28px, 4vw, 48px);
+	}
+
+	.platform-eyebrow {
+		font-family: var(--grotesk);
+		font-size: var(--ztc-font-size-font-s15);
+		font-weight: var(--ztc-weight-bold);
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: #78508c;
+		margin-bottom: 12px;
+	}
+
+	.platform-title {
+		font-family: var(--grotesk);
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		font-weight: var(--ztc-weight-bold);
+		color: var(--ztc-text-text-2);
+		line-height: 1.15;
+		margin: 0 0 12px;
+	}
+
+	.platform-lead {
+		font-family: var(--figtree);
+		font-size: var(--ztc-font-size-font-s18);
+		color: var(--ztc-text-text-3);
+		line-height: 1.55;
+		margin: 0;
+	}
+
+	.platform-card {
+		background: rgba(255, 255, 255, 0.92);
+		border-radius: 16px;
+		padding: clamp(20px, 3vw, 28px);
+		border: 1px solid rgba(120, 80, 140, 0.12);
+		box-shadow:
+			0 4px 24px rgba(78, 43, 90, 0.08),
+			0 1px 0 rgba(255, 255, 255, 0.9) inset;
+	}
+
+	.platform-grid {
+		display: grid;
+		gap: 20px;
+	}
+
+	@media (min-width: 768px) {
+		.platform-grid.cols-2 {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.platform-field {
+		display: block;
+		margin-bottom: 16px;
+		font-family: var(--grotesk);
+		font-size: var(--ztc-font-size-font-s15);
+		font-weight: var(--ztc-weight-semibold);
+		color: var(--ztc-text-text-2);
+	}
+
+	.platform-field input,
+	.platform-field select,
+	.platform-field textarea {
+		display: block;
+		width: 100%;
+		margin-top: 8px;
+		padding: 12px 14px;
+		border-radius: 10px;
+		border: 1px solid rgba(78, 43, 90, 0.18);
+		background: #fff;
+		font-family: var(--figtree);
+		font-size: var(--ztc-font-size-font-s16);
+		transition: border-color 0.2s, box-shadow 0.2s;
+	}
+
+	.platform-field input:focus,
+	.platform-field select:focus,
+	.platform-field textarea:focus {
+		outline: none;
+		border-color: #78508c;
+		box-shadow: 0 0 0 3px rgba(120, 80, 140, 0.2);
+	}
+
+	.platform-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		align-items: center;
+		margin-top: 8px;
+	}
+
+	button.vl-btn1,
+	button.vl-btn2 {
+		cursor: pointer;
+		font: inherit;
+	}
+
+	.platform-msg-error {
+		color: #9b1c1c;
+		font-family: var(--figtree);
+		margin: 0 0 12px;
+	}
+
+	.platform-msg-ok {
+		color: #1b6e3e;
+		font-family: var(--figtree);
+		margin: 0 0 12px;
+	}
+
+	.platform-muted {
+		color: var(--ztc-text-text-3);
+		font-size: var(--ztc-font-size-font-s16);
+		line-height: 1.5;
+	}
+
+	.platform-vote-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+}

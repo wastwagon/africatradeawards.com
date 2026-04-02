@@ -1,0 +1,93 @@
+name: E2E Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  playwright-e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: africa_trade_awards
+          POSTGRES_USER: africa_trade_user
+          POSTGRES_PASSWORD: africa_trade_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U africa_trade_user -d africa_trade_awards"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://africa_trade_user:africa_trade_password@127.0.0.1:5432/africa_trade_awards
+      REDIS_URL: redis://127.0.0.1:6379
+      AUTH_JWT_SECRET: e2e-auth-jwt-secret-at-least-32-characters
+      BOOTSTRAP_ADMIN_SECRET: e2e-bootstrap-secret
+      VOTE_IP_SALT: e2e-vote-ip-salt
+      VOTE_CODE_SALT: e2e-vote-code-salt
+      EVENT_RECOVERY_CODE_SALT: e2e-event-recovery-code-salt
+      EVENT_QR_SECRET: e2e-event-qr-secret
+      EVENT_BADGE_SECRET: e2e-event-badge-secret
+      VOTE_TOKEN_SECRET: e2e-vote-token-secret-at-least-32-chars
+      VOTE_FP_SALT: e2e-vote-fingerprint-salt
+      PUBLIC_BASE_URL: http://127.0.0.1:3003
+      NEXT_PUBLIC_SITE_URL: http://127.0.0.1:3003
+      E2E_BASE_URL: http://127.0.0.1:3003
+      E2E_ADMIN_EMAIL: super.demo@local.test
+      E2E_ADMIN_PASSWORD: Demo_Awards_2026!
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Generate Prisma client
+        run: npm run prisma:generate
+
+      - name: Run database migrations
+        run: npm run prisma:migrate:deploy
+
+      - name: Seed demo data
+        run: npm run prisma:seed:demo
+
+      - name: Build app
+        run: npm run build
+
+      - name: Run Playwright tests
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          if-no-files-found: ignore

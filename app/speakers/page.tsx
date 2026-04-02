@@ -1,4 +1,5 @@
 
+import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
@@ -7,7 +8,7 @@ export default function Speakers() {
 	return (
 		<>
 
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg6.png)' }}>
 						<div className="container">
@@ -29,12 +30,12 @@ export default function Speakers() {
 								<div className="col-lg-3 col-md-6">
 									<div className="our-team-boxarea">
 										<div className="team-widget-area">
-											<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-											<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+											<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+											<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 											<div className="img1">
-												<img src="/assets/img/all-images/team/team-img12.png" alt="" className="team-img4" />
+												<Image src="/assets/img/all-images/team/team-img12.png" alt="" className="team-img4" width={450} height={520} />
 												<div className="share">
-													<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+													<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 												</div>
 												<ul>
 													<li>
@@ -56,19 +57,19 @@ export default function Speakers() {
 										<div className="content-area">
 											<Link href="/speakers-single">Alex Robertson</Link>
 											<div className="space16" />
-											<p>UI/UX Designer</p>
+											<p>Awards Speaker</p>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-3 col-md-6">
 									<div className="our-team-boxarea">
 										<div className="team-widget-area">
-											<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-											<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+											<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+											<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 											<div className="img1">
-												<img src="/assets/img/all-images/team/team-img13.png" alt="" className="team-img4" />
+												<Image src="/assets/img/all-images/team/team-img13.png" alt="" className="team-img4" width={450} height={520} />
 												<div className="share">
-													<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+													<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 												</div>
 												<ul>
 													<li>
@@ -90,19 +91,19 @@ export default function Speakers() {
 										<div className="content-area">
 											<Link href="/speakers-single">Alexy Sammony</Link>
 											<div className="space16" />
-											<p>UI/UX Designer</p>
+											<p>Awards Speaker</p>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-3 col-md-6">
 									<div className="our-team-boxarea">
 										<div className="team-widget-area">
-											<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-											<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+											<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+											<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 											<div className="img1">
-												<img src="/assets/img/all-images/team/team-img14.png" alt="" className="team-img4" />
+												<Image src="/assets/img/all-images/team/team-img14.png" alt="" className="team-img4" width={450} height={520} />
 												<div className="share">
-													<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+													<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 												</div>
 												<ul>
 													<li>
@@ -124,19 +125,19 @@ export default function Speakers() {
 										<div className="content-area">
 											<Link href="/speakers-single">Kireon Pollardy</Link>
 											<div className="space16" />
-											<p>UI/UX Designer</p>
+											<p>Awards Speaker</p>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-3 col-md-6">
 									<div className="our-team-boxarea">
 										<div className="team-widget-area">
-											<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-											<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+											<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+											<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 											<div className="img1">
-												<img src="/assets/img/all-images/team/team-img15.png" alt="" className="team-img4" />
+												<Image src="/assets/img/all-images/team/team-img15.png" alt="" className="team-img4" width={450} height={520} />
 												<div className="share">
-													<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+													<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 												</div>
 												<ul>
 													<li>
@@ -158,19 +159,19 @@ export default function Speakers() {
 										<div className="content-area">
 											<Link href="/speakers-single">Adresy Ineasta</Link>
 											<div className="space16" />
-											<p>UI/UX Designer</p>
+											<p>Awards Speaker</p>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-3 col-md-6">
 									<div className="our-team-boxarea">
 										<div className="team-widget-area">
-											<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-											<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+											<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+											<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 											<div className="img1">
-												<img src="/assets/img/all-images/team/team-img16.png" alt="" className="team-img4" />
+												<Image src="/assets/img/all-images/team/team-img16.png" alt="" className="team-img4" width={450} height={520} />
 												<div className="share">
-													<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+													<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 												</div>
 												<ul>
 													<li>
@@ -192,19 +193,19 @@ export default function Speakers() {
 										<div className="content-area">
 											<Link href="/speakers-single">Alex Robertson</Link>
 											<div className="space16" />
-											<p>UI/UX Designer</p>
+											<p>Awards Speaker</p>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-3 col-md-6">
 									<div className="our-team-boxarea">
 										<div className="team-widget-area">
-											<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-											<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+											<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+											<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 											<div className="img1">
-												<img src="/assets/img/all-images/team/team-img17.png" alt="" className="team-img4" />
+												<Image src="/assets/img/all-images/team/team-img17.png" alt="" className="team-img4" width={450} height={520} />
 												<div className="share">
-													<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+													<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 												</div>
 												<ul>
 													<li>
@@ -226,19 +227,19 @@ export default function Speakers() {
 										<div className="content-area">
 											<Link href="/speakers-single">Alexy Sammony</Link>
 											<div className="space16" />
-											<p>UI/UX Designer</p>
+											<p>Awards Speaker</p>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-3 col-md-6">
 									<div className="our-team-boxarea">
 										<div className="team-widget-area">
-											<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-											<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+											<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+											<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 											<div className="img1">
-												<img src="/assets/img/all-images/team/team-img18.png" alt="" className="team-img4" />
+												<Image src="/assets/img/all-images/team/team-img18.png" alt="" className="team-img4" width={450} height={520} />
 												<div className="share">
-													<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+													<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 												</div>
 												<ul>
 													<li>
@@ -260,19 +261,19 @@ export default function Speakers() {
 										<div className="content-area">
 											<Link href="/speakers-single">Alexy Sammony</Link>
 											<div className="space16" />
-											<p>UI/UX Designer</p>
+											<p>Awards Speaker</p>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-3 col-md-6">
 									<div className="our-team-boxarea">
 										<div className="team-widget-area">
-											<img src="/assets/img/elements/elements25.png" alt="" className="elements21" />
-											<img src="/assets/img/elements/elements26.png" alt="" className="elements22" />
+											<Image src="/assets/img/elements/elements25.png" alt="" className="elements21" width={80} height={80} />
+											<Image src="/assets/img/elements/elements26.png" alt="" className="elements22" width={80} height={80} />
 											<div className="img1">
-												<img src="/assets/img/all-images/team/team-img19.png" alt="" className="team-img4" />
+												<Image src="/assets/img/all-images/team/team-img19.png" alt="" className="team-img4" width={450} height={520} />
 												<div className="share">
-													<Link href="/#"><img src="/assets/img/icons/share1.svg" alt="" /></Link>
+													<Link href="/#"><Image src="/assets/img/icons/share1.svg" alt="" width={18} height={18} /></Link>
 												</div>
 												<ul>
 													<li>
@@ -294,7 +295,7 @@ export default function Speakers() {
 										<div className="content-area">
 											<Link href="/speakers-single">Adresy Ineasta</Link>
 											<div className="space16" />
-											<p>UI/UX Designer</p>
+											<p>Awards Speaker</p>
 										</div>
 									</div>
 								</div>
@@ -311,15 +312,15 @@ export default function Speakers() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>
@@ -337,15 +338,15 @@ export default function Speakers() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>

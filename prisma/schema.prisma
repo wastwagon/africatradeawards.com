@@ -1,0 +1,625 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  PROGRAM_MANAGER
+  AUDITOR
+  JUDGE
+  ENTRANT
+}
+
+enum EntryStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  SHORTLISTED
+  WINNER
+  REJECTED
+}
+
+enum NominationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  SHORTLISTED
+  APPROVED
+  REJECTED
+  CONVERTED
+  WITHDRAWN
+}
+
+enum NominationSource {
+  PORTAL
+  PUBLIC_FORM
+  ADMIN
+}
+
+enum VoteStatus {
+  VALID
+  BLOCKED_DUPLICATE
+  QUARANTINED
+  REJECTED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  fullName     String
+  role         UserRole @default(ENTRANT)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  entriesAsEntrant    Entry[]                 @relation("EntrantEntries")
+  judgeAssignments    JudgeAssignment[]
+  scores              Score[]
+  recusals            JudgeRecusal[]
+  auditLogs           AuditLog[]
+  reviewedVotes       PublicVote[]            @relation("VoteReviewedBy")
+  eventCheckIns       EventCheckIn[]
+  badgePrintLogs      EventBadgePrintLog[]
+  checkInAttempts     EventCheckInAttempt[]
+  onsiteIncidents     EventOnsiteIncident[]   @relation("OnsiteIncidentCreatedBy")
+  resolvedIncidents   EventOnsiteIncident[]   @relation("OnsiteIncidentResolvedBy")
+  checkInQueueItems   EventCheckInQueueItem[] @relation("CheckInQueueCreatedBy")
+  processedQueueItems EventCheckInQueueItem[] @relation("CheckInQueueProcessedBy")
+  cmsRevisions        CmsRevision[]
+  nominationsCreated  Nomination[]            @relation("NominationCreatedBy")
+  nominationsReviewed Nomination[]            @relation("NominationReviewedBy")
+}
+
+model Program {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  seasons    Season[]
+  categories Category[]
+  entries    Entry[]
+  stages     JudgingStage[]
+  nominations Nomination[]
+}
+
+model Season {
+  id         String   @id @default(cuid())
+  year       Int
+  startDate  DateTime
+  endDate    DateTime
+  isArchived Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  programId String
+  program   Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  entries Entry[]
+  stages  JudgingStage[]
+  nominations Nomination[]
+
+  @@unique([programId, year])
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  slug        String
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  programId String
+  program   Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  entries Entry[]
+  nominations Nomination[]
+
+  @@unique([programId, slug])
+}
+
+model Entry {
+  id             String      @id @default(cuid())
+  title          String
+  status         EntryStatus @default(DRAFT)
+  submissionData Json?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  entrantId String
+  entrant   User   @relation("EntrantEntries", fields: [entrantId], references: [id], onDelete: Cascade)
+
+  programId String
+  program   Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  seasonId String
+  season   Season @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  judgeAssignments JudgeAssignment[]
+  scores           Score[]
+  recusals         JudgeRecusal[]
+  publicVotes      PublicVote[]
+  nominations      Nomination[]
+}
+
+model Nomination {
+  id                  String           @id @default(cuid())
+  status              NominationStatus @default(DRAFT)
+  source              NominationSource @default(PORTAL)
+  nomineeFullName     String
+  nomineeEmail        String?
+  nomineeOrganization String?
+  nomineeRoleTitle    String?
+  summary             String
+  evidenceLinks       String?
+  reviewNote          String?
+  reviewedAt          DateTime?
+  convertedAt         DateTime?
+  publicNominatorName  String?
+  publicNominatorEmail String?
+  publicTrackingTokenHash String?
+  publicTrackingTokenExpiresAt DateTime?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+
+  nominatorId String?
+  nominator   User?   @relation("NominationCreatedBy", fields: [nominatorId], references: [id], onDelete: SetNull)
+
+  reviewedById String?
+  reviewedBy   User?   @relation("NominationReviewedBy", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  programId String
+  program   Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  seasonId String
+  season   Season @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  convertedEntryId String?
+  convertedEntry   Entry?  @relation(fields: [convertedEntryId], references: [id], onDelete: SetNull)
+
+  @@index([nominatorId, createdAt])
+  @@index([publicNominatorEmail, createdAt])
+  @@index([status, createdAt])
+  @@index([programId, seasonId, categoryId])
+}
+
+model JudgeAssignment {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  judgeId String
+  judge   User   @relation(fields: [judgeId], references: [id], onDelete: Cascade)
+
+  entryId String
+  entry   Entry  @relation(fields: [entryId], references: [id], onDelete: Cascade)
+
+  @@unique([judgeId, entryId])
+}
+
+model Score {
+  id        String   @id @default(cuid())
+  criteria  String
+  value     Float
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  judgeId String
+  judge   User   @relation(fields: [judgeId], references: [id], onDelete: Cascade)
+
+  entryId String
+  entry   Entry  @relation(fields: [entryId], references: [id], onDelete: Cascade)
+
+  stageId String?
+  stage   JudgingStage? @relation(fields: [stageId], references: [id], onDelete: SetNull)
+}
+
+model JudgingStage {
+  id         String   @id @default(cuid())
+  name       String
+  stageOrder Int
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  programId String
+  program   Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  seasonId String
+  season   Season @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+
+  scores Score[]
+
+  @@unique([programId, seasonId, stageOrder])
+}
+
+model JudgeRecusal {
+  id        String   @id @default(cuid())
+  reason    String
+  createdAt DateTime @default(now())
+
+  judgeId String
+  judge   User   @relation(fields: [judgeId], references: [id], onDelete: Cascade)
+
+  entryId String
+  entry   Entry  @relation(fields: [entryId], references: [id], onDelete: Cascade)
+
+  @@unique([judgeId, entryId])
+}
+
+model PublicVote {
+  id               String     @id @default(cuid())
+  createdAt        DateTime   @default(now())
+  status           VoteStatus @default(VALID)
+  ipHash           String
+  fingerprintHash  String?
+  userAgent        String?
+  voterEmail       String?
+  quarantineReason String?
+  reviewedAt       DateTime?
+  reviewedById     String?
+  reviewedBy       User?      @relation("VoteReviewedBy", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  entryId String
+  entry   Entry  @relation(fields: [entryId], references: [id], onDelete: Cascade)
+
+  @@unique([entryId, ipHash])
+  @@index([entryId, createdAt])
+  @@index([entryId, fingerprintHash])
+  @@index([status, createdAt])
+}
+
+model VoteVerification {
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  expiresAt  DateTime
+  usedAt     DateTime?
+  entryId    String
+  voterEmail String
+  codeHash   String
+  ipHash     String
+
+  @@index([entryId, voterEmail, createdAt])
+}
+
+model VoteTokenUsage {
+  id         String   @id @default(cuid())
+  tokenHash  String   @unique
+  entryId    String
+  voterEmail String?
+  usedAt     DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+
+/**
+ * Singleton row (id = "default"): public marketing copy for header, hero bar, etc.
+ */
+model PublicSiteSettings {
+  id String @id @default("default")
+
+  /// Compact date line in the nav meta strip (e.g. "28–29 January 2026")
+  headerDateLine    String @default("28–29 January 2026")
+  /// Compact venue line next to date in the nav strip
+  headerVenueLine   String @default("Kempinski Gold Coast City · Accra")
+  /// Short line for the mobile drawer header (e.g. "28–29 Jan · Accra")
+  mobileNavMetaLine String @default("28–29 Jan · Accra")
+  /// Date text in the homepage EventDateVenueBar
+  heroBarDateLine   String @default("29th January 2026")
+  /// Venue text in the homepage EventDateVenueBar
+  heroBarVenueLine  String @default("Kempinski Gold Coast City Hotel, Accra-Ghana")
+
+  updatedAt DateTime @updatedAt
+}
+
+enum EventType {
+  IN_PERSON
+  HYBRID
+  VIRTUAL
+}
+
+enum RegistrationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum CheckInMethod {
+  QR_SCAN
+  MANUAL
+}
+
+enum CheckInAttemptOutcome {
+  SUCCESS
+  FAILED
+}
+
+enum CheckInAttemptSource {
+  CAMERA
+  MANUAL
+  OFFLINE_SYNC
+  API
+}
+
+enum CheckInQueueState {
+  PENDING
+  CONFLICT
+  SYNCED
+}
+
+enum OnsiteIncidentSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum OnsiteIncidentStatus {
+  OPEN
+  IN_REVIEW
+  RESOLVED
+}
+
+model Event {
+  id           String    @id @default(cuid())
+  slug         String    @unique
+  name         String
+  description  String?
+  type         EventType @default(IN_PERSON)
+  venueName    String
+  venueAddress String?
+  startsAt     DateTime
+  endsAt       DateTime
+  capacity     Int?
+  isPublished  Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  registrations     EventRegistration[]
+  checkIns          EventCheckIn[]
+  badgePrints       EventBadgePrintLog[]
+  recoveryCodes     EventTicketRecoveryCode[]
+  checkInAttempts   EventCheckInAttempt[]
+  onsiteIncidents   EventOnsiteIncident[]
+  checkInQueueItems EventCheckInQueueItem[]
+}
+
+model EventRegistration {
+  id               String             @id @default(cuid())
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  status           RegistrationStatus @default(PENDING)
+  attendeeFullName String
+  attendeeEmail    String
+  attendeePhone    String?
+  organization     String?
+  roleTitle        String?
+  notes            String?
+  qrTokenHash      String             @unique
+  qrTokenHint      String
+  checkedInAt      DateTime?
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  checkIns        EventCheckIn[]
+  badgePrintLogs  EventBadgePrintLog[]
+  recoveryCodes   EventTicketRecoveryCode[]
+  checkInAttempts EventCheckInAttempt[]
+
+  @@index([eventId, attendeeEmail])
+  @@index([eventId, status])
+}
+
+model EventCheckIn {
+  id          String        @id @default(cuid())
+  createdAt   DateTime      @default(now())
+  method      CheckInMethod
+  location    String?
+  deviceLabel String?
+  note        String?
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  registrationId String
+  registration   EventRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  checkedInById String?
+  checkedInBy   User?   @relation(fields: [checkedInById], references: [id], onDelete: SetNull)
+
+  @@index([eventId, createdAt])
+  @@index([registrationId, createdAt])
+}
+
+model EventBadgePrintLog {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  printerLabel String?
+  note         String?
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  registrationId String
+  registration   EventRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  printedById String?
+  printedBy   User?   @relation(fields: [printedById], references: [id], onDelete: SetNull)
+
+  @@index([eventId, createdAt])
+  @@index([registrationId, createdAt])
+}
+
+model EventCheckInAttempt {
+  id          String                @id @default(cuid())
+  createdAt   DateTime              @default(now())
+  outcome     CheckInAttemptOutcome
+  source      CheckInAttemptSource  @default(MANUAL)
+  reasonCode  String?
+  note        String?
+  location    String?
+  deviceLabel String?
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  registrationId String?
+  registration   EventRegistration? @relation(fields: [registrationId], references: [id], onDelete: SetNull)
+
+  actorId String?
+  actor   User?   @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([eventId, createdAt])
+  @@index([outcome, createdAt])
+  @@index([source, createdAt])
+}
+
+model EventTicketRecoveryCode {
+  id            String    @id @default(cuid())
+  createdAt     DateTime  @default(now())
+  expiresAt     DateTime
+  usedAt        DateTime?
+  attendeeEmail String
+  codeHash      String
+  ipHash        String
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  registrationId String
+  registration   EventRegistration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([eventId, attendeeEmail, createdAt])
+  @@index([registrationId, createdAt])
+}
+
+model EventCheckInQueueItem {
+  id          String               @id @default(cuid())
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+  queuedAt    DateTime             @default(now())
+  state       CheckInQueueState    @default(PENDING)
+  attempts    Int                  @default(0)
+  lastError   String?
+  qrPayload   String
+  location    String?
+  deviceLabel String?
+  source      CheckInAttemptSource @default(OFFLINE_SYNC)
+  processedAt DateTime?
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  createdById String?
+  createdBy   User?   @relation("CheckInQueueCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  processedById String?
+  processedBy   User?   @relation("CheckInQueueProcessedBy", fields: [processedById], references: [id], onDelete: SetNull)
+
+  @@index([eventId, state, queuedAt])
+  @@index([eventId, createdAt])
+}
+
+model EventOnsiteIncident {
+  id             String                 @id @default(cuid())
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime               @updatedAt
+  title          String
+  category       String
+  severity       OnsiteIncidentSeverity @default(MEDIUM)
+  status         OnsiteIncidentStatus   @default(OPEN)
+  detail         String?
+  location       String?
+  deviceLabel    String?
+  occurredAt     DateTime?
+  resolvedAt     DateTime?
+  resolutionNote String?
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  createdById String?
+  createdBy   User?   @relation("OnsiteIncidentCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  resolvedById String?
+  resolvedBy   User?   @relation("OnsiteIncidentResolvedBy", fields: [resolvedById], references: [id], onDelete: SetNull)
+
+  @@index([eventId, createdAt])
+  @@index([eventId, status, severity])
+}
+
+model CmsFaq {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String?
+  sortOrder Int      @default(0)
+  published Boolean  @default(true)
+  publishAt DateTime?
+  unpublishAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CmsPublication {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  excerpt   String
+  dateText  String
+  dateline  String?
+  image     String?
+  href      String?
+  sortOrder Int      @default(0)
+  published Boolean  @default(true)
+  publishAt DateTime?
+  unpublishAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CmsSnippet {
+  key       String   @id
+  label     String
+  content   String
+  sortOrder Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model CmsRevision {
+  id        String   @id @default(cuid())
+  scope     String
+  title     String?
+  note      String?
+  snapshot  Json
+  createdAt DateTime @default(now())
+
+  createdById String?
+  createdBy   User?   @relation(fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@index([scope, createdAt])
+}

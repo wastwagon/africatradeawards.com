@@ -1,4 +1,4 @@
-
+import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
@@ -7,7 +7,7 @@ export default function EventSchedule() {
 	return (
 		<>
 
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg10.png)' }}>
 						<div className="container">
@@ -38,13 +38,13 @@ export default function EventSchedule() {
 								<div className="col-lg-4 col-md-6">
 									<div className="choose-widget-boxarea">
 										<div className="icons">
-											<img src="/assets/img/icons/choose-icons1.svg" alt="" />
+											<Image src="/assets/img/icons/choose-icons1.svg" alt="" width={52} height={52} />
 										</div>
 										<div className="space24" />
 										<div className="content-area">
 											<Link href="/event-single">Make Ideas Happen</Link>
 											<div className="space16" />
-											<p>Eventify 2024 brings together the brightest minds and industry leaders for best of transformative business.</p>
+											<p>Africa Trade Awards 2026 brings together the brightest minds and industry leaders for a transformative business experience.</p>
 											<div className="space24" />
 											<Link href="/event-single" className="readmore">Read More <i className="fa-solid fa-arrow-right" /></Link>
 										</div>
@@ -53,13 +53,13 @@ export default function EventSchedule() {
 								<div className="col-lg-4 col-md-6">
 									<div className="choose-widget-boxarea">
 										<div className="icons">
-											<img src="/assets/img/icons/choose-icons1.svg" alt="" />
+											<Image src="/assets/img/icons/choose-icons1.svg" alt="" width={52} height={52} />
 										</div>
 										<div className="space24" />
 										<div className="content-area">
 											<Link href="/event-single">Great Speakers</Link>
 											<div className="space16" />
-											<p>Whether you're looking to elevate your business strategy, discover the latest industry trends, or connect.</p>
+											<p>Whether you&apos;re looking to elevate your business strategy, discover the latest industry trends, or connect.</p>
 											<div className="space24" />
 											<Link href="/event-single" className="readmore">Read More <i className="fa-solid fa-arrow-right" /></Link>
 										</div>
@@ -68,7 +68,7 @@ export default function EventSchedule() {
 								<div className="col-lg-4 col-md-6">
 									<div className="choose-widget-boxarea">
 										<div className="icons">
-											<img src="/assets/img/icons/choose-icons1.svg" alt="" />
+											<Image src="/assets/img/icons/choose-icons1.svg" alt="" width={52} height={52} />
 										</div>
 										<div className="space24" />
 										<div className="content-area">
@@ -102,33 +102,33 @@ export default function EventSchedule() {
 											<tbody>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Awards Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Programme Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Programme Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
 												</tr>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Programme Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Awards Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Awards Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
 												</tr>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Awards Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Programme Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Programme Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
 												</tr>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Programme Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Awards Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Awards Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
 												</tr>
 												<tr>
 													<td>09:00-10:00 AM</td>
-													<td>Business Conferences<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
-													<td>UI/UX Design<br /><span className="breadcrumb-current">By Event Organizer</span></td>
+													<td>Awards Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Programme Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
+													<td>Programme Session<br /><span className="breadcrumb-current">By Awards Secretariat</span></td>
 												</tr>
 											</tbody>
 										</table>
@@ -147,15 +147,15 @@ export default function EventSchedule() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>
@@ -173,15 +173,15 @@ export default function EventSchedule() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>

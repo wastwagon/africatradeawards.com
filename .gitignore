@@ -53,6 +53,9 @@ logs
 
 # Test files
 test-output.css
+playwright-report/
+test-results/
+blob-report/
 
 # Documentation (optional - remove if you want to commit these)
 # DEBUG_CHECK.md

@@ -1,4 +1,4 @@
-
+import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
@@ -7,7 +7,7 @@ export default function PricingPlan() {
 	return (
 		<>
 
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg16.png)' }}>
 						<div className="container">
@@ -37,58 +37,58 @@ export default function PricingPlan() {
 							<div className="row">
 								<div className="col-lg-4 col-md-6">
 									<div className="pricing-boxarea">
-										<h5>Basic Packages</h5>
+										<h5>Standard Pass</h5>
 										<div className="space20" />
 										<h2>$29 <span className="breadcrumb-current">/One Person</span></h2>
 										<div className="space8" />
 										<ul>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Regular Seating</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Comfortable Sleeping</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Afternoon Snacks</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Afternoon Entrance</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Idea shareing</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />General admission seating</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Access to all keynote sessions</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Afternoon refreshment break</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Event program and badge</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Networking lounge access</li>
 										</ul>
 										<div className="space28" />
 										<div className="btn-area1">
-											<Link href="/contact" className="vl-btn1">buy a ticket</Link>
+											<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-4 col-md-6">
 									<div className="pricing-boxarea">
-										<h5>Standard Packages</h5>
+										<h5>Business Pass</h5>
 										<div className="space20" />
 										<h2>$49 <span className="breadcrumb-current">/One Person</span></h2>
 										<div className="space8" />
 										<ul>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Venue rental</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Premium seating and tables</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Full event planning service</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Entertainment services</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Luxury transportation</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Priority seating zone</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Access to all panel discussions</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Complimentary lunch and refreshments</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Business matchmaking sessions</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Digital event materials pack</li>
 										</ul>
 										<div className="space28" />
 										<div className="btn-area1">
-											<Link href="/contact" className="vl-btn1">buy a ticket</Link>
+											<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 										</div>
 									</div>
 								</div>
 								<div className="col-lg-4 col-md-6">
 									<div className="pricing-boxarea">
-										<h5>Premium Packages</h5>
+										<h5>VIP Pass</h5>
 										<div className="space20" />
 										<h2>$69 <span className="breadcrumb-current">/One Person</span></h2>
 										<div className="space8" />
 										<ul>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Customized decor</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Top-tier catering</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Top-shelf beverage package</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Full event production</li>
-											<li><img src="/assets/img/icons/check2.svg" alt="" />Luxury accommodations</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Front-row VIP seating</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Exclusive speaker meet-and-greet</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />VIP lounge with premium hospitality</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Priority check-in and concierge support</li>
+											<li><Image src="/assets/img/icons/check2.svg" alt="" width={16} height={16} />Post-event networking reception access</li>
 										</ul>
 										<div className="space28" />
 										<div className="btn-area1">
-											<Link href="/contact " className="vl-btn1">buy a ticket</Link>
+											<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 										</div>
 									</div>
 								</div>
@@ -105,15 +105,15 @@ export default function PricingPlan() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>
@@ -131,15 +131,15 @@ export default function PricingPlan() {
 										<div className="timer-btn-area">
 										<Countdown />
 											<div className="btn-area1">
-												<Link href="/pricing-plan" className="vl-btn1">Buy Ticket</Link>
+												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
 											</div>
 										</div>
 										<ul>
 											<li>
-												<Link href="/#"><img src="/assets/img/icons/calender1.svg" alt="" />28th and 29th January 2026 - 6pm to 11:30pm</Link>
+												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
 											</li>
 											<li className="m-0">
-												<Link href="/#"><img src="/assets/img/icons/location1.svg" alt="" />Secret Location In The UK</Link>
+												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
 											</li>
 										</ul>
 									</div>

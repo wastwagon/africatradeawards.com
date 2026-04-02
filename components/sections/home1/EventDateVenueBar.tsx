@@ -1,6 +1,10 @@
 'use client'
 
+import { useSiteConfig } from '@/components/site/SiteConfigProvider'
+
 export default function EventDateVenueBar() {
+	const { heroBarDateLine, heroBarVenueLine } = useSiteConfig()
+
 	return (
 		<section className="event-date-venue-bar" data-aos="fade-in" data-aos-duration={600}>
 			<div className="container">
@@ -9,14 +13,14 @@ export default function EventDateVenueBar() {
 						<div className="event-date-venue-icon">
 							<i className="fa-solid fa-calendar-days" aria-hidden="true" />
 						</div>
-						<span className="event-date-venue-text">29th January 2026</span>
+						<span className="event-date-venue-text">{heroBarDateLine}</span>
 					</div>
 					<div className="event-date-venue-divider" aria-hidden="true" />
 					<div className="event-date-venue-item event-date-venue-item-venue">
 						<div className="event-date-venue-icon">
 							<i className="fa-solid fa-location-dot" aria-hidden="true" />
 						</div>
-						<span className="event-date-venue-text">Kempinski Gold Coast City Hotel, Accra-Ghana</span>
+						<span className="event-date-venue-text">{heroBarVenueLine}</span>
 					</div>
 				</div>
 			</div>
@@ -24,17 +28,17 @@ export default function EventDateVenueBar() {
 				.event-date-venue-bar {
 					background: linear-gradient(
 						90deg,
-						#e8e8ec 0%,
-						#e0e0e6 20%,
-						#d8d8e0 40%,
-						#d2d2dc 60%,
-						#d6d6e0 80%,
-						#dcdce4 100%
+						#fff8f0 0%,
+						#faf0e8 18%,
+						#f5ebe4 38%,
+						#efe6f2 58%,
+						#f2eaf6 78%,
+						#faf5fc 100%
 					);
 					box-shadow:
-						inset 0 1px 0 rgba(255, 255, 255, 0.6),
-						inset 0 -1px 0 rgba(0, 0, 0, 0.06),
-						0 2px 8px rgba(0, 0, 0, 0.06);
+						inset 0 1px 0 rgba(255, 255, 255, 0.75),
+						inset 0 -1px 0 rgba(78, 43, 90, 0.06),
+						0 4px 20px rgba(78, 43, 90, 0.07);
 					padding: 10px 12px;
 					position: relative;
 					z-index: 5;

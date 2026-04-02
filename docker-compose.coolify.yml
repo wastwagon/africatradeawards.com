@@ -1,0 +1,110 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.fullstack
+    container_name: africa-trade-awards-app
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+      PORT: "3003"
+      STATIC_EXPORT: "false"
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://redis:6379
+      AUTH_JWT_SECRET: ${AUTH_JWT_SECRET}
+      BOOTSTRAP_ADMIN_SECRET: ${BOOTSTRAP_ADMIN_SECRET}
+      VOTE_IP_SALT: ${VOTE_IP_SALT}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      SMTP_FROM: ${SMTP_FROM}
+      VOTING_REQUIRE_EMAIL_VERIFICATION: ${VOTING_REQUIRE_EMAIL_VERIFICATION}
+      VOTE_CODE_SALT: ${VOTE_CODE_SALT}
+      EVENT_RECOVERY_CODE_SALT: ${EVENT_RECOVERY_CODE_SALT}
+      EVENT_QR_SECRET: ${EVENT_QR_SECRET}
+      EVENT_BADGE_SECRET: ${EVENT_BADGE_SECRET}
+      VOTE_TOKEN_SECRET: ${VOTE_TOKEN_SECRET}
+      VOTE_FP_SALT: ${VOTE_FP_SALT}
+      VOTING_REQUIRE_CHALLENGE: ${VOTING_REQUIRE_CHALLENGE}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    ports:
+      - "3003:3003"
+    # If Postgres was first provisioned with `db push` (not migrate), baseline once:
+    # docker compose -f docker-compose.coolify.yml --env-file .env.coolify.example run --rm app npx prisma migrate resolve --applied 20260330130000_init
+    command: ["sh", "-c", "npx prisma migrate deploy && exec npm run start"]
+    restart: unless-stopped
+    volumes:
+      - uploads_data:/app/uploads
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3003/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: africa-trade-awards-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: africa-trade-awards-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.fullstack
+    container_name: africa-trade-awards-worker
+    command: ["npm", "run", "worker:broadcast"]
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://redis:6379
+      VOTE_IP_SALT: ${VOTE_IP_SALT}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      SMTP_FROM: ${SMTP_FROM}
+      VOTING_REQUIRE_EMAIL_VERIFICATION: ${VOTING_REQUIRE_EMAIL_VERIFICATION}
+      VOTE_CODE_SALT: ${VOTE_CODE_SALT}
+      EVENT_RECOVERY_CODE_SALT: ${EVENT_RECOVERY_CODE_SALT}
+      EVENT_QR_SECRET: ${EVENT_QR_SECRET}
+      EVENT_BADGE_SECRET: ${EVENT_BADGE_SECRET}
+      VOTE_TOKEN_SECRET: ${VOTE_TOKEN_SECRET}
+      VOTE_FP_SALT: ${VOTE_FP_SALT}
+      VOTING_REQUIRE_CHALLENGE: ${VOTING_REQUIRE_CHALLENGE}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  uploads_data:

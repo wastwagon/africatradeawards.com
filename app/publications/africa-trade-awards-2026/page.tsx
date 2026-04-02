@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 
 import Layout from '@/components/layout/Layout'
 import Link from 'next/link'
@@ -17,7 +18,7 @@ export default function AfricaTradeAwards2026PressRelease() {
 	}, [])
 
 	return (
-		<Layout headerStyle={1} footerStyle={1}>
+		<Layout>
 			<div>
 				<div className="inner-page-header publications-single-header">
 					<video
@@ -74,7 +75,7 @@ export default function AfricaTradeAwards2026PressRelease() {
 										across Africa&apos;s trade and industrial value chains.
 									</p>
 									<figure className="press-release-inline-image">
-										<img src="/assets/img/gallery/2P9A9102.jpg" alt="Africa Trade Summit and Awards Gala" />
+										<Image src="/assets/img/gallery/2P9A9102.jpg" alt="Africa Trade Summit and Awards Gala" width={1600} height={1067} />
 									</figure>
 									<p>
 										Delivering the keynote address at the Awards Ceremony, H.E Prof Jane Naana
@@ -122,7 +123,7 @@ export default function AfricaTradeAwards2026PressRelease() {
 										investment readiness.
 									</p>
 									<figure className="press-release-inline-image">
-										<img src="/assets/img/gallery/2P9A9197.jpg" alt="Africa Trade Awards 2026" />
+										<Image src="/assets/img/gallery/2P9A9197.jpg" alt="Africa Trade Awards 2026" width={1600} height={1067} />
 									</figure>
 									<h2 className="press-release-h2">Africa Trade Awards 2026 – Award Recipients</h2>
 									<p>The 2026 Awards recognised excellence across five tiers:</p>

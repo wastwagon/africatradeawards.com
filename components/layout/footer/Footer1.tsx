@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 
@@ -47,6 +48,11 @@ export default function Footer1() {
 									<li><Link href="/gallery">Gallery</Link></li>
 									<li><Link href="/publications">Publications</Link></li>
 									<li><Link href="/faq">FAQs</Link></li>
+									<li><Link href="/login/">Sign In</Link></li>
+									<li><Link href="/vote">Public Vote</Link></li>
+									<li><Link href="/portal/entrant">Entrant portal</Link></li>
+									<li><Link href="/portal/judge">Judge portal</Link></li>
+									<li><Link href="/login/?next=/admin/">Staff admin</Link></li>
 									<li><Link href="/contact">Contact</Link></li>
 								</ul>
 							</div>
@@ -56,13 +62,13 @@ export default function Footer1() {
 								<h3>Contact Us</h3>
 								<ul>
 									<li>
-										<Link href="tel:+233554014753"><img src="/assets/img/icons/phn1.svg" alt="" loading="lazy" decoding="async" />+233 55 401 4753</Link>
+										<Link href="tel:+233554014753"><Image src="/assets/img/icons/phn1.svg" alt="" width={18} height={18} />+233 55 401 4753</Link>
 									</li>
 									<li>
-										<Link href="mailto:secretariat@africatradeawards.com"><img src="/assets/img/icons/mail1.svg" alt="" loading="lazy" decoding="async" />secretariat@africatradeawards.com</Link>
+										<Link href="mailto:secretariat@africatradeawards.com"><Image src="/assets/img/icons/mail1.svg" alt="" width={18} height={18} />secretariat@africatradeawards.com</Link>
 									</li>
 									<li>
-										<Link href="https://www.africatradeawards.com" target="_blank" rel="noopener noreferrer"> <img src="/assets/img/icons/world1.svg" alt="" loading="lazy" decoding="async" />www.africatradeawards.com</Link>
+										<Link href="https://www.africatradeawards.com" target="_blank" rel="noopener noreferrer"> <Image src="/assets/img/icons/world1.svg" alt="" width={18} height={18} />www.africatradeawards.com</Link>
 									</li>
 								</ul>
 							</div>
@@ -77,16 +83,16 @@ export default function Footer1() {
 									gap: '10px'
 								}}>
 									<div className="footer-logo-card" style={{ background: '#fff', borderRadius: '8px', padding: '8px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-										<img src="/assets/img/sponsors-partners/Sponsors/bank hospital.png" alt="Bank Hospital" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+										<Image src="/assets/img/sponsors-partners/Sponsors/bank hospital.png" alt="Bank Hospital" width={160} height={55} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
 									</div>
 									<div className="footer-logo-card" style={{ background: '#fff', borderRadius: '8px', padding: '8px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-										<img src="/assets/img/sponsors-partners/Sponsors/blowgrouplogo-300x103.png" alt="Blow Group" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+										<Image src="/assets/img/sponsors-partners/Sponsors/blowgrouplogo-300x103.png" alt="Blow Group" width={160} height={55} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
 									</div>
 									<div className="footer-logo-card" style={{ background: '#fff', borderRadius: '8px', padding: '8px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-										<img src="/assets/img/sponsors-partners/Sponsors/FEDCO-PLC.png" alt="FEDCO PLC" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+										<Image src="/assets/img/sponsors-partners/Sponsors/FEDCO-PLC.png" alt="FEDCO PLC" width={160} height={55} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
 									</div>
 									<div className="footer-logo-card" style={{ background: '#fff', borderRadius: '8px', padding: '8px', height: '55px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-										<img src="/assets/img/sponsors-partners/Sponsors/kgl.png" alt="KGL Group" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+										<Image src="/assets/img/sponsors-partners/Sponsors/kgl.png" alt="KGL Group" width={160} height={55} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
 									</div>
 								</div>
 							</div>

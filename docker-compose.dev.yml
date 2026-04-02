@@ -1,17 +1,136 @@
+# Full local dev in Docker: Postgres + Redis + Next (hot reload) + worker.
+# App source is bind-mounted — edit files on the host; Next reloads without rebuilding the image.
+# Anonymous volume for /app/node_modules keeps Linux deps from the image (host bind would mix OS binaries).
+#
+# First run:
+#   docker compose -f docker-compose.dev.yml up --build
+#
+# Daily:
+#   docker compose -f docker-compose.dev.yml up
+#
+# If code/UI changes never show up, clear Next’s cache and restart web:
+#   rm -rf .next && docker compose -f docker-compose.dev.yml restart web
+# (npm run compose:dev:clean does the same.)
+#
+# Optional: copy .env.docker.example → .env. Bump NEXT_PUBLIC_CSS_BUST there if theme SCSS (main.css) looks “stuck”.
+#
+# Host ports come from .env (defaults in compose): web WEB_PUBLISH_PORT, Postgres POSTGRES_PUBLISH_PORT, Redis REDIS_PUBLISH_PORT
+
+name: africa-trade-awards-dev
+
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-africa_trade_awards}
+      POSTGRES_USER: ${POSTGRES_USER:-africa_trade_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-devlocal_postgres}
+    ports:
+      - "${POSTGRES_PUBLISH_PORT:-5433}:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "${REDIS_PUBLISH_PORT:-6380}:6379"
+    volumes:
+      - redis_dev_data:/data
+    restart: unless-stopped
+
   web:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: africa-trade-awards-dev
+    container_name: africa-trade-awards-web-dev
     ports:
-      - "3003:3003"
+      - "${WEB_PUBLISH_PORT:-3003}:3003"
     volumes:
       - .:/app
       - /app/node_modules
-      - /app/.next
+      # .next on the bind mount (not a Docker volume) so caches update when you rebuild / rm -rf .next
+      - web_uploads:/app/uploads
     environment:
-      - NODE_ENV=development
-      - NEXT_TELEMETRY_DISABLED=1
-    command: npm run dev
+      NODE_ENV: development
+      NEXT_TELEMETRY_DISABLED: "1"
+      WATCHPACK_POLLING: "true"
+      CHOKIDAR_USEPOLLING: "true"
+      NEXT_PUBLIC_CSS_BUST: ${NEXT_PUBLIC_CSS_BUST:-20260406}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-africa_trade_user}:${POSTGRES_PASSWORD:-devlocal_postgres}@postgres:5432/${POSTGRES_DB:-africa_trade_awards}
+      REDIS_URL: redis://redis:6379
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:3003}
+      AUTH_JWT_SECRET: ${AUTH_JWT_SECRET:-dev-only-change-me-use-32chars-minimum!!}
+      BOOTSTRAP_ADMIN_SECRET: ${BOOTSTRAP_ADMIN_SECRET:-dev-bootstrap-secret}
+      VOTE_IP_SALT: ${VOTE_IP_SALT:-dev-vote-ip-salt}
+      VOTE_CODE_SALT: ${VOTE_CODE_SALT:-dev-vote-code-salt}
+      EVENT_RECOVERY_CODE_SALT: ${EVENT_RECOVERY_CODE_SALT:-dev-event-recovery-salt}
+      EVENT_QR_SECRET: ${EVENT_QR_SECRET:-dev-event-qr-secret}
+      EVENT_BADGE_SECRET: ${EVENT_BADGE_SECRET:-dev-event-badge-secret}
+      VOTE_TOKEN_SECRET: ${VOTE_TOKEN_SECRET:-dev-vote-token-secret-32chars-min!}
+      VOTE_FP_SALT: ${VOTE_FP_SALT:-dev-vote-fp-salt}
+      VOTING_REQUIRE_EMAIL_VERIFICATION: ${VOTING_REQUIRE_EMAIL_VERIFICATION:-false}
+      VOTING_REQUIRE_CHALLENGE: ${VOTING_REQUIRE_CHALLENGE:-false}
+      LOGIN_RATE_LIMIT_ENABLED: ${LOGIN_RATE_LIMIT_ENABLED:-false}
+      LOGIN_MAX_PER_IP: ${LOGIN_MAX_PER_IP:-1000}
+      LOGIN_MAX_PER_ACCOUNT_AND_IP: ${LOGIN_MAX_PER_ACCOUNT_AND_IP:-1000}
+      LOGIN_WINDOW_SECONDS: ${LOGIN_WINDOW_SECONDS:-60}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    command: ["sh", "/app/scripts/docker-dev-entrypoint.sh"]
     restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: africa-trade-awards-worker-dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - web_uploads:/app/uploads
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://${POSTGRES_USER:-africa_trade_user}:${POSTGRES_PASSWORD:-devlocal_postgres}@postgres:5432/${POSTGRES_DB:-africa_trade_awards}
+      REDIS_URL: redis://redis:6379
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:3003}
+      VOTE_IP_SALT: ${VOTE_IP_SALT:-dev-vote-ip-salt}
+      VOTE_CODE_SALT: ${VOTE_CODE_SALT:-dev-vote-code-salt}
+      EVENT_RECOVERY_CODE_SALT: ${EVENT_RECOVERY_CODE_SALT:-dev-event-recovery-salt}
+      EVENT_QR_SECRET: ${EVENT_QR_SECRET:-dev-event-qr-secret}
+      EVENT_BADGE_SECRET: ${EVENT_BADGE_SECRET:-dev-event-badge-secret}
+      VOTE_TOKEN_SECRET: ${VOTE_TOKEN_SECRET:-dev-vote-token-secret-32chars-min!}
+      VOTE_FP_SALT: ${VOTE_FP_SALT:-dev-vote-fp-salt}
+      VOTING_REQUIRE_EMAIL_VERIFICATION: ${VOTING_REQUIRE_EMAIL_VERIFICATION:-false}
+      VOTING_REQUIRE_CHALLENGE: ${VOTING_REQUIRE_CHALLENGE:-false}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    command: ["sh", "/app/scripts/docker-dev-worker.sh"]
+    restart: unless-stopped
+
+volumes:
+  postgres_dev_data:
+  redis_dev_data:
+  web_uploads:

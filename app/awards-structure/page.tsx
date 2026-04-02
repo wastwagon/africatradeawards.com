@@ -17,7 +17,7 @@ export default function AwardsStructure() {
 
 	return (
 		<>
-			<Layout headerStyle={1} footerStyle={1}>
+			<Layout>
 				<div>
 					<div className="inner-page-header">
 						<video
