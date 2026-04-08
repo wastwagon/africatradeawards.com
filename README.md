@@ -13,8 +13,9 @@ Official digital platform for the Africa Trade Awards 2026, covering the public 
 
 ## 📋 Prerequisites
 
-- Node.js 18.x or higher
-- npm or yarn
+- **Node.js 20.x** (recommended; matches Docker/CI)
+- **npm**
+- **Docker Desktop** (recommended for Postgres + Redis — see [CONTRIBUTING.md](./CONTRIBUTING.md))
 
 ## 🛠️ Installation
 
@@ -29,20 +30,33 @@ cd africatradeawards
 npm install
 ```
 
-3. Compile SCSS to CSS:
+3. Environment: copy **`.env.example`** → **`.env`** for host-based dev, or **`.env.docker.example`** → **`.env`** when using Docker Compose (see [CONTRIBUTING.md](./CONTRIBUTING.md)).
+
+4. Compile SCSS to CSS (or use `npm run sass:build` once):
 ```bash
-npm run sass
+npm run sass:build
 ```
 
 ## 🏃 Development
 
-Run the development server:
+**Recommended (Docker — app + Postgres + Redis + worker):**
 
 ```bash
+docker compose -f docker-compose.dev.yml up --build
+```
+
+Open [http://localhost:3003](http://localhost:3003).
+
+**Alternative — Next.js on the host:** start `postgres` + `redis` with the same compose file, then:
+
+```bash
+npx prisma migrate dev
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Same URL: [http://localhost:3003](http://localhost:3003).
+
+Full setup, Git workflow, and production DB safety notes: **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
 
 ## ✅ End-to-End Tests (Playwright)
 
@@ -82,7 +96,7 @@ Build the application:
 npm run build
 ```
 
-The static files will be generated in the `out` directory.
+Output depends on build mode: production uses the Next.js server bundle (see `Dockerfile`); static export is optional and not the default for this platform.
 
 ## 📦 Runtime Modes
 
@@ -100,7 +114,7 @@ Use the fullstack deployment path documented in [COOLIFY_FULLSTACK_SETUP.md](./C
 **Quick Start:**
 1. Configure environment variables from `.env.coolify.example`
 2. Deploy with `docker-compose.coolify.yml`
-3. Run database migrations on deploy (`npm run prisma:migrate:deploy`)
+3. Migrations: the **`app`** container runs `npx prisma migrate deploy` before `npm run start` (applies pending migrations without resetting data). You can also run `npm run prisma:migrate:deploy` manually when needed.
 
 ### Manual Deployment
 
@@ -144,4 +158,6 @@ Private repository - All rights reserved.
 
 ## 🤝 Contributing
 
-This is a private project. For access or contributions, please contact the repository owner.
+This is a private project. For access, contact the repository owner.
+
+**Team onboarding** (Docker, Prisma, Git, Coolify, safe migrations): see **[CONTRIBUTING.md](./CONTRIBUTING.md)**.

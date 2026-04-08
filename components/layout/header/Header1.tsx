@@ -2,7 +2,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import ColorModeToggle from '@/components/elements/ColorModeToggle'
 import { useSiteConfig } from '@/components/site/SiteConfigProvider'
+import { isPlatformChromePath } from '@/lib/platform-paths'
 
 type Header1Props = {
 	scroll?: boolean
@@ -19,7 +21,7 @@ type Header1Props = {
 export default function Header1({ scroll }: Header1Props) {
 	const pathname = usePathname()
 	const scrolled = Boolean(scroll)
-	const { headerDateLine, headerVenueLine } = useSiteConfig()
+	const { headerDateLine, headerVenueLine, eventLiveStreamEnabled } = useSiteConfig()
 
 	const isActive = (href: string) => {
 		if (href === '/') return pathname === '/' || pathname === ''
@@ -33,7 +35,8 @@ export default function Header1({ scroll }: Header1Props) {
 		isActive('/sponsors-partners') ||
 		isActive('/gallery') ||
 		isActive('/publications') ||
-		isActive('/faq')
+		isActive('/faq') ||
+		(eventLiveStreamEnabled && isActive('/live'))
 
 	const accountActive =
 		isActive('/login') || isActive('/portal') || isActive('/admin')
@@ -87,6 +90,11 @@ export default function Header1({ scroll }: Header1Props) {
 										<li>
 											<Link href="/faq">FAQs</Link>
 										</li>
+										{eventLiveStreamEnabled ? (
+											<li>
+												<Link href="/live">Live stream</Link>
+											</li>
+										) : null}
 									</ul>
 								</div>
 							</li>
@@ -116,6 +124,7 @@ export default function Header1({ scroll }: Header1Props) {
 					</nav>
 
 					<div className="ata-nav2__actions">
+						{isPlatformChromePath(pathname) ? <ColorModeToggle /> : null}
 						<div className="ata-nav2__social" aria-label="Social links">
 							<a
 								href="https://www.facebook.com/AfricaTradeChamber"
@@ -145,6 +154,11 @@ export default function Header1({ scroll }: Header1Props) {
 						<Link href="/login/" className="ata-nav2__ghost">
 							Sign In
 						</Link>
+						{eventLiveStreamEnabled ? (
+							<Link href="/live" className="ata-nav2__ghost">
+								Live
+							</Link>
+						) : null}
 						<Link href="/vote" className="ata-nav2__cta">
 							Vote Now
 						</Link>
@@ -400,6 +414,34 @@ export default function Header1({ scroll }: Header1Props) {
 					color: #fff;
 					background: rgba(255, 255, 255, 0.14);
 					border-color: rgba(255, 255, 255, 0.28);
+				}
+
+				.ata-nav2__theme {
+					flex-shrink: 0;
+					width: 40px;
+					height: 40px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 10px;
+					border: 1px solid rgba(255, 255, 255, 0.22);
+					background: rgba(255, 255, 255, 0.08);
+					color: var(--nav2-fg);
+					cursor: pointer;
+					transition:
+						background 0.18s,
+						border-color 0.18s,
+						color 0.18s;
+				}
+
+				.ata-nav2__theme:hover {
+					background: rgba(255, 255, 255, 0.14);
+					border-color: rgba(255, 255, 255, 0.32);
+				}
+
+				.ata-nav2__theme:focus-visible {
+					outline: 2px solid var(--nav2-accent);
+					outline-offset: 2px;
 				}
 
 				.ata-nav2__ghost {

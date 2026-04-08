@@ -150,6 +150,15 @@ async function main() {
       mobileNavMetaLine: "28–29 Jan · Accra",
       heroBarDateLine: "29th January 2026",
       heroBarVenueLine: "Kempinski Gold Coast City Hotel, Accra-Ghana",
+      announcementEnabled: false,
+      announcementText: null,
+      announcementLinkUrl: null,
+      announcementLinkLabel: null,
+      supportEmail: "secretariat@africatradeawards.com",
+      seoDescription: null,
+      eventLiveStreamEnabled: false,
+      eventLiveStreamTitle: null,
+      eventLiveStreamEmbedUrl: null,
     },
     update: {
       headerDateLine: "28–29 January 2026",
@@ -157,6 +166,7 @@ async function main() {
       mobileNavMetaLine: "28–29 Jan · Accra",
       heroBarDateLine: "29th January 2026",
       heroBarVenueLine: "Kempinski Gold Coast City Hotel, Accra-Ghana",
+      supportEmail: "secretariat@africatradeawards.com",
     },
   });
 

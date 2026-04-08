@@ -1,7 +1,8 @@
 "use client";
 
 import { UserRole } from "@prisma/client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 
 type QuarantineVote = {
   id: string;
@@ -61,10 +62,24 @@ export default function VotingQuarantinePage() {
     await load();
   }
 
+  const queueMetrics = useMemo(
+    () => [
+      {
+        label: "Awaiting review",
+        value: votes.length,
+        tone: votes.length ? ("warn" as const) : ("ok" as const),
+      },
+    ],
+    [votes.length],
+  );
+
   return (
     <main>
       <h1>Vote quarantine queue</h1>
-      <p>Approve to count the vote as valid, or reject to discard it and free the voter to try again.</p>
+      <p className="admin-muted">
+        Approve to count the vote as valid, or reject to discard it and free the voter to try again.
+      </p>
+      <AdminMetricStrip mergeSnapshot appendItems={queueMetrics} />
       {!canReview ? (
         <p className="admin-muted">Auditor view: you can inspect the queue only. Approvals require a program manager.</p>
       ) : null}
@@ -84,12 +99,12 @@ export default function VotingQuarantinePage() {
               <div>Submitted: {new Date(v.createdAt).toLocaleString()}</div>
             </div>
             {canReview ? (
-              <div className="admin-inline-actions">
+              <div className="admin-inline-actions admin-actions-row--tight">
                 <button type="button" onClick={() => review(v.id, "approve")}>
-                  Approve (count vote)
+                  Approve
                 </button>
                 <button type="button" onClick={() => review(v.id, "reject")}>
-                  Reject (discard)
+                  Reject
                 </button>
               </div>
             ) : null}

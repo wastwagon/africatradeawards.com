@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AdminDataTable, { type AdminTableColumn } from "@/components/admin/AdminDataTable";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 
 type Row = {
   rank: number;
@@ -61,10 +62,20 @@ export default function AdminLeaderboardPage() {
   const viewRows =
     view === "all" ? rows : view === "top10" ? rows.slice(0, 10) : rows.filter((row) => row.entry?.status === "WINNER");
 
+  const boardAppend = useMemo(() => {
+    if (!rows.length) return [];
+    const avg = rows.reduce((s, r) => s + r.averageScore, 0) / rows.length;
+    return [
+      { label: "Judged entries", value: rows.length },
+      { label: "Mean average", value: avg.toFixed(2) },
+    ];
+  }, [rows]);
+
   return (
     <main>
       <h1>Judging Leaderboard</h1>
-      <p>Average scores across judged entries.</p>
+      <p className="admin-muted">Average scores across judged entries.</p>
+      <AdminMetricStrip mergeSnapshot appendItems={boardAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
       <div className="admin-segment">
         <button type="button" className={view === "all" ? "is-active" : undefined} onClick={() => setView("all")}>

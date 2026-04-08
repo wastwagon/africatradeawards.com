@@ -1,0 +1,79 @@
+/**
+ * Dark appearance for account / platform flows only.
+ * Toggle adds html.ata-dark-mode; marketing sections stay unchanged when .platform-shell is absent.
+ */
+html.ata-dark-mode:has(.platform-shell) {
+	color-scheme: dark;
+}
+
+html.ata-dark-mode .admin-shell {
+	color-scheme: light;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-shell {
+	background: linear-gradient(180deg, #1a1420 0%, #221a2a 38%, #18131c 100%);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-page {
+	--ztc-text-text-2: #f4f0f8;
+	--ztc-text-text-3: rgba(244, 240, 248, 0.72);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-eyebrow {
+	color: #c9a8dc;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-title {
+	color: #faf7fc;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-lead {
+	color: rgba(244, 240, 248, 0.78);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-card {
+	background: rgba(28, 22, 34, 0.92);
+	border-color: rgba(200, 160, 230, 0.2);
+	box-shadow:
+		0 4px 28px rgba(0, 0, 0, 0.35),
+		0 1px 0 rgba(255, 255, 255, 0.04) inset;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-field {
+	color: #ebe4f2;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-field input,
+html.ata-dark-mode:has(.platform-shell) .platform-field select,
+html.ata-dark-mode:has(.platform-shell) .platform-field textarea {
+	background: #141018;
+	border-color: rgba(200, 160, 230, 0.28);
+	color: #f4f0f8;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-field input:focus,
+html.ata-dark-mode:has(.platform-shell) .platform-field select:focus,
+html.ata-dark-mode:has(.platform-shell) .platform-field textarea:focus {
+	border-color: #a67bc4;
+	box-shadow: 0 0 0 3px rgba(166, 123, 196, 0.25);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-muted {
+	color: rgba(244, 240, 248, 0.65);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-muted a {
+	color: #d4b8e8;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-muted a:hover {
+	color: #efe4f8;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-msg-error {
+	color: #ff8a8a;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-msg-ok {
+	color: #7dffb0;
+}

@@ -1,10 +1,16 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import ColorModeToggle from '@/components/elements/ColorModeToggle'
 import { useSiteConfig } from '@/components/site/SiteConfigProvider'
+import { isPlatformChromePath } from '@/lib/platform-paths'
 
 export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
-	const { mobileNavMetaLine } = useSiteConfig()
+	const pathname = usePathname()
+	const { mobileNavMetaLine, supportEmail, eventLiveStreamEnabled } = useSiteConfig()
+	const supportMailHref = `mailto:${supportEmail}`
+	const showThemeToggle = isPlatformChromePath(pathname)
 
 	return (
 		<>
@@ -99,6 +105,13 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 											FAQs
 										</Link>
 									</li>
+									{eventLiveStreamEnabled ? (
+										<li>
+											<Link href="/live" onClick={handleMobileMenu}>
+												Live stream
+											</Link>
+										</li>
+									) : null}
 								</ul>
 							</details>
 						</li>
@@ -132,6 +145,12 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 					</ul>
 
 					<div className="ata-mobile-drawer__footer">
+						{showThemeToggle ? (
+							<div className="ata-mobile-drawer__theme-row" aria-label="Appearance">
+								<span className="ata-mobile-drawer__theme-label">Display</span>
+								<ColorModeToggle />
+							</div>
+						) : null}
 						<div className="ata-mobile-drawer__ctas">
 							<Link href="/login/" className="ata-mobile-drawer__btn-secondary" onClick={handleMobileMenu}>
 								Sign In
@@ -143,7 +162,7 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 						<div className="ata-mobile-drawer__contact">
 							<h3>Contact</h3>
 							<p>
-								<Link href="mailto:secretariat@africatradeawards.com">secretariat@africatradeawards.com</Link>
+								<Link href={supportMailHref}>{supportEmail}</Link>
 							</p>
 							<p>
 								<Link href="https://www.africatradeawards.com" target="_blank" rel="noopener noreferrer">
@@ -352,6 +371,26 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 					background: rgba(255, 255, 255, 0.06);
 					color: #fff !important;
 				}
+				.ata-mobile-drawer__theme-row {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					gap: 12px;
+					margin-bottom: 16px;
+					padding: 12px 14px;
+					border-radius: 12px;
+					background: rgba(255, 255, 255, 0.06);
+					border: 1px solid rgba(255, 255, 255, 0.1);
+				}
+				.ata-mobile-drawer__theme-label {
+					font-family: var(--grotesk), system-ui, sans-serif;
+					font-size: 0.72rem;
+					font-weight: 700;
+					letter-spacing: 0.1em;
+					text-transform: uppercase;
+					color: rgba(255, 255, 255, 0.72);
+				}
+
 				.ata-mobile-drawer__footer {
 					margin-top: 20px;
 					padding-top: 20px;

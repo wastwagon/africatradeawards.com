@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 
 type Program = { id: string; name: string; slug: string };
 type Season = { id: string; year: number };
@@ -63,11 +64,12 @@ export default function AdminExportsPage() {
   return (
     <main>
       <h1>Data exports</h1>
-      <p>
+      <p className="admin-muted">
         Optional filters apply to entries, votes, scores, and the ZIP pack. Program and season narrow rows; date range
         filters each file by its own timestamps (entry created, vote cast, score saved, user registered). Users CSV
         still respects program scope when a program is selected.
       </p>
+      <AdminMetricStrip mergeSnapshot />
 
       <div className="admin-form admin-form--compact">
         <label>
@@ -120,7 +122,7 @@ export default function AdminExportsPage() {
       <ul className="admin-link-list">
         {rows.map((item) => (
           <li key={item.href}>
-            <a href={item.href}>
+            <a href={item.href} className="admin-export-chip">
               {item.label}
             </a>
           </li>

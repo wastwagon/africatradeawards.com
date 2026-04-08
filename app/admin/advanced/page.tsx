@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 
 type Program = { id: string; name: string };
 type Season = { id: string; year: number };
@@ -111,6 +112,8 @@ export default function AdminAdvancedPage() {
   return (
     <main>
       <h1>Advanced Workflow Tools</h1>
+      <p className="admin-muted">Judging stages, score matrix review, and broadcast queue in one place.</p>
+      <AdminMetricStrip mergeSnapshot />
       {error ? <p className="admin-error">{error}</p> : null}
       {success ? <p className="admin-muted">{success}</p> : null}
 

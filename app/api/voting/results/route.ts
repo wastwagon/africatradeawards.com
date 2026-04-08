@@ -1,4 +1,4 @@
-import { VoteStatus } from "@prisma/client";
+import { EntryStatus, VoteStatus } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireManagerOrAuditor } from "@/lib/api-auth";
@@ -17,7 +17,10 @@ export async function GET() {
   });
 
   const entries = await prisma.entry.findMany({
-    where: { id: { in: grouped.map((g) => g.entryId) } },
+    where: {
+      id: { in: grouped.map((g) => g.entryId) },
+      status: { in: [EntryStatus.SHORTLISTED, EntryStatus.WINNER] },
+    },
     select: {
       id: true,
       title: true,
@@ -27,8 +30,10 @@ export async function GET() {
     },
   });
   const map = new Map(entries.map((e) => [e.id, e]));
+  const allowedIds = new Set(entries.map((e) => e.id));
+  const filtered = grouped.filter((g) => allowedIds.has(g.entryId));
 
-  const results = grouped.map((g, idx) => ({
+  const results = filtered.map((g, idx) => ({
     rank: idx + 1,
     votes: g._count._all,
     entry: map.get(g.entryId) ?? null,

@@ -1,0 +1,16 @@
+---
+description: Africa Trade Awards repo — stack, Docker, Prisma, and safe collaboration defaults
+alwaysApply: true
+---
+
+# Africa Trade Awards — contributor context
+
+- **Stack:** Next.js 14 (App Router), TypeScript, Prisma, PostgreSQL, Redis, SCSS (`npm run sass:build` / `sass:watch` in Docker dev).
+- **Local full stack:** `docker compose -f docker-compose.dev.yml up --build` — app at **port 3003** by default. Do not assume `docker compose up` without `-f` unless the team adds a default file.
+- **Prisma:**
+  - **Local schema changes:** `npx prisma migrate dev` (never against production).
+  - **Production / Coolify:** migrations applied via **`npx prisma migrate deploy`** (see `docker-compose.coolify.yml` `app` command). This **does not reset** the database; it applies migration files. Destructive SQL in migrations can still drop data—review PRs.
+  - Commit new folders under `prisma/migrations/` with the same PR as `schema.prisma` changes.
+- **Env files:** `.env` is gitignored. Root **`.env.example`** is for host-based dev; **`.env.docker.example`** is for Compose substitution; **`.env.coolify.example`** documents production-style variables.
+- **Onboarding:** Human-readable setup is in **`CONTRIBUTING.md`**. Prefer matching its workflows when suggesting commands.
+- **Code style:** Keep changes scoped to the task; match existing patterns. Do not add unsolicited README/docs unless asked.

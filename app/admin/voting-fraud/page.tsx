@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 
 type CountRow = {
   _count: { _all: number };
@@ -39,13 +40,25 @@ export default function VotingFraudPage() {
     })();
   }, []);
 
+  const fraudAppend = useMemo(
+    () => [
+      {
+        label: "Pending review",
+        value: quarantinePendingCount,
+        tone: quarantinePendingCount ? ("warn" as const) : ("ok" as const),
+      },
+      { label: "IP clusters (5+)", value: suspiciousIp.length },
+      { label: "Device clusters (3+)", value: suspiciousFingerprint.length },
+      { label: "Verify sources", value: verificationStats.length },
+    ],
+    [quarantinePendingCount, suspiciousIp.length, suspiciousFingerprint.length, verificationStats.length],
+  );
+
   return (
     <main>
       <h1>Voting Fraud Analytics</h1>
-      <p>Monitor suspicious clustering by IP and device fingerprint.</p>
-      <p>
-        <strong>Votes pending fraud review:</strong> {quarantinePendingCount}
-      </p>
+      <p className="admin-muted">Monitor suspicious clustering by IP and device fingerprint.</p>
+      <AdminMetricStrip mergeSnapshot appendItems={fraudAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
 
       <section>

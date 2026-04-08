@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 
 type Entry = {
   id: string;
@@ -52,17 +53,28 @@ export default function AdminCertificatesPage() {
     URL.revokeObjectURL(url);
   }
 
+  const certAppend = useMemo(() => [{ label: "Winners listed", value: entries.length }], [entries.length]);
+
   return (
     <main>
       <h1>Winner Certificates</h1>
-      <p>Generate downloadable PDF certificates for entries marked as WINNER.</p>
+      <p className="admin-muted">Generate downloadable PDF certificates for entries marked as WINNER.</p>
+      <AdminMetricStrip mergeSnapshot appendItems={certAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
       {entries.length === 0 ? <p>No winners found yet.</p> : null}
       <ul className="admin-card-list">
         {entries.map((entry) => (
           <li key={entry.id}>
-            {entry.title} - {entry.program?.name} / {entry.category?.name} / {entry.season?.year}{" "}
-            <button onClick={() => downloadCertificate(entry.id)}>Download PDF</button>
+            <div className="admin-first-col-cell">
+              <span>
+                {entry.title} — {entry.program?.name} / {entry.category?.name} / {entry.season?.year}
+              </span>
+              <div className="admin-inline-actions admin-actions-row--tight">
+                <button type="button" onClick={() => downloadCertificate(entry.id)}>
+                  Download PDF
+                </button>
+              </div>
+            </div>
           </li>
         ))}
       </ul>

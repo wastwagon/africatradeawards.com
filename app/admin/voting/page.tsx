@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import AdminDataTable, { type AdminTableColumn } from "@/components/admin/AdminDataTable";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 
 type ResultRow = {
   rank: number;
@@ -52,9 +54,27 @@ export default function AdminVotingResultsPage() {
   const viewRows =
     view === "all" ? results : view === "top10" ? results.slice(0, 10) : results.filter((row) => row.votes >= 10);
 
+  const voteAppend = useMemo(() => {
+    if (!results.length) return [];
+    const total = results.reduce((s, r) => s + r.votes, 0);
+    return [
+      { label: "Ranked entries", value: results.length },
+      { label: "Votes (all ranks)", value: total },
+    ];
+  }, [results]);
+
   return (
     <main>
       <h1>Public Voting Results</h1>
+      <p className="admin-muted">
+        Rankings use the same rules as the public vote page: only{" "}
+        <strong>shortlisted</strong> and <strong>winner</strong> entries, counting <strong>validated</strong> votes only.
+        Order matches public ordering (by vote total). For quarantined or suspicious activity, see{" "}
+        <Link href="/admin/voting-quarantine">Vote quarantine</Link> and{" "}
+        <Link href="/admin/voting-fraud">Voting fraud analytics</Link>. Public page:{" "}
+        <Link href="/vote">/vote</Link>.
+      </p>
+      <AdminMetricStrip mergeSnapshot appendItems={voteAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
       <div className="admin-segment">
         <button type="button" className={view === "all" ? "is-active" : undefined} onClick={() => setView("all")}>

@@ -358,3 +358,36 @@ export async function safeSendNominationTrackingLinkEmail(params: {
     return { sent: 0 };
   }
 }
+
+export async function sendContactInquiryEmail(params: {
+  to: string;
+  replyTo: string;
+  name: string;
+  phone: string;
+  inquiryTypeLabel: string;
+  subject: string;
+  message: string;
+}) {
+  const transporter = createTransport();
+  const from = process.env.SMTP_FROM ?? process.env.SMTP_USER;
+  const subject = `[Africa Trade Awards] ${params.inquiryTypeLabel}: ${params.subject}`;
+  const text = [
+    "New message from the website contact form.",
+    "",
+    `Name: ${params.name}`,
+    `Email: ${params.replyTo}`,
+    `Phone: ${params.phone}`,
+    `Inquiry type: ${params.inquiryTypeLabel}`,
+    "",
+    "Message:",
+    params.message,
+  ].join("\n");
+
+  await transporter.sendMail({
+    from,
+    to: params.to,
+    replyTo: params.replyTo,
+    subject,
+    text,
+  });
+}

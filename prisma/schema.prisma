@@ -57,6 +57,8 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  @@index([role])
+
   entriesAsEntrant    Entry[]                 @relation("EntrantEntries")
   judgeAssignments    JudgeAssignment[]
   scores              Score[]
@@ -152,6 +154,8 @@ model Entry {
   recusals         JudgeRecusal[]
   publicVotes      PublicVote[]
   nominations      Nomination[]
+
+  @@index([status, updatedAt])
 }
 
 model Nomination {
@@ -331,6 +335,25 @@ model PublicSiteSettings {
   heroBarDateLine   String @default("29th January 2026")
   /// Venue text in the homepage EventDateVenueBar
   heroBarVenueLine  String @default("Kempinski Gold Coast City Hotel, Accra-Ghana")
+
+  /// Dismissible strip above main content (login, vote, portals, marketing)
+  announcementEnabled   Boolean @default(false)
+  announcementText    String?
+  announcementLinkUrl String?
+  announcementLinkLabel String?
+
+  /// Shown in footer, mobile drawer, and contact page mailto
+  supportEmail String @default("secretariat@africatradeawards.com")
+
+  /// Optional override for default meta description tag
+  seoDescription String?
+
+  /// Event day: show “Live” in nav and /live page with embedded player
+  eventLiveStreamEnabled   Boolean @default(false)
+  /// Heading on /live (e.g. “Awards ceremony live”)
+  eventLiveStreamTitle     String?
+  /// iframe src: YouTube embed or Facebook plugins/video.php URL (https only)
+  eventLiveStreamEmbedUrl  String?
 
   updatedAt DateTime @updatedAt
 }
@@ -622,4 +645,24 @@ model CmsRevision {
   createdBy   User?   @relation(fields: [createdById], references: [id], onDelete: SetNull)
 
   @@index([scope, createdAt])
+}
+
+model ContactInquiry {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  email       String
+  phone       String
+  inquiryType String
+  subject     String
+  message     String
+  ipHash      String
+  status      String   @default("NEW")
+  emailedAt   DateTime?
+  emailError  String?
+
+  @@index([createdAt])
+  @@index([status, createdAt])
+  @@index([email, createdAt])
 }

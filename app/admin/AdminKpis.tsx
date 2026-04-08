@@ -1,6 +1,8 @@
 'use client'
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useSyncOpenContactCount } from "@/lib/use-sync-open-contact-count";
 
 type Entry = { id: string; status: string; title: string; createdAt?: string };
 type LeaderRow = { entry: { title: string } | null; averageScore: number };
@@ -80,9 +82,10 @@ function MiniBars({ items }: { items: Array<{ label: string; value: number }> })
   );
 }
 
-export default function AdminKpis() {
+export default function AdminKpis({ openContactInquiries }: { openContactInquiries?: number }) {
   const [state, setState] = useState<KpiState>(emptyState);
   const [error, setError] = useState<string | null>(null);
+  const contactOpen = useSyncOpenContactCount(openContactInquiries);
 
   useEffect(() => {
     (async () => {
@@ -140,7 +143,7 @@ export default function AdminKpis() {
 
   return (
     <section>
-      <h2>Operations snapshot</h2>
+      <h2 className="admin-kpi-section-title">Operations snapshot</h2>
       <div className="admin-kpi-grid">
         <article className="admin-kpi-card">
           <p>Total entries</p>
@@ -158,6 +161,16 @@ export default function AdminKpis() {
           <p>Quarantined votes</p>
           <h3>{state.quarantine}</h3>
         </article>
+        {openContactInquiries !== undefined && typeof contactOpen === "number" ? (
+          <article className="admin-kpi-card">
+            <p>Open contact inquiries</p>
+            <h3>
+              <Link href="/admin/contact-inquiries" style={{ color: "inherit", textDecoration: "none" }}>
+                {contactOpen}
+              </Link>
+            </h3>
+          </article>
+        ) : null}
         <article className="admin-kpi-card admin-kpi-card--wide">
           <p>Top by public voting</p>
           <h3>{state.topVoteEntry}</h3>

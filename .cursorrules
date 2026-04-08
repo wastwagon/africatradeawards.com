@@ -1,0 +1,4 @@
+# Legacy Cursor rules pointer
+# Prefer project rules in `.cursor/rules/` (see `.cursor/rules/project.mdc`).
+
+Before changing Docker, Prisma, or deployment: read CONTRIBUTING.md and COOLIFY_FULLSTACK_SETUP.md.

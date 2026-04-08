@@ -61,43 +61,66 @@ export default function ContactForm() {
 		const { name, value } = e.target
 		setFormData(prev => ({ ...prev, [name]: value }))
 		// Clear error when user starts typing
-		if (errors[name]) {
+		if (errors[name] || errors._form) {
 			setErrors(prev => {
 				const newErrors = { ...prev }
 				delete newErrors[name]
+				delete newErrors._form
 				return newErrors
 			})
 		}
 	}
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		
+
 		if (!validateForm()) {
 			return
 		}
 
+		const formEl = e.currentTarget
+		const hp = (formEl.elements.namedItem('website') as HTMLInputElement | null)?.value ?? ''
+
 		setIsSubmitting(true)
 		setSubmitStatus('idle')
+		setErrors({})
 
-		// Simulate form submission (backend will be added later)
-		setTimeout(() => {
-			setIsSubmitting(false)
-			setSubmitStatus('success')
-			
-			// Reset form after success
-			setTimeout(() => {
-				setFormData({
-					name: '',
-					email: '',
-					phone: '',
-					inquiryType: 'general',
-					subject: '',
-					message: ''
+		try {
+			const res = await fetch('/api/site/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					name: formData.name,
+					email: formData.email,
+					phone: formData.phone,
+					inquiryType: formData.inquiryType,
+					subject: formData.subject,
+					message: formData.message,
+					website: hp,
+				}),
+			})
+			const data = await res.json().catch(() => ({}))
+			if (!res.ok) {
+				setErrors({
+					_form: typeof data.error === 'string' ? data.error : 'Something went wrong. Please try again.',
 				})
-				setSubmitStatus('idle')
-			}, 3000)
-		}, 1500)
+				return
+			}
+			setSubmitStatus('success')
+			setFormData({
+				name: '',
+				email: '',
+				phone: '',
+				inquiryType: 'general',
+				subject: '',
+				message: '',
+			})
+			setTimeout(() => setSubmitStatus('idle'), 4000)
+		} catch {
+			setErrors({ _form: 'Network error. Check your connection and try again.' })
+		} finally {
+			setIsSubmitting(false)
+		}
 	}
 
 	const selectedInquiryType = inquiryTypes.find(type => type.value === formData.inquiryType)
@@ -119,6 +142,14 @@ export default function ContactForm() {
 							</div>
 
 							<form className="premium-contact-form" onSubmit={handleSubmit}>
+								<input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} aria-hidden />
+								{errors._form ? (
+									<div className="form-group" style={{ marginBottom: 16 }}>
+										<span className="error-message" role="alert">
+											{errors._form}
+										</span>
+									</div>
+								) : null}
 								<div className="form-row">
 									<div className="form-group col-md-6">
 										<label htmlFor="name">

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { UserRole } from "@prisma/client";
 import { getRequestSessionUser, isAuditorRole } from "@/lib/api-auth";
+import { getContactInquiryOpenCount } from "@/lib/contact-inquiry-open-count";
+import { hasRoleAtLeast } from "@/lib/rbac";
 import AdminKpis from "./AdminKpis";
 import { getAdminNavItems } from "./navigation";
 
@@ -17,6 +19,11 @@ export default async function AdminPage() {
     .filter((item) => item.quickActionLabel)
     .map((item) => ({ href: item.href, label: item.quickActionLabel as string }));
 
+  const openContactInquiries =
+    session && hasRoleAtLeast(session.role, UserRole.PROGRAM_MANAGER)
+      ? await getContactInquiryOpenCount()
+      : undefined;
+
   return (
     <main>
       <h1>Admin console</h1>
@@ -28,7 +35,7 @@ export default async function AdminPage() {
         <p className="admin-muted">Core backend is active. Manage programs, judging, voting, and governance from one control plane.</p>
       )}
 
-      <AdminKpis />
+      <AdminKpis openContactInquiries={openContactInquiries} />
 
       <section>
         <h2>Quick actions</h2>

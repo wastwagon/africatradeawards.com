@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { normalizeLiveStreamEmbedUrl } from "@/lib/live-stream-embed";
 import { prisma } from "@/lib/prisma";
 
 export type PublicSiteSettingsDTO = {
@@ -6,6 +8,15 @@ export type PublicSiteSettingsDTO = {
   mobileNavMetaLine: string;
   heroBarDateLine: string;
   heroBarVenueLine: string;
+  announcementEnabled: boolean;
+  announcementText: string;
+  announcementLinkUrl: string;
+  announcementLinkLabel: string;
+  supportEmail: string;
+  seoDescription: string;
+  eventLiveStreamEnabled: boolean;
+  eventLiveStreamTitle: string;
+  eventLiveStreamEmbedUrl: string;
 };
 
 export const FALLBACK_PUBLIC_SITE_SETTINGS: PublicSiteSettingsDTO = {
@@ -14,6 +25,15 @@ export const FALLBACK_PUBLIC_SITE_SETTINGS: PublicSiteSettingsDTO = {
   mobileNavMetaLine: "28–29 Jan · Accra",
   heroBarDateLine: "29th January 2026",
   heroBarVenueLine: "Kempinski Gold Coast City Hotel, Accra-Ghana",
+  announcementEnabled: false,
+  announcementText: "",
+  announcementLinkUrl: "",
+  announcementLinkLabel: "",
+  supportEmail: "secretariat@africatradeawards.com",
+  seoDescription: "",
+  eventLiveStreamEnabled: false,
+  eventLiveStreamTitle: "Live stream",
+  eventLiveStreamEmbedUrl: "",
 };
 
 function shouldFallbackToDefaults(error: unknown): boolean {
@@ -26,23 +46,64 @@ function shouldFallbackToDefaults(error: unknown): boolean {
   );
 }
 
-function rowToDto(row: {
+type PublicSiteRow = {
   headerDateLine: string;
   headerVenueLine: string;
   mobileNavMetaLine: string;
   heroBarDateLine: string;
   heroBarVenueLine: string;
-}): PublicSiteSettingsDTO {
+  announcementEnabled: boolean;
+  announcementText: string | null;
+  announcementLinkUrl: string | null;
+  announcementLinkLabel: string | null;
+  supportEmail: string;
+  seoDescription: string | null;
+  eventLiveStreamEnabled: boolean;
+  eventLiveStreamTitle: string | null;
+  eventLiveStreamEmbedUrl: string | null;
+};
+
+function rowToDto(row: PublicSiteRow): PublicSiteSettingsDTO {
   return {
     headerDateLine: row.headerDateLine,
     headerVenueLine: row.headerVenueLine,
     mobileNavMetaLine: row.mobileNavMetaLine,
     heroBarDateLine: row.heroBarDateLine,
     heroBarVenueLine: row.heroBarVenueLine,
+    announcementEnabled: row.announcementEnabled,
+    announcementText: row.announcementText ?? "",
+    announcementLinkUrl: row.announcementLinkUrl ?? "",
+    announcementLinkLabel: row.announcementLinkLabel ?? "",
+    supportEmail: row.supportEmail,
+    seoDescription: row.seoDescription ?? "",
+    eventLiveStreamEnabled: row.eventLiveStreamEnabled,
+    eventLiveStreamTitle: row.eventLiveStreamTitle ?? FALLBACK_PUBLIC_SITE_SETTINGS.eventLiveStreamTitle,
+    eventLiveStreamEmbedUrl: row.eventLiveStreamEmbedUrl ?? "",
   };
 }
 
-export async function getPublicSiteSettings(): Promise<PublicSiteSettingsDTO> {
+function dtoToWrite(dto: PublicSiteSettingsDTO) {
+  return {
+    headerDateLine: dto.headerDateLine.trim(),
+    headerVenueLine: dto.headerVenueLine.trim(),
+    mobileNavMetaLine: dto.mobileNavMetaLine.trim(),
+    heroBarDateLine: dto.heroBarDateLine.trim(),
+    heroBarVenueLine: dto.heroBarVenueLine.trim(),
+    announcementEnabled: dto.announcementEnabled,
+    announcementText: dto.announcementText.trim() || null,
+    announcementLinkUrl: dto.announcementLinkUrl.trim() || null,
+    announcementLinkLabel: dto.announcementLinkLabel.trim() || null,
+    supportEmail: dto.supportEmail.trim() || FALLBACK_PUBLIC_SITE_SETTINGS.supportEmail,
+    seoDescription: dto.seoDescription.trim() || null,
+    eventLiveStreamEnabled: dto.eventLiveStreamEnabled,
+    eventLiveStreamTitle: dto.eventLiveStreamTitle.trim() || null,
+    eventLiveStreamEmbedUrl: dto.eventLiveStreamEmbedUrl.trim()
+      ? normalizeLiveStreamEmbedUrl(dto.eventLiveStreamEmbedUrl)
+      : null,
+  };
+}
+
+async function loadPublicSiteSettings(): Promise<PublicSiteSettingsDTO> {
   try {
     const row = await prisma.publicSiteSettings.findUnique({
       where: { id: "default" },
@@ -50,7 +111,7 @@ export async function getPublicSiteSettings(): Promise<PublicSiteSettingsDTO> {
     if (!row) {
       return FALLBACK_PUBLIC_SITE_SETTINGS;
     }
-    return rowToDto(row);
+    return rowToDto(row as PublicSiteRow);
   } catch (error) {
     if (shouldFallbackToDefaults(error)) {
       return FALLBACK_PUBLIC_SITE_SETTINGS;
@@ -59,14 +120,61 @@ export async function getPublicSiteSettings(): Promise<PublicSiteSettingsDTO> {
   }
 }
 
-export async function upsertPublicSiteSettings(
-  patch: Partial<PublicSiteSettingsDTO>,
-): Promise<PublicSiteSettingsDTO> {
-  let current: Awaited<ReturnType<typeof prisma.publicSiteSettings.findUnique>> = null;
+/** Per-request dedupe when used from layout + generateMetadata in the same render. */
+export const getPublicSiteSettings = cache(loadPublicSiteSettings);
+
+const EMAIL_LIKE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** Full replace from admin UI (validated). */
+export async function savePublicSiteSettings(dto: PublicSiteSettingsDTO): Promise<PublicSiteSettingsDTO> {
+  const merged: PublicSiteSettingsDTO = {
+    headerDateLine: dto.headerDateLine.trim(),
+    headerVenueLine: dto.headerVenueLine.trim(),
+    mobileNavMetaLine: dto.mobileNavMetaLine.trim(),
+    heroBarDateLine: dto.heroBarDateLine.trim(),
+    heroBarVenueLine: dto.heroBarVenueLine.trim(),
+    announcementEnabled: dto.announcementEnabled,
+    announcementText: dto.announcementText.trim(),
+    announcementLinkUrl: dto.announcementLinkUrl.trim(),
+    announcementLinkLabel: dto.announcementLinkLabel.trim(),
+    supportEmail: dto.supportEmail.trim() || FALLBACK_PUBLIC_SITE_SETTINGS.supportEmail,
+    seoDescription: dto.seoDescription.trim(),
+    eventLiveStreamEnabled: dto.eventLiveStreamEnabled,
+    eventLiveStreamTitle: dto.eventLiveStreamTitle.trim(),
+    eventLiveStreamEmbedUrl: dto.eventLiveStreamEmbedUrl.trim(),
+  };
+
+  if (
+    !merged.headerDateLine ||
+    !merged.headerVenueLine ||
+    !merged.mobileNavMetaLine ||
+    !merged.heroBarDateLine ||
+    !merged.heroBarVenueLine
+  ) {
+    throw new Error("Date and venue lines cannot be empty.");
+  }
+  if (!EMAIL_LIKE.test(merged.supportEmail)) {
+    throw new Error("Support email must be a valid address.");
+  }
+  if (merged.announcementLinkUrl && !/^https?:\/\//i.test(merged.announcementLinkUrl)) {
+    throw new Error("Announcement link must start with http:// or https://.");
+  }
+  if (merged.eventLiveStreamTitle.length > 120) {
+    throw new Error("Live stream title must be at most 120 characters.");
+  }
+  if (merged.eventLiveStreamEnabled && !merged.eventLiveStreamEmbedUrl) {
+    throw new Error("When live stream is enabled, paste a YouTube or Facebook embed URL.");
+  }
+
+  const payload = dtoToWrite(merged);
+
   try {
-    current = await prisma.publicSiteSettings.findUnique({
+    const saved = await prisma.publicSiteSettings.upsert({
       where: { id: "default" },
+      create: { id: "default", ...payload },
+      update: payload,
     });
+    return rowToDto(saved as PublicSiteRow);
   } catch (error) {
     if (shouldFallbackToDefaults(error)) {
       throw new Error(
@@ -75,20 +183,4 @@ export async function upsertPublicSiteSettings(
     }
     throw error;
   }
-
-  const base = current ? rowToDto(current) : FALLBACK_PUBLIC_SITE_SETTINGS;
-  const merged: PublicSiteSettingsDTO = {
-    headerDateLine: patch.headerDateLine ?? base.headerDateLine,
-    headerVenueLine: patch.headerVenueLine ?? base.headerVenueLine,
-    mobileNavMetaLine: patch.mobileNavMetaLine ?? base.mobileNavMetaLine,
-    heroBarDateLine: patch.heroBarDateLine ?? base.heroBarDateLine,
-    heroBarVenueLine: patch.heroBarVenueLine ?? base.heroBarVenueLine,
-  };
-
-  const saved = await prisma.publicSiteSettings.upsert({
-    where: { id: "default" },
-    create: { id: "default", ...merged },
-    update: merged,
-  });
-  return rowToDto(saved);
 }

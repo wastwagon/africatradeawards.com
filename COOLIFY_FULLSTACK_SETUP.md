@@ -45,8 +45,7 @@ Expose the `app` service and map your domain to it.
 - `STATIC_EXPORT=false` is set in compose so Next.js runs server mode.
 - Existing static deployment files are untouched; this is an additional fullstack path.
 - Prisma schema is included in `prisma/schema.prisma`.
-- Run migrations during deployment:
-  - `npm run prisma:migrate:deploy`
+- Migrations on deploy: the **`app`** service command runs `npx prisma migrate deploy` before starting Next.js (see `docker-compose.coolify.yml`). That applies **pending** migration files to Postgres and does **not** wipe the database by default. You can also run `npm run prisma:migrate:deploy` manually in a one-off container if needed.
 
 ## 4) Local test
 

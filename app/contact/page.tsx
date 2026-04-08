@@ -1,11 +1,14 @@
 'use client'
 import Layout from "@/components/layout/Layout"
-import Link from "next/link"
+import { useSiteConfig } from '@/components/site/SiteConfigProvider'
 import ContactForm from '@/components/sections/ContactForm'
+import Link from "next/link"
 import { useEffect, useRef } from "react"
 
 export default function Contact() {
+	const { supportEmail } = useSiteConfig()
 	const videoRef = useRef<HTMLVideoElement>(null)
+	const mailHref = `mailto:${supportEmail}`
 
 	useEffect(() => {
 		const video = videoRef.current
@@ -74,7 +77,9 @@ export default function Contact() {
 													</div>
 													<div className="contact-info-content">
 														<span className="info-label">Email</span>
-														<Link href="mailto:secretariat@africatradeawards.com" className="info-value">secretariat@africatradeawards.com</Link>
+														<Link href={mailHref} className="info-value">
+															{supportEmail}
+														</Link>
 													</div>
 												</div>
 												<div className="contact-info-item">

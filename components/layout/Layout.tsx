@@ -4,6 +4,8 @@ import AOS from 'aos'
 import { useEffect, useState } from "react"
 import AddClassBody from '../elements/AddClassBody'
 import BackToTop from '../elements/BackToTop'
+import AnnouncementBar from '@/components/site/AnnouncementBar'
+import { useSiteConfig } from '@/components/site/SiteConfigProvider'
 import Footer1 from './footer/Footer1'
 import Header1 from "./header/Header1"
 import MobileMenu from './MobileMenu'
@@ -14,6 +16,7 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+	const { supportEmail, eventLiveStreamEnabled } = useSiteConfig()
 	const [scroll, setScroll] = useState<boolean>(false)
 	const [isMobileMenu, setMobileMenu] = useState<boolean>(false)
 	const handleMobileMenu = (): void => setMobileMenu(!isMobileMenu)
@@ -61,13 +64,14 @@ export default function Layout({ children }: LayoutProps) {
 			<AddClassBody />
 			<Header1 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} isSearch={isSearch} handleSearch={handleSearch} />
 			<MobileMenu isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} />
+			<AnnouncementBar />
 
 			<div className="site-layout-chrome">
 				{children}
 
 				<MobileBottomNav />
 
-				<Footer1 />
+				<Footer1 supportEmail={supportEmail} showLiveStream={eventLiveStreamEnabled} />
 			</div>
 
 			<BackToTop target="#top" />

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination, EffectFade } from 'swiper/modules'
 import { heroBannerImages } from '@/app/assets/hero'
+import { useSiteConfig } from '@/components/site/SiteConfigProvider'
 
 const swiperOptions = {
 	modules: [Autoplay, Navigation, Pagination, EffectFade],
@@ -25,6 +26,12 @@ const swiperOptions = {
 }
 
 export default function HeroSection() {
+	const { eventLiveStreamEnabled, eventLiveStreamTitle } = useSiteConfig()
+	const liveAria =
+		eventLiveStreamTitle.trim().length > 0
+			? `${eventLiveStreamTitle.trim()} — open live page`
+			: 'Watch live stream'
+
 	return (
 		<section className="hero-banner-section" aria-label="Hero banner">
 			<Swiper {...swiperOptions} className="hero-banner-swiper">
@@ -64,6 +71,12 @@ export default function HeroSection() {
 						<Link href="/vote/" className="vl-btn1 hero-banner-btn-primary">
 							Cast Your Vote
 						</Link>
+						{eventLiveStreamEnabled ? (
+							<Link href="/live/" className="hero-banner-btn-secondary hero-banner-btn-live" aria-label={liveAria}>
+								<i className="fa-solid fa-circle-play" aria-hidden />
+								Watch live
+							</Link>
+						) : null}
 						<Link href="/portal/entrant/" className="hero-banner-btn-secondary">
 							Enter your submission
 						</Link>
@@ -250,6 +263,16 @@ export default function HeroSection() {
 					background: rgba(255,255,255,0.22);
 					color: #fff;
 					transform: translateY(-2px);
+				}
+				.hero-banner-btn-live {
+					display: inline-flex;
+					align-items: center;
+					gap: 8px;
+					border-color: rgba(255, 200, 120, 0.7) !important;
+					box-shadow: 0 0 0 1px rgba(255, 200, 120, 0.12);
+				}
+				.hero-banner-btn-live:hover {
+					border-color: rgba(255, 220, 160, 0.9) !important;
 				}
 				.hero-banner-tertiary {
 					display: inline-flex;

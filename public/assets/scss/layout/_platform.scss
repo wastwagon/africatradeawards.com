@@ -132,6 +132,17 @@
 		color: var(--ztc-text-text-3);
 		font-size: var(--ztc-font-size-font-s16);
 		line-height: 1.5;
+
+		a {
+			color: var(--color-link);
+			font-weight: 600;
+			text-decoration: underline;
+			text-underline-offset: 2px;
+		}
+
+		a:hover {
+			color: var(--color-link-hover);
+		}
 	}
 
 	.platform-vote-row {

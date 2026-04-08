@@ -1,8 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+type Props = {
+	supportEmail?: string
+	showLiveStream?: boolean
+}
 
-export default function Footer1() {
+const DEFAULT_SUPPORT = 'secretariat@africatradeawards.com'
+
+export default function Footer1({ supportEmail = DEFAULT_SUPPORT, showLiveStream = false }: Props) {
+	const mailHref = `mailto:${supportEmail}`
 	return (
 		<>
 			<div className="footer1-sertion-area">
@@ -50,6 +57,9 @@ export default function Footer1() {
 									<li><Link href="/faq">FAQs</Link></li>
 									<li><Link href="/login/">Sign In</Link></li>
 									<li><Link href="/vote">Public Vote</Link></li>
+									{showLiveStream ? (
+										<li><Link href="/live">Live stream</Link></li>
+									) : null}
 									<li><Link href="/portal/entrant">Entrant portal</Link></li>
 									<li><Link href="/portal/judge">Judge portal</Link></li>
 									<li><Link href="/login/?next=/admin/">Staff admin</Link></li>
@@ -65,7 +75,10 @@ export default function Footer1() {
 										<Link href="tel:+233554014753"><Image src="/assets/img/icons/phn1.svg" alt="" width={18} height={18} />+233 55 401 4753</Link>
 									</li>
 									<li>
-										<Link href="mailto:secretariat@africatradeawards.com"><Image src="/assets/img/icons/mail1.svg" alt="" width={18} height={18} />secretariat@africatradeawards.com</Link>
+										<Link href={mailHref}>
+											<Image src="/assets/img/icons/mail1.svg" alt="" width={18} height={18} />
+											{supportEmail}
+										</Link>
 									</li>
 									<li>
 										<Link href="https://www.africatradeawards.com" target="_blank" rel="noopener noreferrer"> <Image src="/assets/img/icons/world1.svg" alt="" width={18} height={18} />www.africatradeawards.com</Link>

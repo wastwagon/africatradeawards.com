@@ -27,11 +27,19 @@ export async function GET() {
     orderBy: [{ createdAt: "desc" }],
   });
 
+  const mapped = entries.map((e) => ({
+    id: e.id,
+    title: e.title,
+    status: e.status,
+    category: e.category,
+    season: e.season,
+    program: e.program,
+    voteCount: e._count.publicVotes,
+  }));
+  mapped.sort((a, b) => b.voteCount - a.voteCount || a.title.localeCompare(b.title));
+
   return NextResponse.json({
     ok: true,
-    entries: entries.map((e) => ({
-      ...e,
-      voteCount: e._count.publicVotes,
-    })),
+    entries: mapped,
   });
 }

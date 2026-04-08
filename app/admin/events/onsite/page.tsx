@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import AdminActionModal from "@/components/admin/AdminActionModal";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 import { fetchJsonOrThrow, toErrorMessage } from "@/components/admin/admin-api";
 import useAdminAsyncAction from "@/components/admin/useAdminAsyncAction";
 import useAdminFeedback from "@/components/admin/useAdminFeedback";
@@ -210,10 +211,26 @@ export default function EventOnsiteAnalyticsPage() {
     });
   }
 
+  const onsiteAppend = useMemo(() => {
+    if (!report?.totals) return [];
+    const t = report.totals;
+    return [
+      { label: "Registered", value: t.registrations },
+      { label: "Checked in", value: t.checkedIn },
+      { label: "Attendance", value: `${Math.round((t.attendanceRate ?? 0) * 100)}%` },
+      {
+        label: "Open incidents",
+        value: t.incidentsOpen,
+        tone: t.incidentsOpen ? ("warn" as const) : ("ok" as const),
+      },
+    ];
+  }, [report]);
+
   return (
     <main>
       <h1>Onsite analytics</h1>
       <p className="admin-muted">Live operational visibility for throughput, scanner quality, and reprint risk.</p>
+      <AdminMetricStrip mergeSnapshot appendItems={onsiteAppend} />
       <AdminToastViewport toasts={toasts} onClose={dismissToast} />
       <AdminActionModal
         open={Boolean(resolveModal)}

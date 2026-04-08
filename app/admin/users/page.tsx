@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { UserRole } from "@prisma/client";
+import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
 
 const roles: UserRole[] = [
   UserRole.SUPER_ADMIN,
@@ -144,13 +145,28 @@ export default function AdminCreateUserPage() {
     window.location.href = body.redirectTo || "/admin/";
   }
 
+  const userMetrics = useMemo(
+    () => [
+      { label: "Directory total", value: counts.ALL ?? 0 },
+      {
+        label: "Staff accounts",
+        value: Math.max(0, (counts.ALL ?? 0) - (counts.ENTRANT ?? 0)),
+      },
+      { label: "Entrants", value: counts.ENTRANT ?? 0 },
+    ],
+    [counts],
+  );
+
   return (
     <main>
       <h1>User management and impersonation</h1>
-      <p>Super admin only. Create, update, reset passwords, and impersonate any role account in one click.</p>
+      <p className="admin-muted">
+        Super admin only. Create, update, reset passwords, and impersonate any role account in one click.
+      </p>
+      <AdminMetricStrip items={userMetrics} />
       <section>
         <h2>Directory</h2>
-        <div className="admin-inline-actions">
+        <div className="admin-chip-row">
           <button type="button" className={roleFilter === "ALL" ? "is-active" : undefined} onClick={() => setRoleFilter("ALL")}>
             All ({counts.ALL ?? 0})
           </button>
@@ -159,8 +175,10 @@ export default function AdminCreateUserPage() {
               {r} ({counts[r] ?? 0})
             </button>
           ))}
+        </div>
+        <div className="admin-inline-actions">
           <button type="button" onClick={() => void loadUsers()} disabled={loadingUsers}>
-            {loadingUsers ? "Refreshing..." : "Refresh"}
+            {loadingUsers ? "Refreshing…" : "Refresh"}
           </button>
         </div>
         <div className="admin-table-wrap">
@@ -206,7 +224,7 @@ export default function AdminCreateUserPage() {
                     />
                   </td>
                   <td>
-                    <div className="admin-inline-actions">
+                    <div className="admin-inline-actions admin-actions-row--tight">
                       <button type="button" onClick={() => void saveUser(user)}>
                         Save
                       </button>
@@ -215,7 +233,7 @@ export default function AdminCreateUserPage() {
                         onClick={() => void impersonateUser(user)}
                         disabled={impersonatingId === user.id}
                       >
-                        {impersonatingId === user.id ? "Switching..." : "Impersonate"}
+                        {impersonatingId === user.id ? "Switching…" : "Impersonate"}
                       </button>
                     </div>
                   </td>

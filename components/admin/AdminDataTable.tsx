@@ -296,60 +296,81 @@ export default function AdminDataTable<T>({
   return (
     <div className="admin-data-table">
       <div className="admin-data-table__toolbar">
-        <input
-          ref={searchRef}
-          className="admin-data-table__search"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setPage(1);
-          }}
-          placeholder={searchPlaceholder}
-          aria-label={searchPlaceholder}
-        />
-        <p className="admin-data-table__meta">
-          Showing {pageRows.length} of {sorted.length}
-        </p>
-        {exportRow ? (
-          <button type="button" className="admin-data-table__export" onClick={downloadCsv}>
-            Export CSV
-          </button>
-        ) : null}
+        <div className="admin-data-table__toolbar-main">
+          <input
+            ref={searchRef}
+            className="admin-data-table__search"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setPage(1);
+            }}
+            placeholder={searchPlaceholder}
+            aria-label={searchPlaceholder}
+          />
+          <div className="admin-data-table__toolbar-end">
+            <p className="admin-data-table__meta">
+              {pageRows.length} of {sorted.length}
+            </p>
+            {exportRow ? (
+              <button type="button" className="admin-data-table__export" onClick={downloadCsv}>
+                Export CSV
+              </button>
+            ) : null}
+          </div>
+        </div>
       </div>
       {persistKey ? (
-        <div className="admin-data-table__views">
-          <input
-            value={draftViewName}
-            onChange={(e) => setDraftViewName(e.target.value)}
-            placeholder="Save this view as..."
-            aria-label="View name"
-          />
-          <button type="button" onClick={saveCurrentView}>
-            Save view
-          </button>
-          <select value={selectedView} onChange={(e) => setSelectedView(e.target.value)} aria-label="Saved views">
-            <option value="">Saved views</option>
-            {savedViews.map((view) => (
-              <option key={view.name} value={view.name}>
-                {view.name}
-              </option>
-            ))}
-          </select>
-          <button type="button" onClick={() => applySavedView(selectedView)} disabled={!selectedView}>
-            Load
-          </button>
-          <button type="button" onClick={setDefaultSavedView} disabled={!selectedView}>
-            Set default
-          </button>
-          <button type="button" onClick={clearDefaultSavedView}>
-            Clear default
-          </button>
-          <button type="button" onClick={deleteSavedView} disabled={!selectedView}>
-            Delete
-          </button>
-        </div>
+        <details className="admin-data-table__views-panel">
+          <summary>Saved table views — optional</summary>
+          <div className="admin-data-table__views-panel-body">
+            <div className="admin-data-table__views-row">
+              <input
+                className="admin-data-table__views-save-name"
+                value={draftViewName}
+                onChange={(e) => setDraftViewName(e.target.value)}
+                placeholder="Name this view…"
+                aria-label="Name for saved view"
+              />
+              <button type="button" className="admin-data-table__btn-compact" onClick={saveCurrentView}>
+                Save
+              </button>
+            </div>
+            <div className="admin-data-table__views-row">
+              <select value={selectedView} onChange={(e) => setSelectedView(e.target.value)} aria-label="Saved views">
+                <option value="">Choose a saved view…</option>
+                {savedViews.map((view) => (
+                  <option key={view.name} value={view.name}>
+                    {view.name}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="button"
+                className="admin-data-table__btn-compact"
+                onClick={() => applySavedView(selectedView)}
+                disabled={!selectedView}
+              >
+                Apply
+              </button>
+            </div>
+            <div className="admin-data-table__views-tertiary">
+              <button type="button" onClick={setDefaultSavedView} disabled={!selectedView}>
+                Set as default
+              </button>
+              <button type="button" onClick={clearDefaultSavedView}>
+                Clear default
+              </button>
+              <button type="button" onClick={deleteSavedView} disabled={!selectedView}>
+                Delete view
+              </button>
+            </div>
+          </div>
+        </details>
       ) : null}
-      <p className="admin-data-table__hint">Shortcuts: <kbd>/</kbd> search, <kbd>e</kbd> export, <kbd>j</kbd>/<kbd>k</kbd> page</p>
+      <p className="admin-data-table__hint">
+        <kbd>/</kbd> focus search · <kbd>e</kbd> export · <kbd>j</kbd> / <kbd>k</kbd> page
+      </p>
 
       <div className="admin-table-wrap">
         <table>

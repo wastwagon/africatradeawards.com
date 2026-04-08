@@ -3,15 +3,33 @@
 import { UserRole } from "@prisma/client";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useSyncOpenContactCount } from "@/lib/use-sync-open-contact-count";
 import { getAdminNavItems } from "./navigation";
 
-type NavItem = { type: "nav"; id: string; href: string; label: string; hint?: string; aliases?: string[] };
+type NavItem = {
+  type: "nav";
+  id: string;
+  href: string;
+  label: string;
+  hint?: string;
+  aliases?: string[];
+  /** Open contact inbox count (managers) */
+  badge?: number;
+};
 type ActionItem = { type: "action"; id: string; label: string; hint?: string; aliases?: string[]; run: () => void };
 type Item = NavItem | ActionItem;
 
-export default function AdminCommandPalette({ role }: { role: UserRole }) {
+export default function AdminCommandPalette({
+  role,
+  openContactInquiries,
+}: {
+  role: UserRole;
+  /** Managers only — matches sidebar / layout */
+  openContactInquiries?: number;
+}) {
   const router = useRouter();
   const pathname = usePathname();
+  const contactOpenCount = useSyncOpenContactCount(openContactInquiries);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
@@ -30,8 +48,14 @@ export default function AdminCommandPalette({ role }: { role: UserRole }) {
         href: item.href,
         label: item.label,
         aliases: item.aliases,
+        badge:
+          item.id === "contact-inquiries" &&
+          typeof contactOpenCount === "number" &&
+          contactOpenCount > 0
+            ? contactOpenCount
+            : undefined,
       }));
-  }, [role]);
+  }, [role, contactOpenCount]);
 
   const activePersistKey = pathname.startsWith("/admin/entries")
     ? "entries"
@@ -190,6 +214,11 @@ export default function AdminCommandPalette({ role }: { role: UserRole }) {
                   >
                     <strong>
                       {item.label}{" "}
+                      {item.type === "nav" && item.badge != null ? (
+                        <span className="admin-command-count" aria-label={`${item.badge} open`}>
+                          {item.badge > 99 ? "99+" : item.badge}
+                        </span>
+                      ) : null}
                       {favoriteIds.includes(item.id) ? <em className="admin-command-tag">Pinned</em> : null}
                       {recentIds.includes(item.id) ? <em className="admin-command-tag admin-command-tag--recent">Recent</em> : null}
                     </strong>
