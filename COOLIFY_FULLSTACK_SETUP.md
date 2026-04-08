@@ -34,11 +34,16 @@ Reference: `.env.coolify.example`.
 
 ## 2) Deploy using compose
 
-In Coolify, select Docker Compose deployment and use:
+In Coolify, create an application with **Build Pack: Docker Compose**, then set:
 
-- Compose file: `docker-compose.coolify.yml`
+| Field | Value |
+|--------|--------|
+| **Base directory** | `/` (repository root) |
+| **Docker Compose Location** | `docker-compose.coolify.yml` |
 
-Expose the `app` service and map your domain to it.
+Do **not** use the default `docker-compose.yml` for full stack: that file only runs the Next.js `web` container and does **not** include Postgres or Redis.
+
+Map your domain / proxy to the **`app`** service (port **3003** inside the container). Coolify usually lets you choose which compose service receives public HTTP traffic.
 
 ## 3) Notes
 

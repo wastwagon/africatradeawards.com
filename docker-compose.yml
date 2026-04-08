@@ -1,3 +1,11 @@
+# -----------------------------------------------------------------------------
+# Minimal stack: Next.js only (no database or Redis in this file).
+#
+# For Coolify — app + PostgreSQL + Redis + worker in one project, use:
+#   Docker Compose file:  docker-compose.coolify.yml
+# See COOLIFY_FULLSTACK_SETUP.md and CONTRIBUTING.md.
+# -----------------------------------------------------------------------------
+
 services:
   web:
     build:
