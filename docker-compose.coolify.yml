@@ -57,11 +57,14 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    # Use $$ so pg_isready reads env *inside* the container. ${POSTGRES_USER} here would
+    # interpolate only from Compose’s .env; Coolify often omits that for healthchecks → empty -U/-d → unhealthy.
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 12
+      start_period: 40s
     restart: unless-stopped
 
   redis:

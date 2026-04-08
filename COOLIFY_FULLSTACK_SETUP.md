@@ -32,6 +32,8 @@ Use these variables in Coolify:
 
 Reference: `.env.coolify.example`.
 
+**Postgres “unhealthy” on deploy:** The compose file healthcheck uses the database user/db name from **inside** the Postgres container. You must still set **`POSTGRES_USER`**, **`POSTGRES_PASSWORD`**, and **`POSTGRES_DB`** in Coolify (and **`DATABASE_URL`** for the app) to real values — empty values break Postgres init and healthchecks.
+
 ## 2) Deploy using compose
 
 In Coolify, create an application with **Build Pack: Docker Compose**, then set:
