@@ -10,6 +10,7 @@
     "build": "npm run sass:build && next build",
     "export": "npm run sass:build && next build",
     "start": "next start -p 3003",
+    "start:standalone": "node .next/standalone/server.js",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "prisma:generate": "prisma generate",

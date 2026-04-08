@@ -2,7 +2,7 @@ FROM node:20-alpine AS base
 
 WORKDIR /app
 
-RUN apk add --no-cache wget
+RUN apk add --no-cache wget openssl libc6-compat
 
 # Install dependencies first for better cache usage
 COPY package.json package-lock.json* ./
@@ -14,7 +14,18 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN npx prisma generate
 RUN npm run build
 
+# Standalone server layout (output: standalone in next.config — do not use `next start`)
+RUN mkdir -p .next/standalone/.next .next/standalone/node_modules && \
+    cp -r .next/static .next/standalone/.next/static && \
+    cp -r public .next/standalone/public && \
+    cp -r node_modules/.prisma .next/standalone/node_modules/.prisma && \
+    cp -r node_modules/@prisma/client .next/standalone/node_modules/@prisma/client
+
+ENV NODE_ENV=production
+ENV PORT=3003
+ENV HOSTNAME=0.0.0.0
+
 EXPOSE 3003
 
-# Runtime command (single container for frontend + backend)
-CMD ["npm", "run", "start"]
+# Worker service overrides this with `npm run worker:broadcast`; keep WORKDIR /app for that.
+CMD ["node", ".next/standalone/server.js"]
