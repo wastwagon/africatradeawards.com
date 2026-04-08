@@ -32,7 +32,13 @@ Use these variables in Coolify:
 
 Reference: `.env.coolify.example`.
 
-**Postgres “unhealthy” on deploy:** The compose file healthcheck uses the database user/db name from **inside** the Postgres container. You must still set **`POSTGRES_USER`**, **`POSTGRES_PASSWORD`**, and **`POSTGRES_DB`** in Coolify (and **`DATABASE_URL`** for the app) to real values — empty values break Postgres init and healthchecks.
+**Postgres “unhealthy” or deploy fails on `depends_on: service_healthy`:**
+
+1. **Set `POSTGRES_PASSWORD` in Coolify** (required). The compose file defaults **`POSTGRES_USER`** / **`POSTGRES_DB`** if omitted (`africa_trade_user` / `africa_trade_awards`); the password has no default. **`DATABASE_URL`** in Coolify should use the **same** user, password, and database name (URL-encode special characters in the password).
+
+2. **Stale data directory:** If an earlier deploy created the Postgres volume with wrong/empty env, Postgres may refuse to start. In Coolify, remove the project’s **postgres** volume (or delete persistent storage for this stack) and redeploy — **this wipes that environment’s DB**; only do this when safe.
+
+3. **Inspect Postgres logs** in Coolify (select the `postgres` service / container), not only the `app` logs.
 
 ## 2) Deploy using compose
 
