@@ -132,6 +132,7 @@ npm run smoke:http -- --base-url http://127.0.0.1:3003
 
 ## Where to get help
 
+- **Architecture / features / doc map:** `docs/PROJECT_OVERVIEW.md`.
 - **Docker / local:** comments in `docker-compose.dev.yml`, this file, `.env.docker.example`.
 - **Coolify / VPS:** `COOLIFY_FULLSTACK_SETUP.md` and Coolify build logs.
 - **Schema / migrations:** `prisma/schema.prisma` and `prisma/migrations/`.

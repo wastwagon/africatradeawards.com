@@ -1,0 +1,2 @@
+# Shell scripts must use LF. CRLF breaks Alpine/BusyBox sh (`set: line 2: illegal option -`).
+*.sh text eol=lf

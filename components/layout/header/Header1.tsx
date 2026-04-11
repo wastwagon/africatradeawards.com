@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import ColorModeToggle from '@/components/elements/ColorModeToggle'
 import { useSiteConfig } from '@/components/site/SiteConfigProvider'
+import { useAuthMe } from '@/hooks/useAuthMe'
+import { defaultDashboardForRoleStr } from '@/lib/role-access'
 import { isPlatformChromePath } from '@/lib/platform-paths'
 
 type Header1Props = {
@@ -22,6 +24,7 @@ export default function Header1({ scroll }: Header1Props) {
 	const pathname = usePathname()
 	const scrolled = Boolean(scroll)
 	const { headerDateLine, headerVenueLine, eventLiveStreamEnabled } = useSiteConfig()
+	const { user: authUser, loading: authLoading } = useAuthMe()
 
 	const isActive = (href: string) => {
 		if (href === '/') return pathname === '/' || pathname === ''
@@ -151,9 +154,28 @@ export default function Header1({ scroll }: Header1Props) {
 								<i className="fa-brands fa-linkedin-in" />
 							</a>
 						</div>
-						<Link href="/login/" className="ata-nav2__ghost">
-							Sign In
-						</Link>
+						{authLoading && !authUser ? (
+							<span
+								className="ata-nav2__ghost ata-nav2__account-icon"
+								aria-label="Loading account"
+								aria-busy="true"
+							>
+								<i className="fa-solid fa-spinner fa-spin" aria-hidden />
+							</span>
+						) : authUser ? (
+							<Link
+								href={defaultDashboardForRoleStr(authUser.role)}
+								className="ata-nav2__ghost ata-nav2__account-icon"
+								aria-label={`Account — ${authUser.fullName}`}
+								title={authUser.fullName}
+							>
+								<i className="fa-solid fa-circle-user" aria-hidden />
+							</Link>
+						) : (
+							<Link href="/login/" className="ata-nav2__ghost">
+								Sign In
+							</Link>
+						)}
 						{eventLiveStreamEnabled ? (
 							<Link href="/live" className="ata-nav2__ghost">
 								Live
@@ -461,6 +483,17 @@ export default function Header1({ scroll }: Header1Props) {
 				.ata-nav2__ghost:hover {
 					background: rgba(255, 255, 255, 0.1);
 					border-color: rgba(255, 255, 255, 0.5);
+				}
+
+				.ata-nav2__account-icon {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					min-width: 42px;
+					padding-left: 12px;
+					padding-right: 12px;
+					font-size: 1.25rem;
+					line-height: 1;
 				}
 
 				.ata-nav2__cta {
