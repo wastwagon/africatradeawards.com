@@ -66,7 +66,7 @@ export default function AdminEntriesPage() {
   ];
 
   const loadData = useCallback(async () => {
-    const [entryRes, judgeRes] = await Promise.all([fetch("/api/entries"), fetch("/api/users?role=JUDGE")]);
+    const [entryRes, judgeRes] = await Promise.all([fetch("/api/entries"), fetch("/api/users/?role=JUDGE")]);
     if (!entryRes.ok || !judgeRes.ok) {
       setError("Failed to load entries or judges");
       return;

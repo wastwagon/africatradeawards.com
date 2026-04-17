@@ -5,6 +5,7 @@ import { fetchJson, fetchJsonOrThrow, getApiErrorMessage, toErrorMessage } from 
 import useAdminAsyncAction from "@/components/admin/useAdminAsyncAction";
 import useAdminFeedback from "@/components/admin/useAdminFeedback";
 import AdminToastViewport from "@/components/admin/AdminToastViewport";
+import { extractJsonPayloadFromQrScan } from "@/lib/event-qr-scan";
 
 type EventRow = {
   id: string;
@@ -67,8 +68,10 @@ function queueItemId(): string {
 }
 
 function parseScanPayload(raw: string): ScanPayload | null {
+  const json = extractJsonPayloadFromQrScan(raw);
+  if (!json) return null;
   try {
-    const payload = JSON.parse(raw) as ScanPayload;
+    const payload = JSON.parse(json) as ScanPayload;
     if (!payload?.registrationId || !payload?.token) return null;
     return payload;
   } catch {

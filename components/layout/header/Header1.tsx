@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import LogoutButton from '@/components/auth/LogoutButton'
 import ColorModeToggle from '@/components/elements/ColorModeToggle'
 import { useSiteConfig } from '@/components/site/SiteConfigProvider'
 import { useAuthMe } from '@/hooks/useAuthMe'
@@ -163,14 +164,17 @@ export default function Header1({ scroll }: Header1Props) {
 								<i className="fa-solid fa-spinner fa-spin" aria-hidden />
 							</span>
 						) : authUser ? (
-							<Link
-								href={defaultDashboardForRoleStr(authUser.role)}
-								className="ata-nav2__ghost ata-nav2__account-icon"
-								aria-label={`Account — ${authUser.fullName}`}
-								title={authUser.fullName}
-							>
-								<i className="fa-solid fa-circle-user" aria-hidden />
-							</Link>
+							<span className="ata-nav2__account-actions">
+								<Link
+									href={defaultDashboardForRoleStr(authUser.role)}
+									className="ata-nav2__ghost ata-nav2__account-icon"
+									aria-label={`Account — ${authUser.fullName}`}
+									title={authUser.fullName}
+								>
+									<i className="fa-solid fa-circle-user" aria-hidden />
+								</Link>
+								<LogoutButton className="ata-nav2__ghost ata-nav2__logout-label">Log out</LogoutButton>
+							</span>
 						) : (
 							<Link href="/login/" className="ata-nav2__ghost">
 								Sign In
@@ -466,6 +470,12 @@ export default function Header1({ scroll }: Header1Props) {
 					outline-offset: 2px;
 				}
 
+				.ata-nav2__account-actions {
+					display: inline-flex;
+					align-items: center;
+					gap: 6px;
+				}
+
 				.ata-nav2__ghost {
 					font-family: var(--grotesk), system-ui, sans-serif;
 					font-size: 0.74rem;
@@ -480,9 +490,23 @@ export default function Header1({ scroll }: Header1Props) {
 					transition: background 0.2s;
 				}
 
+				button.ata-nav2__ghost {
+					background: transparent;
+					cursor: pointer;
+				}
+
+				button.ata-nav2__ghost:disabled {
+					opacity: 0.7;
+					cursor: wait;
+				}
+
 				.ata-nav2__ghost:hover {
 					background: rgba(255, 255, 255, 0.1);
 					border-color: rgba(255, 255, 255, 0.5);
+				}
+
+				.ata-nav2__logout-label {
+					white-space: nowrap;
 				}
 
 				.ata-nav2__account-icon {

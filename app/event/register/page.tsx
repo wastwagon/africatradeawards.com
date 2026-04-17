@@ -132,8 +132,12 @@ export default function EventRegisterPage() {
             <h3>Your QR pass</h3>
             <Image src={qrDataUrl} alt="Registration QR code" width={240} height={240} style={{ borderRadius: 12 }} />
             <p style={{ marginTop: 10, wordBreak: "break-word", color: "var(--tg-paragraph-color)" }}>
-              Keep this safe: {qrPayload}
+              Scanning with a phone camera opens a short ticket page when the site URL is configured. Raw codes may look like a long
+              number or URL — staff check-in uses the <strong>Admin → Event check-in</strong> scanner with the full QR data.
             </p>
+            {qrPayload ? (
+              <p style={{ marginTop: 8, fontSize: "0.88rem", wordBreak: "break-all", opacity: 0.85 }}>{qrPayload}</p>
+            ) : null}
           </div>
         ) : null}
         <p style={{ marginTop: 20 }}>

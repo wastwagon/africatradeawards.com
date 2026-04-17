@@ -24,7 +24,7 @@ export async function loginAsAdmin(page: Page) {
       secure: url.protocol === "https:",
     },
   ]);
-  const me = await page.request.get("/api/auth/me");
+  const me = await page.request.get("/api/auth/me/");
   expect(me.ok()).toBeTruthy();
   const body = (await me.json()) as {
     user?: { email?: string; role?: string };

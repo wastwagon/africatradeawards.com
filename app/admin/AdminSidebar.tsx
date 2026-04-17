@@ -5,6 +5,7 @@ import Image from "next/image";
 import { UserRole } from "@prisma/client";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import LogoutButton from "@/components/auth/LogoutButton";
 import { useSyncOpenContactCount } from "@/lib/use-sync-open-contact-count";
 import { getAdminNavItems } from "./navigation";
 
@@ -139,11 +140,9 @@ export default function AdminSidebar({
             </div>
           ))}
         </nav>
-        <form action="/api/auth/logout" method="post" className="admin-shell__logout-wrap">
-          <button type="submit" className="admin-shell__logout">
-            Log out
-          </button>
-        </form>
+        <div className="admin-shell__logout-wrap">
+          <LogoutButton className="admin-shell__logout">Log out</LogoutButton>
+        </div>
       </aside>
     </div>
   );

@@ -5,6 +5,8 @@ const useWebServer = process.env.PLAYWRIGHT_USE_WEB_SERVER === "true";
 
 export default defineConfig({
   testDir: "./tests/e2e",
+  /** Admin API login + bcrypt can approach 30s on cold Docker dev; keep headroom for follow-up requests. */
+  timeout: 120 * 1000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,

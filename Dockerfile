@@ -14,6 +14,7 @@ COPY . .
 RUN npm run sass:build
 
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_STANDALONE=1
 RUN npx prisma generate
 RUN npm run build
 

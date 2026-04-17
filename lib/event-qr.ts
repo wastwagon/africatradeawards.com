@@ -48,10 +48,25 @@ export function buildEventQrPayload(eventId: string, registrationId: string, tok
     eventId,
     registrationId,
     token,
+    hint: eventQrHint(token),
     iat,
     sig,
     v: QR_SIGNING_VERSION,
   });
+}
+
+/**
+ * Value encoded in the QR image. When NEXT_PUBLIC_SITE_URL or PUBLIC_BASE_URL is set,
+ * uses a site URL so phone cameras open a human-readable ticket page; otherwise raw JSON
+ * (admin check-in scanner accepts both).
+ */
+export function buildEventQrScanValue(eventId: string, registrationId: string, token: string): string {
+  const json = buildEventQrPayload(eventId, registrationId, token);
+  const base = process.env.NEXT_PUBLIC_SITE_URL || process.env.PUBLIC_BASE_URL;
+  if (!base || !String(base).trim()) return json;
+  const root = String(base).replace(/\/$/, "");
+  const t = Buffer.from(json, "utf8").toString("base64url");
+  return `${root}/event/qr/?t=${encodeURIComponent(t)}`;
 }
 
 export function verifyEventQrSignature(input: {

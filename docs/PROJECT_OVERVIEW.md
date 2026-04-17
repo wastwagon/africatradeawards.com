@@ -1,6 +1,6 @@
 # Africa Trade Awards — project overview
 
-This document is the maintained **feature and architecture inventory** for the repository. For setup and workflows, use [README.md](../README.md) and [CONTRIBUTING.md](../CONTRIBUTING.md). For production deployment, use [COOLIFY_FULLSTACK_SETUP.md](../COOLIFY_FULLSTACK_SETUP.md).
+This document is the maintained **feature and architecture inventory** for the repository. For setup and workflows, use [README.md](../README.md) and [CONTRIBUTING.md](../CONTRIBUTING.md). For production deployment, use [COOLIFY_FULLSTACK_SETUP.md](../COOLIFY_FULLSTACK_SETUP.md). For stakeholder gap analysis vs shipped features, see [docs/BOSS_FEEDBACK_VERIFICATION.md](./BOSS_FEEDBACK_VERIFICATION.md).
 
 ## What this repository is
 
