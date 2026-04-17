@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useState } from "react";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import PlatformSiteChrome from "@/components/platform/PlatformSiteChrome";
 
@@ -16,6 +16,14 @@ type Assignment = {
   };
 };
 
+const CRITERIA_OPTIONS = [
+  { value: "impact", label: "Impact" },
+  { value: "innovation", label: "Innovation" },
+  { value: "execution", label: "Execution" },
+  { value: "sustainability", label: "Sustainability" },
+  { value: "governance", label: "Governance" },
+] as const;
+
 export default function JudgePortalPage() {
   const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [selectedEntryId, setSelectedEntryId] = useState("");
@@ -27,9 +35,10 @@ export default function JudgePortalPage() {
   const [stages, setStages] = useState<Array<{ id: string; name: string; stageOrder: number }>>([]);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const feedbackRef = useRef<HTMLDivElement | null>(null);
 
   const loadAssignments = useCallback(async () => {
-    const res = await fetch("/api/judging/entries");
+    const res = await fetch("/api/judging/entries/");
     if (!res.ok) {
       setError("Failed to load assignments");
       return;
@@ -39,7 +48,7 @@ export default function JudgePortalPage() {
     if (!selectedEntryId && data.assignments?.[0]?.entry?.id) {
       setSelectedEntryId(data.assignments[0].entry.id);
     }
-    const stageRes = await fetch("/api/judging/stages");
+    const stageRes = await fetch("/api/judging/stages/");
     if (stageRes.ok) {
       const stageData = await stageRes.json();
       setStages(stageData.stages ?? []);
@@ -53,10 +62,36 @@ export default function JudgePortalPage() {
     void loadAssignments();
   }, [loadAssignments]);
 
+  useEffect(() => {
+    if (!error && !success) return;
+    feedbackRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [error, success]);
+
+  useEffect(() => {
+    if (!selectedEntryId || !criteria) return;
+    void (async () => {
+      const params = new URLSearchParams({
+        entryId: selectedEntryId,
+        criteria,
+      });
+      if (selectedStageId) params.set("stageId", selectedStageId);
+      const res = await fetch(`/api/judging/scores/?${params.toString()}`, { cache: "no-store" });
+      if (!res.ok) return;
+      const body = await res.json().catch(() => ({}));
+      if (!body?.score) {
+        setScore(7);
+        setComment("");
+        return;
+      }
+      if (typeof body.score.value === "number") setScore(body.score.value);
+      setComment(typeof body.score.comment === "string" ? body.score.comment : "");
+    })();
+  }, [selectedEntryId, selectedStageId, criteria]);
+
   async function submitScore(e: FormEvent) {
     e.preventDefault();
     setSuccess(null);
-    const res = await fetch("/api/judging/scores", {
+    const res = await fetch("/api/judging/scores/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -106,8 +141,10 @@ export default function JudgePortalPage() {
             <h1 className="platform-title">Assigned entries</h1>
             <p className="platform-lead">Review nominations allocated to you, record scores by criterion, and file recusals when needed.</p>
           </div>
-          {error ? <p className="platform-msg-error">{error}</p> : null}
-          {success ? <p className="platform-msg-ok">{success}</p> : null}
+          <div ref={feedbackRef} style={{ scrollMarginTop: 16 }}>
+            {error ? <p className="platform-msg-error">{error}</p> : null}
+            {success ? <p className="platform-msg-ok">{success}</p> : null}
+          </div>
 
           <section className="platform-card" style={{ marginBottom: 24 }}>
             <h2 className="platform-title" style={{ fontSize: "1.2rem", marginBottom: 12 }}>
@@ -141,7 +178,13 @@ export default function JudgePortalPage() {
               </label>
               <label className="platform-field">
                 Criterion
-                <input value={criteria} onChange={(e) => setCriteria(e.target.value)} placeholder="e.g. impact" required />
+                <select value={criteria} onChange={(e) => setCriteria(e.target.value)} required>
+                  {CRITERIA_OPTIONS.map((criterion) => (
+                    <option key={criterion.value} value={criterion.value}>
+                      {criterion.label}
+                    </option>
+                  ))}
+                </select>
               </label>
               <label className="platform-field">
                 Stage

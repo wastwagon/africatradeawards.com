@@ -41,5 +41,7 @@ export async function GET() {
   return NextResponse.json({
     ok: true,
     entries: mapped,
+    requireChallenge: process.env.VOTING_REQUIRE_CHALLENGE !== "false",
+    requireEmailVerification: process.env.VOTING_REQUIRE_EMAIL_VERIFICATION === "true",
   });
 }

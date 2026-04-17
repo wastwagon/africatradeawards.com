@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
+import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import PlatformSiteChrome from "@/components/platform/PlatformSiteChrome";
 
@@ -32,13 +32,21 @@ export default function EntrantPortalPage() {
   const [summary, setSummary] = useState("");
   const [selectedEntryId, setSelectedEntryId] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const feedbackRef = useRef<HTMLDivElement | null>(null);
 
   const selectedProgram = useMemo(() => programs.find((p) => p.id === selectedProgramId) ?? null, [programs, selectedProgramId]);
+  const selectedEntry = useMemo(() => entries.find((e) => e.id === selectedEntryId) ?? null, [entries, selectedEntryId]);
+  const currentFiles = useMemo(() => {
+    if (!selectedEntry || !selectedEntry.submissionData) return [];
+    const files = (selectedEntry.submissionData as Record<string, unknown>).files;
+    return Array.isArray(files) ? files : [];
+  }, [selectedEntry]);
 
   const loadEntries = useCallback(async () => {
-    const res = await fetch("/api/entries");
+    const res = await fetch("/api/entries/");
     if (!res.ok) {
       setError("Failed to load entries");
       return;
@@ -48,7 +56,7 @@ export default function EntrantPortalPage() {
   }, []);
 
   const loadMetadata = useCallback(async () => {
-    const res = await fetch("/api/portal/metadata");
+    const res = await fetch("/api/portal/metadata/");
     if (!res.ok) {
       setError("Failed to load program metadata");
       return;
@@ -63,17 +71,22 @@ export default function EntrantPortalPage() {
   }, [loadEntries, loadMetadata]);
 
   useEffect(() => {
-    const entry = entries.find((e) => e.id === selectedEntryId);
-    if (!entry) return;
-    setTitle(entry.title || "");
-    const saved = (entry.submissionData?.summary as string) || "";
+    if (!selectedEntry) return;
+    setTitle(selectedEntry.title || "");
+    const saved = (selectedEntry.submissionData?.summary as string) || "";
     setSummary(saved);
-  }, [selectedEntryId, entries]);
+  }, [selectedEntry]);
+
+  useEffect(() => {
+    if (!error && !message) return;
+    feedbackRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [error, message]);
 
   async function createEntry(e: FormEvent) {
     e.preventDefault();
     setError(null);
-    const res = await fetch("/api/entries", {
+    setMessage(null);
+    const res = await fetch("/api/entries/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -91,34 +104,52 @@ export default function EntrantPortalPage() {
     }
     setTitle("");
     setSummary("");
+    setMessage("Draft entry created.");
     await loadEntries();
   }
 
   const saveDraft = useCallback(async () => {
     if (!selectedEntryId) return;
+    setError(null);
+    setMessage(null);
     setSaving(true);
-    const res = await fetch(`/api/entries/${selectedEntryId}`, {
+    const existingData = (selectedEntry?.submissionData ?? {}) as Record<string, unknown>;
+    const res = await fetch(`/api/entries/${selectedEntryId}/`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         title,
-        submissionData: { summary },
+        submissionData: {
+          ...existingData,
+          summary,
+        },
         action: "save_draft",
       }),
     });
     setSaving(false);
-    if (!res.ok) setError("Failed to save draft");
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      setError(body.error ?? "Failed to save draft");
+      return;
+    }
+    setMessage("Draft saved.");
     await loadEntries();
-  }, [loadEntries, selectedEntryId, summary, title]);
+  }, [loadEntries, selectedEntry?.submissionData, selectedEntryId, summary, title]);
 
   async function submitEntry() {
     if (!selectedEntryId) return;
-    const res = await fetch(`/api/entries/${selectedEntryId}`, {
+    setError(null);
+    setMessage(null);
+    const existingData = (selectedEntry?.submissionData ?? {}) as Record<string, unknown>;
+    const res = await fetch(`/api/entries/${selectedEntryId}/`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         title,
-        submissionData: { summary },
+        submissionData: {
+          ...existingData,
+          summary,
+        },
         action: "submit",
       }),
     });
@@ -127,6 +158,7 @@ export default function EntrantPortalPage() {
       setError(body.error ?? "Failed to submit");
       return;
     }
+    setMessage("Entry submitted.");
     await loadEntries();
   }
 
@@ -135,11 +167,13 @@ export default function EntrantPortalPage() {
       setError("Choose an existing entry before uploading");
       return;
     }
+    setError(null);
+    setMessage(null);
     setUploading(true);
     const formData = new FormData();
     formData.append("entryId", selectedEntryId);
     formData.append("file", file);
-    const res = await fetch("/api/uploads/entry-files", {
+    const res = await fetch("/api/uploads/entry-files/", {
       method: "POST",
       body: formData,
     });
@@ -149,16 +183,9 @@ export default function EntrantPortalPage() {
       setError(body.error ?? "Upload failed");
       return;
     }
+    setMessage("File uploaded.");
     await loadEntries();
   }
-
-  useEffect(() => {
-    if (!selectedEntryId) return;
-    const timer = setTimeout(() => {
-      void saveDraft();
-    }, 1200);
-    return () => clearTimeout(timer);
-  }, [title, summary, selectedEntryId, saveDraft]);
 
   return (
     <PlatformSiteChrome>
@@ -168,10 +195,13 @@ export default function EntrantPortalPage() {
             <p className="platform-eyebrow">Entrant workspace</p>
             <h1 className="platform-title">Your entries</h1>
             <p className="platform-lead">
-              Create entries, auto-save drafts, upload files, and submit when your season window is open.
+              Create entries, save drafts, upload files, and submit when your season window is open.
             </p>
           </div>
-          {error ? <p className="platform-msg-error">{error}</p> : null}
+          <div ref={feedbackRef} style={{ scrollMarginTop: 16 }}>
+            {error ? <p className="platform-msg-error">{error}</p> : null}
+            {message ? <p className="platform-msg-ok">{message}</p> : null}
+          </div>
 
           <section className="platform-card" style={{ marginBottom: 24 }}>
             <h2 className="platform-title" style={{ fontSize: "1.2rem", marginBottom: 16 }}>
@@ -269,6 +299,11 @@ export default function EntrantPortalPage() {
                   />
                 </label>
                 {uploading ? <p className="platform-muted">Uploading…</p> : null}
+                {currentFiles.length ? (
+                  <div className="platform-muted" style={{ fontSize: "0.92rem" }}>
+                    Uploaded files: {currentFiles.length}
+                  </div>
+                ) : null}
               </div>
             ) : null}
           </section>

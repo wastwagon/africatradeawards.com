@@ -2,15 +2,22 @@ import nodemailer from "nodemailer";
 import { UserRole } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
-function createTransport() {
+/** True when Nodemailer can build a transport (same guard as send helpers). */
+export function isSmtpConfigured(): boolean {
   const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT ?? 587);
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
+  return Boolean(host?.trim() && user?.trim() && pass?.trim());
+}
 
-  if (!host || !user || !pass) {
+function createTransport() {
+  if (!isSmtpConfigured()) {
     throw new Error("SMTP configuration is missing");
   }
+  const host = process.env.SMTP_HOST!.trim();
+  const port = Number(process.env.SMTP_PORT ?? 587);
+  const user = process.env.SMTP_USER!.trim();
+  const pass = process.env.SMTP_PASS!.trim();
 
   return nodemailer.createTransport({
     host,

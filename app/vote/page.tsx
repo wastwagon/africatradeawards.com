@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import PlatformSiteChrome from "@/components/platform/PlatformSiteChrome";
@@ -15,6 +15,10 @@ type VoteEntry = {
   season?: { year: number };
 };
 
+function delay(ms: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, ms));
+}
+
 function PublicVotingInner() {
   const searchParams = useSearchParams();
   const [entries, setEntries] = useState<VoteEntry[]>([]);
@@ -25,10 +29,19 @@ function PublicVotingInner() {
   const [selectedEntryId, setSelectedEntryId] = useState("");
   const [voteToken, setVoteToken] = useState("");
   const [challengeToken, setChallengeToken] = useState("");
-  const [challengeReadyAt, setChallengeReadyAt] = useState<number>(0);
+  const [challengeEntryId, setChallengeEntryId] = useState("");
+  const [challengeReadyAt, setChallengeReadyAt] = useState(0);
+  const [requireChallenge, setRequireChallenge] = useState(true);
   const [honeypot, setHoneypot] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const [isCasting, setIsCasting] = useState(false);
+  const [votingEntryId, setVotingEntryId] = useState<string | null>(null);
+  const challengeCacheRef = useRef<{ token: string; entryId: string; readyAt: number }>({
+    token: "",
+    entryId: "",
+    readyAt: 0,
+  });
   const fingerprint = useMemo(
     () =>
       typeof navigator !== "undefined"
@@ -37,14 +50,22 @@ function PublicVotingInner() {
     [],
   );
 
+  function syncChallengeState(token: string, entryId: string, readyAt: number) {
+    challengeCacheRef.current = { token, entryId, readyAt };
+    setChallengeToken(token);
+    setChallengeEntryId(entryId);
+    setChallengeReadyAt(readyAt);
+  }
+
   async function loadEntries() {
-    const res = await fetch("/api/voting/entries");
+    const res = await fetch("/api/voting/entries/");
     if (!res.ok) {
       setError("Failed to load entries");
       return;
     }
     const data = await res.json();
     setEntries(data.entries ?? []);
+    setRequireChallenge(data.requireChallenge !== false);
   }
 
   useEffect(() => {
@@ -53,52 +74,92 @@ function PublicVotingInner() {
     if (token) setVoteToken(token);
   }, [searchParams]);
 
-  useEffect(() => {
-    if (!selectedEntryId) return;
-    void (async () => {
-      const res = await fetch("/api/voting/challenge", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          entryId: selectedEntryId,
-          voterEmail: email || undefined,
-        }),
-      });
-      if (!res.ok) return;
-      const data = await res.json();
-      setChallengeToken(data.challengeToken ?? "");
-      setChallengeReadyAt(Date.now() + (data.minWaitSeconds ?? 5) * 1000);
-    })();
-  }, [selectedEntryId, email]);
+  /** Ensures a valid challenge JWT for entryId and waits until server dwell passes. */
+  async function ensureChallengeForEntry(entryId: string): Promise<boolean> {
+    const now = Date.now();
+    const c = challengeCacheRef.current;
+    if (c.token && c.entryId === entryId && now >= c.readyAt) {
+      syncChallengeState(c.token, c.entryId, c.readyAt);
+      return true;
+    }
+    if (c.token && c.entryId === entryId && now < c.readyAt) {
+      await delay(Math.max(0, c.readyAt - now) + 150);
+      return true;
+    }
 
-  async function castVote(entryId: string) {
-    setError(null);
-    setMessage(null);
-    const res = await fetch("/api/voting/cast", {
+    const res = await fetch("/api/voting/challenge/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         entryId,
         voterEmail: email || undefined,
-        verificationId: verificationId || undefined,
-        voteToken: voteToken || undefined,
-        challengeToken: challengeToken || undefined,
-        fingerprint: fingerprint || undefined,
-        hp: honeypot,
       }),
     });
-    const body = await res.json().catch(() => ({}));
     if (!res.ok) {
-      setError((body.error as string) ?? "Vote failed");
-      return;
+      return false;
     }
-    setMessage(
-      body.pendingReview
-        ? (typeof body.message === "string" ? body.message : null) ??
-            "Your vote is held for fraud review. It will count after an admin approves it."
-        : "Vote submitted.",
-    );
-    await loadEntries();
+    const data = await res.json();
+    const token = typeof data.challengeToken === "string" ? data.challengeToken : "";
+    const resolvedEntryId = typeof data.entryId === "string" ? data.entryId : entryId;
+    const minSec = typeof data.minWaitSeconds === "number" ? data.minWaitSeconds : 5;
+    const readyAt = Date.now() + minSec * 1000;
+    syncChallengeState(token, resolvedEntryId, readyAt);
+    await delay(0);
+    if (Date.now() < readyAt) {
+      await delay(Math.max(0, readyAt - Date.now()) + 150);
+    }
+    return true;
+  }
+
+  async function castVote(entryId: string) {
+    if (isCasting) return;
+    setError(null);
+    setMessage(null);
+    setIsCasting(true);
+    setVotingEntryId(entryId);
+    try {
+      if (requireChallenge) {
+        const ok = await ensureChallengeForEntry(entryId);
+        if (!ok) {
+          setError("Could not start the voting security check. Please try again.");
+          return;
+        }
+      }
+
+      const res = await fetch("/api/voting/cast/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entryId,
+          voterEmail: email || undefined,
+          verificationId: verificationId || undefined,
+          voteToken: voteToken || undefined,
+          challengeToken: requireChallenge ? challengeCacheRef.current.token : undefined,
+          fingerprint: fingerprint || undefined,
+          hp: honeypot,
+        }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        const raw = (body.error as string) ?? "Vote failed";
+        if (raw.includes("Please wait a few seconds")) {
+          setError("Almost ready — wait a few seconds after the security check, then try again.");
+        } else {
+          setError(raw);
+        }
+        return;
+      }
+      setMessage(
+        body.pendingReview
+          ? (typeof body.message === "string" ? body.message : null) ??
+              "Your vote is held for fraud review. It will count after an admin approves it."
+          : "Vote submitted.",
+      );
+      await loadEntries();
+    } finally {
+      setIsCasting(false);
+      setVotingEntryId(null);
+    }
   }
 
   async function requestCode() {
@@ -108,7 +169,7 @@ function PublicVotingInner() {
       setError("Select an entry and enter email first");
       return;
     }
-    const res = await fetch("/api/voting/request-code", {
+    const res = await fetch("/api/voting/request-code/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ entryId: selectedEntryId, voterEmail: email }),
@@ -119,6 +180,13 @@ function PublicVotingInner() {
       return;
     }
     setVerificationId(body.verificationId);
+    if (typeof body.devCode === "string" && /^[0-9]{6}$/.test(body.devCode)) {
+      setVerificationCode(body.devCode);
+      setMessage(
+        "Local bypass (no SMTP): code filled below. Use Verify code, then vote. Remove VOTING_DEV_EMAIL_BYPASS in production.",
+      );
+      return;
+    }
     setMessage("Verification code sent to your email.");
   }
 
@@ -129,7 +197,7 @@ function PublicVotingInner() {
       setError("Select an entry and enter email first");
       return;
     }
-    const res = await fetch("/api/voting/request-link", {
+    const res = await fetch("/api/voting/request-link/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ entryId: selectedEntryId, voterEmail: email }),
@@ -139,13 +207,19 @@ function PublicVotingInner() {
       setError((body.error as string) ?? "Could not send vote link");
       return;
     }
+    if (typeof body.devVoteUrl === "string" && body.devVoteUrl.startsWith("http")) {
+      setMessage(
+        `Local bypass (no SMTP): open this link in this browser: ${body.devVoteUrl} — remove VOTING_DEV_EMAIL_BYPASS in production.`,
+      );
+      return;
+    }
     setMessage("Secure vote link sent to your email.");
   }
 
   async function verifyCode() {
     setError(null);
     setMessage(null);
-    const res = await fetch("/api/voting/verify-code", {
+    const res = await fetch("/api/voting/verify-code/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ verificationId, code: verificationCode }),
@@ -158,6 +232,8 @@ function PublicVotingInner() {
     setVerifiedEntryId(body.entryId);
     setMessage("Email verified. You can now vote.");
   }
+
+  const dwellActive = challengeReadyAt > Date.now() && Boolean(challengeEntryId);
 
   return (
     <PlatformSiteChrome>
@@ -226,39 +302,39 @@ function PublicVotingInner() {
             </div>
             {error ? <p className="platform-msg-error">{error}</p> : null}
             {message ? <p className="platform-msg-ok">{message}</p> : null}
-            {challengeReadyAt > Date.now() ? (
+            {dwellActive ? (
               <p className="platform-muted">
-                Security check in progress. You can vote in about {Math.ceil((challengeReadyAt - Date.now()) / 1000)} seconds.
+                Security check for this vote: wait about {Math.ceil((challengeReadyAt - Date.now()) / 1000)} seconds, then
+                use Vote on the same entry.
               </p>
             ) : null}
           </div>
 
           <div className="platform-grid">
-            {entries.map((entry) => (
-              <div key={entry.id} className="platform-card">
-                <h3 className="platform-title" style={{ fontSize: "1.15rem", marginBottom: 8 }}>
-                  {entry.title}
-                </h3>
-                <p className="platform-muted" style={{ marginBottom: 8 }}>
-                  {entry.program?.name} · {entry.category?.name} · {entry.season?.year} · {entry.status}
-                </p>
-                <p className="platform-muted" style={{ marginBottom: 16 }}>
-                  <strong>{entry.voteCount}</strong> validated votes
-                </p>
-                <button
-                  type="button"
-                  className="vl-btn1"
-                  onClick={() => castVote(entry.id)}
-                  disabled={
-                    Boolean(verificationId && verifiedEntryId && verifiedEntryId !== entry.id) ||
-                    !challengeToken ||
-                    challengeReadyAt > Date.now()
-                  }
-                >
-                  Vote for this entry
-                </button>
-              </div>
-            ))}
+            {entries.map((entry) => {
+              const blockedByVerification = Boolean(verificationId && verifiedEntryId && verifiedEntryId !== entry.id);
+              const votingThis = isCasting && votingEntryId === entry.id;
+              const votingOther = isCasting && votingEntryId !== null && votingEntryId !== entry.id;
+              const blockedByWarmup = dwellActive && challengeEntryId !== entry.id;
+              const disabled = blockedByVerification || votingOther || blockedByWarmup || votingThis;
+
+              return (
+                <div key={entry.id} className="platform-card">
+                  <h3 className="platform-title" style={{ fontSize: "1.15rem", marginBottom: 8 }}>
+                    {entry.title}
+                  </h3>
+                  <p className="platform-muted" style={{ marginBottom: 8 }}>
+                    {entry.program?.name} · {entry.category?.name} · {entry.season?.year} · {entry.status}
+                  </p>
+                  <p className="platform-muted" style={{ marginBottom: 16 }}>
+                    <strong>{entry.voteCount}</strong> validated votes
+                  </p>
+                  <button type="button" className="vl-btn1" onClick={() => castVote(entry.id)} disabled={disabled}>
+                    {votingThis ? "Submitting…" : "Vote for this entry"}
+                  </button>
+                </div>
+              );
+            })}
           </div>
 
           <p className="platform-muted text-center" style={{ marginTop: 32, marginBottom: 0 }}>

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { buildOnsiteReport } from "@/lib/event-onsite-report";
+import { isSmtpConfigured } from "@/lib/email";
 
 export type OpsReadinessItem = {
   id: string;
@@ -37,7 +38,7 @@ export async function buildEventOpsReadiness(eventId: string): Promise<OpsReadin
     };
   }
 
-  const smtpConfigured = Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+  const smtpConfigured = isSmtpConfigured();
   checks.push({
     id: "smtp_config",
     level: smtpConfigured ? "ok" : "warn",
