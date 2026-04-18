@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createHash } from "node:crypto";
 import { z } from "zod";
-import { getSessionCookieName, signSessionToken, verifyPassword } from "@/lib/auth";
+import { getSessionCookieName, isSessionCookieSecure, signSessionToken, verifyPassword } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit } from "@/lib/rate-limit";
 
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
   response.cookies.set(getSessionCookieName(), token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: isSessionCookieSecure(),
     maxAge: 60 * 60 * 24 * 7,
     path: "/",
   });
