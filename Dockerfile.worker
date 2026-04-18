@@ -1,0 +1,17 @@
+# Broadcast queue worker only (no Next.js build). Keeps Coolify builds fast and avoids
+# duplicating the app image’s standalone layout for a service that only runs `broadcast-worker.js`.
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache openssl
+
+COPY package.json package-lock.json* ./
+RUN npm ci --omit=dev
+
+COPY prisma ./prisma
+COPY scripts/broadcast-worker.js ./scripts/
+
+RUN npx prisma generate
+
+CMD ["node", "scripts/broadcast-worker.js"]

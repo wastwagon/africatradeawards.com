@@ -79,9 +79,8 @@ services:
   worker:
     build:
       context: .
-      dockerfile: Dockerfile.fullstack
+      dockerfile: Dockerfile.worker
     container_name: africa-trade-awards-worker
-    command: ["npm", "run", "worker:broadcast"]
     environment:
       NODE_ENV: production
       DATABASE_URL: postgresql://${POSTGRES_USER:-africa_trade_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-africa_trade_awards}
