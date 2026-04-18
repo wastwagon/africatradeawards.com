@@ -8,7 +8,7 @@ RUN apk add --no-cache wget openssl libc6-compat
 COPY package.json package-lock.json* ./
 RUN npm ci
 
-# Copy source and build app
+# Copy source and build app (default Next output — use `next start`, not standalone server.js)
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npx prisma generate
