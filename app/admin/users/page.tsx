@@ -46,7 +46,7 @@ export default function AdminCreateUserPage() {
     setLoadingUsers(true);
     setError(null);
     const query = roleFilter === "ALL" ? "" : `?role=${roleFilter}`;
-    const res = await fetch(`/api/users${query}`, { cache: "no-store" });
+    const res = await fetch(`/api/users/${query}`, { cache: "no-store" });
     const body = await res.json().catch(() => ({}));
     setLoadingUsers(false);
     if (!res.ok) {
@@ -74,7 +74,7 @@ export default function AdminCreateUserPage() {
     setLoading(true);
     setError(null);
     setMessage(null);
-    const res = await fetch("/api/users", {
+    const res = await fetch("/api/users/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password, fullName, role }),
@@ -113,7 +113,7 @@ export default function AdminCreateUserPage() {
       return;
     }
 
-    const res = await fetch("/api/users", {
+    const res = await fetch("/api/users/", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -131,7 +131,7 @@ export default function AdminCreateUserPage() {
   async function impersonateUser(user: UserRow) {
     setImpersonatingId(user.id);
     setError(null);
-    const res = await fetch("/api/auth/impersonate", {
+    const res = await fetch("/api/auth/impersonate/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: user.id }),

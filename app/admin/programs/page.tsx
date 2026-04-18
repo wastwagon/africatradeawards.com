@@ -20,6 +20,10 @@ export default function AdminProgramsPage() {
   const [seasonYear, setSeasonYear] = useState(new Date().getFullYear());
   const [seasonStart, setSeasonStart] = useState("");
   const [seasonEnd, setSeasonEnd] = useState("");
+  const [editingSeasonId, setEditingSeasonId] = useState<string | null>(null);
+  const [editSeasonYear, setEditSeasonYear] = useState(new Date().getFullYear());
+  const [editSeasonStart, setEditSeasonStart] = useState("");
+  const [editSeasonEnd, setEditSeasonEnd] = useState("");
 
   const [categoryName, setCategoryName] = useState("");
   const [categorySlug, setCategorySlug] = useState("");
@@ -63,6 +67,10 @@ export default function AdminProgramsPage() {
     }
   }, [selectedProgramId, loadProgramMeta]);
 
+  useEffect(() => {
+    setEditingSeasonId(null);
+  }, [selectedProgramId]);
+
   async function createProgram(e: FormEvent) {
     e.preventDefault();
     setError(null);
@@ -104,6 +112,39 @@ export default function AdminProgramsPage() {
     }
     setSeasonStart("");
     setSeasonEnd("");
+    await loadProgramMeta(selectedProgramId);
+  }
+
+  function beginEditSeason(s: Season) {
+    setEditingSeasonId(s.id);
+    setEditSeasonYear(s.year);
+    setEditSeasonStart(new Date(s.startDate).toISOString().slice(0, 10));
+    setEditSeasonEnd(new Date(s.endDate).toISOString().slice(0, 10));
+  }
+
+  function cancelEditSeason() {
+    setEditingSeasonId(null);
+  }
+
+  async function updateSeason(e: FormEvent) {
+    e.preventDefault();
+    if (!selectedProgramId || !editingSeasonId) return;
+    setError(null);
+    const res = await fetch(`/api/programs/${selectedProgramId}/seasons/${editingSeasonId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        year: editSeasonYear,
+        startDate: new Date(editSeasonStart).toISOString(),
+        endDate: new Date(editSeasonEnd).toISOString(),
+      }),
+    });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setError(typeof body.error === "string" ? body.error : "Could not update season");
+      return;
+    }
+    setEditingSeasonId(null);
     await loadProgramMeta(selectedProgramId);
   }
 
@@ -178,13 +219,44 @@ export default function AdminProgramsPage() {
               Add Season
             </button>
           </form>
-          <ul>
+          <ul style={{ listStyle: "none", paddingLeft: 0 }}>
             {seasons.map((s) => (
-              <li key={s.id}>
+              <li key={s.id} style={{ marginBottom: 8 }}>
                 {s.year} ({new Date(s.startDate).toLocaleDateString()} - {new Date(s.endDate).toLocaleDateString()})
+                <button
+                  type="button"
+                  onClick={() => beginEditSeason(s)}
+                  style={{ marginLeft: 10, cursor: "pointer" }}
+                >
+                  Edit
+                </button>
               </li>
             ))}
           </ul>
+          {editingSeasonId ? (
+            <form
+              onSubmit={updateSeason}
+              className="admin-form"
+              style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.12)" }}
+            >
+              <h3 style={{ marginTop: 0, fontSize: "1rem" }}>Edit season</h3>
+              <input
+                type="number"
+                placeholder="Year"
+                value={editSeasonYear}
+                onChange={(e) => setEditSeasonYear(Number(e.target.value))}
+                required
+              />
+              <input type="date" value={editSeasonStart} onChange={(e) => setEditSeasonStart(e.target.value)} required />
+              <input type="date" value={editSeasonEnd} onChange={(e) => setEditSeasonEnd(e.target.value)} required />
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button type="submit">Save season</button>
+                <button type="button" onClick={cancelEditSeason}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          ) : null}
         </div>
 
         <div className="admin-panel">

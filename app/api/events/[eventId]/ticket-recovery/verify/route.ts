@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { hashEventRecoveryCode } from "@/lib/event-recovery";
-import { buildEventQrPayload, createEventQrToken, eventQrHint, eventQrSvgDataUrl, hashEventQrToken } from "@/lib/event-qr";
+import { buildEventQrScanValue, createEventQrToken, eventQrHint, eventQrSvgDataUrl, hashEventQrToken } from "@/lib/event-qr";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { getClientIp, hashIp } from "@/lib/vote-security";
 
@@ -63,7 +63,7 @@ export async function POST(
     }),
   ]);
 
-  const qrPayload = buildEventQrPayload(params.eventId, verification.registrationId, token);
+  const qrPayload = buildEventQrScanValue(params.eventId, verification.registrationId, token);
   const qrDataUrl = await eventQrSvgDataUrl(qrPayload);
   return NextResponse.json({
     ok: true,

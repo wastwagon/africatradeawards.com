@@ -2,10 +2,15 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit } from "@/lib/rate-limit";
-import { sendVotingVerificationEmail } from "@/lib/email";
+import { isSmtpConfigured, sendVotingVerificationEmail } from "@/lib/email";
 import { generateVoteCode, getClientIp, hashIp, hashVoteCode } from "@/lib/vote-security";
 
 export { dynamic } from "@/lib/force-dynamic-api";
+
+/** Local QA only: never set VOTING_DEV_EMAIL_BYPASS=true in production. */
+function votingDevEmailBypass(): boolean {
+  return process.env.VOTING_DEV_EMAIL_BYPASS === "true";
+}
 
 const schema = z.object({
   entryId: z.string().min(1),
@@ -16,6 +21,16 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
   const parsed = schema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
+
+  if (!isSmtpConfigured() && !votingDevEmailBypass()) {
+    return NextResponse.json(
+      {
+        error:
+          "Email delivery is not configured on this server. Set SMTP_HOST, SMTP_USER, and SMTP_PASS (and optionally SMTP_FROM), or set VOTING_DEV_EMAIL_BYPASS=true for local testing only (see .env.example).",
+      },
+      { status: 503 },
+    );
+  }
 
   const ip = getClientIp(request.headers);
   const ipHash = hashIp(ip);
@@ -47,11 +62,21 @@ export async function POST(request: Request) {
     select: { id: true, expiresAt: true },
   });
 
-  await sendVotingVerificationEmail({
-    to: parsed.data.voterEmail.toLowerCase(),
-    code,
-    entryTitle: entry.title,
-  });
+  if (isSmtpConfigured()) {
+    await sendVotingVerificationEmail({
+      to: parsed.data.voterEmail.toLowerCase(),
+      code,
+      entryTitle: entry.title,
+    });
+    return NextResponse.json({ ok: true, verificationId: verification.id, expiresAt: verification.expiresAt });
+  }
 
-  return NextResponse.json({ ok: true, verificationId: verification.id, expiresAt: verification.expiresAt });
+  // Dev bypass: no SMTP; code returned in response for local QA only.
+  return NextResponse.json({
+    ok: true,
+    verificationId: verification.id,
+    expiresAt: verification.expiresAt,
+    devCode: code,
+    devBypass: true,
+  });
 }

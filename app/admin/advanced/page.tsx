@@ -23,6 +23,17 @@ export default function AdminAdvancedPage() {
   const [sendAt, setSendAt] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [smtpConfigured, setSmtpConfigured] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      const smtpRes = await fetch("/api/communications/broadcast/");
+      if (smtpRes.ok) {
+        const smtpData = await smtpRes.json().catch(() => null);
+        if (typeof smtpData?.smtpConfigured === "boolean") setSmtpConfigured(smtpData.smtpConfigured);
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -88,7 +99,7 @@ export default function AdminAdvancedPage() {
   async function queueBroadcast(e: FormEvent) {
     e.preventDefault();
     setSuccess(null);
-    const res = await fetch("/api/communications/broadcast", {
+    const res = await fetch("/api/communications/broadcast/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -168,6 +179,12 @@ export default function AdminAdvancedPage() {
 
       <section>
         <h2>Broadcast Queue</h2>
+        {smtpConfigured === false ? (
+          <p className="admin-error" role="status">
+            SMTP is not configured (set SMTP_HOST, SMTP_USER, SMTP_PASS, and optionally SMTP_FROM). Queued jobs will fail
+            until email is enabled on the server.
+          </p>
+        ) : null}
         <form onSubmit={queueBroadcast} className="admin-form">
           <select value={audience} onChange={(e) => setAudience(e.target.value)}>
             <option value="all">All</option>

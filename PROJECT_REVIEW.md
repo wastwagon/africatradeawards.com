@@ -1,5 +1,7 @@
 # Project Review & Coolify Deployment Preparation
 
+> **Notice:** This document reflects an earlier **static-export-only** deployment focus (no API or database at runtime). The current platform is **fullstack**: Next.js server mode, PostgreSQL, Redis, and Prisma. For an up-to-date architecture and feature map, see **[docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md)** and **[README.md](./README.md)**.
+
 ## Project Overview
 
 **Project**: Africa Trade Awards 2026 Website  

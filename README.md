@@ -126,6 +126,10 @@ Use the fullstack deployment path documented in [COOLIFY_FULLSTACK_SETUP.md](./C
 
 The `render.yaml` file is kept for reference but is no longer the primary deployment method.
 
+## Architecture overview
+
+Feature inventory, roles, data model summary, and documentation map: **[docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md)**.
+
 ## 📁 Project Structure
 
 ```

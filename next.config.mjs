@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const isStaticExport = process.env.STATIC_EXPORT === 'true';
+const useStandalone =
+	process.env.NEXT_STANDALONE === '1' || process.env.NEXT_STANDALONE === 'true';
+
+// Static → `out/`. Slim Docker image → set NEXT_STANDALONE at build (see Dockerfile). Local / fullstack → default (works with `next start`).
+const outputConfig = isStaticExport
+	? { output: 'export' }
+	: useStandalone
+		? { output: 'standalone' }
+		: {};
 
 const nextConfig = {
 	async redirects() {
@@ -24,8 +33,7 @@ const nextConfig = {
 			{ source: '/index10/', destination: '/', permanent: true },
 		];
 	},
-	// Static hosting → `out/`. Docker / Node hosting → `.next/standalone` (see Dockerfile).
-	...(isStaticExport ? { output: 'export' } : { output: 'standalone' }),
+	...outputConfig,
 	images: {
 		// Required for static export, but safe to keep enabled.
 		unoptimized: true,

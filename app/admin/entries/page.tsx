@@ -8,9 +8,18 @@ type Entry = {
   title: string;
   status: string;
   entrantId: string;
+  submissionData?: Record<string, unknown>;
   category?: { name: string };
   season?: { year: number };
   program?: { name: string };
+};
+
+type EntryFileMeta = {
+  name?: string;
+  size?: number;
+  type?: string;
+  storedAs?: string;
+  uploadedAt?: string;
 };
 
 type Judge = { id: string; fullName: string; email: string };
@@ -66,7 +75,7 @@ export default function AdminEntriesPage() {
   ];
 
   const loadData = useCallback(async () => {
-    const [entryRes, judgeRes] = await Promise.all([fetch("/api/entries"), fetch("/api/users?role=JUDGE")]);
+    const [entryRes, judgeRes] = await Promise.all([fetch("/api/entries"), fetch("/api/users/?role=JUDGE")]);
     if (!entryRes.ok || !judgeRes.ok) {
       setError("Failed to load entries or judges");
       return;
@@ -206,6 +215,35 @@ export default function AdminEntriesPage() {
               <p>
                 <strong>Current status:</strong> {entry.status}
               </p>
+              <div>
+                <strong>Uploaded files:</strong>
+                {Array.isArray((entry.submissionData as Record<string, unknown> | undefined)?.files) &&
+                ((entry.submissionData as Record<string, unknown>).files as EntryFileMeta[]).length > 0 ? (
+                  <ul style={{ marginTop: 8, marginBottom: 0 }}>
+                    {((entry.submissionData as Record<string, unknown>).files as EntryFileMeta[]).map((file, idx) => {
+                      const storedAs = file.storedAs ?? "";
+                      const href = `/api/uploads/entry-files/download/?entryId=${encodeURIComponent(entry.id)}&storedAs=${encodeURIComponent(storedAs)}`;
+                      const sizeLabel = typeof file.size === "number" ? ` (${Math.max(1, Math.round(file.size / 1024))} KB)` : "";
+                      return (
+                        <li key={`${storedAs}-${idx}`}>
+                          {storedAs ? (
+                            <a href={href} target="_blank" rel="noreferrer">
+                              {file.name ?? storedAs}
+                            </a>
+                          ) : (
+                            <span>{file.name ?? "Unnamed file"}</span>
+                          )}
+                          {sizeLabel}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <p className="admin-muted" style={{ marginTop: 8 }}>
+                    No uploaded files.
+                  </p>
+                )}
+              </div>
             </div>
           )}
           rowSearchText={(entry) =>
