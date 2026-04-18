@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { UserRole } from "@prisma/client";
 import { z } from "zod";
-import { hashPassword, signSessionToken, getSessionCookieName } from "@/lib/auth";
+import { hashPassword, signSessionToken, getSessionCookieName, isSessionCookieSecure } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 export { dynamic } from "@/lib/force-dynamic-api";
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
   response.cookies.set(getSessionCookieName(), token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: isSessionCookieSecure(),
     maxAge: 60 * 60 * 24 * 7,
     path: "/",
   });

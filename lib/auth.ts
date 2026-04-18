@@ -1,6 +1,12 @@
 import { compare, hash } from "bcryptjs";
 
-export { getSessionCookieName, signSessionToken, verifySessionToken, type SessionUser } from "./jwt-session";
+export {
+  getSessionCookieName,
+  isSessionCookieSecure,
+  signSessionToken,
+  verifySessionToken,
+  type SessionUser,
+} from "./jwt-session";
 
 export async function hashPassword(plainText: string): Promise<string> {
   return hash(plainText, 12);
