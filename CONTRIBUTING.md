@@ -102,7 +102,7 @@ Useful if you prefer running `npm run dev` directly on your machine.
 ### Production / Coolify (summary)
 
 - Compose file in Coolify must be **`docker-compose.coolify.yml`** (not root **`docker-compose.yml`**, which is web-only). In the Coolify UI, set **Docker Compose Location** to `docker-compose.coolify.yml`. See **`COOLIFY_FULLSTACK_SETUP.md`**.
-- The **`app`** service starts with: `npx prisma migrate deploy && node .next/standalone/server.js` — this **applies pending migrations** to the production database. It **adds** schema changes; it does **not** wipe the database by itself.
+- The **`app`** service starts with: `npx prisma migrate deploy && npm run start` — this **applies pending migrations** to the production database. It **adds** schema changes; it does **not** wipe the database by itself. (Coolify fullstack uses default Next output via [`Dockerfile.fullstack`](Dockerfile.fullstack), not `output: "standalone"`.)
 - **Destructive migrations** (drops, destructive alters, data-deleting scripts) can still cause data loss—review migrations in PRs and coordinate backups when needed.
 
 Environment variables for production are documented in **`.env.coolify.example`**.

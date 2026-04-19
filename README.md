@@ -114,13 +114,13 @@ Use the fullstack deployment path documented in [COOLIFY_FULLSTACK_SETUP.md](./C
 **Quick Start:**
 1. Configure environment variables from `.env.coolify.example`
 2. Deploy with `docker-compose.coolify.yml`
-3. Migrations: the **`app`** container runs `npx prisma migrate deploy` before **`node .next/standalone/server.js`** (Next.js `output: "standalone"`; not `next start`). You can also run `npm run prisma:migrate:deploy` manually when needed.
+3. Migrations: the **`app`** container runs `npx prisma migrate deploy` before **`npm run start`** (`next start` on port 3003). For a slim **standalone** image instead, use the root [`Dockerfile`](Dockerfile) with `NEXT_STANDALONE=1` at build time. You can also run `npm run prisma:migrate:deploy` manually when needed.
 
 ### Manual Deployment
 
 1. Provision PostgreSQL and Redis
 2. Configure required environment variables
-3. Build and run the standalone server (see root **`Dockerfile`**, or mirror the post-build copies in **`Dockerfile.fullstack`** and run `npm run start:standalone`).
+3. Build and run the app: **`Dockerfile.fullstack`** + `next start`, or the multi-stage root **`Dockerfile`** for standalone (`node server.js` after `NEXT_STANDALONE=1` build).
 
 ### Legacy: Render
 
