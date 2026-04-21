@@ -4,8 +4,9 @@ WORKDIR /app
 
 RUN apk add --no-cache wget openssl libc6-compat
 
-# Install dependencies first for better cache usage
+# Install dependencies first for better cache usage (prisma must exist before npm ci — postinstall runs prisma generate)
 COPY package.json package-lock.json* ./
+COPY prisma ./prisma
 RUN npm ci
 
 # Copy source and build app (default Next output — use `next start`, not standalone server.js)
