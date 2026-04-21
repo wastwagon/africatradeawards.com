@@ -2,6 +2,8 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 
 type Program = { id: string; name: string };
 type Season = { id: string; year: number };
@@ -122,14 +124,15 @@ export default function AdminAdvancedPage() {
 
   return (
     <main>
-      <h1>Advanced Workflow Tools</h1>
-      <p className="admin-muted">Judging stages, score matrix review, and broadcast queue in one place.</p>
+      <AdminPageHeader
+        title="Advanced workflow tools"
+        description="Judging stages, score matrix review, and broadcast queue in one place."
+      />
       <AdminMetricStrip mergeSnapshot />
       {error ? <p className="admin-error">{error}</p> : null}
       {success ? <p className="admin-muted">{success}</p> : null}
 
-      <section>
-        <h2>Judging Stages</h2>
+      <AdminSection title="Judging stages">
         <form onSubmit={createStage} className="admin-form">
           <select value={selectedProgramId} onChange={(e) => setSelectedProgramId(e.target.value)} required>
             <option value="">Select program</option>
@@ -151,10 +154,9 @@ export default function AdminAdvancedPage() {
           <input type="number" min={1} max={20} value={stageOrder} onChange={(e) => setStageOrder(Number(e.target.value))} />
           <button type="submit">Create Stage</button>
         </form>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Score Matrix</h2>
+      <AdminSection title="Score matrix">
         <div className="admin-inline-actions">
           <select value={selectedEntryId} onChange={(e) => setSelectedEntryId(e.target.value)}>
             <option value="">Select entry</option>
@@ -175,10 +177,9 @@ export default function AdminAdvancedPage() {
             </li>
           ))}
         </ul>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Broadcast Queue</h2>
+      <AdminSection title="Broadcast queue">
         {smtpConfigured === false ? (
           <p className="admin-error" role="status">
             SMTP is not configured (set SMTP_HOST, SMTP_USER, SMTP_PASS, and optionally SMTP_FROM). Queued jobs will fail
@@ -200,7 +201,7 @@ export default function AdminAdvancedPage() {
           <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows={5} placeholder="Message" required />
           <button type="submit">Queue Broadcast Job</button>
         </form>
-      </section>
+      </AdminSection>
     </main>
   );
 }

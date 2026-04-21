@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import AdminDataTable, { type AdminTableColumn } from "@/components/admin/AdminDataTable";
 import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 type Row = {
   rank: number;
@@ -72,9 +73,8 @@ export default function AdminLeaderboardPage() {
   }, [rows]);
 
   return (
-    <main>
-      <h1>Judging Leaderboard</h1>
-      <p className="admin-muted">Average scores across judged entries.</p>
+    <main className="admin-page--wide">
+      <AdminPageHeader title="Judging leaderboard" description="Average scores across judged entries." />
       <AdminMetricStrip mergeSnapshot appendItems={boardAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
       <div className="admin-segment">

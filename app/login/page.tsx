@@ -51,7 +51,7 @@ function LoginForm() {
     <PlatformSiteChrome>
       <section className="platform-page">
         <div className="container">
-          <div className="platform-page-header">
+          <div className="platform-page-header platform-page-header--center">
             <p className="platform-eyebrow">Awards platform</p>
             <h1 className="platform-title">Sign In</h1>
             <p className="platform-lead">

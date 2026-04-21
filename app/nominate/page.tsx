@@ -96,7 +96,7 @@ export default function NominatePage() {
     <Layout>
       <div className="platform-page">
         <div className="container" style={{ maxWidth: 900 }}>
-          <div className="platform-page-header">
+          <div className="platform-page-header platform-page-header--center">
             <p className="platform-eyebrow">Public nomination</p>
             <h1 className="platform-title">Nominate an awardee</h1>
             <p className="platform-lead">

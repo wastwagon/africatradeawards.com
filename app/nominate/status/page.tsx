@@ -167,7 +167,7 @@ export default function NominationStatusPage() {
     <Layout>
       <div className="platform-page">
         <div className="container" style={{ maxWidth: 860 }}>
-          <div className="platform-page-header">
+          <div className="platform-page-header platform-page-header--center">
             <p className="platform-eyebrow">Nomination tracking</p>
             <h1 className="platform-title">Check nomination status</h1>
             <p className="platform-lead">Paste your tracking token from email to view your nomination progress.</p>

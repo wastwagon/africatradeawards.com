@@ -2,6 +2,8 @@
 
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import AdminDataTable, { type AdminTableColumn } from "@/components/admin/AdminDataTable";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 
 type Entry = {
   id: string;
@@ -143,14 +145,15 @@ export default function AdminEntriesPage() {
       : entries.filter((e) => e.status === "WINNER");
 
   return (
-    <main>
-      <h1>Entries and Judging</h1>
-      <p>Assign judges and move entries through review outcomes.</p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        title="Entries and judging"
+        description="Assign judges and move entries through review outcomes."
+      />
       {error ? <p className="admin-error">{error}</p> : null}
       {message ? <p className="admin-ok">{message}</p> : null}
 
-      <section>
-        <h2>Assign Judge</h2>
+      <AdminSection title="Assign judge">
         <form onSubmit={assignJudge} className="admin-form">
           <select value={selectedEntryId} onChange={(e) => setSelectedEntryId(e.target.value)} required>
             <option value="">Select entry</option>
@@ -170,10 +173,9 @@ export default function AdminEntriesPage() {
           </select>
           <button type="submit">Assign</button>
         </form>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Entry Status Management</h2>
+      <AdminSection title="Entry status management">
         <div className="admin-segment">
           <button type="button" className={view === "all" ? "is-active" : undefined} onClick={() => setView("all")}>
             All
@@ -219,7 +221,7 @@ export default function AdminEntriesPage() {
                 <strong>Uploaded files:</strong>
                 {Array.isArray((entry.submissionData as Record<string, unknown> | undefined)?.files) &&
                 ((entry.submissionData as Record<string, unknown>).files as EntryFileMeta[]).length > 0 ? (
-                  <ul style={{ marginTop: 8, marginBottom: 0 }}>
+                  <ul className="admin-file-list">
                     {((entry.submissionData as Record<string, unknown>).files as EntryFileMeta[]).map((file, idx) => {
                       const storedAs = file.storedAs ?? "";
                       const href = `/api/uploads/entry-files/download/?entryId=${encodeURIComponent(entry.id)}&storedAs=${encodeURIComponent(storedAs)}`;
@@ -239,9 +241,7 @@ export default function AdminEntriesPage() {
                     })}
                   </ul>
                 ) : (
-                  <p className="admin-muted" style={{ marginTop: 8 }}>
-                    No uploaded files.
-                  </p>
+                  <p className="admin-muted admin-mt-sm">No uploaded files.</p>
                 )}
               </div>
             </div>
@@ -260,7 +260,7 @@ export default function AdminEntriesPage() {
             status: entry.status,
           })}
         />
-      </section>
+      </AdminSection>
     </main>
   );
 }

@@ -3,6 +3,7 @@
 import { UserRole } from "@prisma/client";
 import { useEffect, useMemo, useState } from "react";
 import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 type QuarantineVote = {
   id: string;
@@ -74,11 +75,11 @@ export default function VotingQuarantinePage() {
   );
 
   return (
-    <main>
-      <h1>Vote quarantine queue</h1>
-      <p className="admin-muted">
-        Approve to count the vote as valid, or reject to discard it and free the voter to try again.
-      </p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        title="Vote quarantine queue"
+        description="Approve to count the vote as valid, or reject to discard it and free the voter to try again."
+      />
       <AdminMetricStrip mergeSnapshot appendItems={queueMetrics} />
       {!canReview ? (
         <p className="admin-muted">Auditor view: you can inspect the queue only. Approvals require a program manager.</p>

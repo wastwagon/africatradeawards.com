@@ -9,6 +9,7 @@ import { AdminApiError, fetchJson, fetchJsonOrThrow, getApiErrorMessage, toError
 import useAdminAsyncAction from "@/components/admin/useAdminAsyncAction";
 import useAdminFeedback from "@/components/admin/useAdminFeedback";
 import AdminToastViewport from "@/components/admin/AdminToastViewport";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 type EventRow = {
   id: string;
@@ -364,9 +365,11 @@ export default function AdminEventsPage() {
   ];
 
   return (
-    <main>
-      <h1>Event operations</h1>
-      <p className="admin-muted">Manage registrations, QR ticketing, and in-person check-ins from one dashboard.</p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        title="Event operations"
+        description="Manage registrations, QR ticketing, and in-person check-ins from one dashboard."
+      />
       <AdminToastViewport toasts={toasts} onClose={dismissToast} />
       <AdminActionModal
         open={Boolean(overridePrint)}
@@ -457,7 +460,7 @@ export default function AdminEventsPage() {
           </select>
         </label>
         {selectedEvent ? (
-          <div className="admin-kpi-grid" style={{ marginTop: 14 }}>
+          <div className="admin-kpi-grid admin-mt-md">
             <article className="admin-kpi-card">
               <p className="admin-kpi-label">Registrations</p>
               <p className="admin-kpi-value">{totals.registrations}</p>
@@ -539,14 +542,12 @@ export default function AdminEventsPage() {
               </button>
             </form>
             {latestQrDataUrl ? (
-              <div style={{ marginTop: 12 }}>
+              <div className="admin-mt-md">
                 <p className="admin-muted">
                   Last issued QR token: <code>{latestQrToken}</code>
                 </p>
-                <Image src={latestQrDataUrl} alt="Attendee QR code" width={210} height={210} style={{ borderRadius: 10 }} />
-                <p className="admin-muted" style={{ wordBreak: "break-word" }}>
-                  Payload: {latestQrPayload}
-                </p>
+                <Image className="admin-image-qr" src={latestQrDataUrl} alt="Attendee QR code" width={210} height={210} />
+                <p className="admin-muted admin-break-words admin-mt-sm">Payload: {latestQrPayload}</p>
               </div>
             ) : null}
           </section>

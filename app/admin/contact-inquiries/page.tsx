@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import ContactInquiryActions from "@/components/admin/ContactInquiryActions";
 import {
   buildContactInquiryWhere,
@@ -93,17 +94,16 @@ export default async function AdminContactInquiriesPage({
   const newOnlyHref = newOnlyQs ? `/admin/contact-inquiries?${newOnlyQs}` : "/admin/contact-inquiries?status=NEW";
 
   return (
-    <main>
+    <main className="admin-page--wide">
       <p className="admin-backlink">
         <Link href="/admin/">← Admin home</Link>
       </p>
-      <h1>Contact inquiries</h1>
-      <p className="admin-muted">
-        New messages from the public contact form are stored here. Showing up to {PAGE_SIZE} per page. Received dates
-        filter uses UTC calendar days.
-      </p>
+      <AdminPageHeader
+        title="Contact inquiries"
+        description={`New messages from the public contact form are stored here. Showing up to ${PAGE_SIZE} per page. Received dates filter uses UTC calendar days.`}
+      />
 
-      <form method="GET" className="admin-data-table__toolbar" style={{ marginBottom: 12 }}>
+      <form method="GET" className="admin-data-table__toolbar admin-data-table__toolbar-spacing">
         <input type="hidden" name="page" value="1" />
         <div className="admin-data-table__toolbar-main">
           <input
@@ -112,8 +112,8 @@ export default async function AdminContactInquiriesPage({
             placeholder="Search name, email, subject, or message"
             className="admin-data-table__search"
           />
-          <div className="admin-inline-actions" style={{ flexWrap: "wrap" }}>
-            <select name="status" defaultValue={status} className="admin-form__input" style={{ minWidth: 180 }}>
+          <div className="admin-inline-actions admin-inline-wrap">
+            <select name="status" defaultValue={status} className="admin-form__input admin-select-filter">
               <option value="">All statuses</option>
               {CONTACT_INQUIRY_STATUS_VALUES.map((value) => (
                 <option key={value} value={value}>
@@ -121,11 +121,11 @@ export default async function AdminContactInquiriesPage({
                 </option>
               ))}
             </select>
-            <label className="admin-muted" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <label className="admin-muted admin-date-inline">
               <span>From</span>
               <input type="date" name="from" defaultValue={from} className="admin-form__input" />
             </label>
-            <label className="admin-muted" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <label className="admin-muted admin-date-inline">
               <span>To</span>
               <input type="date" name="to" defaultValue={to} className="admin-form__input" />
             </label>
@@ -168,25 +168,25 @@ export default async function AdminContactInquiriesPage({
                 <td>{row.name}</td>
                 <td>
                   <div>{row.email}</div>
-                  <div className="admin-muted" style={{ margin: 0 }}>{row.phone}</div>
+                  <div className="admin-muted admin-muted-flat">{row.phone}</div>
                 </td>
                 <td>{row.inquiryType}</td>
                 <td>
                   <strong>{row.subject}</strong>
-                  <p style={{ margin: "6px 0 0", color: "#5e5568" }}>{previewText(row.message)}</p>
+                  <p className="admin-subline">{previewText(row.message)}</p>
                 </td>
                 <td>
                   <span className={`admin-status-pill ${getStatusPillClass(row.status)}`}>{row.status}</span>
                   {row.emailedAt ? (
-                    <p className="admin-muted" style={{ margin: "6px 0 0" }}>
+                    <p className="admin-muted admin-subline">
                       emailed {new Date(row.emailedAt).toLocaleString()}
                     </p>
                   ) : null}
                   {row.emailError ? (
-                    <p className="admin-error" style={{ margin: "6px 0 0" }}>{row.emailError}</p>
+                    <p className="admin-error admin-subline">{row.emailError}</p>
                   ) : null}
                 </td>
-                <td style={{ minWidth: 200 }}>
+                <td className="admin-cell-min-200">
                   <ContactInquiryActions id={row.id} status={row.status} />
                 </td>
               </tr>
@@ -194,7 +194,7 @@ export default async function AdminContactInquiriesPage({
             {rows.length === 0 ? (
               <tr>
                 <td colSpan={7}>
-                  <p className="admin-muted" style={{ margin: 0 }}>No inquiries yet.</p>
+                  <p className="admin-muted admin-muted-flat">No inquiries yet.</p>
                 </td>
               </tr>
             ) : null}
@@ -202,7 +202,7 @@ export default async function AdminContactInquiriesPage({
         </table>
       </div>
       {total > 0 ? (
-        <div className="admin-inline-actions" style={{ marginTop: 12 }}>
+        <div className="admin-inline-actions admin-mt-md">
           {hasPrev ? (
             <Link href={buildPageHref(page - 1)} className="admin-quick-action">
               ← Previous

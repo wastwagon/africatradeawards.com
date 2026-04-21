@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 
 type CountRow = {
   _count: { _all: number };
@@ -55,14 +57,15 @@ export default function VotingFraudPage() {
   );
 
   return (
-    <main>
-      <h1>Voting Fraud Analytics</h1>
-      <p className="admin-muted">Monitor suspicious clustering by IP and device fingerprint.</p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        title="Voting fraud analytics"
+        description="Monitor suspicious clustering by IP and device fingerprint."
+      />
       <AdminMetricStrip mergeSnapshot appendItems={fraudAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
 
-      <section>
-        <h2>Suspicious IP Hash Clusters (5+ votes)</h2>
+      <AdminSection title="Suspicious IP hash clusters (5+ votes)">
         <ul>
           {suspiciousIp.map((row) => (
             <li key={row.ipHash}>
@@ -71,10 +74,9 @@ export default function VotingFraudPage() {
           ))}
           {suspiciousIp.length === 0 ? <li>No suspicious IP clusters detected.</li> : null}
         </ul>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Suspicious Fingerprint Clusters (3+ votes)</h2>
+      <AdminSection title="Suspicious fingerprint clusters (3+ votes)">
         <ul>
           {suspiciousFingerprint.map((row) => (
             <li key={row.fingerprintHash ?? "unknown"}>
@@ -83,10 +85,9 @@ export default function VotingFraudPage() {
           ))}
           {suspiciousFingerprint.length === 0 ? <li>No suspicious fingerprint clusters detected.</li> : null}
         </ul>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Top Verification Request Sources</h2>
+      <AdminSection title="Top verification request sources">
         <ul>
           {verificationStats.map((row) => (
             <li key={row.ipHash}>
@@ -94,10 +95,9 @@ export default function VotingFraudPage() {
             </li>
           ))}
         </ul>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Recent One-Time Token Usage</h2>
+      <AdminSection title="Recent one-time token usage">
         <ul>
           {tokenUsageRecent.map((row) => (
             <li key={row.id}>
@@ -106,7 +106,7 @@ export default function VotingFraudPage() {
           ))}
           {tokenUsageRecent.length === 0 ? <li>No token usage yet.</li> : null}
         </ul>
-      </section>
+      </AdminSection>
     </main>
   );
 }

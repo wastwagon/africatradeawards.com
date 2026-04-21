@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import type { KeyboardEvent } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import AdminDataTable, { type AdminTableColumn } from "@/components/admin/AdminDataTable";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 
 type Nomination = {
   id: string;
@@ -495,14 +497,15 @@ export default function AdminNominationsPage() {
   }
 
   return (
-    <main>
-      <h1>Nominations</h1>
-      <p>Review nominations, add review notes, set outcome, and convert approved nominations to entries.</p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        title="Nominations"
+        description="Review nominations, add review notes, set outcome, and convert approved nominations to entries."
+      />
       {error ? <p className="admin-error">{error}</p> : null}
       {message ? <p className="admin-ok">{message}</p> : null}
 
-      <section>
-        <h2>Review actions</h2>
+      <AdminSection title="Review actions">
         <label>
           Select nomination
           <select value={selectedId} onChange={(e) => setSelectedId(e.target.value)}>
@@ -535,8 +538,8 @@ export default function AdminNominationsPage() {
             Convert to entry
           </button>
         </div>
-        <div className="admin-inline-actions" style={{ marginTop: 8 }}>
-          <label style={{ display: "inline-flex", gap: 6, alignItems: "center" }}>
+        <div className="admin-inline-actions admin-mt-sm">
+          <label className="admin-check-label">
             <input type="checkbox" checked={emailOnReset} onChange={(e) => setEmailOnReset(e.target.checked)} />
             Email nominator when resetting link
           </label>
@@ -548,17 +551,16 @@ export default function AdminNominationsPage() {
           </button>
         </div>
         {selectedRow ? (
-          <p className="admin-muted" style={{ marginTop: 8 }}>
+          <p className="admin-muted admin-mt-sm">
             Tracking status:{" "}
             {selectedRow.publicTrackingTokenExpiresAt
               ? `Active until ${new Date(selectedRow.publicTrackingTokenExpiresAt).toLocaleString()}`
               : "No active tracking link"}
           </p>
         ) : null}
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Nomination queue</h2>
+      <AdminSection title="Nomination queue">
         <AdminDataTable
           rows={rows}
           columns={columns}
@@ -597,13 +599,13 @@ export default function AdminNominationsPage() {
             convertedEntry: row.convertedEntry?.title ?? "",
           })}
         />
-      </section>
-      <section
+      </AdminSection>
+      <AdminSection
+        title="Audit timeline"
         tabIndex={0}
         onKeyDown={handleAuditShortcutKeyDown}
         aria-label="Audit timeline panel. Keyboard shortcuts: C copy link, O open link, R reset shared parameters."
       >
-        <h2>Audit timeline</h2>
         <p className="admin-muted">{currentAuditSummary}</p>
         <p className="admin-muted">Shortcuts while this panel is focused: C copy, O open, R reset.</p>
         {!selectedId ? <p className="admin-muted">Select a nomination to view audit history.</p> : null}
@@ -643,7 +645,7 @@ export default function AdminNominationsPage() {
                 Conversion
               </button>
             </div>
-            <div className="admin-inline-actions" style={{ marginBottom: 10 }}>
+            <div className="admin-inline-actions admin-mb-10">
               <input
                 value={auditViewName}
                 onChange={(e) => setAuditViewName(e.target.value)}
@@ -678,8 +680,8 @@ export default function AdminNominationsPage() {
                 Delete view
               </button>
             </div>
-            <div className="admin-inline-actions" style={{ marginBottom: 10 }}>
-              <div className="admin-segment" style={{ marginBottom: 0 }}>
+            <div className="admin-inline-actions admin-mb-10">
+              <div className="admin-segment admin-segment--flat">
                 <button
                   type="button"
                   className={auditPreset === "24h" ? "is-active" : undefined}
@@ -764,14 +766,14 @@ export default function AdminNominationsPage() {
               <li key={item.id}>
                 <strong>{item.action}</strong> — {new Date(item.createdAt).toLocaleString()} by{" "}
                 {item.user?.fullName || item.user?.email || "system"}
-                <div className="admin-muted" style={{ marginTop: 4 }}>
+                <div className="admin-muted admin-mt-4">
                   {formatAuditMetadata(item.metadata)}
                 </div>
               </li>
             ))}
           </ul>
             {auditHasMore ? (
-              <div className="admin-inline-actions" style={{ marginTop: 10 }}>
+              <div className="admin-inline-actions admin-mt-md">
                 <button type="button" onClick={() => void loadAudit("append")} disabled={auditLoading}>
                   {auditLoading ? "Loading..." : "Load more"}
                 </button>
@@ -779,7 +781,7 @@ export default function AdminNominationsPage() {
             ) : null}
           </>
         ) : null}
-      </section>
+      </AdminSection>
     </main>
   );
 }

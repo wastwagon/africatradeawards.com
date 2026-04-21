@@ -239,7 +239,7 @@ function PublicVotingInner() {
     <PlatformSiteChrome>
       <section className="platform-page">
         <div className="container">
-          <div className="platform-page-header">
+          <div className="platform-page-header platform-page-header--center">
             <p className="platform-eyebrow">Africa Trade Awards · Public vote</p>
             <h1 className="platform-title">Cast your vote</h1>
             <p className="platform-lead">

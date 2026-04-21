@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { UserRole } from "@prisma/client";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 import { getRequestSessionUser, isAuditorRole } from "@/lib/api-auth";
 import { getContactInquiryOpenCount } from "@/lib/contact-inquiry-open-count";
 import { hasRoleAtLeast } from "@/lib/rbac";
@@ -26,19 +28,19 @@ export default async function AdminPage() {
 
   return (
     <main>
-      <h1>Admin console</h1>
-      {auditor ? (
-        <p className="admin-muted">
-          Auditor access: read-only exports, voting analytics, judging summaries, and quarantine review (no approvals).
-        </p>
-      ) : (
-        <p className="admin-muted">Core backend is active. Manage programs, judging, voting, and governance from one control plane.</p>
-      )}
+      <AdminPageHeader
+        eyebrow="Overview"
+        title="Admin console"
+        description={
+          auditor
+            ? "Auditor access: read-only exports, voting analytics, judging summaries, and quarantine review (no approvals)."
+            : "Core backend is active. Manage programs, judging, voting, and governance from one control plane."
+        }
+      />
 
       <AdminKpis openContactInquiries={openContactInquiries} />
 
-      <section>
-        <h2>Quick actions</h2>
+      <AdminSection title="Quick actions">
         <div className="admin-inline-actions">
           {quickActions.map((item) => (
             <Link key={item.href} href={item.href} className="admin-quick-action">
@@ -46,10 +48,9 @@ export default async function AdminPage() {
             </Link>
           ))}
         </div>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>{auditor ? "Audit workspaces" : "Operations workspaces"}</h2>
+      <AdminSection title={auditor ? "Audit workspaces" : "Operations workspaces"}>
         <div className="admin-card-grid">
           {cards.map((item) => (
             <Link key={item.href} href={item.href} className="admin-card-link">
@@ -58,7 +59,7 @@ export default async function AdminPage() {
             </Link>
           ))}
         </div>
-      </section>
+      </AdminSection>
     </main>
   );
 }

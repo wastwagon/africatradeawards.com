@@ -1,25 +1,69 @@
 /* Shared styling for login, vote, portals — matches main site tokens */
 .homepage1-body {
 	.platform-shell {
+		/* Tokens: shell vs elevated cards (light) */
+		--platform-bg-0: #e8ecf4;
+		--platform-bg-1: #f4f1fa;
+		--platform-bg-2: #faf8ff;
+		--platform-border-soft: rgba(78, 43, 90, 0.12);
+		--platform-border-card: rgba(90, 55, 116, 0.14);
+		--platform-card-bg: rgba(255, 255, 255, 0.96);
+		--platform-card-shadow: 0 6px 28px rgba(28, 18, 48, 0.08);
+		--platform-card-shadow-inset: 0 1px 0 rgba(255, 255, 255, 0.92) inset;
+		--platform-header-accent: #c9a227;
+		--platform-sheet-bg: rgba(251, 251, 254, 0.72);
+		--platform-sheet-border: rgba(90, 55, 116, 0.1);
 		min-height: 55vh;
 		padding-bottom: 80px;
 		position: relative;
-		background: linear-gradient(
-			180deg,
-			#fffaf6 0%,
-			#f9f5fc 35%,
-			#ffffff 100%
-		);
+		background: linear-gradient(145deg, var(--platform-bg-0) 0%, var(--platform-bg-1) 42%, var(--platform-bg-2) 100%);
 	}
 
 	.platform-page {
-		padding: clamp(32px, 5vw, 72px) 0 clamp(48px, 8vw, 100px);
+		padding: clamp(28px, 5vw, 64px) 0 clamp(40px, 7vw, 88px);
+	}
+
+	/* Optional max-width helpers (use with .container) */
+	.platform-page__narrow {
+		max-width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.platform-page__wide {
+		max-width: 1100px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* Flat sheet behind header + stack (portal pages) */
+	.platform-workspace {
+		margin-left: auto;
+		margin-right: auto;
+		padding: clamp(16px, 3vw, 28px);
+		border-radius: 18px;
+		border: 1px solid var(--platform-sheet-border);
+		background: var(--platform-sheet-bg);
+		box-shadow: 0 1px 3px rgba(28, 18, 48, 0.05);
 	}
 
 	.platform-page-header {
-		text-align: center;
+		text-align: left;
 		max-width: 720px;
-		margin: 0 auto clamp(28px, 4vw, 48px);
+		margin: 0 0 clamp(22px, 3vw, 36px);
+		padding: 4px 0 18px 16px;
+		border-left: 4px solid var(--platform-header-accent);
+		border-bottom: 1px solid var(--platform-border-soft);
+	}
+
+	/* Marketing-style flows: centered hero, no side accent */
+	.platform-page-header--center {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		border-left: none;
+		padding-left: 0;
+		border-bottom: none;
 	}
 
 	.platform-eyebrow {
@@ -27,9 +71,9 @@
 		font-size: var(--ztc-font-size-font-s15);
 		font-weight: var(--ztc-weight-bold);
 		text-transform: uppercase;
-		letter-spacing: 0.12em;
-		color: #78508c;
-		margin-bottom: 12px;
+		letter-spacing: 0.14em;
+		color: #6a4588;
+		margin-bottom: 10px;
 	}
 
 	.platform-title {
@@ -37,8 +81,9 @@
 		font-size: clamp(1.75rem, 4vw, 2.5rem);
 		font-weight: var(--ztc-weight-bold);
 		color: var(--ztc-text-text-2);
-		line-height: 1.15;
+		line-height: 1.12;
 		margin: 0 0 12px;
+		letter-spacing: -0.02em;
 	}
 
 	.platform-lead {
@@ -49,14 +94,86 @@
 		margin: 0;
 	}
 
+	/* H2 / H3 inside cards — subordinate to page .platform-title */
+	.platform-section-title {
+		font-family: var(--grotesk);
+		font-size: 1.2rem;
+		font-weight: var(--ztc-weight-bold);
+		color: var(--ztc-text-text-2);
+		line-height: 1.25;
+		margin: 0 0 14px;
+		letter-spacing: -0.02em;
+	}
+
+	.platform-subsection-title {
+		font-family: var(--grotesk);
+		font-size: 1.05rem;
+		font-weight: var(--ztc-weight-bold);
+		color: var(--ztc-text-text-2);
+		margin: 0 0 12px;
+		letter-spacing: -0.01em;
+	}
+
 	.platform-card {
-		background: rgba(255, 255, 255, 0.92);
+		background: var(--platform-card-bg);
 		border-radius: 16px;
 		padding: clamp(20px, 3vw, 28px);
-		border: 1px solid rgba(120, 80, 140, 0.12);
-		box-shadow:
-			0 4px 24px rgba(78, 43, 90, 0.08),
-			0 1px 0 rgba(255, 255, 255, 0.9) inset;
+		border: 1px solid var(--platform-border-card);
+		box-shadow: var(--platform-card-shadow), var(--platform-card-shadow-inset);
+	}
+
+	.platform-stack {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.platform-feedback {
+		scroll-margin-top: 16px;
+		margin-bottom: 4px;
+	}
+
+	.platform-form-grid {
+		display: grid;
+		gap: 12px;
+	}
+
+	.platform-form-grid .platform-field {
+		margin-bottom: 0;
+	}
+
+	.platform-form-grid--limit {
+		max-width: 640px;
+	}
+
+	.platform-form-grid > .vl-btn1 {
+		justify-self: start;
+		margin-top: 4px;
+	}
+
+	.platform-subsection {
+		margin-top: 1.5rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--platform-border-soft);
+	}
+
+	.platform-list {
+		margin: 0;
+		padding-left: 1.25rem;
+		color: var(--ztc-text-text-3);
+		font-family: var(--figtree);
+		font-size: var(--ztc-font-size-font-s16);
+		line-height: 1.5;
+	}
+
+	.platform-list li {
+		margin-bottom: 8px;
+	}
+
+	.platform-footlinks {
+		margin-top: 28px;
+		margin-bottom: 0;
+		text-align: center;
 	}
 
 	.platform-grid {
@@ -77,6 +194,10 @@
 		font-size: var(--ztc-font-size-font-s15);
 		font-weight: var(--ztc-weight-semibold);
 		color: var(--ztc-text-text-2);
+	}
+
+	.platform-field:last-child {
+		margin-bottom: 0;
 	}
 
 	.platform-field input,
@@ -143,6 +264,14 @@
 		a:hover {
 			color: var(--color-link-hover);
 		}
+	}
+
+	.platform-field-hint {
+		display: block;
+		margin-top: 6px;
+		font-size: 0.88rem;
+		color: var(--ztc-text-text-3);
+		font-family: var(--figtree);
 	}
 
 	.platform-vote-row {

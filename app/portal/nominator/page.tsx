@@ -189,7 +189,7 @@ export default function NominatorPortalPage() {
   return (
     <PlatformSiteChrome>
       <section className="platform-page">
-        <div className="container" style={{ maxWidth: 1100 }}>
+        <div className="container platform-page__wide platform-workspace">
           <div className="platform-page-header">
             <p className="platform-eyebrow">Nominator workspace</p>
             <h1 className="platform-title">Nominate awardees</h1>
@@ -197,16 +197,15 @@ export default function NominatorPortalPage() {
               Submit and track awardee nominations. Managers review nominations and can convert approved nominations into official entries.
             </p>
           </div>
-          <div ref={feedbackRef} tabIndex={-1} style={{ scrollMarginTop: 16 }}>
+          <div ref={feedbackRef} className="platform-feedback" tabIndex={-1}>
             {error ? <p className="platform-msg-error">{error}</p> : null}
             {message ? <p className="platform-msg-ok">{message}</p> : null}
           </div>
 
-          <section className="platform-card" style={{ marginBottom: 24 }}>
-            <h2 className="platform-title" style={{ fontSize: "1.2rem", marginBottom: 16 }}>
-              New nomination
-            </h2>
-            <form onSubmit={createNomination} style={{ display: "grid", gap: 12 }}>
+          <div className="platform-stack">
+            <section className="platform-card">
+              <h2 className="platform-section-title">New nomination</h2>
+              <form onSubmit={createNomination} className="platform-form-grid">
               <label className="platform-field">
                 Nominee full name
                 <input value={newNomineeFullName} onChange={(e) => setNewNomineeFullName(e.target.value)} required />
@@ -266,7 +265,7 @@ export default function NominatorPortalPage() {
                   minLength={SUMMARY_MIN_LENGTH}
                   maxLength={6000}
                 />
-                <span className="platform-muted" style={{ display: "block", marginTop: 6, fontSize: "0.88rem" }}>
+                <span className="platform-field-hint">
                   Minimum {SUMMARY_MIN_LENGTH} characters ({newSummary.trim().length}/{SUMMARY_MIN_LENGTH})
                 </span>
               </label>
@@ -278,25 +277,23 @@ export default function NominatorPortalPage() {
                 {saving ? "Saving..." : "Create nomination draft"}
               </button>
             </form>
-          </section>
+            </section>
 
-          <section className="platform-card">
-            <h2 className="platform-title" style={{ fontSize: "1.2rem", marginBottom: 16 }}>
-              Your nominations
-            </h2>
-            <label className="platform-field">
-              Select nomination
-              <select value={selectedNominationId} onChange={(e) => setSelectedNominationId(e.target.value)}>
-                <option value="">Select nomination</option>
-                {nominations.map((nomination) => (
-                  <option key={nomination.id} value={nomination.id}>
-                    {nomination.nomineeFullName} ({nomination.status})
-                  </option>
-                ))}
-              </select>
-            </label>
-            {selectedNominationId ? (
-              <div style={{ marginTop: 16, display: "grid", gap: 12 }}>
+            <section className="platform-card">
+              <h2 className="platform-section-title">Your nominations</h2>
+              <label className="platform-field">
+                Select nomination
+                <select value={selectedNominationId} onChange={(e) => setSelectedNominationId(e.target.value)}>
+                  <option value="">Select nomination</option>
+                  {nominations.map((nomination) => (
+                    <option key={nomination.id} value={nomination.id}>
+                      {nomination.nomineeFullName} ({nomination.status})
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {selectedNominationId ? (
+                <div className="platform-form-grid platform-subsection">
                 <label className="platform-field">
                   Nominee full name
                   <input value={editNomineeFullName} onChange={(e) => setEditNomineeFullName(e.target.value)} />
@@ -322,7 +319,7 @@ export default function NominatorPortalPage() {
                     minLength={SUMMARY_MIN_LENGTH}
                     maxLength={6000}
                   />
-                  <span className="platform-muted" style={{ display: "block", marginTop: 6, fontSize: "0.88rem" }}>
+                  <span className="platform-field-hint">
                     Minimum {SUMMARY_MIN_LENGTH} characters ({editSummary.trim().length}/{SUMMARY_MIN_LENGTH})
                   </span>
                 </label>
@@ -354,10 +351,11 @@ export default function NominatorPortalPage() {
                 {selectedNomination?.convertedEntry ? (
                   <p className="platform-muted">Converted to entry: {selectedNomination.convertedEntry.title}</p>
                 ) : null}
-              </div>
-            ) : null}
-          </section>
-          <p className="platform-muted text-center" style={{ marginTop: 28 }}>
+                </div>
+              ) : null}
+            </section>
+          </div>
+          <p className="platform-muted platform-footlinks">
             <Link href="/portal/entrant/">Entrant workspace</Link>
             {" · "}
             <Link href="/login/">Sign In</Link>

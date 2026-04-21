@@ -3,6 +3,8 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { UserRole } from "@prisma/client";
 import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 
 const roles: UserRole[] = [
   UserRole.SUPER_ADMIN,
@@ -158,14 +160,14 @@ export default function AdminCreateUserPage() {
   );
 
   return (
-    <main>
-      <h1>User management and impersonation</h1>
-      <p className="admin-muted">
-        Super admin only. Create, update, reset passwords, and impersonate any role account in one click.
-      </p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        eyebrow="Accounts"
+        title="User management and impersonation"
+        description="Super admin only. Create, update, reset passwords, and impersonate any role account in one click."
+      />
       <AdminMetricStrip items={userMetrics} />
-      <section>
-        <h2>Directory</h2>
+      <AdminSection title="Directory">
         <div className="admin-chip-row">
           <button type="button" className={roleFilter === "ALL" ? "is-active" : undefined} onClick={() => setRoleFilter("ALL")}>
             All ({counts.ALL ?? 0})
@@ -247,10 +249,9 @@ export default function AdminCreateUserPage() {
             </tbody>
           </table>
         </div>
-      </section>
-      <section>
-        <h2>Create account</h2>
-      <form onSubmit={onSubmit} className="admin-form">
+      </AdminSection>
+      <AdminSection title="Create account">
+        <form onSubmit={onSubmit} className="admin-form">
         <label>
           Email
           <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required />
@@ -278,8 +279,8 @@ export default function AdminCreateUserPage() {
         <button type="submit" disabled={loading}>
           {loading ? "Creating..." : "Create user"}
         </button>
-      </form>
-      </section>
+        </form>
+      </AdminSection>
     </main>
   );
 }

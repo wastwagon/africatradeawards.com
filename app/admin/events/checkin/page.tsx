@@ -5,6 +5,7 @@ import { fetchJson, fetchJsonOrThrow, getApiErrorMessage, toErrorMessage } from 
 import useAdminAsyncAction from "@/components/admin/useAdminAsyncAction";
 import useAdminFeedback from "@/components/admin/useAdminFeedback";
 import AdminToastViewport from "@/components/admin/AdminToastViewport";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import { extractJsonPayloadFromQrScan } from "@/lib/event-qr-scan";
 
 type EventRow = {
@@ -661,9 +662,11 @@ export default function EventCheckinDeskPage() {
   useEffect(() => stopCamera, [stopCamera]);
 
   return (
-    <main>
-      <h1>Check-in scanner desk</h1>
-      <p className="admin-muted">Use camera QR scan for fast onsite check-ins. If network drops, scans are queued locally.</p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        title="Check-in scanner desk"
+        description="Use camera QR scan for fast onsite check-ins. If network drops, scans are queued locally."
+      />
       <AdminToastViewport toasts={toasts} onClose={dismissToast} />
 
       <section>
@@ -735,14 +738,9 @@ export default function EventCheckinDeskPage() {
             Stop scanner
           </button>
         </div>
-        <video
-          ref={videoRef}
-          muted
-          playsInline
-          style={{ width: "100%", maxWidth: 560, borderRadius: 12, border: "1px solid rgba(255,255,255,.15)", marginTop: 12 }}
-        />
+        <video ref={videoRef} muted playsInline className="admin-video-preview" />
         {lastScan ? (
-          <p className="admin-muted" style={{ marginTop: 10, wordBreak: "break-word" }}>
+          <p className="admin-muted admin-mt-md admin-break-words">
             Last scan: {lastScan}
           </p>
         ) : null}
@@ -780,7 +778,7 @@ export default function EventCheckinDeskPage() {
           </button>
         </div>
         {queued.length > 0 ? (
-          <div className="admin-table-wrap" style={{ marginTop: 12 }}>
+          <div className="admin-table-wrap admin-mt-md">
             <table>
               <thead>
                 <tr>

@@ -190,7 +190,7 @@ export default function EntrantPortalPage() {
   return (
     <PlatformSiteChrome>
       <section className="platform-page">
-        <div className="container" style={{ maxWidth: 1100 }}>
+        <div className="container platform-page__wide platform-workspace">
           <div className="platform-page-header">
             <p className="platform-eyebrow">Entrant workspace</p>
             <h1 className="platform-title">Your entries</h1>
@@ -198,17 +198,16 @@ export default function EntrantPortalPage() {
               Create entries, save drafts, upload files, and submit when your season window is open.
             </p>
           </div>
-          <div ref={feedbackRef} style={{ scrollMarginTop: 16 }}>
+          <div ref={feedbackRef} className="platform-feedback">
             {error ? <p className="platform-msg-error">{error}</p> : null}
             {message ? <p className="platform-msg-ok">{message}</p> : null}
           </div>
 
-          <section className="platform-card" style={{ marginBottom: 24 }}>
-            <h2 className="platform-title" style={{ fontSize: "1.2rem", marginBottom: 16 }}>
-              New entry
-            </h2>
-            <form onSubmit={createEntry} style={{ display: "grid", gap: 12 }}>
-              <label className="platform-field">
+          <div className="platform-stack">
+            <section className="platform-card">
+              <h2 className="platform-section-title">New entry</h2>
+              <form onSubmit={createEntry} className="platform-form-grid">
+                <label className="platform-field">
                 Title
                 <input value={title} onChange={(e) => setTitle(e.target.value)} required placeholder="Entry title" />
               </label>
@@ -253,62 +252,59 @@ export default function EntrantPortalPage() {
                 Create draft entry
               </button>
             </form>
-          </section>
+            </section>
 
-          <section className="platform-card">
-            <h2 className="platform-title" style={{ fontSize: "1.2rem", marginBottom: 16 }}>
-              Edit existing entry
-            </h2>
-            <label className="platform-field">
-              Select entry
-              <select value={selectedEntryId} onChange={(e) => setSelectedEntryId(e.target.value)}>
-                <option value="">Select your entry</option>
-                {entries.map((entry) => (
-                  <option key={entry.id} value={entry.id}>
-                    {entry.title} ({entry.status})
-                  </option>
-                ))}
-              </select>
-            </label>
-            {selectedEntryId ? (
-              <div style={{ marginTop: 16, display: "grid", gap: 12 }}>
-                <label className="platform-field">
-                  Title
-                  <input value={title} onChange={(e) => setTitle(e.target.value)} />
-                </label>
-                <label className="platform-field">
-                  Summary
-                  <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={6} />
-                </label>
-                <div className="platform-actions">
-                  <button type="button" className="vl-btn1" onClick={saveDraft}>
-                    {saving ? "Saving…" : "Save draft"}
-                  </button>
-                  <button type="button" className="vl-btn1" onClick={submitEntry}>
-                    Submit entry
-                  </button>
-                </div>
-                <label className="platform-field">
-                  Upload file
-                  <input
-                    type="file"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) void uploadFile(file);
-                    }}
-                  />
-                </label>
-                {uploading ? <p className="platform-muted">Uploading…</p> : null}
-                {currentFiles.length ? (
-                  <div className="platform-muted" style={{ fontSize: "0.92rem" }}>
-                    Uploaded files: {currentFiles.length}
+            <section className="platform-card">
+              <h2 className="platform-section-title">Edit existing entry</h2>
+              <label className="platform-field">
+                Select entry
+                <select value={selectedEntryId} onChange={(e) => setSelectedEntryId(e.target.value)}>
+                  <option value="">Select your entry</option>
+                  {entries.map((entry) => (
+                    <option key={entry.id} value={entry.id}>
+                      {entry.title} ({entry.status})
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {selectedEntryId ? (
+                <div className="platform-form-grid platform-subsection">
+                  <label className="platform-field">
+                    Title
+                    <input value={title} onChange={(e) => setTitle(e.target.value)} />
+                  </label>
+                  <label className="platform-field">
+                    Summary
+                    <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={6} />
+                  </label>
+                  <div className="platform-actions">
+                    <button type="button" className="vl-btn1" onClick={saveDraft}>
+                      {saving ? "Saving…" : "Save draft"}
+                    </button>
+                    <button type="button" className="vl-btn1" onClick={submitEntry}>
+                      Submit entry
+                    </button>
                   </div>
-                ) : null}
-              </div>
-            ) : null}
-          </section>
+                  <label className="platform-field">
+                    Upload file
+                    <input
+                      type="file"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) void uploadFile(file);
+                      }}
+                    />
+                  </label>
+                  {uploading ? <p className="platform-muted">Uploading…</p> : null}
+                  {currentFiles.length ? (
+                    <p className="platform-muted platform-field-hint">Uploaded files: {currentFiles.length}</p>
+                  ) : null}
+                </div>
+              ) : null}
+            </section>
+          </div>
 
-          <p className="platform-muted text-center" style={{ marginTop: 28 }}>
+          <p className="platform-muted platform-footlinks">
             <Link href="/vote/">Public vote</Link>
             {" · "}
             <Link href="/login/">Sign In</Link>

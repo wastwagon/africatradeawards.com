@@ -11,12 +11,50 @@ html.ata-dark-mode .admin-shell {
 }
 
 html.ata-dark-mode:has(.platform-shell) .platform-shell {
-	background: linear-gradient(180deg, #1a1420 0%, #221a2a 38%, #18131c 100%);
+	--platform-bg-0: #141018;
+	--platform-bg-1: #1a1422;
+	--platform-bg-2: #12101a;
+	--platform-border-soft: rgba(200, 160, 230, 0.16);
+	--platform-border-card: rgba(200, 160, 230, 0.22);
+	--platform-card-bg: rgba(28, 22, 34, 0.94);
+	--platform-card-shadow: 0 6px 32px rgba(0, 0, 0, 0.4);
+	--platform-card-shadow-inset: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+	--platform-header-accent: #d4b45c;
+	--platform-sheet-bg: rgba(22, 18, 30, 0.55);
+	--platform-sheet-border: rgba(200, 160, 230, 0.14);
+	background: linear-gradient(145deg, var(--platform-bg-0) 0%, var(--platform-bg-1) 45%, var(--platform-bg-2) 100%);
 }
 
 html.ata-dark-mode:has(.platform-shell) .platform-page {
 	--ztc-text-text-2: #f4f0f8;
 	--ztc-text-text-3: rgba(244, 240, 248, 0.72);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-workspace {
+	background: var(--platform-sheet-bg);
+	border-color: var(--platform-sheet-border);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-page-header {
+	border-bottom-color: var(--platform-border-soft);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-section-title,
+html.ata-dark-mode:has(.platform-shell) .platform-subsection-title {
+	color: #faf7fc;
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-list {
+	color: rgba(244, 240, 248, 0.78);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-subsection {
+	border-top-color: var(--platform-border-soft);
+}
+
+html.ata-dark-mode:has(.platform-shell) .platform-field-hint {
+	color: rgba(244, 240, 248, 0.65);
 }
 
 html.ata-dark-mode:has(.platform-shell) .platform-eyebrow {

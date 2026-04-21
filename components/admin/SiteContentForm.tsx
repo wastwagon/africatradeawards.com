@@ -4,6 +4,7 @@ import type { PublicSiteSettingsDTO } from '@/lib/public-site-settings'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
+import AdminPageHeader from '@/components/admin/AdminPageHeader'
 
 type Props = { initial: PublicSiteSettingsDTO }
 
@@ -71,18 +72,18 @@ export default function SiteContentForm({ initial }: Props) {
 	}
 
 	return (
-		<main>
+		<div className="admin-site-content-root">
 			<p className="admin-backlink">
 				<Link href="/admin/">← Admin home</Link>
 			</p>
-			<h1>Site content (public)</h1>
-			<p className="admin-muted">
-				Dates, venue copy, optional announcement strip, support email, and SEO description. Program managers can edit;
-				changes apply site-wide after save.
-			</p>
+			<AdminPageHeader
+				eyebrow="Content"
+				title="Site content (public)"
+				description="Dates, venue copy, optional announcement strip, support email, and SEO description. Program managers can edit; changes apply site-wide after save."
+			/>
 
 			<form onSubmit={onSubmit} className="admin-form">
-				<section className="admin-panel" style={{ marginBottom: '18px' }}>
+				<section className="admin-panel admin-mb-md">
 					<h2 className="admin-kpi-section-title" style={{ marginTop: 0 }}>
 						Dates &amp; venue
 					</h2>
@@ -104,7 +105,7 @@ export default function SiteContentForm({ initial }: Props) {
 					))}
 				</section>
 
-				<section className="admin-panel" style={{ marginBottom: '18px' }}>
+				<section className="admin-panel admin-mb-md">
 					<h2 className="admin-kpi-section-title" style={{ marginTop: 0 }}>
 						Support &amp; SEO
 					</h2>
@@ -145,7 +146,7 @@ export default function SiteContentForm({ initial }: Props) {
 					</div>
 				</section>
 
-				<section className="admin-panel" style={{ marginBottom: '18px' }}>
+				<section className="admin-panel admin-mb-md">
 					<h2 className="admin-kpi-section-title" style={{ marginTop: 0 }}>
 						Event live stream
 					</h2>
@@ -197,7 +198,7 @@ export default function SiteContentForm({ initial }: Props) {
 					</div>
 				</section>
 
-				<section className="admin-panel" style={{ marginBottom: '18px' }}>
+				<section className="admin-panel admin-mb-md">
 					<h2 className="admin-kpi-section-title" style={{ marginTop: 0 }}>
 						Site announcement
 					</h2>
@@ -263,6 +264,6 @@ export default function SiteContentForm({ initial }: Props) {
 
 			{message ? <p className="admin-ok">{message}</p> : null}
 			{error ? <p className="admin-error">{error}</p> : null}
-		</main>
+		</div>
 	)
 }

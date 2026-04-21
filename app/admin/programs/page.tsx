@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 
 type Program = { id: string; slug: string; name: string; description?: string | null };
 type Season = { id: string; year: number; startDate: string; endDate: string };
@@ -171,12 +173,10 @@ export default function AdminProgramsPage() {
 
   return (
     <main>
-      <h1>Programs</h1>
-      <p>Create programs, seasons and categories.</p>
+      <AdminPageHeader title="Programs" description="Create programs, seasons and categories." />
       {error ? <p className="admin-error">{error}</p> : null}
 
-      <section>
-        <h2>Create Program</h2>
+      <AdminSection title="Create program">
         <form onSubmit={createProgram} className="admin-form">
           <input placeholder="Program name" value={programName} onChange={(e) => setProgramName(e.target.value)} required />
           <input placeholder="program-slug" value={programSlug} onChange={(e) => setProgramSlug(e.target.value)} required />
@@ -187,10 +187,9 @@ export default function AdminProgramsPage() {
           />
           <button type="submit">Create Program</button>
         </form>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Select Program</h2>
+      <AdminSection title="Select program">
         <select value={selectedProgramId} onChange={(e) => setSelectedProgramId(e.target.value)}>
           <option value="">Choose a program</option>
           {programs.map((p) => (
@@ -200,7 +199,7 @@ export default function AdminProgramsPage() {
           ))}
         </select>
         {selectedProgram ? <p>Active: {selectedProgram.name}</p> : null}
-      </section>
+      </AdminSection>
 
       <section className="admin-split-grid">
         <div className="admin-panel">
@@ -219,27 +218,19 @@ export default function AdminProgramsPage() {
               Add Season
             </button>
           </form>
-          <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+          <ul className="admin-plain-list">
             {seasons.map((s) => (
-              <li key={s.id} style={{ marginBottom: 8 }}>
+              <li key={s.id}>
                 {s.year} ({new Date(s.startDate).toLocaleDateString()} - {new Date(s.endDate).toLocaleDateString()})
-                <button
-                  type="button"
-                  onClick={() => beginEditSeason(s)}
-                  style={{ marginLeft: 10, cursor: "pointer" }}
-                >
+                <button type="button" className="admin-ml-sm" onClick={() => beginEditSeason(s)}>
                   Edit
                 </button>
               </li>
             ))}
           </ul>
           {editingSeasonId ? (
-            <form
-              onSubmit={updateSeason}
-              className="admin-form"
-              style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.12)" }}
-            >
-              <h3 style={{ marginTop: 0, fontSize: "1rem" }}>Edit season</h3>
+            <form onSubmit={updateSeason} className="admin-form admin-edit-panel">
+              <h3 className="admin-edit-panel__title">Edit season</h3>
               <input
                 type="number"
                 placeholder="Year"
@@ -249,7 +240,7 @@ export default function AdminProgramsPage() {
               />
               <input type="date" value={editSeasonStart} onChange={(e) => setEditSeasonStart(e.target.value)} required />
               <input type="date" value={editSeasonEnd} onChange={(e) => setEditSeasonEnd(e.target.value)} required />
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <div className="admin-inline-actions admin-inline-wrap">
                 <button type="submit">Save season</button>
                 <button type="button" onClick={cancelEditSeason}>
                   Cancel
