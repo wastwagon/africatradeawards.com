@@ -1,9 +1,8 @@
 "use client";
 
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import PlatformSiteChrome from "@/components/platform/PlatformSiteChrome";
-
 type Assignment = {
   id: string;
   entry: {
@@ -133,22 +132,23 @@ export default function JudgePortalPage() {
   }
 
   return (
-    <PlatformSiteChrome>
-      <section className="platform-page">
-        <div className="container platform-page__narrow platform-workspace">
-          <div className="platform-page-header">
-            <p className="platform-eyebrow">Judging workspace</p>
-            <h1 className="platform-title">Assigned entries</h1>
-            <p className="platform-lead">Review nominations allocated to you, record scores by criterion, and file recusals when needed.</p>
-          </div>
-          <div ref={feedbackRef} className="platform-feedback">
-            {error ? <p className="platform-msg-error">{error}</p> : null}
-            {success ? <p className="platform-msg-ok">{success}</p> : null}
-          </div>
+    <div className="admin-page--wide">
+      <AdminPageHeader
+        eyebrow="Judging workspace"
+        title="Assigned entries"
+        description="Review nominations allocated to you, record scores by criterion, and file recusals when needed."
+      />
 
-          <div className="platform-stack">
-            <section className="platform-card">
-              <h2 className="platform-section-title">Your assignments</h2>
+      <div ref={feedbackRef}>
+        {error ? (
+          <p className="admin-error admin-mt-sm" role="alert">
+            {error}
+          </p>
+        ) : null}
+        {success ? <p className="admin-ok admin-mt-sm">{success}</p> : null}
+      </div>
+
+      <AdminSection title="Your assignments">
               <ul className="platform-list">
                 {assignments.map((a) => (
                   <li key={a.id}>
@@ -157,10 +157,9 @@ export default function JudgePortalPage() {
                   </li>
                 ))}
               </ul>
-            </section>
+      </AdminSection>
 
-            <section className="platform-card">
-              <h2 className="platform-section-title">Submit score</h2>
+      <AdminSection title="Submit score">
               <form onSubmit={submitScore} className="platform-form-grid platform-form-grid--limit">
                 <label className="platform-field">
                   Entry
@@ -229,16 +228,7 @@ export default function JudgePortalPage() {
                   Submit recusal
                 </button>
               </div>
-            </section>
-          </div>
-
-          <p className="platform-muted platform-footlinks">
-            <Link href="/login/">Account</Link>
-            {" · "}
-            <Link href="/">Home</Link>
-          </p>
-        </div>
-      </section>
-    </PlatformSiteChrome>
+      </AdminSection>
+    </div>
   );
 }

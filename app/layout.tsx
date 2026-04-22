@@ -16,28 +16,28 @@ import { SiteConfigProvider } from '@/components/site/SiteConfigProvider'
 import { getPublicSiteSettings } from '@/lib/public-site-settings'
 
 import type { Metadata, Viewport } from "next"
-import { Figtree, Space_Grotesk } from "next/font/google"
+import { Plus_Jakarta_Sans, Source_Sans_3 } from "next/font/google"
 
-const mainCssHref = `/assets/css/main.css?v=${process.env.NEXT_PUBLIC_CSS_BUST ?? '20260406'}`
+const mainCssHref = `/assets/css/main.css?v=${process.env.NEXT_PUBLIC_CSS_BUST ?? '20260422'}`
 
 const DEFAULT_SITE_DESCRIPTION =
 	"The Africa Trade Awards honour the trailblazers, innovators, and institutions powering the continent's trade transformation and industrial renaissance. 28th and 29th January 2026, Kempinski Gold Coast City Hotel, Accra"
 
 const siteBaseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.africatradeawards.com').replace(/\/+$/, '')
 
-/* Match theme tokens in scss/utils/_fonts-s.scss (400–800); skip 300/900 to cut font bytes */
-const figtree = Figtree({
-	weight: ['400', '500', '600', '700', '800'],
+/* Body: Source Sans 3; display/headings: Plus Jakarta Sans. Legacy --figtree/--grotesk var names match SCSS + main.css. */
+const sourceSans = Source_Sans_3({
+	weight: ['400', '500', '600', '700'],
 	style: ['normal', 'italic'],
 	subsets: ['latin'],
-	variable: "--figtree",
+	variable: '--figtree',
 	display: 'swap',
 	adjustFontFallback: true,
 })
-const grotesk = Space_Grotesk({
-	weight: ['400', '500', '600', '700'],
+const plusJakarta = Plus_Jakarta_Sans({
+	weight: ['400', '500', '600', '700', '800'],
 	subsets: ['latin'],
-	variable: "--grotesk",
+	variable: '--grotesk',
 	display: 'swap',
 	adjustFontFallback: true,
 })
@@ -116,7 +116,7 @@ html.styles-loaded body{opacity:1}
 				/>
 				<link rel="stylesheet" href={mainCssHref} />
 			</head>
-			<body className={`${figtree.variable} ${grotesk.variable} homepage1-body`} suppressHydrationWarning>
+			<body className={`${sourceSans.variable} ${plusJakarta.variable} homepage1-body`} suppressHydrationWarning>
 				<StylesLoadedGate />
 				<noscript>
 					<style>{'html:not(.styles-loaded) body{opacity:1!important}'}</style>

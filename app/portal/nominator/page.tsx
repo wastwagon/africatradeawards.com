@@ -1,9 +1,8 @@
 "use client";
 
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
-import PlatformSiteChrome from "@/components/platform/PlatformSiteChrome";
-
 /** Matches `summary` validation in `app/api/nominations/route.ts` and `[nominationId]/route.ts`. */
 const SUMMARY_MIN_LENGTH = 20;
 
@@ -187,24 +186,23 @@ export default function NominatorPortalPage() {
   const selectedNomination = nominations.find((item) => item.id === selectedNominationId);
 
   return (
-    <PlatformSiteChrome>
-      <section className="platform-page">
-        <div className="container platform-page__wide platform-workspace">
-          <div className="platform-page-header">
-            <p className="platform-eyebrow">Nominator workspace</p>
-            <h1 className="platform-title">Nominate awardees</h1>
-            <p className="platform-lead">
-              Submit and track awardee nominations. Managers review nominations and can convert approved nominations into official entries.
-            </p>
-          </div>
-          <div ref={feedbackRef} className="platform-feedback" tabIndex={-1}>
-            {error ? <p className="platform-msg-error">{error}</p> : null}
-            {message ? <p className="platform-msg-ok">{message}</p> : null}
-          </div>
+    <div className="admin-page--wide">
+      <AdminPageHeader
+        eyebrow="Nominator workspace"
+        title="Nominate awardees"
+        description="Submit and track awardee nominations. Managers review nominations and can convert approved nominations into official entries."
+      />
 
-          <div className="platform-stack">
-            <section className="platform-card">
-              <h2 className="platform-section-title">New nomination</h2>
+      <div ref={feedbackRef}>
+        {error ? (
+          <p className="admin-error admin-mt-sm" role="alert">
+            {error}
+          </p>
+        ) : null}
+        {message ? <p className="admin-ok admin-mt-sm">{message}</p> : null}
+      </div>
+
+      <AdminSection title="New nomination">
               <form onSubmit={createNomination} className="platform-form-grid">
               <label className="platform-field">
                 Nominee full name
@@ -277,10 +275,9 @@ export default function NominatorPortalPage() {
                 {saving ? "Saving..." : "Create nomination draft"}
               </button>
             </form>
-            </section>
+      </AdminSection>
 
-            <section className="platform-card">
-              <h2 className="platform-section-title">Your nominations</h2>
+      <AdminSection title="Your nominations">
               <label className="platform-field">
                 Select nomination
                 <select value={selectedNominationId} onChange={(e) => setSelectedNominationId(e.target.value)}>
@@ -339,31 +336,21 @@ export default function NominatorPortalPage() {
                   </button>
                 </div>
                 {selectedNomination?.reviewNote ? (
-                  <p className="platform-muted">
+                  <p className="admin-muted admin-muted-flat">
                     Review note: <strong>{selectedNomination.reviewNote}</strong>
                   </p>
                 ) : null}
                 {selectedNomination?.source ? (
-                  <p className="platform-muted">
+                  <p className="admin-muted admin-muted-flat">
                     Source: <strong>{selectedNomination.source}</strong>
                   </p>
                 ) : null}
                 {selectedNomination?.convertedEntry ? (
-                  <p className="platform-muted">Converted to entry: {selectedNomination.convertedEntry.title}</p>
+                  <p className="admin-muted admin-muted-flat">Converted to entry: {selectedNomination.convertedEntry.title}</p>
                 ) : null}
                 </div>
               ) : null}
-            </section>
-          </div>
-          <p className="platform-muted platform-footlinks">
-            <Link href="/portal/entrant/">Entrant workspace</Link>
-            {" · "}
-            <Link href="/login/">Sign In</Link>
-            {" · "}
-            <Link href="/">Home</Link>
-          </p>
-        </div>
-      </section>
-    </PlatformSiteChrome>
+      </AdminSection>
+    </div>
   );
 }

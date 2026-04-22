@@ -1,6 +1,6 @@
 /* Remaining overrides: hero, about silver, footer sparkles, inner-page header/video, breadcrumbs.
    Migrated to main.css: _faq-and-modern-contact, _about-committee-partners, _section-padding-and-awards, _sponsors, _home-section-tweaks, _recognition-governance.
-   Theme: --ztc-* in main.css; fonts: --figtree / --grotesk; semantic: app/design-tokens.css */
+   Theme: --ztc-* in main.css; fonts: --figtree (Source Sans 3) / --grotesk (Source Serif 4); semantic: app/design-tokens.css */
 
 /* Reduce hero section height for less top spacing */
 .hero1-section-area {
@@ -466,5 +466,28 @@
 	background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.18) 50%, rgba(192, 192, 192, 0.12) 100%) !important;
 	border-color: rgba(255, 255, 255, 0.35) !important;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100000;
+  padding: 10px 16px;
+  margin: 8px;
+  background: #1a0f24;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.skip-to-content:focus {
+  left: 12px;
+  outline: 2px solid #c9a227;
+  outline-offset: 2px;
 }
 

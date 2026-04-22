@@ -12,6 +12,7 @@ const roles: UserRole[] = [
   UserRole.AUDITOR,
   UserRole.JUDGE,
   UserRole.ENTRANT,
+  UserRole.VOTER,
 ];
 
 type UserRow = {

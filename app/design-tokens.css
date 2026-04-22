@@ -1,6 +1,6 @@
 /**
  * Semantic design tokens: shared across marketing, platform, admin, and app shells.
- * next/font sets --figtree and --grotesk on <body>.
+ * next/font sets --figtree (Source Sans 3 body) and --grotesk (Plus Jakarta Sans display) on <body> (legacy var names for SCSS).
  */
 :root {
 	--color-brand-primary: #4e2b5a;

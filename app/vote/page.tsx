@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { UserRole } from "@prisma/client";
 import PlatformSiteChrome from "@/components/platform/PlatformSiteChrome";
 
 type VoteEntry = {
@@ -37,6 +38,7 @@ function PublicVotingInner() {
   const [message, setMessage] = useState<string | null>(null);
   const [isCasting, setIsCasting] = useState(false);
   const [votingEntryId, setVotingEntryId] = useState<string | null>(null);
+  const [me, setMe] = useState<{ role: UserRole } | null | undefined>(undefined);
   const challengeCacheRef = useRef<{ token: string; entryId: string; readyAt: number }>({
     token: "",
     entryId: "",
@@ -73,6 +75,28 @@ function PublicVotingInner() {
     const token = searchParams.get("token");
     if (token) setVoteToken(token);
   }, [searchParams]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      try {
+        const res = await fetch("/api/auth/me/", { credentials: "include" });
+        if (cancelled) return;
+        if (!res.ok) {
+          setMe(null);
+          return;
+        }
+        const data = await res.json();
+        const role = data.user?.role as UserRole | undefined;
+        setMe(role ? { role } : null);
+      } catch {
+        if (!cancelled) setMe(null);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   /** Ensures a valid challenge JWT for entryId and waits until server dwell passes. */
   async function ensureChallengeForEntry(entryId: string): Promise<boolean> {
@@ -248,6 +272,38 @@ function PublicVotingInner() {
             </p>
           </div>
 
+          {me === undefined ? null : me?.role === UserRole.VOTER ? (
+            <div className="platform-card" style={{ marginBottom: 24, borderColor: "rgba(78, 43, 90, 0.22)" }}>
+              <p className="platform-lead" style={{ marginBottom: 12 }}>
+                You are signed in as a voter. Votes you cast from this browser session are linked to your dashboard so you
+                can follow standings.
+              </p>
+              <Link href="/portal/voter/" className="vl-btn1" style={{ display: "inline-block", textDecoration: "none" }}>
+                Open my voter dashboard
+              </Link>
+            </div>
+          ) : (
+            <div className="platform-card" style={{ marginBottom: 24, borderColor: "rgba(78, 43, 90, 0.22)" }}>
+              <p className="platform-lead" style={{ marginBottom: 12 }}>
+                {me
+                  ? "Want to track how your picks perform? Use a free voter account and stay signed in while you vote."
+                  : "Create a free voter account and stay signed in while you vote to track how your picks perform in each category."}
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+                <Link href="/register/?next=%2Fvote%2F" className="vl-btn1" style={{ textDecoration: "none" }}>
+                  Create voter account
+                </Link>
+                <Link
+                  href="/login/?next=%2Fvote%2F"
+                  className="vl-btn1"
+                  style={{ textDecoration: "none", opacity: 0.92 }}
+                >
+                  Voter sign in
+                </Link>
+              </div>
+            </div>
+          )}
+
           <div className="platform-card" style={{ marginBottom: 28 }}>
             <h2 className="platform-title" style={{ fontSize: "1.25rem", marginBottom: 16 }}>
               Verification
@@ -338,7 +394,9 @@ function PublicVotingInner() {
           </div>
 
           <p className="platform-muted text-center" style={{ marginTop: 32, marginBottom: 0 }}>
-            <Link href="/login/">Staff or judge sign-in</Link>
+            <Link href="/login/">Staff or entrant sign-in</Link>
+            {" · "}
+            <Link href="/register/">Voter registration</Link>
             {" · "}
             <Link href="/">Back to website</Link>
           </p>

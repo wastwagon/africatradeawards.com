@@ -1,6 +1,7 @@
 import { VoteStatus } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { getRequestSessionUser } from "@/lib/api-auth";
 import { prisma } from "@/lib/prisma";
 import { evaluateVoteQuarantine } from "@/lib/vote-quarantine";
 import { getClientIp, hashFingerprint, hashIp } from "@/lib/vote-security";
@@ -94,6 +95,24 @@ export async function POST(request: Request) {
     };
   }
 
+  const sessionUser = await getRequestSessionUser();
+  const voterId = sessionUser?.userId ?? null;
+
+  if (voterId) {
+    const existingAccount = await prisma.publicVote.findUnique({
+      where: {
+        entryId_voterId: {
+          entryId: parsed.data.entryId,
+          voterId,
+        },
+      },
+      select: { id: true },
+    });
+    if (existingAccount) {
+      return NextResponse.json({ ok: false, error: "Duplicate vote blocked" }, { status: 429 });
+    }
+  }
+
   const existing = await prisma.publicVote.findUnique({
     where: {
       entryId_ipHash: {
@@ -135,6 +154,7 @@ export async function POST(request: Request) {
       fingerprintHash,
       userAgent,
       voterEmail: parsed.data.voterEmail,
+      voterId,
       status: voteStatus,
       quarantineReason: risk.reason,
     },

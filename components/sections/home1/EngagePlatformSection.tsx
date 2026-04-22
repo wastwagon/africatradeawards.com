@@ -50,15 +50,20 @@ export default function EngagePlatformSection() {
         </div>
         <div className="row g-4 engage-platform-row">
           {cards.map((card, i) => (
-            <div key={card.href} className="col-md-6 col-lg-3">
-              <div className="engage-card" data-aos="fade-up" data-aos-duration={600} data-aos-delay={i * 80}>
+            <div key={card.href} className="col-md-6 col-lg-3 d-flex">
+              <div
+                className="engage-card w-100"
+                data-aos="fade-up"
+                data-aos-duration={600}
+                data-aos-delay={i * 80}
+              >
                 <div className="engage-card-icon" aria-hidden>
                   <i className={card.icon} />
                 </div>
                 <h3 className="engage-card-title">{card.title}</h3>
                 <p className="engage-card-body">{card.body}</p>
                 <Link href={card.href} className="engage-card-cta vl-btn1">
-                  {card.cta}
+                  <span className="engage-card-cta-text">{card.cta}</span>
                   <i className="fa-solid fa-arrow-right" aria-hidden />
                 </Link>
               </div>
@@ -154,17 +159,36 @@ export default function EngagePlatformSection() {
           line-height: 1.55;
           color: var(--ztc-text-text-3);
           margin: 0 0 20px;
-          flex: 1;
+          flex: 1 1 auto;
         }
         .engage-card-cta {
-          align-self: flex-start;
+          margin-top: auto;
+          align-self: stretch;
+          width: 100%;
+          box-sizing: border-box;
           display: inline-flex;
+          flex-wrap: nowrap;
           align-items: center;
+          justify-content: center;
           gap: 10px;
+          min-height: 80px;
+          padding: 12px 20px;
+          text-align: center;
           text-decoration: none;
+        }
+        .engage-card-cta-text {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          text-align: center;
+          line-height: 1.25;
+          word-break: break-word;
+          min-width: 0;
         }
         .engage-card-cta i {
           font-size: 0.85em;
+          flex-shrink: 0;
         }
         @media (max-width: 767px) {
           .engage-platform-section {

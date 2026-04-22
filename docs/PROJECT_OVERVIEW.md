@@ -33,12 +33,14 @@ flowchart LR
 
 ## Roles and access (high level)
 
-Roles are defined in [`prisma/schema.prisma`](../prisma/schema.prisma) (`UserRole`): **SUPER_ADMIN**, **PROGRAM_MANAGER**, **AUDITOR**, **JUDGE**, **ENTRANT**.
+Roles are defined in [`prisma/schema.prisma`](../prisma/schema.prisma) (`UserRole`): **SUPER_ADMIN**, **PROGRAM_MANAGER**, **AUDITOR**, **JUDGE**, **ENTRANT**, **VOTER**.
 
 [`middleware.ts`](../middleware.ts) enforces:
 
 - **`/admin/*`** — valid session required; only **AUDITOR** or **PROGRAM_MANAGER**-level (and above) reach the admin UI; others are redirected to their default dashboard.
-- **`/portal/entrant`**, **`/portal/nominator`**, **`/portal/judge`** — login required with minimum role (**ENTRANT** for entrant and nominator paths, **JUDGE** for judge).
+- **`/portal/entrant`**, **`/portal/nominator`** — login required at least **ENTRANT**.
+- **`/portal/judge`** — login required at least **JUDGE**.
+- **`/portal/voter`** — login required as **VOTER** (public vote participants).
 - **`/login`** — authenticated users are redirected via post-login resolution.
 - Legacy **`/admin/login`** redirects to **`/login`** with `next` preserved.
 
@@ -65,9 +67,12 @@ Individual API route handlers perform their own authorization checks.
 
 ### Logged-in portals
 
-- **Entrant**: `/portal/entrant` — entry lifecycle (draft through winner/rejected).
-- **Nominator**: `/portal/nominator` — portal-originated nominations (`NominationSource.PORTAL`).
-- **Judge**: `/portal/judge` — assignments, scores, recusals, stages; APIs under `app/api/judging/**`.
+Program portals (`/portal/*`) share the admin-themed sidebar shell (`app/admin/theme.css`) so navigation and layout align across entrant, voter, nominator, and judge workspaces.
+
+- **Entrant**: `/portal/entrant/` — entry lifecycle (draft through winner/rejected).
+- **Voter**: `/portal/voter/` — authenticated voter dashboard linked to public voting (`/vote/`).
+- **Nominator**: `/portal/nominator/` — portal-originated nominations (`NominationSource.PORTAL`).
+- **Judge**: `/portal/judge/` — assignments, scores, recusals, stages; APIs under `app/api/judging/**`.
 
 ### Admin (`/admin/*`)
 

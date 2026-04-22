@@ -35,8 +35,8 @@ const nextConfig = {
 	},
 	...outputConfig,
 	images: {
-		// Required for static export, but safe to keep enabled.
-		unoptimized: true,
+		// Static export cannot use the Image Optimization API; keep optimization for normal server mode.
+		unoptimized: isStaticExport,
 	},
 	trailingSlash: true,
 };

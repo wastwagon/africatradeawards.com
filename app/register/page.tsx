@@ -7,11 +7,12 @@ import { UserRole } from "@prisma/client";
 import { resolvePostLoginPath } from "@/lib/post-login-redirect";
 import PlatformSiteChrome from "@/components/platform/PlatformSiteChrome";
 
-function LoginForm() {
+function RegisterForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const nextRaw = searchParams.get("next");
 
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,23 +23,23 @@ function LoginForm() {
     setLoading(true);
     setError(null);
 
-    const res = await fetch("/api/auth/login", {
+    const res = await fetch("/api/auth/register/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, fullName }),
     });
 
     setLoading(false);
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
-      setError((body.error as string) ?? "Sign-in failed");
+      setError((body.error as string) ?? "Registration failed");
       return;
     }
 
     const data = await res.json();
     const role = data.user?.role as UserRole;
-    if (!role) {
-      setError("Invalid session response");
+    if (role !== UserRole.VOTER) {
+      setError("Unexpected account type");
       return;
     }
 
@@ -52,11 +53,11 @@ function LoginForm() {
       <section className="platform-page">
         <div className="container">
           <div className="platform-page-header platform-page-header--center">
-            <p className="platform-eyebrow">Awards platform</p>
-            <h1 className="platform-title">Sign In</h1>
+            <p className="platform-eyebrow">Africa Trade Awards · Public vote</p>
+            <h1 className="platform-title">Create a voter account</h1>
             <p className="platform-lead">
-              Programme managers, auditors, judges, and entrants use this sign-in. Public voters who want a dashboard should{" "}
-              <Link href="/register/">create a voter account</Link> instead.
+              Free account to track the entries you vote for and see how they rank in their category. You must be signed in
+              before voting for votes to appear here.
             </p>
           </div>
           <div className="row justify-content-center">
@@ -64,38 +65,45 @@ function LoginForm() {
               <div className="platform-card">
                 <form onSubmit={onSubmit}>
                   <label className="platform-field">
+                    Full name
+                    <input
+                      type="text"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      required
+                      autoComplete="name"
+                    />
+                  </label>
+                  <label className="platform-field">
                     Email
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      autoComplete="username"
+                      autoComplete="email"
                     />
                   </label>
                   <label className="platform-field">
-                    Password
+                    Password (at least 10 characters)
                     <input
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      autoComplete="current-password"
+                      minLength={10}
+                      autoComplete="new-password"
                     />
                   </label>
                   {error ? <p className="platform-msg-error">{error}</p> : null}
                   <button type="submit" className="vl-btn1" disabled={loading}>
-                    {loading ? "Signing in…" : "Sign In"}
+                    {loading ? "Creating account…" : "Create account"}
                   </button>
                 </form>
                 <p className="platform-muted" style={{ marginTop: "1.25rem", marginBottom: 0 }}>
-                  <Link href="/register/">Voter registration</Link>
+                  Already have an account? <Link href="/login/?next=%2Fportal%2Fvoter%2F">Sign in</Link>
                   {" · "}
                   <Link href="/vote/">Public voting</Link>
-                  {" · "}
-                  <Link href="/portal/nominator/">Nominator portal</Link>
-                  {" · "}
-                  <Link href="/portal/entrant/">Entrant portal</Link>
                   {" · "}
                   <Link href="/">Home</Link>
                 </p>
@@ -108,7 +116,7 @@ function LoginForm() {
   );
 }
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <Suspense
       fallback={
@@ -121,7 +129,7 @@ export default function LoginPage() {
         </PlatformSiteChrome>
       }
     >
-      <LoginForm />
+      <RegisterForm />
     </Suspense>
   );
 }

@@ -51,8 +51,12 @@ export async function GET(request: Request) {
     if (!roleFilter) {
       return NextResponse.json({ error: "Role filter is required for this endpoint." }, { status: 400 });
     }
-    if (roleFilter !== UserRole.JUDGE && roleFilter !== UserRole.ENTRANT) {
-      return NextResponse.json({ error: "Only judge and entrant lookups are allowed." }, { status: 403 });
+    if (
+      roleFilter !== UserRole.JUDGE &&
+      roleFilter !== UserRole.ENTRANT &&
+      roleFilter !== UserRole.VOTER
+    ) {
+      return NextResponse.json({ error: "Only judge, entrant, and voter lookups are allowed." }, { status: 403 });
     }
   }
 

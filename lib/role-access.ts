@@ -1,9 +1,10 @@
 /**
  * String role checks without importing `@prisma/client` (safe for Edge middleware).
- * Keep in sync with `UserRole` in `prisma/schema.prisma`.
+ * Keep in sync with `UserRole` in `prisma/schema.prisma` (including `VOTER`).
  */
 const ROLE_RANK: Record<string, number> = {
   AUDITOR: 5,
+  VOTER: 8,
   ENTRANT: 10,
   JUDGE: 30,
   PROGRAM_MANAGER: 40,
@@ -30,7 +31,10 @@ export function defaultDashboardForRoleStr(role: string): string {
       return "/admin/";
     case "JUDGE":
       return "/portal/judge/";
+    case "VOTER":
+      return "/portal/voter/";
     case "ENTRANT":
+      return "/portal/entrant/";
     default:
       return "/portal/nominator/";
   }
@@ -71,6 +75,13 @@ export function resolvePostLoginStr(role: string, next: string | null | undefine
 
   if (next.startsWith("/portal/judge")) {
     if (hasRoleAtLeastStr(role, "JUDGE")) {
+      return next;
+    }
+    return defaultDashboardForRoleStr(role);
+  }
+
+  if (next.startsWith("/portal/voter")) {
+    if (role === "VOTER") {
       return next;
     }
     return defaultDashboardForRoleStr(role);

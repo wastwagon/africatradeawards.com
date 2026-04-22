@@ -2,6 +2,7 @@
 'use client'
 import AOS from 'aos'
 import { useEffect, useState } from "react"
+import SkipToMain from '@/components/a11y/SkipToMain'
 import AddClassBody from '../elements/AddClassBody'
 import BackToTop from '../elements/BackToTop'
 import AnnouncementBar from '@/components/site/AnnouncementBar'
@@ -60,6 +61,7 @@ export default function Layout({ children }: LayoutProps) {
 
 	return (
 		<>
+			<SkipToMain />
 			<div id="top" />
 			<AddClassBody />
 			<Header1 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} isSearch={isSearch} handleSearch={handleSearch} />
@@ -67,7 +69,9 @@ export default function Layout({ children }: LayoutProps) {
 			<AnnouncementBar />
 
 			<div className="site-layout-chrome">
-				{children}
+				<main id="main-content" tabIndex={-1}>
+					{children}
+				</main>
 
 				<MobileBottomNav />
 

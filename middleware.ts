@@ -39,6 +39,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname === "/register" || pathname === "/register/") {
+    const session = await getSession(request);
+    if (session?.role && typeof session.role === "string") {
+      return NextResponse.redirect(new URL(defaultDashboardForRoleStr(session.role), request.url));
+    }
+    return NextResponse.next();
+  }
+
   if (pathname.startsWith("/admin")) {
     const session = await getSession(request);
     if (!session?.role || typeof session.role !== "string") {
@@ -99,9 +107,24 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname.startsWith("/portal/voter")) {
+    const session = await getSession(request);
+    if (!session?.role || typeof session.role !== "string") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/login/";
+      url.search = `next=${encodeURIComponent(pathname)}`;
+      return NextResponse.redirect(url);
+    }
+    const role = session.role;
+    if (role !== "VOTER") {
+      return NextResponse.redirect(new URL(defaultDashboardForRoleStr(role), request.url));
+    }
+    return NextResponse.next();
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/portal/:path*", "/login", "/login/"],
+  matcher: ["/admin/:path*", "/portal/:path*", "/login", "/login/", "/register", "/register/"],
 };
