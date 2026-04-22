@@ -80,10 +80,6 @@ export default function HeroSection() {
 						<Link href="/portal/entrant/" className="hero-banner-btn-secondary">
 							Enter your submission
 						</Link>
-						<Link href="/login/" className="hero-banner-tertiary">
-							Sign In for Your Dashboard
-							<i className="fa-solid fa-arrow-right" aria-hidden />
-						</Link>
 					</div>
 				</div>
 			</div>
@@ -273,22 +269,6 @@ export default function HeroSection() {
 				}
 				.hero-banner-btn-live:hover {
 					border-color: rgba(255, 220, 160, 0.9) !important;
-				}
-				.hero-banner-tertiary {
-					display: inline-flex;
-					align-items: center;
-					gap: 8px;
-					font-family: var(--grotesk), sans-serif;
-					font-size: 0.9rem;
-					font-weight: 600;
-					color: rgba(255,255,255,0.95);
-					text-decoration: none;
-					border-bottom: 2px solid rgba(255, 200, 120, 0.6);
-					padding-bottom: 2px;
-				}
-				.hero-banner-tertiary:hover {
-					color: #ffe8b8;
-					border-bottom-color: #ffe8b8;
 				}
 				@media (max-width: 575px) {
 					.hero-banner-overlay { padding-bottom: 96px; }

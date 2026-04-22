@@ -161,18 +161,23 @@ export default function EngagePlatformSection() {
           margin: 0 0 20px;
           flex: 1 1 auto;
         }
-        .engage-card-cta {
+        .engage-card-cta:global(.vl-btn1) {
           margin-top: auto;
           align-self: stretch;
           width: 100%;
           box-sizing: border-box;
-          display: inline-flex;
+          /* Override global .vl-btn1 { display: inline-block } so height is reliable */
+          display: inline-flex !important;
+          flex-direction: row;
           flex-wrap: nowrap;
           align-items: center;
           justify-content: center;
-          gap: 10px;
-          min-height: 80px;
-          padding: 12px 20px;
+          gap: 8px 10px;
+          /* Fixed height so all four cards match; fits two lines of uppercase CTA + icon */
+          height: 4.5rem;
+          min-height: 4.5rem;
+          max-height: 4.5rem;
+          padding: 10px 16px 10px 20px;
           text-align: center;
           text-decoration: none;
         }
@@ -182,13 +187,15 @@ export default function EngagePlatformSection() {
           -webkit-line-clamp: 2;
           overflow: hidden;
           text-align: center;
-          line-height: 1.25;
+          line-height: 1.2;
           word-break: break-word;
           min-width: 0;
+          max-width: 12em;
         }
         .engage-card-cta i {
-          font-size: 0.85em;
+          font-size: 0.8rem;
           flex-shrink: 0;
+          line-height: 1;
         }
         @media (max-width: 767px) {
           .engage-platform-section {
