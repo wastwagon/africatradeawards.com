@@ -23795,6 +23795,8 @@ h2.premium-section-title::after,
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 24px;
+  /* Prevent all cards from stretching to the tallest row item. */
+  align-items: start;
 }
 
 .premium-faq-card {
@@ -23809,6 +23811,9 @@ h2.premium-section-title::after,
   box-shadow: 0 2px 4px rgba(78, 43, 90, 0.04), 0 4px 8px rgba(78, 43, 90, 0.06), 0 8px 16px rgba(78, 43, 90, 0.04), 0 16px 32px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(78, 43, 90, 0.05);
   transform: perspective(1000px) rotateX(0deg) translateY(0) translateZ(0);
   backdrop-filter: blur(10px);
+  /* Keep each card's height driven by its own content only. */
+  height: fit-content;
+  align-self: start;
 }
 
 .premium-faq-card::before {
