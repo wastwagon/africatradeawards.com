@@ -111,6 +111,16 @@ Useful if you prefer running `npm run dev` directly on your machine.
 
 Environment variables for production are documented in **`.env.coolify.example`**.
 
+### Verifying production CMS vs local
+
+FAQ and publications are stored in **`CmsFaq` / `CmsPublication` in Postgres**. The admin UI and the public site both use **`DATABASE_URL`** for that deployment.
+
+1. **`DATABASE_URL`:** In Coolify (or your host env), confirm it points at the **same database** you inspect with `npx prisma studio` or your SQL client when debugging production content.
+2. **Admin vs local:** Saving in **localhost** admin updates **only your local Postgres**. Open **production** `/admin/site-content` on the **live domain** and use **Save** there to update what visitors see—or migrate data explicitly.
+3. **`migrate deploy` vs `db seed`:** Migrate applies **schema** only. Seed inserts **defaults when tables are empty**; it does **not** copy rows from your laptop. After deploy, if the public FAQ still looks like the three stock questions, production DB likely still has only those rows or you have not saved changes in **production** admin.
+
+Public `/faq` and `/publications` routes are configured for **fresh CMS reads** (`force-dynamic` where applicable); the **`/api/site/publications`** response is **not** edge-cached for long periods so listing cards update after CMS saves.
+
 ---
 
 ## Quality checks before you push

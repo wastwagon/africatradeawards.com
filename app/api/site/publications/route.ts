@@ -8,7 +8,8 @@ export async function GET() {
     { publications: listing },
     {
       headers: {
-        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+        // CMS-backed list: avoid CDN/browser caching stale cards after admin edits.
+        "Cache-Control": "private, no-store, must-revalidate",
       },
     },
   );

@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import PublicationPressReleaseView from "@/components/publications/PublicationPressReleaseView";
 import { getCmsPublicationBySlug } from "@/lib/cms-content";
 
+/** Press release HTML and metadata come from Postgres (`CmsPublication`). */
+export const dynamic = "force-dynamic";
+
 type Props = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
