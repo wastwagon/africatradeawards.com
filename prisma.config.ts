@@ -1,11 +1,11 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { defineConfig, env } from "prisma/config";
+import { defineConfig } from "prisma/config";
 
 /**
  * When `prisma.config.ts` is present, Prisma skips its default `.env` loading.
- * Populate `process.env` from the project root `.env` so `env("DATABASE_URL")`
- * and `schema.prisma` `env("DATABASE_URL")` resolve the same way as before.
+ * Populate `process.env` from the project root `.env` so `schema.prisma`
+ * `env("DATABASE_URL")` resolves the same way as before.
  */
 function loadDotEnvFromProjectRoot() {
   const envPath = resolve(process.cwd(), ".env");
@@ -39,11 +39,22 @@ function loadDotEnvFromProjectRoot() {
 
 loadDotEnvFromProjectRoot();
 
+/**
+ * `prisma generate` (e.g. npm postinstall in CI) must not require a real database.
+ * `env("DATABASE_URL")` from prisma/config throws if unset; schema.prisma still
+ * reads `process.env.DATABASE_URL`, so set a non-connecting placeholder when missing.
+ */
+const DATABASE_URL_PLACEHOLDER =
+  "postgresql://prisma_generate_placeholder:prisma_generate_placeholder@127.0.0.1:5432/prisma_generate_placeholder";
+if (!process.env.DATABASE_URL?.trim()) {
+  process.env.DATABASE_URL = DATABASE_URL_PLACEHOLDER;
+}
+
 export default defineConfig({
   engine: "classic",
   schema: "prisma/schema.prisma",
   datasource: {
-    url: env("DATABASE_URL"),
+    url: process.env.DATABASE_URL!,
   },
   migrations: {
     seed: "node prisma/seed.mjs",
