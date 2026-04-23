@@ -2,6 +2,8 @@ import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { requireRole } from "@/lib/api-auth";
 import { createCmsRevision, getCmsRevisionById, isCmsScope } from "@/lib/cms-revisions";
+import { normalizePublicationDateTextForState } from "@/lib/cms-publication-date";
+import { normalizePublicationSlug, publicationHrefFromSlug } from "@/lib/cms-publication-slug";
 import { prisma } from "@/lib/prisma";
 import { UserRole } from "@prisma/client";
 
@@ -76,18 +78,22 @@ export async function POST(request: Request, context: { params: { scope: string 
         typeof row.publishAt === "string" && row.publishAt.trim() ? new Date(row.publishAt) : null;
       const unpublishAt =
         typeof row.unpublishAt === "string" && row.unpublishAt.trim() ? new Date(row.unpublishAt) : null;
+      const bodyRaw = typeof row.body === "string" ? row.body : "";
+      const rawDate = String(row.dateText ?? "").trim();
+      const slug = normalizePublicationSlug(String(row.slug ?? ""));
       return {
-      slug: String(row.slug ?? "").trim().toLowerCase(),
-      title: String(row.title ?? "").trim(),
-      excerpt: String(row.excerpt ?? "").trim(),
-      dateText: String(row.dateText ?? "").trim(),
-      dateline: String(row.dateline ?? "").trim(),
-      image: String(row.image ?? "").trim(),
-      href: String(row.href ?? "").trim(),
-      sortOrder: Number(row.sortOrder ?? index + 1),
-      published: Boolean(row.published ?? true),
-      publishAt: publishAt && !Number.isNaN(publishAt.getTime()) ? publishAt : null,
-      unpublishAt: unpublishAt && !Number.isNaN(unpublishAt.getTime()) ? unpublishAt : null,
+        slug,
+        title: String(row.title ?? "").trim(),
+        excerpt: String(row.excerpt ?? "").trim(),
+        body: bodyRaw.trim() === "" ? null : bodyRaw,
+        dateText: normalizePublicationDateTextForState(rawDate) || rawDate,
+        dateline: String(row.dateline ?? "").trim(),
+        image: String(row.image ?? "").trim(),
+        href: publicationHrefFromSlug(slug),
+        sortOrder: Number(row.sortOrder ?? index + 1),
+        published: Boolean(row.published ?? true),
+        publishAt: publishAt && !Number.isNaN(publishAt.getTime()) ? publishAt : null,
+        unpublishAt: unpublishAt && !Number.isNaN(unpublishAt.getTime()) ? unpublishAt : null,
       };
     });
     await prisma.$transaction(async (tx) => {

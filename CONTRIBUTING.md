@@ -41,6 +41,8 @@ The web container entrypoint runs:
 2. **`npx prisma migrate deploy`** — applies existing migrations to your local DB (same family of command as production; does **not** reset data).
 3. `npm run sass:build` then `next dev` + sass watch.
 
+**CMS data after migrations:** `migrate deploy` does **not** run `prisma db seed`. If a migration adds CMS columns or you need default/backfill content (for example long-form publication HTML), run **`npm run prisma:seed`** against the same database. To replace stored publication `body` values with the canonical HTML from the repo for every slug in `CMS_PUBLICATION_SEED` (overwrites that field even when non-empty), use **`npm run prisma:seed:sync-canonical`**.
+
 **New migration from schema changes (on the host, with DB reachable):**
 
 ```bash
@@ -83,6 +85,7 @@ Useful if you prefer running `npm run dev` directly on your machine.
    npm install
    npm run sass:build
    npx prisma migrate dev
+   npm run prisma:seed
    npm run dev
    ```
 
@@ -103,6 +106,7 @@ Useful if you prefer running `npm run dev` directly on your machine.
 
 - Compose file in Coolify must be **`docker-compose.coolify.yml`** (not root **`docker-compose.yml`**, which is web-only). In the Coolify UI, set **Docker Compose Location** to `docker-compose.coolify.yml`. See **`COOLIFY_FULLSTACK_SETUP.md`**.
 - The **`app`** service starts with: `npx prisma migrate deploy && npm run start` — this **applies pending migrations** to the production database. It **adds** schema changes; it does **not** wipe the database by itself. (Coolify fullstack uses default Next output via [`Dockerfile.fullstack`](Dockerfile.fullstack), not `output: "standalone"`.)
+- **CMS seed:** that startup path does **not** run `db seed`. Run **`npm run prisma:seed`** as a one-off or scheduled job when you need idempotent CMS defaults or empty-field backfills. Use **`npm run prisma:seed:sync-canonical`** only when you intentionally want to overwrite canonical publication HTML from the repo.
 - **Destructive migrations** (drops, destructive alters, data-deleting scripts) can still cause data loss—review migrations in PRs and coordinate backups when needed.
 
 Environment variables for production are documented in **`.env.coolify.example`**.

@@ -26,11 +26,12 @@ const swiperOptions = {
 }
 
 export default function HeroSection() {
-	const { eventLiveStreamEnabled, eventLiveStreamTitle } = useSiteConfig()
+	const { eventLiveStreamEnabled, eventLiveStreamTitle, heroBarDateLine, heroBarVenueLine } = useSiteConfig()
 	const liveAria =
 		eventLiveStreamTitle.trim().length > 0
 			? `${eventLiveStreamTitle.trim()} — open live page`
 			: 'Watch live stream'
+	const heroDateVenueLine = `${heroBarDateLine.trim() || '28–29 January 2026'} · ${heroBarVenueLine.trim() || 'Accra, Ghana'}`
 
 	return (
 		<section className="hero-banner-section" aria-label="Hero banner">
@@ -61,7 +62,7 @@ export default function HeroSection() {
 
 			<div className="hero-banner-overlay" aria-hidden="false">
 				<div className="container hero-banner-overlay-inner">
-					<p className="hero-banner-eyebrow">28–29 January 2026 · Accra, Ghana</p>
+					<p className="hero-banner-eyebrow">{heroDateVenueLine}</p>
 					<h1 className="hero-banner-heading">Africa Trade Awards</h1>
 					<p className="hero-banner-tagline">
 						Celebrating the people and organisations advancing Africa&apos;s trade and industrial future—live recognition,

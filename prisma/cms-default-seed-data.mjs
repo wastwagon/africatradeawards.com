@@ -1,39 +1,19 @@
-import { PRESS_RELEASE_AFRICA_TRADE_AWARDS_2026_ARTICLE_INNER_HTML } from "@/lib/cms-publication-bodies";
+/**
+ * CMS rows for idempotent seed when tables are empty.
+ * Keep in sync with lib/cms-defaults.ts (DEFAULT_FAQS, DEFAULT_PUBLICATIONS, DEFAULT_ABOUT_SNIPPETS).
+ * Long-form HTML for publications: prisma/press-release-africa-trade-awards-2026.inner.html
+ */
+import { readFileSync } from "fs";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 
-export type CmsFaqItem = {
-  question: string;
-  answer: string;
-  category: string;
-  sortOrder: number;
-  published: boolean;
-  publishAt?: string;
-  unpublishAt?: string;
-};
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const pressReleaseAfricaTradeAwards2026InnerHtml = readFileSync(
+  join(__dirname, "press-release-africa-trade-awards-2026.inner.html"),
+  "utf8",
+).trim();
 
-export type CmsPublicationItem = {
-  slug: string;
-  title: string;
-  excerpt: string;
-  /** Trusted HTML: article body, contact block, and back link (see `PublicationPressReleaseView`). */
-  body?: string;
-  dateText: string;
-  dateline: string;
-  image: string;
-  href: string;
-  sortOrder: number;
-  published: boolean;
-  publishAt?: string;
-  unpublishAt?: string;
-};
-
-export type CmsSnippetItem = {
-  key: string;
-  label: string;
-  content: string;
-  sortOrder: number;
-};
-
-export const DEFAULT_FAQS: CmsFaqItem[] = [
+export const CMS_FAQ_SEED = [
   {
     question: "What are the Africa Trade Awards?",
     answer:
@@ -60,34 +40,14 @@ export const DEFAULT_FAQS: CmsFaqItem[] = [
   },
 ];
 
-/** Canonical FAQ category labels for the admin CMS dropdown (plus any legacy value per row). */
-export const FAQ_CMS_CATEGORY_OPTIONS: readonly string[] = Object.freeze(
-  Array.from(
-    new Set([
-      ...new Set(DEFAULT_FAQS.map((f) => f.category)),
-      "General",
-      "Nominations",
-    ]),
-  ).sort((a, b) => a.localeCompare(b)),
-);
-
-/** Options for `<select>`: canonical list, plus `current` when it is non-empty and not already listed. */
-export function faqCategorySelectValues(current: string): string[] {
-  const trimmed = current.trim();
-  const base = [...FAQ_CMS_CATEGORY_OPTIONS];
-  if (trimmed && !base.includes(trimmed)) {
-    return [...base, trimmed].sort((a, b) => a.localeCompare(b));
-  }
-  return base;
-}
-
-export const DEFAULT_PUBLICATIONS: CmsPublicationItem[] = [
+export const CMS_PUBLICATION_SEED = [
   {
     slug: "africa-trade-awards-2026",
-    title: "Africa Trade Awards 2026 Honour Leaders Driving Africa's Industrialisation and Intra-African Trade",
+    title:
+      "Africa Trade Awards 2026 Honour Leaders Driving Africa's Industrialisation and Intra-African Trade",
     excerpt:
       "The Africa Trade Awards 2026 concluded in Accra as a landmark celebration of leadership, innovation, and execution in advancing Africa's industrialisation and intra-African trade agenda under the AfCFTA.",
-    body: PRESS_RELEASE_AFRICA_TRADE_AWARDS_2026_ARTICLE_INNER_HTML,
+    body: pressReleaseAfricaTradeAwards2026InnerHtml,
     dateText: "2026-01-29",
     dateline: "Accra, Ghana",
     image: "/assets/img/gallery/2P9A9182.jpg",
@@ -97,7 +57,7 @@ export const DEFAULT_PUBLICATIONS: CmsPublicationItem[] = [
   },
 ];
 
-export const DEFAULT_ABOUT_SNIPPETS: CmsSnippetItem[] = [
+export const CMS_SNIPPET_SEED = [
   {
     key: "about_overview_paragraph_1",
     label: "About overview paragraph 1",

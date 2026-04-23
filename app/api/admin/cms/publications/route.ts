@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { requireRole } from "@/lib/api-auth";
 import { createCmsRevision } from "@/lib/cms-revisions";
 import { DEFAULT_PUBLICATIONS } from "@/lib/cms-defaults";
+import { normalizePublicationSlug, publicationHrefFromSlug } from "@/lib/cms-publication-slug";
 import { prisma } from "@/lib/prisma";
 import { UserRole } from "@prisma/client";
 import { z } from "zod";
@@ -11,7 +12,10 @@ const publicationSchema = z.object({
   slug: z.string().min(1, "Slug is required"),
   title: z.string().min(3, "Title must be at least 3 characters"),
   excerpt: z.string().min(10, "Summary must be at least 10 characters"),
-  dateText: z.string().min(3, "Date is required"),
+  body: z.union([z.string().max(500000), z.null()]).default(null),
+  dateText: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Publication date must be selected (YYYY-MM-DD)"),
   dateline: z.string().optional().default(""),
   image: z.string().optional().default(""),
   href: z.string().optional().default(""),
@@ -52,6 +56,7 @@ export async function PUT(request: Request) {
     slug: string;
     title: string;
     excerpt: string;
+    body: string | null;
     dateText: string;
     dateline: string;
     image: string;
@@ -64,14 +69,17 @@ export async function PUT(request: Request) {
 
   for (let index = 0; index < body.publications.length; index += 1) {
     const row = body.publications[index] ?? {};
+    const bodyRaw = typeof row.body === "string" ? row.body : "";
+    const slug = typeof row.slug === "string" ? normalizePublicationSlug(row.slug) : "";
     const candidate = {
-      slug: typeof row.slug === "string" ? row.slug.trim().toLowerCase().replace(/[^a-z0-9-]/g, "-") : "",
+      slug,
       title: typeof row.title === "string" ? row.title.trim() : "",
       excerpt: typeof row.excerpt === "string" ? row.excerpt.trim() : "",
+      body: bodyRaw.trim() === "" ? null : bodyRaw,
       dateText: typeof row.dateText === "string" ? row.dateText.trim() : "",
       dateline: typeof row.dateline === "string" ? row.dateline.trim() : "",
       image: typeof row.image === "string" ? row.image.trim() : "",
-      href: typeof row.href === "string" ? row.href.trim() : "",
+      href: publicationHrefFromSlug(slug),
       sortOrder: typeof row.sortOrder === "number" ? row.sortOrder : index + 1,
       published: typeof row.published === "boolean" ? row.published : true,
       publishAt:
@@ -122,5 +130,8 @@ export async function PUT(request: Request) {
   });
 
   revalidatePath("/publications");
+  for (const row of clean) {
+    revalidatePath(`/publications/${row.slug}`);
+  }
   return NextResponse.json({ ok: true });
 }

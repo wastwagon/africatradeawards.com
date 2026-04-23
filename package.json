@@ -20,6 +20,7 @@
     "prisma:migrate:deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
     "prisma:seed": "prisma db seed",
+    "prisma:seed:sync-canonical": "node scripts/prisma-seed-sync-canonical.mjs",
     "prisma:seed:demo": "node scripts/seed-demo.mjs",
     "worker:broadcast": "node scripts/broadcast-worker.js",
     "test:e2e": "node scripts/reset-e2e-rate-limits.mjs && playwright test",
@@ -68,8 +69,5 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.35",
     "typescript": "^5"
-  },
-  "prisma": {
-    "seed": "node prisma/seed.mjs"
   }
 }

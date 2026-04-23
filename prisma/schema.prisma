@@ -620,6 +620,7 @@ model CmsPublication {
   slug      String   @unique
   title     String
   excerpt   String
+  body      String?  @db.Text
   dateText  String
   dateline  String?
   image     String?

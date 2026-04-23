@@ -2,6 +2,7 @@
 
 import Layout from '@/components/layout/Layout'
 import { DEFAULT_PUBLICATIONS } from '@/lib/cms-defaults'
+import { formatPublicationDateLabel } from '@/lib/cms-publication-date'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
@@ -30,6 +31,7 @@ export default function PublicationsPage() {
 						slug: String(item.slug ?? ''),
 						title: String(item.title ?? ''),
 						excerpt: String(item.excerpt ?? ''),
+						body: typeof item.body === 'string' ? item.body : '',
 						dateText: String(item.dateText ?? item.date ?? ''),
 						dateline: String(item.dateline ?? ''),
 						image: String(item.image ?? ''),
@@ -115,7 +117,8 @@ export default function PublicationsPage() {
 												<p className="publication-card-excerpt">{pub.excerpt}</p>
 												<div className="publication-card-meta">
 													<span className="publication-card-date">
-														<i className="fa-solid fa-calendar-days" /> {pub.dateline && `${pub.dateline} | `}{pub.dateText}
+														<i className="fa-solid fa-calendar-days" /> {pub.dateline && `${pub.dateline} | `}
+														{formatPublicationDateLabel(pub.dateText)}
 													</span>
 												</div>
 												<span className="publication-card-cta">

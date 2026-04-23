@@ -12,6 +12,15 @@ function readString(v: unknown): string {
   return typeof v === "string" ? v : "";
 }
 
+function readStringField(
+  source: Record<string, unknown>,
+  key: keyof PublicSiteSettingsDTO,
+  fallback: string,
+): string {
+  if (!Object.prototype.hasOwnProperty.call(source, key)) return fallback;
+  return readString(source[key]);
+}
+
 function readBool(v: unknown, fallback: boolean): boolean {
   if (typeof v === "boolean") return v;
   if (v === "true") return true;
@@ -21,20 +30,20 @@ function readBool(v: unknown, fallback: boolean): boolean {
 
 function bodyToDto(o: Record<string, unknown>, fallback: PublicSiteSettingsDTO): PublicSiteSettingsDTO {
   return {
-    headerDateLine: readString(o.headerDateLine),
-    headerVenueLine: readString(o.headerVenueLine),
-    mobileNavMetaLine: readString(o.mobileNavMetaLine),
-    heroBarDateLine: readString(o.heroBarDateLine),
-    heroBarVenueLine: readString(o.heroBarVenueLine),
+    headerDateLine: readStringField(o, "headerDateLine", fallback.headerDateLine),
+    headerVenueLine: readStringField(o, "headerVenueLine", fallback.headerVenueLine),
+    mobileNavMetaLine: readStringField(o, "mobileNavMetaLine", fallback.mobileNavMetaLine),
+    heroBarDateLine: readStringField(o, "heroBarDateLine", fallback.heroBarDateLine),
+    heroBarVenueLine: readStringField(o, "heroBarVenueLine", fallback.heroBarVenueLine),
     announcementEnabled: readBool(o.announcementEnabled, fallback.announcementEnabled),
-    announcementText: readString(o.announcementText),
-    announcementLinkUrl: readString(o.announcementLinkUrl),
-    announcementLinkLabel: readString(o.announcementLinkLabel),
-    supportEmail: readString(o.supportEmail) || fallback.supportEmail,
-    seoDescription: readString(o.seoDescription),
+    announcementText: readStringField(o, "announcementText", fallback.announcementText),
+    announcementLinkUrl: readStringField(o, "announcementLinkUrl", fallback.announcementLinkUrl),
+    announcementLinkLabel: readStringField(o, "announcementLinkLabel", fallback.announcementLinkLabel),
+    supportEmail: readStringField(o, "supportEmail", fallback.supportEmail),
+    seoDescription: readStringField(o, "seoDescription", fallback.seoDescription),
     eventLiveStreamEnabled: readBool(o.eventLiveStreamEnabled, fallback.eventLiveStreamEnabled),
-    eventLiveStreamTitle: readString(o.eventLiveStreamTitle) || fallback.eventLiveStreamTitle,
-    eventLiveStreamEmbedUrl: readString(o.eventLiveStreamEmbedUrl),
+    eventLiveStreamTitle: readStringField(o, "eventLiveStreamTitle", fallback.eventLiveStreamTitle),
+    eventLiveStreamEmbedUrl: readStringField(o, "eventLiveStreamEmbedUrl", fallback.eventLiveStreamEmbedUrl),
   };
 }
 
@@ -77,9 +86,13 @@ export async function PATCH(request: Request) {
       "/vote",
       "/login",
       "/nominate",
+      "/nominate/status",
       "/about",
       "/awards-structure",
       "/live",
+      "/publications",
+      "/publications/africa-trade-awards-2026",
+      "/sponsors-partners",
     ]) {
       revalidatePath(path);
     }

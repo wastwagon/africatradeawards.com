@@ -7,6 +7,8 @@ import {
   type CmsPublicationItem,
   type CmsSnippetItem,
 } from "@/lib/cms-defaults";
+import { normalizePublicationDateTextForState } from "@/lib/cms-publication-date";
+import { publicationHrefFromSlug } from "@/lib/cms-publication-slug";
 
 function shouldFallback(error: unknown): boolean {
   if (!(error instanceof Error)) return false;
@@ -64,6 +66,7 @@ export async function getCmsPublications(): Promise<CmsPublicationItem[]> {
       slug: row.slug,
       title: row.title,
       excerpt: row.excerpt,
+      body: row.body ?? "",
       dateText: row.dateText,
       dateline: row.dateline ?? "",
       image: row.image ?? "",
@@ -102,6 +105,7 @@ export async function getCmsPublicationBySlug(slug: string): Promise<CmsPublicat
       slug: row.slug,
       title: row.title,
       excerpt: row.excerpt,
+      body: row.body ?? "",
       dateText: row.dateText,
       dateline: row.dateline ?? "",
       image: row.image ?? "",
@@ -134,6 +138,103 @@ export async function getCmsAboutSnippets(): Promise<CmsSnippetItem[]> {
     }));
   } catch (error) {
     if (shouldFallback(error)) return DEFAULT_ABOUT_SNIPPETS;
+    throw error;
+  }
+}
+
+/** Same shapes as admin GET `/api/admin/cms/*` for the friendly CMS editor (no client mount fetch). */
+export type AdminCmsEditorBundle = {
+  faqs: CmsFaqItem[];
+  publications: CmsPublicationItem[];
+  snippets: CmsSnippetItem[];
+};
+
+export async function getAdminCmsEditorBundle(): Promise<AdminCmsEditorBundle> {
+  try {
+    const [faqRows, pubRows, snippetRows] = await Promise.all([
+      prisma.cmsFaq.findMany({ orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }] }),
+      prisma.cmsPublication.findMany({ orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }] }),
+      prisma.cmsSnippet.findMany({ orderBy: [{ sortOrder: "asc" }, { key: "asc" }] }),
+    ]);
+
+    const faqs: CmsFaqItem[] =
+      faqRows.length === 0
+        ? DEFAULT_FAQS.map((faq, index) => ({
+            ...faq,
+            sortOrder: faq.sortOrder ?? index + 1,
+            publishAt: faq.publishAt ?? "",
+            unpublishAt: faq.unpublishAt ?? "",
+          }))
+        : faqRows.map((row, index) => ({
+            question: row.question,
+            answer: row.answer,
+            category: row.category ?? "",
+            sortOrder: row.sortOrder ?? index + 1,
+            published: row.published,
+            publishAt: row.publishAt?.toISOString() ?? "",
+            unpublishAt: row.unpublishAt?.toISOString() ?? "",
+          }));
+
+    const publications: CmsPublicationItem[] =
+      pubRows.length === 0
+        ? DEFAULT_PUBLICATIONS.map((item, index) => ({
+            ...item,
+            body: item.body ?? "",
+            sortOrder: item.sortOrder ?? index + 1,
+            publishAt: item.publishAt ?? "",
+            unpublishAt: item.unpublishAt ?? "",
+          }))
+        : pubRows.map((row, index) => ({
+            slug: row.slug,
+            title: row.title,
+            excerpt: row.excerpt,
+            body: row.body ?? "",
+            dateText: normalizePublicationDateTextForState(row.dateText),
+            dateline: row.dateline ?? "",
+            image: row.image ?? "",
+            href: publicationHrefFromSlug(row.slug),
+            sortOrder: row.sortOrder ?? index + 1,
+            published: row.published,
+            publishAt: row.publishAt?.toISOString() ?? "",
+            unpublishAt: row.unpublishAt?.toISOString() ?? "",
+          }));
+
+    const snippets: CmsSnippetItem[] =
+      snippetRows.length === 0
+        ? DEFAULT_ABOUT_SNIPPETS.map((item, index) => ({
+            ...item,
+            sortOrder: item.sortOrder ?? index + 1,
+          }))
+        : snippetRows.map((row, index) => ({
+            key: row.key,
+            label: row.label,
+            content: row.content,
+            sortOrder: row.sortOrder ?? index + 1,
+          }));
+
+    return { faqs, publications, snippets };
+  } catch (error) {
+    if (shouldFallback(error)) {
+      return {
+        faqs: DEFAULT_FAQS.map((faq, index) => ({
+          ...faq,
+          sortOrder: faq.sortOrder ?? index + 1,
+          publishAt: faq.publishAt ?? "",
+          unpublishAt: faq.unpublishAt ?? "",
+        })),
+        publications: DEFAULT_PUBLICATIONS.map((item, index) => ({
+          ...item,
+          body: item.body ?? "",
+          sortOrder: item.sortOrder ?? index + 1,
+          publishAt: item.publishAt ?? "",
+          unpublishAt: item.unpublishAt ?? "",
+        })),
+        snippets: DEFAULT_ABOUT_SNIPPETS.map((item, index) => ({
+          ...item,
+          sortOrder: item.sortOrder ?? index + 1,
+        })),
+      };
+    }
     throw error;
   }
 }
