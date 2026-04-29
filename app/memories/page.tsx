@@ -2,6 +2,7 @@ import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 export default function Memories() {
 
 	return (
@@ -9,18 +10,11 @@ export default function Memories() {
 
 			<Layout>
 				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg11.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-6 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Recent Memories</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Recent Memories"
+						currentLabel="Recent Memories"
+						subtitle="A curated visual archive of key moments from the summit and awards experience."
+					/>
 					{/*===== HERO AREA ENDS =======*/}
 					{/*===== MEMORY AREA STARTS =======*/}
 					<div className="memory-inner-section-area sp1">

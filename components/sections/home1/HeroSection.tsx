@@ -61,15 +61,15 @@ export default function HeroSection() {
 
 			<div className="hero-banner-overlay" aria-hidden="false">
 				<div className="container hero-banner-overlay-inner">
-					<p className="hero-banner-eyebrow">28–29 January 2026 · Accra, Ghana</p>
-					<h1 className="hero-banner-heading">Africa Trade Awards</h1>
+					<p className="hero-banner-eyebrow">Africa Trade Awards 2026 · Accra, Ghana</p>
+					<h1 className="hero-banner-heading">Where Trade Excellence Takes the Stage</h1>
 					<p className="hero-banner-tagline">
-						Celebrating the people and organisations advancing Africa&apos;s trade and industrial future—live recognition,
-						public voice, and programmes you can join online.
+						From continental leadership to industry-scale execution, we spotlight the institutions and people shaping
+						Africa&apos;s trade future through measurable impact.
 					</p>
 					<div className="hero-banner-actions">
-						<Link href="/vote/" className="vl-btn1 hero-banner-btn-primary">
-							Cast Your Vote
+						<Link href="/awardees/" className="vl-btn1 hero-banner-btn-primary">
+							Explore Awardees
 						</Link>
 						{eventLiveStreamEnabled ? (
 							<Link href="/live/" className="hero-banner-btn-secondary hero-banner-btn-live" aria-label={liveAria}>
@@ -78,7 +78,7 @@ export default function HeroSection() {
 							</Link>
 						) : null}
 						<Link href="/portal/entrant/" className="hero-banner-btn-secondary">
-							Enter your submission
+							Start a submission
 						</Link>
 						<Link href="/login/" className="hero-banner-tertiary">
 							Sign In for Your Dashboard

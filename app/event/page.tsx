@@ -1,294 +1,83 @@
-
 import Image from "next/image"
-import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PublicPageHero from '@/components/sections/PublicPageHero'
+
+const sessions = [
+	{
+		index: "01",
+		title: "Summit Opening & Continental Trade Outlook",
+		time: "10:00 AM - 12:00 PM",
+		location: "Kempinski Gold Coast City Hotel, Accra",
+		image: "/assets/img/all-images/event/event-img4.png",
+	},
+	{
+		index: "02",
+		title: "Industry, Infrastructure & Value Chain Roundtable",
+		time: "01:00 PM - 03:00 PM",
+		location: "Kempinski Gold Coast City Hotel, Accra",
+		image: "/assets/img/all-images/event/event-img5.png",
+	},
+	{
+		index: "03",
+		title: "Awards Gala & Recognition Ceremony",
+		time: "06:00 PM - 11:30 PM",
+		location: "Kempinski Gold Coast City Hotel, Accra",
+		image: "/assets/img/all-images/event/event-img6.png",
+	},
+]
+
 export default function Event() {
-
 	return (
-		<>
+		<Layout>
+			<div>
+				<PublicPageHero title="Programme Highlights" currentLabel="Event" />
 
-			<Layout>
-				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg8.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-6 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Event List</span></Link>
-									</div>
+				<div className="event-team-area sp1">
+					<div className="container">
+						<div className="row">
+							<div className="col-lg-8 m-auto">
+								<div className="modern-section-header text-center space-margin60">
+									<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Event</span>
+									<div className="space20" />
+									<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Africa Trade Awards Week</h2>
 								</div>
 							</div>
 						</div>
-					</div>
-					{/*===== HERO AREA ENDS =======*/}
-					{/*===== EVENT AREA STARTS =======*/}
-					<div className="event-team-area sp1">
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-8 m-auto">
-									<div className="modern-section-header text-center space-margin60">
-										<span className="section-accent-label" data-aos="fade-up" data-aos-duration={800}>Events</span>
-										<div className="space20" />
-										<h2 className="modern-section-title" data-aos="fade-up" data-aos-duration={900}>Event History</h2>
-									</div>
-								</div>
-							</div>
-							<div className="row">
-								<div className="col-lg-12 m-auto">
-									<div className="event-widget-area">
-										<div className="row">
-											<div className="col-lg-10 m-auto">
-												<div className="event2-boxarea box1">
-													<h1 className="active">01</h1>
-													<div className="row align-items-center">
-														<div className="col-lg-5">
-															<div className="img1">
-																<Image src="/assets/img/all-images/event/event-img4.png" alt="" width={900} height={600} />
-															</div>
-														</div>
-														<div className="col-lg-1" />
-														<div className="col-lg-6">
-															<div className="content-area">
-																<ul>
-																	<li>
-																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
-																	</li>
-																	<li>
-																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
-																	</li>
-																</ul>
-																<div className="space20" />
-																<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
-																<div className="space24" />
-																<div className="author-area">
-																	<div className="autho-name-area">
-																		<div className="img1">
-																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
-																		</div>
-																		<div className="text">
-																			<Link href="/speakers-single">Alex Roberton</Link>
-																			<div className="space8" />
-																			<p>Awards Speaker</p>
-																		</div>
-																	</div>
-																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
-																		<div className="img1">
-																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
-																		</div>
-																		<div className="text">
-																			<Link href="/speakers-single">Alexys Archer</Link>
-																			<div className="space8" />
-																			<p>WP Developer</p>
-																		</div>
-																	</div>
-																</div>
-																<div className="space24" />
-																<div className="btn-area1">
-																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
-																</div>
-															</div>
-														</div>
-													</div>
+						<div className="row">
+							<div className="col-lg-10 m-auto">
+								{sessions.map((session, idx) => (
+									<div key={session.index} className="event2-boxarea box1" style={{ marginBottom: idx === sessions.length - 1 ? 0 : 32 }}>
+										<h1 className="active">{session.index}</h1>
+										<div className="row align-items-center">
+											<div className="col-lg-5">
+												<div className="img1">
+													<Image src={session.image} alt={session.title} width={900} height={600} />
 												</div>
 											</div>
-										</div>
-										<div className="space48" />
-										<div className="row">
-											<div className="col-lg-10 m-auto">
-												<div className="event2-boxarea box1">
-													<h1 className="active">02</h1>
-													<div className="row align-items-center">
-														<div className="col-lg-6">
-															<div className="content-area">
-																<ul>
-																	<li>
-																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
-																	</li>
-																	<li>
-																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
-																	</li>
-																</ul>
-																<div className="space20" />
-																<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
-																<div className="space24" />
-																<div className="author-area">
-																	<div className="autho-name-area">
-																		<div className="img1">
-																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
-																		</div>
-																		<div className="text">
-																			<Link href="/speakers-single">Alex Roberton</Link>
-																			<div className="space8" />
-																			<p>Awards Speaker</p>
-																		</div>
-																	</div>
-																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
-																		<div className="img1">
-																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
-																		</div>
-																		<div className="text">
-																			<Link href="/speakers-single">Alexys Archer</Link>
-																			<div className="space8" />
-																			<p>WP Developer</p>
-																		</div>
-																	</div>
-																</div>
-																<div className="space24" />
-																<div className="btn-area1">
-																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
-																</div>
-															</div>
-															<div className="space30 d-lg-none d-block" />
-														</div>
-														<div className="col-lg-5">
-															<div className="img1">
-																<Image src="/assets/img/all-images/event/event-img5.png" alt="" width={900} height={600} />
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className="space30" />
-										<div className="row">
-											<div className="col-lg-10 m-auto">
-												<div className="event2-boxarea box1">
-													<h1 className="active">03</h1>
-													<div className="row align-items-center">
-														<div className="col-lg-5">
-															<div className="img1">
-																<Image src="/assets/img/all-images/event/event-img6.png" alt="" width={900} height={600} />
-															</div>
-														</div>
-														<div className="col-lg-1" />
-														<div className="col-lg-6">
-															<div className="content-area">
-																<ul>
-																	<li>
-																		<Link href="/#"><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />10.00 AM -12.00 PM <span className="breadcrumb-current"> | </span></Link>
-																	</li>
-																	<li>
-																		<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
-																	</li>
-																</ul>
-																<div className="space20" />
-																<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
-																<div className="space24" />
-																<div className="author-area">
-																	<div className="autho-name-area">
-																		<div className="img1">
-																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
-																		</div>
-																		<div className="text">
-																			<Link href="/speakers-single">Alex Roberton</Link>
-																			<div className="space8" />
-																			<p>Awards Speaker</p>
-																		</div>
-																	</div>
-																	<div className="autho-name-area" style={{ padding: '0 0 0 12px', border: 'none' }}>
-																		<div className="img1">
-																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
-																		</div>
-																		<div className="text">
-																			<Link href="/speakers-single">Alexys Archer</Link>
-																			<div className="space8" />
-																			<p>WP Developer</p>
-																		</div>
-																	</div>
-																</div>
-																<div className="space24" />
-																<div className="btn-area1">
-																	<Link href="/event/register" className="vl-btn1"><span className="demo">Buy Ticket</span></Link>
-																</div>
-															</div>
-														</div>
+											<div className="col-lg-1" />
+											<div className="col-lg-6">
+												<div className="content-area">
+													<ul>
+														<li><span><Image src="/assets/img/icons/clock1.svg" alt="" width={18} height={18} />{session.time}</span></li>
+														<li><span><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />{session.location}</span></li>
+													</ul>
+													<div className="space20" />
+													<h3 className="head">{session.title}</h3>
+													<div className="space24" />
+													<div className="btn-area1">
+														<Link href="/event/register" className="vl-btn1"><span className="demo">Register</span></Link>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div className="space60" />
-									<div className="pagination-area">
-										<nav aria-label="Page navigation example">
-											<ul className="pagination">
-												<li className="page-item">
-													<Link className="page-link" href="/#" aria-label="Previous">
-														<i className="fa-solid fa-angle-left" />
-													</Link>
-												</li>
-												<li className="page-item"><Link className="page-link active" href="/#">1</Link></li>
-												<li className="page-item"><Link className="page-link" href="/#">2</Link></li>
-												<li className="page-item"><Link className="page-link" href="/#">...</Link></li>
-												<li className="page-item"><Link className="page-link" href="/#">12</Link></li>
-												<li className="page-item">
-													<Link className="page-link" href="/#" aria-label="Next">
-														<i className="fa-solid fa-angle-right" />
-													</Link>
-												</li>
-											</ul>
-										</nav>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					{/*===== EVENT AREA ENDS =======*/}
-					{/*===== CTA AREA STARTS =======*/}
-					<div className="cta1-section-area d-lg-block d-block">
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-10 m-auto">
-									<div className="cta1-main-boxarea">
-										<div className="timer-btn-area">
-										<Countdown />
-											<div className="btn-area1">
-												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
-											</div>
-										</div>
-										<ul>
-											<li>
-												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
-											</li>
-											<li className="m-0">
-												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					{/*===== CTA AREA ENDS =======*/}
-					{/*===== CTA AREA STARTS =======*/}
-					<div className="cta1-section-area d-lg-none d-block">
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-10 m-auto">
-									<div className="cta1-main-boxarea">
-										<div className="timer-btn-area">
-										<Countdown />
-											<div className="btn-area1">
-												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
-											</div>
-										</div>
-										<ul>
-											<li>
-												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
-											</li>
-											<li className="m-0">
-												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
-											</li>
-										</ul>
-									</div>
-								</div>
+								))}
 							</div>
 						</div>
 					</div>
 				</div>
-
-			</Layout>
-		</>
+			</div>
+		</Layout>
 	)
 }

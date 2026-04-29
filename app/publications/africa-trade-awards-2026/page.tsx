@@ -3,52 +3,18 @@ import Image from 'next/image'
 
 import Layout from '@/components/layout/Layout'
 import Link from 'next/link'
-import { useEffect, useRef } from 'react'
+import PublicPageHero from '@/components/sections/PublicPageHero'
 
 export default function AfricaTradeAwards2026PressRelease() {
-	const videoRef = useRef<HTMLVideoElement>(null)
-
-	useEffect(() => {
-		const video = videoRef.current
-		if (video) {
-			video.play().catch((error) => {
-				console.warn('Video autoplay failed:', error)
-			})
-		}
-	}, [])
-
 	return (
 		<Layout>
 			<div>
-				<div className="inner-page-header publications-single-header">
-					<video
-						ref={videoRef}
-						autoPlay
-						loop
-						muted
-						playsInline
-						preload="auto"
-						className="header-video-background"
-					>
-						<source src="/assets/video/hero-video.mp4" type="video/mp4" />
-					</video>
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-8 m-auto">
-								<div className="heading1 text-center">
-									<div className="space20" />
-									<>
-										<Link href="/"><span className="breadcrumb-home">Home</span></Link>{' '}
-										<i className="fa-solid fa-angle-right" />{' '}
-										<Link href="/publications"><span className="breadcrumb-home">Publications</span></Link>{' '}
-										<i className="fa-solid fa-angle-right" />{' '}
-										<span className="breadcrumb-current">Press Release</span>
-									</>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<PublicPageHero
+					title="Official Press Release"
+					currentLabel="Press Release"
+					parentLabel="Publications"
+					parentHref="/publications"
+				/>
 
 				<article className="press-release-page">
 					<div className="container">

@@ -26,14 +26,14 @@ export default function AboutSection() {
 					<div className="col-lg-6">
 						<div className="overview-content">
 							<div className="overview-description" data-aos="fade-up" data-aos-duration={900}>
-								<p>The Africa Trade Awards are recognition honours established by the African Trade Chamber to acknowledge individuals, institutions, enterprises, and public authorities whose work has materially shaped Africa&apos;s trade and industrial landscape.</p>
+								<p>The Africa Trade Awards platform is built to celebrate institutions, leaders, and enterprises delivering real trade and industrial outcomes across the continent.</p>
 								<div className="space12" />
-								<p>The Awards recognise those whose decisions and execution influenced how goods are produced, financed, moved, and exchanged across African markets. They focus on contributions that strengthened industrial capacity, improved market connectivity, enabled cross-border commerce, or delivered systems that are now in use by businesses and institutions across the continent.</p>
+								<p>Beyond recognition, the platform brings together nominations, judging, public voting, publications, and event participation into one consistent digital experience for participants and stakeholders.</p>
 							</div>
 							<div className="space24" />
 							<div className="btn-area1" data-aos="fade-up" data-aos-duration={1000}>
 								<Link href="/about" className="elegant-btn premium-about-btn" style={{ padding: '10px 20px', fontSize: '13px', minHeight: 'auto', height: 'auto' }}>
-									<span>Learn More</span>
+									<span>About the awards</span>
 									<i className="fa-solid fa-arrow-right" style={{ fontSize: '11px' }}></i>
 								</Link>
 							</div>

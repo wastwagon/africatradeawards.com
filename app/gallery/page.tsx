@@ -1,32 +1,20 @@
 'use client'
 
 import Layout from '@/components/layout/Layout'
-import Link from 'next/link'
 import { galleryImages } from '@/data/gallery'
 import GallerySlider from '@/components/elements/GallerySlider'
+import PublicPageHero from '@/components/sections/PublicPageHero'
 
 const AUTOPLAY_MS = 5500
 
 export default function GalleryPage() {
 	return (
 		<Layout>
-			{/* Page Header */}
-			<div className="inner-page-header">
-				<div className="container">
-					<div className="row">
-						<div className="col-lg-4 m-auto">
-							<div className="heading1 text-center">
-								<div className="space20" />
-								<Link href="/">
-									<span className="breadcrumb-home">Home</span>
-									<i className="fa-solid fa-angle-right" />
-									<span className="breadcrumb-current">Gallery</span>
-								</Link>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<PublicPageHero
+				title="Gallery"
+				currentLabel="Gallery"
+				subtitle="Moments from the ceremony, summit sessions, and celebrations."
+			/>
 
 			{/* Premium auto slideshow */}
 			<section className="gallery-premium-section">

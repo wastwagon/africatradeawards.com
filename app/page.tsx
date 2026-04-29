@@ -1,9 +1,11 @@
 import Layout from "@/components/layout/Layout"
 import HeroSection from '@/components/sections/home1/HeroSection'
 import EventDateVenueBar from '@/components/sections/home1/EventDateVenueBar'
-import EngagePlatformSection from '@/components/sections/home1/EngagePlatformSection'
 import AboutSection from '@/components/sections/home1/AboutSection'
+import KudosStatsSection from '@/components/sections/home1/KudosStatsSection'
+import EngagePlatformSection from '@/components/sections/home1/EngagePlatformSection'
 import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
+import KudosTestimonialsSection from '@/components/sections/home1/KudosTestimonialsSection'
 import AwardeesCTASection from '@/components/sections/home1/AwardeesCTASection'
 import CommitteeProfiles from '@/components/sections/CommitteeProfiles'
 import GallerySection from '@/components/sections/home1/GallerySection'
@@ -27,19 +29,23 @@ export default function Home() {
 				{/* 1. Attention */}
 				<HeroSection />
 				<EventDateVenueBar />
+
+				{/* 2. Story */}
+				<AboutSection />
+
+				{/* 3. Proof */}
+				<KudosStatsSection />
+
+				{/* 4. Platform services */}
 				<EngagePlatformSection />
 
-				{/* 2–3. Understanding */}
-				<AboutSection />
+				{/* 5. Framework */}
 				<AwardCategoriesSection />
 
-				{/* 4. Recognition intro + CTA to awardees page */}
-				<AwardeesCTASection />
-
-				{/* 5. Proof & emotion: event moments */}
+				{/* 6. Proof & emotion: event moments */}
 				<GallerySection />
 
-				{/* 6. Trust: who validates */}
+				{/* 7. Trust: who validates */}
 				<div className="committee-text-section">
 					<div className="container">
 						<div className="row">
@@ -94,8 +100,14 @@ export default function Home() {
 					</div>
 				</div>
 
-				{/* 7. Support: partners & sponsors */}
+				{/* 8. Social proof */}
+				<KudosTestimonialsSection />
+
+				{/* 9. Support: partners & sponsors */}
 				<SponsorsSection />
+
+				{/* 10. Recognition CTA */}
+				<AwardeesCTASection />
 			</Layout>
 		</>
 	)

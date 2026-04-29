@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { awardees, Awardee } from "@/data/awardees"
 import CitationModal from "@/components/elements/CitationModal"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 
 export default function Awardees() {
 	const [selectedAwardee, setSelectedAwardee] = useState<Awardee | null>(null)
@@ -55,22 +56,11 @@ export default function Awardees() {
 			<Layout>
 				<div>
 					{/* Page Header */}
-					<div className="inner-page-header">
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-4 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/">
-											<span className="breadcrumb-home">Home</span> 
-											<i className="fa-solid fa-angle-right" /> 
-											<span className="breadcrumb-current">Awardees 2026</span>
-										</Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Awardees 2026"
+						currentLabel="Awardees 2026"
+						subtitle="Profiles of institutions and leaders recognized for measurable contributions to Africa's trade and industrial growth."
+					/>
 
 					{/* Hero Section */}
 					<div className="awardees-hero-section">

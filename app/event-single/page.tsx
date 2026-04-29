@@ -4,6 +4,7 @@ import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import { useState } from "react"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 export default function EventSingle() {
 	const [isTab, setIsTab] = useState(1)
 	const handleTab = (i: number) => {
@@ -14,18 +15,12 @@ export default function EventSingle() {
 
 			<Layout>
 				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg9.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-6 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Event single</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Event Session Details"
+						currentLabel="Event Single"
+						parentLabel="Event"
+						parentHref="/event"
+					/>
 					{/*===== HERO AREA ENDS =======*/}
 					{/*===== EVENT AREA STARTS =======*/}
 					<div className="event-sidepage-section-area sp8">
@@ -37,9 +32,9 @@ export default function EventSingle() {
 											<Image src="/assets/img/all-images/event/event-img8.png" alt="" width={1200} height={700} />
 										</div>
 										<div className="space32" />
-										<h3>Elevate User Experience Expertise</h3>
+										<h3>Accelerating Africa&apos;s Trade Execution</h3>
 										<div className="space16" />
-										<p>In today&apos;s digital landscape, exceptional user experience (UX) is the key to creating products and services that truly resonate with people. At Africa Trade Awards, dive deep into the world of UX with expert-led sessions that explore cutting-edge techniques, research-driven insights, and innovative tools.</p>
+										<p>This session examines how institutions, financiers, and enterprise leaders can convert policy ambition into delivered trade outcomes through infrastructure readiness, market systems, and operational coordination.</p>
 										<div className="space40" />
 										<h4>Event Speakers</h4>
 										<div className="row">
@@ -71,7 +66,7 @@ export default function EventSingle() {
 													</div>
 													<div className="space28" />
 													<div className="content-area">
-														<Link href="/speakers-single">Alex Robertson</Link>
+														<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 														<div className="space16" />
 														<p>Awards Speaker</p>
 													</div>
@@ -105,7 +100,7 @@ export default function EventSingle() {
 													</div>
 													<div className="space28" />
 													<div className="content-area">
-														<Link href="/speakers-single">Alexy Sammony</Link>
+														<Link href="/speakers-single">Sir Sam Jonah</Link>
 														<div className="space16" />
 														<p>Awards Speaker</p>
 													</div>
@@ -139,7 +134,7 @@ export default function EventSingle() {
 													</div>
 													<div className="space28" />
 													<div className="content-area">
-														<Link href="/speakers-single">Kireon Pollardy</Link>
+														<Link href="/speakers-single">H.E. Carlos Vila Nova</Link>
 														<div className="space16" />
 														<p>Awards Speaker</p>
 													</div>
@@ -160,7 +155,7 @@ export default function EventSingle() {
 												</li>
 											</ul>
 											<div className="space20" />
-											<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+											<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 											<div className="space24" />
 											<div className="author-area">
 												<div className="autho-name-area">
@@ -168,7 +163,7 @@ export default function EventSingle() {
 														<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 													</div>
 													<div className="text">
-														<Link href="/speakers-single">Alex Roberton</Link>
+														<Link href="/speakers-single">Patricia Poku-Diaby</Link>
 														<div className="space8" />
 														<p>Awards Speaker</p>
 													</div>
@@ -178,9 +173,9 @@ export default function EventSingle() {
 														<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 													</div>
 													<div className="text">
-														<Link href="/speakers-single">Alexys Archer</Link>
+														<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 														<div className="space8" />
-														<p>WP Developer</p>
+														<p>Trade Finance Leader</p>
 													</div>
 												</div>
 											</div>
@@ -269,7 +264,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -277,7 +272,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Sir Sam Jonah</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -287,9 +282,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">H.E. Carlos Vila Nova</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Advisory Board Chair</p>
 																				</div>
 																			</div>
 																		</div>
@@ -321,7 +316,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -329,7 +324,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Patricia Poku-Diaby</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -339,9 +334,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Head of State Delegate</p>
 																				</div>
 																			</div>
 																		</div>
@@ -385,7 +380,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -393,7 +388,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Sir Sam Jonah</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -403,9 +398,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">H.E. Carlos Vila Nova</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Industry Leader</p>
 																				</div>
 																			</div>
 																		</div>
@@ -446,7 +441,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -454,7 +449,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Patricia Poku-Diaby</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -464,9 +459,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Trade Finance Leader</p>
 																				</div>
 																			</div>
 																		</div>
@@ -498,7 +493,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -506,7 +501,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Sir Sam Jonah</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -516,9 +511,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">H.E. Carlos Vila Nova</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Advisory Board Chair</p>
 																				</div>
 																			</div>
 																		</div>
@@ -562,7 +557,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -570,7 +565,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Patricia Poku-Diaby</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -580,9 +575,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Head of State Delegate</p>
 																				</div>
 																			</div>
 																		</div>
@@ -623,7 +618,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -631,7 +626,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Sir Sam Jonah</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -641,9 +636,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">H.E. Carlos Vila Nova</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Industry Leader</p>
 																				</div>
 																			</div>
 																		</div>
@@ -675,7 +670,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -683,7 +678,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Patricia Poku-Diaby</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -693,9 +688,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Trade Finance Leader</p>
 																				</div>
 																			</div>
 																		</div>
@@ -739,7 +734,7 @@ export default function EventSingle() {
 																			</li>
 																		</ul>
 																		<div className="space20" />
-																		<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																		<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																		<div className="space24" />
 																		<div className="author-area">
 																			<div className="autho-name-area">
@@ -747,7 +742,7 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alex Roberton</Link>
+																					<Link href="/speakers-single">Sir Sam Jonah</Link>
 																					<div className="space8" />
 																					<p>Awards Speaker</p>
 																				</div>
@@ -757,9 +752,9 @@ export default function EventSingle() {
 																					<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																				</div>
 																				<div className="text">
-																					<Link href="/speakers-single">Alexys Archer</Link>
+																					<Link href="/speakers-single">H.E. Carlos Vila Nova</Link>
 																					<div className="space8" />
-																					<p>WP Developer</p>
+																					<p>Advisory Board Chair</p>
 																				</div>
 																			</div>
 																		</div>

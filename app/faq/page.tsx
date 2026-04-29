@@ -2,27 +2,19 @@
 import Layout from "@/components/layout/Layout"
 import { DEFAULT_FAQS } from "@/lib/cms-defaults"
 import Link from "next/link"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 
 export default function Faq() {
 	const [activeCard, setActiveCard] = useState<number | null>(null)
 	const [searchQuery, setSearchQuery] = useState("")
 	const [faqs, setFaqs] = useState(DEFAULT_FAQS.map((item, index) => ({ id: index + 1, ...item, icon: "fa-circle-question" })))
-	const videoRef = useRef<HTMLVideoElement>(null)
 
 	// Reset active card when search changes
 	useEffect(() => {
 		setActiveCard(null)
 	}, [searchQuery])
 
-	useEffect(() => {
-		const video = videoRef.current
-		if (video) {
-			video.play().catch((error) => {
-				console.warn('Video autoplay failed:', error)
-			})
-		}
-	}, [])
 	useEffect(() => {
 		void (async () => {
 			try {
@@ -70,29 +62,11 @@ export default function Faq() {
 		<>
 			<Layout>
 				<div>
-					<div className="inner-page-header">
-						<video
-							ref={videoRef}
-							autoPlay
-							loop
-							muted
-							playsInline
-							preload="auto"
-							className="header-video-background"
-						>
-							<source src="/assets/video/hero-video.mp4" type="video/mp4" />
-						</video>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-9 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Frequently Asked Questions</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Frequently Asked Questions"
+						currentLabel="Frequently Asked Questions"
+						subtitle="Everything you need to know about nominations, voting, judging, and event participation."
+					/>
 					
 					{/*===== PREMIUM GRID FAQ AREA STARTS =======*/}
 					<div className="premium-faq-grid-section sp1">

@@ -1,30 +1,18 @@
 'use client'
 import Layout from "@/components/layout/Layout"
 import { DEFAULT_ABOUT_SNIPPETS } from "@/lib/cms-defaults"
-import Link from "next/link"
 import Image from "next/image"
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import CommitteeProfiles from '@/components/sections/CommitteeProfiles'
+import PublicPageHero from '@/components/sections/PublicPageHero'
 
 export default function About() {
-	const videoRef = useRef<HTMLVideoElement>(null)
 	const [snippets, setSnippets] = useState(DEFAULT_ABOUT_SNIPPETS)
 	const snippetMap = useMemo(
 		() => new Map(snippets.map((snippet) => [snippet.key, snippet.content])),
 		[snippets]
 	)
 	const getSnippet = (key: string, fallback: string) => snippetMap.get(key) ?? fallback
-
-	useEffect(() => {
-		// Ensure video autoplays on mount
-		const video = videoRef.current
-		if (video) {
-			video.play().catch((error) => {
-				// Handle autoplay policy restrictions
-				console.warn('Video autoplay failed:', error)
-			})
-		}
-	}, [])
 
 	useEffect(() => {
 		void (async () => {
@@ -50,30 +38,11 @@ export default function About() {
 		<>
 			<Layout>
 				<div>
-					<div className="inner-page-header">
-						{/* Video Background */}
-						<video
-							ref={videoRef}
-							autoPlay
-							loop
-							muted
-							playsInline
-							preload="auto"
-							className="header-video-background"
-						>
-							<source src="/assets/video/hero-video.mp4" type="video/mp4" />
-						</video>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-4 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">About the Awards</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="About the Awards"
+						currentLabel="About the Awards"
+						subtitle="The recognition framework, governance model, and institutional purpose behind Africa Trade Awards 2026."
+					/>
 					
 					{/*===== OVERVIEW AREA STARTS =======*/}
 					<div className="about1-section-area overview-section sp1 about-section-silver">

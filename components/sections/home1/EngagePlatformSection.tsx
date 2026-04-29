@@ -5,31 +5,31 @@ import Link from 'next/link'
 const cards = [
   {
     href: '/nominate/',
-    title: 'Nominate an awardee',
-    body: 'Submit a public nomination for recognition. Managers review and validate nominations in the admin queue.',
+    title: 'Nominations',
+    body: 'Submit and manage award nominations with clear progress tracking from intake to validation.',
     icon: 'fa-solid fa-user-plus',
-    cta: 'Submit nomination',
+    cta: 'Nominate now',
   },
   {
     href: '/vote/',
-    title: 'Public voting',
-    body: 'Support shortlisted entries. Secure verification helps keep the vote fair and transparent.',
+    title: 'Public Voting',
+    body: 'Enable audience participation with secure verification and anti-fraud checks built into the flow.',
     icon: 'fa-solid fa-list-check',
-    cta: 'Open voting',
+    cta: 'Cast vote',
   },
   {
     href: '/portal/entrant/',
-    title: 'Entrant workspace',
-    body: 'Draft and submit your entry, upload supporting files, and track status in one place.',
+    title: 'Entrant Workspace',
+    body: 'Entrants can draft submissions, upload evidence, and monitor review decisions in one dashboard.',
     icon: 'fa-solid fa-pen-to-square',
-    cta: 'Go to entrant portal',
+    cta: 'Open portal',
   },
   {
     href: '/login/',
-    title: 'Judges & staff',
-    body: 'One sign-in routes you to the right dashboard—judging, management, or read-only audit views.',
+    title: 'Judging & Operations',
+    body: 'A single sign-in routes judges, staff, and administrators to role-specific workflows and controls.',
     icon: 'fa-solid fa-user-shield',
-    cta: 'Sign In',
+    cta: 'Access dashboard',
   },
 ] as const
 
@@ -39,13 +39,13 @@ export default function EngagePlatformSection() {
       <div className="engage-platform-bg" aria-hidden />
       <div className="container">
         <div className="engage-platform-head text-center" data-aos="fade-up" data-aos-duration={600}>
-          <p className="engage-platform-eyebrow">Take part in 2026</p>
+          <p className="engage-platform-eyebrow">Core platform services</p>
           <h2 id="engage-platform-heading" className="engage-platform-title">
-            Your awards hub—linked to the main programme
+            Everything needed to run a premium awards programme
           </h2>
           <p className="engage-platform-intro">
-            Voting, entries, and programme tools use the same sign-in and navigation as this site. Jump in from here or from
-            the header <strong>Awards platform</strong> menu anytime.
+            This is the operational layer behind the public brand experience: nominee intake, entrant submissions,
+            judging, voting, and role-based administration.
           </p>
         </div>
         <div className="row g-4 engage-platform-row">

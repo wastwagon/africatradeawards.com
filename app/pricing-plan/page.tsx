@@ -2,6 +2,7 @@ import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 export default function PricingPlan() {
 
 	return (
@@ -9,18 +10,11 @@ export default function PricingPlan() {
 
 			<Layout>
 				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg16.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-9 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Pricing Plan</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Ticket Pricing"
+						currentLabel="Pricing Plan"
+						subtitle="Select the attendance package that matches your event goals and networking needs."
+					/>
 					{/*===== HERO AREA ENDS =======*/}
 					{/*===== PRICING AREA STARTS =======*/}
 					<div className="pricing-lan-section-area sp1">

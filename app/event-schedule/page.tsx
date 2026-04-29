@@ -2,6 +2,7 @@ import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 export default function EventSchedule() {
 
 	return (
@@ -9,18 +10,11 @@ export default function EventSchedule() {
 
 			<Layout>
 				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg10.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-6 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Event Schedule</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Event Schedule"
+						currentLabel="Event Schedule"
+						subtitle="Browse sessions, speakers, and programme highlights across the summit and awards days."
+					/>
 					{/*===== HERO AREA ENDS =======*/}
 					{/*===== OTHERS AREA STARTS =======*/}
 					<div className="choose-section-area sp2">

@@ -2,6 +2,7 @@
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import Image from "next/image"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 
 interface LogoCategory {
 	name: string
@@ -100,22 +101,11 @@ export default function SponsorsPartners() {
 		<>
 			<Layout>
 				<div>
-					<div className="inner-page-header">
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-4 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/">
-											<span className="breadcrumb-home">Home</span> 
-											<i className="fa-solid fa-angle-right" /> 
-											<span className="breadcrumb-current">Sponsors & Partners</span>
-										</Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Sponsors & Partners"
+						currentLabel="Sponsors & Partners"
+						subtitle="Institutions and organizations supporting the Africa Trade Awards platform and summit ecosystem."
+					/>
 
 					{/* Sponsors & Partners Section */}
 					<div className="sponsors-partners-section-premium sp4">

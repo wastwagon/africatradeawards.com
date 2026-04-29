@@ -27,7 +27,7 @@ export default function Footer1({ supportEmail = DEFAULT_SUPPORT, showLiveStream
 							<div className="footer-logo-area">
 								<h3>About The Awards</h3>
 								<div className="space12" />
-								<p>The Africa Trade Awards are recognition honours established by the African Trade Chamber to acknowledge individuals, institutions, enterprises, and public authorities whose work has materially shaped Africa&apos;s trade and industrial landscape.</p>
+								<p>A premium recognition platform celebrating institutions, leaders, and enterprises delivering measurable trade and industrial outcomes across Africa.</p>
 								<div className="space16" />
 								<ul>
 									<li>
@@ -47,7 +47,7 @@ export default function Footer1({ supportEmail = DEFAULT_SUPPORT, showLiveStream
 						</div>
 						<div className="col-lg-2 col-md-6">
 							<div className="link-content" style={{ paddingLeft: '30px' }}>
-								<h3>Quick Links</h3>
+								<h3>Explore</h3>
 								<ul>
 									<li><Link href="/about">About The Awards</Link></li>
 									<li><Link href="/awards-structure">Awards Structure</Link></li>
@@ -55,8 +55,9 @@ export default function Footer1({ supportEmail = DEFAULT_SUPPORT, showLiveStream
 									<li><Link href="/gallery">Gallery</Link></li>
 									<li><Link href="/publications">Publications</Link></li>
 									<li><Link href="/faq">FAQs</Link></li>
-									<li><Link href="/login/">Sign In</Link></li>
+									<li><Link href="/nominate">Nominate</Link></li>
 									<li><Link href="/vote">Public Vote</Link></li>
+									<li><Link href="/login/">Sign In</Link></li>
 									{showLiveStream ? (
 										<li><Link href="/live">Live stream</Link></li>
 									) : null}
@@ -88,7 +89,7 @@ export default function Footer1({ supportEmail = DEFAULT_SUPPORT, showLiveStream
 						</div>
 						<div className="col-lg-3 col-md-6">
 							<div className="footer-social-box">
-								<h3>Sponsors</h3>
+								<h3>Featured Sponsors</h3>
 								<div className="space12" />
 								<div className="footer-sponsors-grid" style={{ 
 									display: 'grid', 

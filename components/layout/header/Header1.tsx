@@ -154,13 +154,16 @@ export default function Header1({ scroll }: Header1Props) {
 						<Link href="/login/" className="ata-nav2__ghost">
 							Sign In
 						</Link>
+						<Link href="/nominate" className="ata-nav2__ghost">
+							Nominate
+						</Link>
 						{eventLiveStreamEnabled ? (
 							<Link href="/live" className="ata-nav2__ghost">
 								Live
 							</Link>
 						) : null}
 						<Link href="/vote" className="ata-nav2__cta">
-							Vote Now
+							Cast Vote
 						</Link>
 					</div>
 				</div>

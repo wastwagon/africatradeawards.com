@@ -13,11 +13,11 @@ export default function AwardeesCTASection() {
 							<h2 className="awards-title-compact">Recognition Honours 2026</h2>
 							<div className="space16" />
 							<p className="awards-intro-compact">
-								Individuals, institutions, and initiatives recognised for their contribution to Africa&apos;s trade and industrial landscape.
+								See the individuals, institutions, and initiatives recognised for contributions that moved Africa&apos;s trade and industry forward.
 							</p>
 							<div className="space24" />
 							<Link href="/awardees" className="cta-btn-primary awardees-cta-btn">
-								<span>View Awardees</span>
+								<span>Meet the Awardees</span>
 								<i className="fa-solid fa-arrow-right" />
 							</Link>
 						</div>
@@ -34,28 +34,20 @@ export default function AwardeesCTASection() {
 					position: absolute;
 					inset: 0;
 					/* Theme gradient: #4e2b5a (deep purple) + #78508c (violet) */
-					background: linear-gradient(135deg,
-						rgba(248, 246, 252, 1) 0%,
-						rgba(240, 232, 248, 1) 22%,
-						rgba(232, 220, 244, 1) 40%,
-						rgba(225, 210, 240, 1) 55%,
-						rgba(235, 222, 248, 1) 70%,
-						rgba(242, 235, 250, 1) 85%,
-						rgba(248, 244, 252, 1) 100%
-					);
+					background: linear-gradient(130deg, #161219 0%, #251c2d 52%, #1b1620 100%);
 				}
 				.awardees-cta-bg::before {
 					content: '';
 					position: absolute;
 					inset: 0;
-					background: radial-gradient(ellipse 90% 70% at 30% 10%, rgba(120, 80, 140, 0.22) 0%, transparent 55%);
+					background: radial-gradient(ellipse 90% 70% at 30% 10%, rgba(201, 160, 99, 0.2) 0%, transparent 55%);
 					pointer-events: none;
 				}
 				.awardees-cta-bg::after {
 					content: '';
 					position: absolute;
 					inset: 0;
-					background: radial-gradient(ellipse 80% 60% at 85% 90%, rgba(78, 43, 90, 0.18) 0%, transparent 55%);
+					background: radial-gradient(ellipse 80% 60% at 85% 90%, rgba(120, 80, 140, 0.24) 0%, transparent 55%);
 					pointer-events: none;
 				}
 				.awardees-cta-inner {
@@ -63,10 +55,10 @@ export default function AwardeesCTASection() {
 					z-index: 1;
 				}
 				.awardees-cta-content .awards-title-compact {
-					color: #2d1f33;
+					color: #f8f3ea;
 				}
 				.awardees-cta-content .awards-intro-compact {
-					color: #4a3d52;
+					color: rgba(248, 243, 234, 0.84);
 				}
 				.awardees-cta-btn {
 					box-shadow: 0 4px 20px rgba(78, 43, 90, 0.35);

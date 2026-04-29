@@ -3,6 +3,7 @@ import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 export default function Speakers() {
 
 	return (
@@ -10,18 +11,11 @@ export default function Speakers() {
 
 			<Layout>
 				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg6.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-5 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Our Speakers</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Speakers"
+						currentLabel="Our Speakers"
+						subtitle="Meet the voices shaping trade, industry, policy, and enterprise conversations at the summit."
+					/>
 					{/*===== HERO AREA ENDS =======*/}
 					{/*===== TEAM AREA STARTS =======*/}
 					<div className="team-sperkers-section-area sp1">
@@ -55,7 +49,7 @@ export default function Speakers() {
 										</div>
 										<div className="space28" />
 										<div className="content-area">
-											<Link href="/speakers-single">Alex Robertson</Link>
+											<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 											<div className="space16" />
 											<p>Awards Speaker</p>
 										</div>
@@ -157,7 +151,7 @@ export default function Speakers() {
 										</div>
 										<div className="space28" />
 										<div className="content-area">
-											<Link href="/speakers-single">Adresy Ineasta</Link>
+											<Link href="/speakers-single">Sir Sam Jonah</Link>
 											<div className="space16" />
 											<p>Awards Speaker</p>
 										</div>
@@ -191,7 +185,7 @@ export default function Speakers() {
 										</div>
 										<div className="space28" />
 										<div className="content-area">
-											<Link href="/speakers-single">Alex Robertson</Link>
+											<Link href="/speakers-single">H.E. Carlos Vila Nova</Link>
 											<div className="space16" />
 											<p>Awards Speaker</p>
 										</div>
@@ -293,7 +287,7 @@ export default function Speakers() {
 										</div>
 										<div className="space28" />
 										<div className="content-area">
-											<Link href="/speakers-single">Adresy Ineasta</Link>
+											<Link href="/speakers-single">Patricia Poku-Diaby</Link>
 											<div className="space16" />
 											<p>Awards Speaker</p>
 										</div>

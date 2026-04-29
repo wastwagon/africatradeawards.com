@@ -5,6 +5,11 @@
 :root {
 	--color-brand-primary: #4e2b5a;
 	--color-brand-accent: #78508c;
+	--color-brand-ink: #161219;
+	--color-brand-gold: #c9a063;
+	--surface-premium-dark: #120f14;
+	--surface-premium-soft: #1b1620;
+	--surface-premium-cream: #f7f2ea;
 	/* In-app links (admin, platform muted links): on-brand, readable on white */
 	--color-link: #5c3a72;
 	--color-link-hover: #3d2450;

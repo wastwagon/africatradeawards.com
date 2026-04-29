@@ -2,50 +2,22 @@
 import Layout from "@/components/layout/Layout"
 import { useSiteConfig } from '@/components/site/SiteConfigProvider'
 import ContactForm from '@/components/sections/ContactForm'
-import Link from "next/link"
-import { useEffect, useRef } from "react"
+import PublicPageHero from '@/components/sections/PublicPageHero'
+import Link from 'next/link'
 
 export default function Contact() {
 	const { supportEmail } = useSiteConfig()
-	const videoRef = useRef<HTMLVideoElement>(null)
 	const mailHref = `mailto:${supportEmail}`
-
-	useEffect(() => {
-		const video = videoRef.current
-		if (video) {
-			video.play().catch((error) => {
-				console.warn('Video autoplay failed:', error)
-			})
-		}
-	}, [])
 
 	return (
 		<>
 			<Layout>
 				<div>
-					<div className="inner-page-header">
-						<video
-							ref={videoRef}
-							autoPlay
-							loop
-							muted
-							playsInline
-							preload="auto"
-							className="header-video-background"
-						>
-							<source src="/assets/video/hero-video.mp4" type="video/mp4" />
-						</video>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-6 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Contact</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Get in Touch"
+						currentLabel="Contact"
+						subtitle="Speak with the Africa Trade Awards secretariat about nominations, partnerships, media, and event participation."
+					/>
 					
 					{/*===== PREMIUM CONTACT FORM =======*/}
 					<div className="sp2">

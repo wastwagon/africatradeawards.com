@@ -1,328 +1,50 @@
-
-
 import Image from "next/image"
-import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PublicPageHero from '@/components/sections/PublicPageHero'
+
+const posts = [
+	{ title: "Africa Trade Awards 2026: Recognition with measurable impact", image: "/assets/img/all-images/memory/memory-img7.png", date: "26 Jan 2026" },
+	{ title: "How nomination and validation workflows preserve credibility", image: "/assets/img/all-images/memory/memory-img8.png", date: "21 Jan 2026" },
+	{ title: "Building trust in public voting: verification and transparency", image: "/assets/img/all-images/memory/memory-img9.png", date: "18 Jan 2026" },
+	{ title: "Why trade awards must connect policy, industry, and enterprise", image: "/assets/img/all-images/memory/memory-img4.png", date: "14 Jan 2026" },
+	{ title: "Inside the committee framework for tiered recognition", image: "/assets/img/all-images/memory/memory-img11.png", date: "10 Jan 2026" },
+	{ title: "Event-week essentials for delegates, partners, and media", image: "/assets/img/all-images/memory/memory-img6.png", date: "05 Jan 2026" },
+]
+
 export default function Blog() {
-
 	return (
-		<>
+		<Layout>
+			<div>
+				<PublicPageHero title="Insights & Updates" currentLabel="Blog" />
 
-			<Layout>
-				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg13.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-6 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Our Blog</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					{/*===== HERO AREA ENDS =======*/}
-					{/*===== BLOG AREA STARTS =======*/}
-					<div className="bloginner-section-area sp1">
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={800}>
+				<div className="bloginner-section-area sp1">
+					<div className="container">
+						<div className="row">
+							{posts.map((post, index) => (
+								<div key={post.title} className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration={700} data-aos-delay={index * 80}>
 									<div className="blog4-boxarea">
 										<div className="img1">
-											<Image src="/assets/img/all-images/blog/blog-img4.png" alt="" width={900} height={600} />
+											<Image src={post.image} alt={post.title} width={900} height={600} />
 										</div>
 										<div className="content-area">
 											<ul>
 												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Beverly</Link>
+													<span><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />{post.date}</span>
 												</li>
 											</ul>
 											<div className="space20" />
-											<Link href="/blog-single">Save soil, save world Projects in 2020</Link>
+											<Link href="/blog-single">{post.title}</Link>
 											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
+											<Link href="/blog-single" className="readmore">Read article <i className="fa-solid fa-arrow-right" /></Link>
 										</div>
 									</div>
 								</div>
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1000}>
-									<div className="blog4-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/blog/blog-img5.png" alt="" width={900} height={600} />
-										</div>
-										<div className="content-area">
-											<ul>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Gisselle</Link>
-												</li>
-											</ul>
-											<div className="space20" />
-											<Link href="/blog-single">Civil Litigation paper’s Of Conference</Link>
-											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1200}>
-									<div className="blog4-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/blog/blog-img6.png" alt="" width={900} height={600} />
-										</div>
-										<div className="content-area">
-											<ul>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Mertie</Link>
-												</li>
-											</ul>
-											<div className="space20" />
-											<Link href="/blog-single">Greetings and Opening Event of health</Link>
-											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={800}>
-									<div className="blog4-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img7.png" alt="" width={900} height={600} />
-										</div>
-										<div className="content-area">
-											<ul>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Beverly</Link>
-												</li>
-											</ul>
-											<div className="space20" />
-											<Link href="/blog-single">Africa Trade Awards 2026: Unlock the Future of Business</Link>
-											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1000}>
-									<div className="blog4-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img8.png" alt="" width={900} height={600} />
-										</div>
-										<div className="content-area">
-											<ul>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Gisselle</Link>
-												</li>
-											</ul>
-											<div className="space20" />
-											<Link href="/blog-single">Where Vision Meets Opportunity: Africa Trade Awards 2026</Link>
-											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1200}>
-									<div className="blog4-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img9.png" alt="" width={900} height={600} />
-										</div>
-										<div className="content-area">
-											<ul>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Mertie</Link>
-												</li>
-											</ul>
-											<div className="space20" />
-											<Link href="/blog-single">Fuel Your Business Growth at Africa Trade Awards</Link>
-											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={800}>
-									<div className="blog4-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img4.png" alt="" width={900} height={600} />
-										</div>
-										<div className="content-area">
-											<ul>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Beverly</Link>
-												</li>
-											</ul>
-											<div className="space20" />
-											<Link href="/blog-single">Ignite Your Business Potential at Africa Trade Awards</Link>
-											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1000}>
-									<div className="blog4-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img11.png" alt="" width={900} height={600} />
-										</div>
-										<div className="content-area">
-											<ul>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Gisselle</Link>
-												</li>
-											</ul>
-											<div className="space20" />
-											<Link href="/blog-single">Step Into the Future of Business with Africa Trade Awards</Link>
-											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration={1200}>
-									<div className="blog4-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img6.png" alt="" width={900} height={600} />
-										</div>
-										<div className="content-area">
-											<ul>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />26 Jan 2025 <span className="breadcrumb-current"> | </span></Link>
-												</li>
-												<li>
-													<Link href="/#"><Image src="/assets/img/icons/user1.svg" alt="" width={18} height={18} />Mertie</Link>
-												</li>
-											</ul>
-											<div className="space20" />
-											<Link href="/blog-single">Empowering Business Growth at Africa Trade Awards</Link>
-											<div className="space24" />
-											<Link href="/blog-single" className="readmore">read more <i className="fa-solid fa-arrow-right" /></Link>
-											<div className="arrow">
-												<Link href="/blog-single"><i className="fa-solid fa-arrow-right" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="space30" />
-								<div className="pagination-area">
-									<nav aria-label="Page navigation example">
-										<ul className="pagination">
-											<li className="page-item">
-												<Link className="page-link" href="/#" aria-label="Previous">
-													<i className="fa-solid fa-angle-left" />
-												</Link>
-											</li>
-											<li className="page-item"><Link className="page-link active" href="/#">1</Link></li>
-											<li className="page-item"><Link className="page-link" href="/#">2</Link></li>
-											<li className="page-item"><Link className="page-link" href="/#">...</Link></li>
-											<li className="page-item"><Link className="page-link" href="/#">12</Link></li>
-											<li className="page-item">
-												<Link className="page-link" href="/#" aria-label="Next">
-													<i className="fa-solid fa-angle-right" />
-												</Link>
-											</li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-						</div>
-					</div>
-					{/*===== BLOG AREA ENDS =======*/}
-					{/*===== CTA AREA STARTS =======*/}
-					<div className="cta1-section-area d-lg-block d-block">
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-10 m-auto">
-									<div className="cta1-main-boxarea">
-										<div className="timer-btn-area">
-										<Countdown />
-											<div className="btn-area1">
-												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
-											</div>
-										</div>
-										<ul>
-											<li>
-												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
-											</li>
-											<li className="m-0">
-												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					{/*===== CTA AREA ENDS =======*/}
-					{/*===== CTA AREA STARTS =======*/}
-					<div className="cta1-section-area d-lg-none d-block">
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-10 m-auto">
-									<div className="cta1-main-boxarea">
-										<div className="timer-btn-area">
-										<Countdown />
-											<div className="btn-area1">
-												<Link href="/event/register" className="vl-btn1">Buy Ticket</Link>
-											</div>
-										</div>
-										<ul>
-											<li>
-												<Link href="/#"><Image src="/assets/img/icons/calender1.svg" alt="" width={18} height={18} />28th and 29th January 2026 - 6pm to 11:30pm</Link>
-											</li>
-											<li className="m-0">
-												<Link href="/#"><Image src="/assets/img/icons/location1.svg" alt="" width={18} height={18} />Kempinski Gold Coast City Hotel, Accra</Link>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							))}
 						</div>
 					</div>
 				</div>
-
-			</Layout>
-		</>
+			</div>
+		</Layout>
 	)
 }

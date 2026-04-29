@@ -6,6 +6,7 @@ import "@/node_modules/react-modal-video/css/modal-video.css"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 export default function BlogSingle() {
 
 	const [isOpen, setOpen] = useState(false)
@@ -14,18 +15,12 @@ export default function BlogSingle() {
 
 			<Layout>
 				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg14.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-6 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Blog Details</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Editorial Detail"
+						currentLabel="Blog Details"
+						parentLabel="Blog"
+						parentHref="/blog"
+					/>
 					{/*===== HERO AREA ENDS =======*/}
 					{/*===== BLOG AREA STARTS =======*/}
 					<div className="blog-details-section sp8">
@@ -124,32 +119,32 @@ export default function BlogSingle() {
 										</div>
 										<div className="space32" />
 										<div className="blog-categories">
-											<h3>Blog Category</h3>
+											<h3>Editorial Categories</h3>
 											<div className="space12" />
 											<ul>
 												<li>
-													<Link href="/#">Business Innovation <span><i className="fa-solid fa-angle-right" /></span></Link>
+													<Link href="/#">Trade Policy &amp; Systems <span><i className="fa-solid fa-angle-right" /></span></Link>
 												</li>
 												<li>
-													<Link href="/#">Leadership &amp; Strategy <span><i className="fa-solid fa-angle-right" /></span></Link>
+													<Link href="/#">Industry &amp; Value Chains <span><i className="fa-solid fa-angle-right" /></span></Link>
 												</li>
 												<li>
-													<Link href="/#">Networking &amp; Collaboration <span><i className="fa-solid fa-angle-right" /></span></Link>
+													<Link href="/#">Markets &amp; Enterprise <span><i className="fa-solid fa-angle-right" /></span></Link>
 												</li>
 												<li>
-													<Link href="/#">Entrepreneurship Startups <span><i className="fa-solid fa-angle-right" /></span></Link>
+													<Link href="/#">Recognition &amp; Governance <span><i className="fa-solid fa-angle-right" /></span></Link>
 												</li>
 												<li>
-													<Link href="/#">Marketing &amp; Branding <span><i className="fa-solid fa-angle-right" /></span></Link>
+													<Link href="/#">Summit Highlights <span><i className="fa-solid fa-angle-right" /></span></Link>
 												</li>
 												<li>
-													<Link href="/#">Event Highlights &amp; Recaps <span><i className="fa-solid fa-angle-right" /></span></Link>
+													<Link href="/#">Awardees &amp; Citations <span><i className="fa-solid fa-angle-right" /></span></Link>
 												</li>
 											</ul>
 										</div>
 										<div className="space32" />
 										<div className="tags-area">
-											<h3>Popular Hastag</h3>
+											<h3>Popular Hashtags</h3>
 											<div className="space12" />
 											<ul>
 												<li><Link href="/#">#Conferences</Link></li>
@@ -167,7 +162,7 @@ export default function BlogSingle() {
 										</div>
 										<div className="space32" />
 										<div className="author-images-area">
-											<h3>Popular Author</h3>
+											<h3>Featured Contributors</h3>
 											<div className="space12" />
 											<ul>
 												<li><Image src="/assets/img/all-images/blog/blog-img11.png" alt="" width={80} height={80} /></li>

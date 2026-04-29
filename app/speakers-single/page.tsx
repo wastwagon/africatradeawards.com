@@ -3,6 +3,7 @@ import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import PublicPageHero from '@/components/sections/PublicPageHero'
 export default function SpeakersSingle() {
 
 	return (
@@ -10,18 +11,12 @@ export default function SpeakersSingle() {
 
 			<Layout>
 				<div>
-					<div className="inner-page-header" style={{ backgroundImage: 'url(assets/img/bg/header-bg7.png)' }}>
-						<div className="container">
-							<div className="row">
-								<div className="col-lg-6 m-auto">
-									<div className="heading1 text-center">
-										<div className="space20" />
-										<Link href="/"><span className="breadcrumb-home">Home</span> <i className="fa-solid fa-angle-right" /> <span className="breadcrumb-current">Speakers Details</span></Link>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<PublicPageHero
+						title="Speaker Profile"
+						currentLabel="Speaker Details"
+						parentLabel="Speakers"
+						parentHref="/speakers"
+					/>
 					{/*===== HERO AREA ENDS =======*/}
 					{/*===== TEAM AREA STARTS =======*/}
 					<div className="team-details-section-area sp1">
@@ -40,7 +35,7 @@ export default function SpeakersSingle() {
 														</div>
 													</div>
 													<div className="content-area">
-														<Link href="/#">Adresy Ineasta</Link>
+														<Link href="/#">Prof. Benedict Oramah</Link>
 														<div className="space16" />
 														<p>Awards Speaker</p>
 														<div className="space24" />
@@ -63,31 +58,31 @@ export default function SpeakersSingle() {
 											</div>
 											<div className="col-lg-7">
 												<div className="speakesr-details-content heading2">
-													<h2>Personal Information</h2>
+													<h2>Speaker Profile</h2>
 													<div className="space16" />
-													<p>Kireon Pollardy is a renowned business strategist and thought leader with over 15 years of experience in guiding companies through transformational growth. As and expert in innovation an leadership, Kireon has worked with global brands, helping them navigate the complexities</p>
+													<p>Prof. Benedict Oramah is recognized for his leadership in trade finance and for advancing institutions that support industrialization, export growth, and cross-border commerce across Africa.</p>
 													<div className="space32" />
 													<div className="row">
 														<div className="col-lg-5">
 															<div className="details-content">
-																<h4>Date Of Birth:</h4>
+																<h4>Focus Area:</h4>
 																<div className="space12" />
-																<Link href="/#">September 10,1980</Link>
+																<Link href="/#">Trade Finance & Industrial Development</Link>
 																<div className="space32" />
 																<h4>Mobile Number:</h4>
 																<div className="space12" />
 																<Link href="/tel:+(123)4567890">+(123) 456 7890</Link>
 																<div className="space32" />
-																<h4>Date Of Birth:</h4>
+																<h4>Office:</h4>
 																<div className="space12" />
 																<Link href="/#">PO Box 16122 Collins Street West Victoria 8007 Newyork</Link>
 															</div>
 														</div>
 														<div className="col-lg-7">
 															<div className="heading2">
-																<h3>Personal Information</h3>
+																<h3>Session Overview</h3>
 																<div className="space16" />
-																<p>His passion for fostering creativity and driving strategic change has made him a sought-after speaker at top business conferences around the world. At Africa Trade Awards 2026, Kireon will share unique insights on future-proofing businesses, offering practical strategies to help organizations stay agile and competitive in a rapidly changing environment.</p>
+																<p>This session focuses on practical pathways for scaling African trade systems: stronger trade finance architecture, investable industrial corridors, and policy-to-execution alignment that delivers measurable outcomes.</p>
 															</div>
 														</div>
 													</div>
@@ -104,7 +99,7 @@ export default function SpeakersSingle() {
 							<div className="row">
 								<div className="col-lg-6 m-auto">
 									<div className="heading2 text-center space-margin60">
-										<h2>Event History Kireon Pollardy</h2>
+										<h2>Event History Prof. Benedict Oramah</h2>
 									</div>
 								</div>
 							</div>
@@ -133,7 +128,7 @@ export default function SpeakersSingle() {
 																	</li>
 																</ul>
 																<div className="space20" />
-																<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																<div className="space24" />
 																<div className="author-area">
 																	<div className="autho-name-area">
@@ -141,7 +136,7 @@ export default function SpeakersSingle() {
 																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
-																			<Link href="/speakers-single">Alex Roberton</Link>
+																			<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 																			<div className="space8" />
 																			<p>Awards Speaker</p>
 																		</div>
@@ -151,9 +146,9 @@ export default function SpeakersSingle() {
 																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
-																			<Link href="/speakers-single">Alexys Archer</Link>
+																			<Link href="/speakers-single">Sir Sam Jonah</Link>
 																			<div className="space8" />
-																			<p>WP Developer</p>
+																			<p>Trade Finance Leader</p>
 																		</div>
 																	</div>
 																</div>
@@ -184,7 +179,7 @@ export default function SpeakersSingle() {
 																	</li>
 																</ul>
 																<div className="space20" />
-																<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																<div className="space24" />
 																<div className="author-area">
 																	<div className="autho-name-area">
@@ -192,7 +187,7 @@ export default function SpeakersSingle() {
 																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
-																			<Link href="/speakers-single">Alex Roberton</Link>
+																			<Link href="/speakers-single">H.E. Carlos Vila Nova</Link>
 																			<div className="space8" />
 																			<p>Awards Speaker</p>
 																		</div>
@@ -202,9 +197,9 @@ export default function SpeakersSingle() {
 																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
-																			<Link href="/speakers-single">Alexys Archer</Link>
+																			<Link href="/speakers-single">Patricia Poku-Diaby</Link>
 																			<div className="space8" />
-																			<p>WP Developer</p>
+																			<p>Advisory Board Chair</p>
 																		</div>
 																	</div>
 																</div>
@@ -247,7 +242,7 @@ export default function SpeakersSingle() {
 																	</li>
 																</ul>
 																<div className="space20" />
-																<Link href="/event-single" className="head">Elevate User Experience Expertise</Link>
+																<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
 																<div className="space24" />
 																<div className="author-area">
 																	<div className="autho-name-area">
@@ -255,7 +250,7 @@ export default function SpeakersSingle() {
 																			<Image src="/assets/img/all-images/testimonials/testimonial-img1.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
-																			<Link href="/speakers-single">Alex Roberton</Link>
+																			<Link href="/speakers-single">Prof. Benedict Oramah</Link>
 																			<div className="space8" />
 																			<p>Awards Speaker</p>
 																		</div>
@@ -265,9 +260,9 @@ export default function SpeakersSingle() {
 																			<Image src="/assets/img/all-images/testimonials/testimonial-img2.png" alt="" width={80} height={80} />
 																		</div>
 																		<div className="text">
-																			<Link href="/speakers-single">Alexys Archer</Link>
+																			<Link href="/speakers-single">Sir Sam Jonah</Link>
 																			<div className="space8" />
-																			<p>WP Developer</p>
+																			<p>Head of State Delegate</p>
 																		</div>
 																	</div>
 																</div>
