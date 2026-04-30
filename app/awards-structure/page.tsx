@@ -174,6 +174,40 @@ export default function AwardsStructure() {
 						</div>
 					</div>
 					{/*===== TIERS GRID AREA ENDS =======*/}
+
+					{/*===== TAKE PART CTA =======*/}
+					<div className="compact-awards-structure-section">
+						<div className="container">
+							<div className="row">
+								<div className="col-lg-9 m-auto text-center">
+									<h3 className="awards-title-compact">Take part</h3>
+									<div className="space16" />
+									<p className="awards-intro-compact">
+										Ready to participate? Start your entry in the entrant workspace, or submit a public nomination for someone else—aligned with this recognition structure.
+									</p>
+									<div className="space32" />
+									<div className="d-flex flex-wrap justify-content-center align-items-center" style={{ gap: 14 }}>
+										<Link href="/portal/entrant/" className="vl-btn1">
+											Apply now
+											<i className="fa-solid fa-arrow-right" aria-hidden style={{ marginLeft: 8 }} />
+										</Link>
+										<Link
+											href="/nominate/"
+											className="vl-btn1"
+											style={{
+												background: "transparent",
+												border: "2px solid var(--ztc-primary-primary-1, #4e2b5a)",
+												color: "var(--ztc-primary-primary-1, #4e2b5a)",
+											}}
+										>
+											Submit nomination
+											<i className="fa-solid fa-arrow-right" aria-hidden style={{ marginLeft: 8 }} />
+										</Link>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</Layout>
 		</>

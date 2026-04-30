@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Layout from "@/components/layout/Layout";
 
+const SUMMARY_MIN_LENGTH = 20;
+
 type NominationStatusResponse = {
   ok?: boolean;
   nomination?: {
@@ -103,6 +105,11 @@ export default function NominationStatusPage() {
     setSaving(true);
     setError(null);
     setMessage(null);
+    if (form.summary.trim().length < SUMMARY_MIN_LENGTH) {
+      setError(`Summary must be at least ${SUMMARY_MIN_LENGTH} characters.`);
+      setSaving(false);
+      return;
+    }
     const res = await fetch("/api/nominations/public/status", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -160,7 +167,7 @@ export default function NominationStatusPage() {
     <Layout>
       <div className="platform-page">
         <div className="container" style={{ maxWidth: 860 }}>
-          <div className="platform-page-header">
+          <div className="platform-page-header platform-page-header--center">
             <p className="platform-eyebrow">Nomination tracking</p>
             <h1 className="platform-title">Check nomination status</h1>
             <p className="platform-lead">Paste your tracking token from email to view your nomination progress.</p>
@@ -236,7 +243,12 @@ export default function NominationStatusPage() {
                           rows={6}
                           value={form.summary}
                           onChange={(e) => setForm((prev) => ({ ...prev, summary: e.target.value }))}
+                          minLength={SUMMARY_MIN_LENGTH}
+                          maxLength={6000}
                         />
+                        <span className="platform-muted" style={{ display: "block", marginTop: 6, fontSize: "0.88rem" }}>
+                          Minimum {SUMMARY_MIN_LENGTH} characters ({form.summary.trim().length}/{SUMMARY_MIN_LENGTH})
+                        </span>
                       </label>
                       <label className="platform-field">
                         Evidence links

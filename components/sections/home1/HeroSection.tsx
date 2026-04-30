@@ -26,11 +26,12 @@ const swiperOptions = {
 }
 
 export default function HeroSection() {
-	const { eventLiveStreamEnabled, eventLiveStreamTitle } = useSiteConfig()
+	const { eventLiveStreamEnabled, eventLiveStreamTitle, heroBarDateLine, heroBarVenueLine } = useSiteConfig()
 	const liveAria =
 		eventLiveStreamTitle.trim().length > 0
 			? `${eventLiveStreamTitle.trim()} — open live page`
 			: 'Watch live stream'
+	const heroDateVenueLine = `${heroBarDateLine.trim() || '28–29 January 2026'} · ${heroBarVenueLine.trim() || 'Accra, Ghana'}`
 
 	return (
 		<section className="hero-banner-section" aria-label="Hero banner">
@@ -61,28 +62,28 @@ export default function HeroSection() {
 
 			<div className="hero-banner-overlay" aria-hidden="false">
 				<div className="container hero-banner-overlay-inner">
-					<p className="hero-banner-eyebrow">Africa Trade Awards 2026 · Accra, Ghana</p>
+					<p className="hero-banner-eyebrow">{heroDateVenueLine}</p>
 					<h1 className="hero-banner-heading">Where Trade Excellence Takes the Stage</h1>
 					<p className="hero-banner-tagline">
 						From continental leadership to industry-scale execution, we spotlight the institutions and people shaping
 						Africa&apos;s trade future through measurable impact.
 					</p>
 					<div className="hero-banner-actions">
-						<Link href="/awardees/" className="vl-btn1 hero-banner-btn-primary">
-							Explore Awardees
+						<Link href="/vote/" className="hero-banner-cta hero-banner-btn-primary">
+							Cast Your Vote
 						</Link>
 						{eventLiveStreamEnabled ? (
-							<Link href="/live/" className="hero-banner-btn-secondary hero-banner-btn-live" aria-label={liveAria}>
+							<Link
+								href="/live/"
+								className="hero-banner-cta hero-banner-btn-secondary hero-banner-btn-live"
+								aria-label={liveAria}
+							>
 								<i className="fa-solid fa-circle-play" aria-hidden />
 								Watch live
 							</Link>
 						) : null}
-						<Link href="/portal/entrant/" className="hero-banner-btn-secondary">
-							Start a submission
-						</Link>
-						<Link href="/login/" className="hero-banner-tertiary">
-							Sign In for Your Dashboard
-							<i className="fa-solid fa-arrow-right" aria-hidden />
+						<Link href="/portal/entrant/" className="hero-banner-cta hero-banner-btn-secondary">
+							Enter your submission
 						</Link>
 					</div>
 				</div>
@@ -236,30 +237,56 @@ export default function HeroSection() {
 				}
 				.hero-banner-actions {
 					display: flex;
+					flex-direction: row;
 					flex-wrap: wrap;
 					gap: 12px 14px;
 					justify-content: center;
 					align-items: center;
 				}
-				.hero-banner-btn-primary.vl-btn1 {
-					box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+				/* Shrink to label width — avoid full-width in column flex / stretched layouts */
+				.hero-banner-actions > :global(a) {
+					flex: 0 0 auto;
+					width: auto;
+					max-width: 100%;
+					text-align: center;
 				}
-				.hero-banner-btn-secondary {
+				/* Shared shell for all hero CTAs (not .vl-btn1 — global styles fight height/line-height) */
+				section.hero-banner-section .hero-banner-cta {
 					font-family: var(--grotesk), sans-serif;
 					font-size: 0.81rem;
 					font-weight: 700;
 					text-transform: uppercase;
 					letter-spacing: 0.06em;
-					padding: 14px 26px;
+					line-height: 1;
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					min-height: 2.75rem;
+					padding: 0 1.4rem;
 					border-radius: 8px;
+					box-sizing: border-box;
+					text-decoration: none;
+					transition: background 0.25s, transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
+				}
+				section.hero-banner-section .hero-banner-btn-primary {
+					color: #fff;
+					background: linear-gradient(135deg, #4e2b5a 0%, #3d2247 50%, #5a6fd8 100%);
+					border: 1px solid transparent;
+					box-shadow: 0 4px 12px rgba(78, 43, 90, 0.35);
+				}
+				section.hero-banner-section .hero-banner-btn-primary:hover {
+					color: #fff;
+					background: linear-gradient(135deg, #5a3a66 0%, #4a2d55 50%, #6a7fe8 100%);
+					box-shadow: 0 6px 16px rgba(78, 43, 90, 0.4);
+					transform: translateY(-2px);
+				}
+				section.hero-banner-section .hero-banner-btn-secondary {
 					background: rgba(255,255,255,0.12);
 					border: 1px solid rgba(255,255,255,0.45);
 					color: #fff;
-					text-decoration: none;
 					backdrop-filter: blur(8px);
-					transition: background 0.25s, transform 0.2s;
 				}
-				.hero-banner-btn-secondary:hover {
+				section.hero-banner-section .hero-banner-btn-secondary:hover {
 					background: rgba(255,255,255,0.22);
 					color: #fff;
 					transform: translateY(-2px);
@@ -274,25 +301,20 @@ export default function HeroSection() {
 				.hero-banner-btn-live:hover {
 					border-color: rgba(255, 220, 160, 0.9) !important;
 				}
-				.hero-banner-tertiary {
-					display: inline-flex;
-					align-items: center;
-					gap: 8px;
-					font-family: var(--grotesk), sans-serif;
-					font-size: 0.9rem;
-					font-weight: 600;
-					color: rgba(255,255,255,0.95);
-					text-decoration: none;
-					border-bottom: 2px solid rgba(255, 200, 120, 0.6);
-					padding-bottom: 2px;
-				}
-				.hero-banner-tertiary:hover {
-					color: #ffe8b8;
-					border-bottom-color: #ffe8b8;
-				}
 				@media (max-width: 575px) {
 					.hero-banner-overlay { padding-bottom: 96px; }
-					.hero-banner-actions { flex-direction: column; }
+					/* Keep buttons on one row when they fit; wrap to next line only if needed. Never stack full-width. */
+					.hero-banner-actions {
+						flex-direction: row;
+						flex-wrap: wrap;
+						align-items: center;
+						justify-content: center;
+					}
+					section.hero-banner-section .hero-banner-cta {
+						min-height: 2.5rem;
+						padding: 0 1rem;
+						font-size: 0.75rem;
+					}
 				}
 			`}</style>
 		</section>

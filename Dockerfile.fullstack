@@ -4,28 +4,17 @@ WORKDIR /app
 
 RUN apk add --no-cache wget openssl libc6-compat
 
-# Install dependencies first for better cache usage
+# Install dependencies first for better cache usage (prisma must exist before npm ci — postinstall runs prisma generate)
 COPY package.json package-lock.json* ./
+COPY prisma ./prisma
 RUN npm ci
 
-# Copy source and build app
+# Copy source and build app (default Next output — use `next start`, not standalone server.js)
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npx prisma generate
 RUN npm run build
 
-# Standalone server layout (output: standalone in next.config — do not use `next start`)
-RUN mkdir -p .next/standalone/.next .next/standalone/node_modules && \
-    cp -r .next/static .next/standalone/.next/static && \
-    cp -r public .next/standalone/public && \
-    cp -r node_modules/.prisma .next/standalone/node_modules/.prisma && \
-    cp -r node_modules/@prisma/client .next/standalone/node_modules/@prisma/client
-
-ENV NODE_ENV=production
-ENV PORT=3003
-ENV HOSTNAME=0.0.0.0
-
 EXPOSE 3003
 
-# Worker service overrides this with `npm run worker:broadcast`; keep WORKDIR /app for that.
-CMD ["node", ".next/standalone/server.js"]
+CMD ["npm", "run", "start"]

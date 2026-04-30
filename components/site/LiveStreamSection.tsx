@@ -10,7 +10,7 @@ export default function LiveStreamSection({ title, enabled, embedUrl }: Props) {
   return (
     <section className="platform-page">
       <div className="container" style={{ maxWidth: 1040 }}>
-        <div className="platform-page-header">
+        <div className="platform-page-header platform-page-header--center">
           <p className="platform-eyebrow">Africa Trade Awards</p>
           <h1 className="platform-title">{title}</h1>
           <p className="platform-lead">

@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { requireManager } from "@/lib/api-auth";
+import { extractJsonPayloadFromQrScan } from "@/lib/event-qr-scan";
 import { hashEventQrToken, verifyEventQrSignature } from "@/lib/event-qr";
 
 export { dynamic } from "@/lib/force-dynamic-api";
@@ -28,8 +29,10 @@ type ParsedQrPayload = {
 
 function parseQrPayload(raw: string | undefined): ParsedQrPayload | null {
   if (!raw) return null;
+  const json = extractJsonPayloadFromQrScan(raw);
+  if (!json) return null;
   try {
-    return JSON.parse(raw) as ParsedQrPayload;
+    return JSON.parse(json) as ParsedQrPayload;
   } catch {
     return null;
   }

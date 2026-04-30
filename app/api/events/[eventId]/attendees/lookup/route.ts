@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
-import { buildEventQrPayload, createEventQrToken, eventQrHint, eventQrSvgDataUrl, hashEventQrToken } from "@/lib/event-qr";
+import { buildEventQrScanValue, createEventQrToken, eventQrHint, eventQrSvgDataUrl, hashEventQrToken } from "@/lib/event-qr";
 import { requireManager } from "@/lib/api-auth";
 
 export { dynamic } from "@/lib/force-dynamic-api";
@@ -46,7 +46,7 @@ export async function POST(
     },
   });
 
-  const qrPayload = buildEventQrPayload(params.eventId, registration.id, qrToken);
+  const qrPayload = buildEventQrScanValue(params.eventId, registration.id, qrToken);
   const qrDataUrl = await eventQrSvgDataUrl(qrPayload);
   return NextResponse.json({
     ok: true,

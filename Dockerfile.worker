@@ -1,0 +1,18 @@
+# Broadcast queue worker only (no Next.js build). Keeps Coolify builds fast and avoids
+# duplicating the app image’s standalone layout for a service that only runs `broadcast-worker.js`.
+FROM node:20-alpine
+
+WORKDIR /app
+
+# openssl: Prisma; libc6-compat: musl parity for native deps (e.g. sharp) — matches Dockerfile.fullstack
+RUN apk add --no-cache openssl libc6-compat
+
+COPY package.json package-lock.json* ./
+COPY prisma ./prisma
+RUN npm ci --omit=dev
+
+COPY scripts/broadcast-worker.js ./scripts/
+
+RUN npx prisma generate
+
+CMD ["node", "scripts/broadcast-worker.js"]

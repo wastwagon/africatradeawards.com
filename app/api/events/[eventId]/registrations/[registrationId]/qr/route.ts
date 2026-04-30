@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireManager } from "@/lib/api-auth";
-import { buildEventQrPayload, eventQrSvgDataUrl } from "@/lib/event-qr";
+import { buildEventQrScanValue, eventQrSvgDataUrl } from "@/lib/event-qr";
 
 export { dynamic } from "@/lib/force-dynamic-api";
 
@@ -22,7 +22,7 @@ export async function POST(
   });
   if (!registration) return NextResponse.json({ error: "Registration not found" }, { status: 404 });
 
-  const qrPayload = buildEventQrPayload(params.eventId, params.registrationId, qrToken);
+  const qrPayload = buildEventQrScanValue(params.eventId, params.registrationId, qrToken);
   const qrDataUrl = await eventQrSvgDataUrl(qrPayload);
   return NextResponse.json({ ok: true, qrPayload, qrDataUrl });
 }

@@ -50,15 +50,20 @@ export default function EngagePlatformSection() {
         </div>
         <div className="row g-4 engage-platform-row">
           {cards.map((card, i) => (
-            <div key={card.href} className="col-md-6 col-lg-3">
-              <div className="engage-card" data-aos="fade-up" data-aos-duration={600} data-aos-delay={i * 80}>
+            <div key={card.href} className="col-md-6 col-lg-3 d-flex">
+              <div
+                className="engage-card w-100"
+                data-aos="fade-up"
+                data-aos-duration={600}
+                data-aos-delay={i * 80}
+              >
                 <div className="engage-card-icon" aria-hidden>
                   <i className={card.icon} />
                 </div>
                 <h3 className="engage-card-title">{card.title}</h3>
                 <p className="engage-card-body">{card.body}</p>
                 <Link href={card.href} className="engage-card-cta vl-btn1">
-                  {card.cta}
+                  <span className="engage-card-cta-text">{card.cta}</span>
                   <i className="fa-solid fa-arrow-right" aria-hidden />
                 </Link>
               </div>
@@ -154,17 +159,43 @@ export default function EngagePlatformSection() {
           line-height: 1.55;
           color: var(--ztc-text-text-3);
           margin: 0 0 20px;
-          flex: 1;
+          flex: 1 1 auto;
         }
-        .engage-card-cta {
-          align-self: flex-start;
-          display: inline-flex;
+        .engage-card-cta:global(.vl-btn1) {
+          margin-top: auto;
+          align-self: stretch;
+          width: 100%;
+          box-sizing: border-box;
+          /* Override global .vl-btn1 { display: inline-block } so height is reliable */
+          display: inline-flex !important;
+          flex-direction: row;
+          flex-wrap: nowrap;
           align-items: center;
-          gap: 10px;
+          justify-content: center;
+          gap: 8px 10px;
+          /* Fixed height so all four cards match; fits two lines of uppercase CTA + icon */
+          height: 4.5rem;
+          min-height: 4.5rem;
+          max-height: 4.5rem;
+          padding: 10px 16px 10px 20px;
+          text-align: center;
           text-decoration: none;
         }
+        .engage-card-cta-text {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          text-align: center;
+          line-height: 1.2;
+          word-break: break-word;
+          min-width: 0;
+          max-width: 12em;
+        }
         .engage-card-cta i {
-          font-size: 0.85em;
+          font-size: 0.8rem;
+          flex-shrink: 0;
+          line-height: 1;
         }
         @media (max-width: 767px) {
           .engage-platform-section {

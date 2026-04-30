@@ -4,6 +4,8 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
 
+const SUMMARY_MIN_LENGTH = 20;
+
 type Program = {
   id: string;
   name: string;
@@ -94,7 +96,7 @@ export default function NominatePage() {
     <Layout>
       <div className="platform-page">
         <div className="container" style={{ maxWidth: 900 }}>
-          <div className="platform-page-header">
+          <div className="platform-page-header platform-page-header--center">
             <p className="platform-eyebrow">Public nomination</p>
             <h1 className="platform-title">Nominate an awardee</h1>
             <p className="platform-lead">
@@ -171,7 +173,17 @@ export default function NominatePage() {
               </label>
               <label className="platform-field">
                 Why this nominee should be recognized
-                <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={6} required />
+                <textarea
+                  value={summary}
+                  onChange={(e) => setSummary(e.target.value)}
+                  rows={6}
+                  required
+                  minLength={SUMMARY_MIN_LENGTH}
+                  maxLength={6000}
+                />
+                <span className="platform-muted" style={{ display: "block", marginTop: 6, fontSize: "0.88rem" }}>
+                  Minimum {SUMMARY_MIN_LENGTH} characters ({summary.trim().length}/{SUMMARY_MIN_LENGTH})
+                </span>
               </label>
               <label className="platform-field">
                 Evidence links (optional)

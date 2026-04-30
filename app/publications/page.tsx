@@ -2,10 +2,11 @@
 
 import Layout from '@/components/layout/Layout'
 import { DEFAULT_PUBLICATIONS } from '@/lib/cms-defaults'
+import { formatPublicationDateLabel } from '@/lib/cms-publication-date'
+import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import PublicPageHero from '@/components/sections/PublicPageHero'
-import Link from 'next/link'
 
 export default function PublicationsPage() {
 	const [publications, setPublications] = useState(DEFAULT_PUBLICATIONS)
@@ -21,6 +22,7 @@ export default function PublicationsPage() {
 						slug: String(item.slug ?? ''),
 						title: String(item.title ?? ''),
 						excerpt: String(item.excerpt ?? ''),
+						body: typeof item.body === 'string' ? item.body : '',
 						dateText: String(item.dateText ?? item.date ?? ''),
 						dateline: String(item.dateline ?? ''),
 						image: String(item.image ?? ''),
@@ -80,7 +82,8 @@ export default function PublicationsPage() {
 												<p className="publication-card-excerpt">{pub.excerpt}</p>
 												<div className="publication-card-meta">
 													<span className="publication-card-date">
-														<i className="fa-solid fa-calendar-days" /> {pub.dateline && `${pub.dateline} | `}{pub.dateText}
+														<i className="fa-solid fa-calendar-days" /> {pub.dateline && `${pub.dateline} | `}
+														{formatPublicationDateLabel(pub.dateText)}
 													</span>
 												</div>
 												<span className="publication-card-cta">

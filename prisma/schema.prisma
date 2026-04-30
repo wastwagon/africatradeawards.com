@@ -13,6 +13,7 @@ enum UserRole {
   AUDITOR
   JUDGE
   ENTRANT
+  VOTER
 }
 
 enum EntryStatus {
@@ -75,6 +76,7 @@ model User {
   cmsRevisions        CmsRevision[]
   nominationsCreated  Nomination[]            @relation("NominationCreatedBy")
   nominationsReviewed Nomination[]            @relation("NominationReviewedBy")
+  publicVotesCast     PublicVote[]            @relation("PublicVoteVoter")
 }
 
 model Program {
@@ -279,13 +281,18 @@ model PublicVote {
   reviewedById     String?
   reviewedBy       User?      @relation("VoteReviewedBy", fields: [reviewedById], references: [id], onDelete: SetNull)
 
+  voterId String?
+  voter   User?   @relation("PublicVoteVoter", fields: [voterId], references: [id], onDelete: SetNull)
+
   entryId String
   entry   Entry  @relation(fields: [entryId], references: [id], onDelete: Cascade)
 
   @@unique([entryId, ipHash])
+  @@unique([entryId, voterId])
   @@index([entryId, createdAt])
   @@index([entryId, fingerprintHash])
   @@index([status, createdAt])
+  @@index([voterId, createdAt])
 }
 
 model VoteVerification {
@@ -613,6 +620,7 @@ model CmsPublication {
   slug      String   @unique
   title     String
   excerpt   String
+  body      String?  @db.Text
   dateText  String
   dateline  String?
   image     String?

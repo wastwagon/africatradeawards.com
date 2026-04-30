@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import AdminDataTable, { type AdminTableColumn } from "@/components/admin/AdminDataTable";
 import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 type ResultRow = {
   rank: number;
@@ -64,16 +65,19 @@ export default function AdminVotingResultsPage() {
   }, [results]);
 
   return (
-    <main>
-      <h1>Public Voting Results</h1>
-      <p className="admin-muted">
-        Rankings use the same rules as the public vote page: only{" "}
-        <strong>shortlisted</strong> and <strong>winner</strong> entries, counting <strong>validated</strong> votes only.
-        Order matches public ordering (by vote total). For quarantined or suspicious activity, see{" "}
-        <Link href="/admin/voting-quarantine">Vote quarantine</Link> and{" "}
-        <Link href="/admin/voting-fraud">Voting fraud analytics</Link>. Public page:{" "}
-        <Link href="/vote">/vote</Link>.
-      </p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        title="Public voting results"
+        description={
+          <>
+            Rankings use the same rules as the public vote page: only <strong>shortlisted</strong> and{" "}
+            <strong>winner</strong> entries, counting <strong>validated</strong> votes only. Order matches public ordering
+            (by vote total). For quarantined or suspicious activity, see{" "}
+            <Link href="/admin/voting-quarantine">Vote quarantine</Link> and{" "}
+            <Link href="/admin/voting-fraud">Voting fraud analytics</Link>. Public page: <Link href="/vote">/vote</Link>.
+          </>
+        }
+      />
       <AdminMetricStrip mergeSnapshot appendItems={voteAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
       <div className="admin-segment">

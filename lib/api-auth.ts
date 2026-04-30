@@ -72,3 +72,15 @@ export async function requireManager() {
   }
   return { ok: true as const, user };
 }
+
+/** Public voter dashboard — role must be exactly `VOTER` (do not use `requireRole` rank checks). */
+export async function requireVoter() {
+  const user = await getRequestSessionUser();
+  if (!user) {
+    return { ok: false as const, status: 401, message: "Unauthorized" };
+  }
+  if (user.role !== UserRole.VOTER) {
+    return { ok: false as const, status: 403, message: "Forbidden" };
+  }
+  return { ok: true as const, user };
+}

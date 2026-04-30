@@ -4,11 +4,20 @@ import {
   DEFAULT_ABOUT_SNIPPETS,
   DEFAULT_FAQS,
   DEFAULT_PUBLICATIONS,
+  faqCategorySelectValues,
   type CmsFaqItem,
   type CmsPublicationItem,
   type CmsSnippetItem,
 } from '@/lib/cms-defaults'
+import type { AdminCmsEditorBundle } from '@/lib/cms-content'
+import Image from 'next/image'
+import PublicationBodyEditor from '@/components/admin/PublicationBodyEditor'
+import { normalizePublicationDateTextForState } from '@/lib/cms-publication-date'
+import { normalizePublicationSlug, publicationHrefFromSlug } from '@/lib/cms-publication-slug'
 import { useEffect, useState } from 'react'
+
+const CMS_SCHEDULE_HELP =
+  'Publish at / Unpublish at: optional schedule on top of “Published”. Leave both blank for no schedule. If Publish at is set, this content stays hidden on the public site until that time. If Unpublish at is set, it stops showing from that time onward.'
 
 type Tab = 'faqs' | 'publications' | 'about'
 type CmsScope = 'faqs' | 'publications' | 'about-snippets'
@@ -35,11 +44,28 @@ function localInputToIso(value: string) {
   return date.toISOString()
 }
 
-export default function CmsContentManager() {
+function normalizeFaqCategory(category: string): string {
+  const trimmed = String(category ?? '').trim()
+  return trimmed || 'General'
+}
+
+export default function CmsContentManager({ initialBundle }: { initialBundle?: AdminCmsEditorBundle }) {
   const [tab, setTab] = useState<Tab>('faqs')
-  const [faqs, setFaqs] = useState<CmsFaqItem[]>(DEFAULT_FAQS)
-  const [publications, setPublications] = useState<CmsPublicationItem[]>(DEFAULT_PUBLICATIONS)
-  const [snippets, setSnippets] = useState<CmsSnippetItem[]>(DEFAULT_ABOUT_SNIPPETS)
+  const [faqs, setFaqs] = useState<CmsFaqItem[]>(() =>
+    (initialBundle?.faqs ?? DEFAULT_FAQS).map((x) => ({
+      ...x,
+      category: normalizeFaqCategory(x.category),
+    })),
+  )
+  const [publications, setPublications] = useState<CmsPublicationItem[]>(() => {
+    const base = initialBundle?.publications ?? DEFAULT_PUBLICATIONS
+    return base.map((item) => ({
+      ...item,
+      dateText: normalizePublicationDateTextForState(item.dateText),
+      href: publicationHrefFromSlug(item.slug),
+    }))
+  })
+  const [snippets, setSnippets] = useState<CmsSnippetItem[]>(() => initialBundle?.snippets ?? DEFAULT_ABOUT_SNIPPETS)
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
@@ -47,16 +73,32 @@ export default function CmsContentManager() {
   const [revisions, setRevisions] = useState<RevisionItem[]>([])
   const [revisionTitle, setRevisionTitle] = useState('')
   const [revisionNote, setRevisionNote] = useState('')
+  const [pubImageUploadIndex, setPubImageUploadIndex] = useState<number | null>(null)
+  const [expandedFaqIndex, setExpandedFaqIndex] = useState<number | null>(0)
+  const [expandedPublicationIndex, setExpandedPublicationIndex] = useState<number | null>(0)
 
   const scopeFromTab = (value: Tab): CmsScope => (value === 'about' ? 'about-snippets' : value)
 
   useEffect(() => {
+    if (initialBundle) return
     void loadAll()
-  }, [])
+  }, [initialBundle])
 
   useEffect(() => {
     void loadRevisions(scopeFromTab(tab))
   }, [tab])
+
+  useEffect(() => {
+    if (expandedPublicationIndex === null) return
+    if (expandedPublicationIndex < publications.length) return
+    setExpandedPublicationIndex(publications.length > 0 ? publications.length - 1 : null)
+  }, [expandedPublicationIndex, publications.length])
+
+  useEffect(() => {
+    if (expandedFaqIndex === null) return
+    if (expandedFaqIndex < faqs.length) return
+    setExpandedFaqIndex(faqs.length > 0 ? faqs.length - 1 : null)
+  }, [expandedFaqIndex, faqs.length])
 
   async function loadAll() {
     setLoading(true)
@@ -76,7 +118,7 @@ export default function CmsContentManager() {
           faqData.faqs.map((item: Record<string, unknown>, index: number) => ({
             question: String(item.question ?? ''),
             answer: String(item.answer ?? ''),
-            category: String(item.category ?? ''),
+            category: normalizeFaqCategory(String(item.category ?? '')),
             sortOrder: Number(item.sortOrder ?? index + 1),
             published: Boolean(item.published ?? true),
             publishAt: typeof item.publishAt === 'string' ? item.publishAt : '',
@@ -86,19 +128,23 @@ export default function CmsContentManager() {
       }
       if (Array.isArray(pubData.publications)) {
         setPublications(
-          pubData.publications.map((item: Record<string, unknown>, index: number) => ({
-            slug: String(item.slug ?? ''),
-            title: String(item.title ?? ''),
-            excerpt: String(item.excerpt ?? ''),
-            dateText: String(item.dateText ?? item.date ?? ''),
-            dateline: String(item.dateline ?? ''),
-            image: String(item.image ?? ''),
-            href: String(item.href ?? `/publications/${item.slug ?? ''}`),
-            sortOrder: Number(item.sortOrder ?? index + 1),
-            published: Boolean(item.published ?? true),
-            publishAt: typeof item.publishAt === 'string' ? item.publishAt : '',
-            unpublishAt: typeof item.unpublishAt === 'string' ? item.unpublishAt : '',
-          })),
+          pubData.publications.map((item: Record<string, unknown>, index: number) => {
+            const slug = String(item.slug ?? '')
+            return {
+              slug,
+              title: String(item.title ?? ''),
+              excerpt: String(item.excerpt ?? ''),
+              body: typeof item.body === 'string' ? item.body : '',
+              dateText: normalizePublicationDateTextForState(String(item.dateText ?? item.date ?? '')),
+              dateline: String(item.dateline ?? ''),
+              image: String(item.image ?? ''),
+              href: publicationHrefFromSlug(slug),
+              sortOrder: Number(item.sortOrder ?? index + 1),
+              published: Boolean(item.published ?? true),
+              publishAt: typeof item.publishAt === 'string' ? item.publishAt : '',
+              unpublishAt: typeof item.unpublishAt === 'string' ? item.unpublishAt : '',
+            }
+          }),
         )
       }
       if (Array.isArray(snippetData.snippets)) {
@@ -194,6 +240,7 @@ export default function CmsContentManager() {
       setMessage('FAQs saved successfully.')
       setRevisionTitle('')
       setRevisionNote('')
+      await loadAll()
       await loadRevisions('faqs')
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to save FAQs')
@@ -202,20 +249,135 @@ export default function CmsContentManager() {
     }
   }
 
+  async function uploadPublicationCoverImage(index: number, file: File | null) {
+    if (!file) return
+    setError(null)
+    setPubImageUploadIndex(index)
+    try {
+      const fd = new FormData()
+      fd.append('file', file)
+      const res = await fetch('/api/admin/cms/publication-image', {
+        method: 'POST',
+        body: fd,
+        credentials: 'same-origin',
+      })
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; url?: string; error?: string }
+      if (!res.ok) throw new Error(typeof data.error === 'string' ? data.error : 'Image upload failed')
+      const url = typeof data.url === 'string' ? data.url.trim() : ''
+      if (!url) throw new Error('Image upload failed')
+      setPublications((current) => current.map((x, i) => (i === index ? { ...x, image: url } : x)))
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Image upload failed')
+    } finally {
+      setPubImageUploadIndex(null)
+    }
+  }
+
+  function toggleFaqEditor(index: number) {
+    setExpandedFaqIndex((current) => (current === index ? null : index))
+  }
+
+  function removeFaqAt(index: number) {
+    setFaqs((current) => current.filter((_, i) => i !== index))
+    setExpandedFaqIndex((current) => {
+      if (current === null) return null
+      if (current === index) return null
+      if (current > index) return current - 1
+      return current
+    })
+  }
+
+  function addFaqRow() {
+    setFaqs((current) => {
+      const next = [
+        ...current,
+        {
+          question: '',
+          answer: '',
+          category: 'General',
+          sortOrder: current.length + 1,
+          published: true,
+          publishAt: '',
+          unpublishAt: '',
+        },
+      ]
+      setExpandedFaqIndex(next.length - 1)
+      return next
+    })
+  }
+
+  function togglePublicationEditor(index: number) {
+    setExpandedPublicationIndex((current) => (current === index ? null : index))
+  }
+
+  function removePublicationAt(index: number) {
+    setPublications((current) => current.filter((_, i) => i !== index))
+    setExpandedPublicationIndex((current) => {
+      if (current === null) return null
+      if (current === index) return null
+      if (current > index) return current - 1
+      return current
+    })
+  }
+
+  function addPublicationRow() {
+    setPublications((current) => {
+      const next = [
+        ...current,
+        {
+          slug: '',
+          title: '',
+          excerpt: '',
+          body: '',
+          dateText: '',
+          dateline: '',
+          image: '',
+          href: '',
+          sortOrder: current.length + 1,
+          published: true,
+          publishAt: '',
+          unpublishAt: '',
+        },
+      ]
+      setExpandedPublicationIndex(next.length - 1)
+      return next
+    })
+  }
+
   async function savePublications() {
     setSaving(true)
     setMessage(null)
     setError(null)
     try {
+      const publicationsPayload = publications.map((item) => {
+        const slug = normalizePublicationSlug(item.slug)
+        return {
+          ...item,
+          slug,
+          href: publicationHrefFromSlug(slug),
+          dateText: String(item.dateText ?? '').trim(),
+          dateline: String(item.dateline ?? '').trim(),
+          image: String(item.image ?? '').trim(),
+          publishAt: item.publishAt ? item.publishAt : '',
+          unpublishAt: item.unpublishAt ? item.unpublishAt : '',
+        }
+      })
+      for (let i = 0; i < publicationsPayload.length; i += 1) {
+        const p = publicationsPayload[i]
+        if (!p.image) {
+          setError(`Publication ${i + 1}: upload a cover image (JPEG, PNG, or WebP).`)
+          return
+        }
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(p.dateText)) {
+          setError(`Publication ${i + 1}: choose a publication date.`)
+          return
+        }
+      }
       const res = await fetch('/api/admin/cms/publications', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          publications: publications.map((item) => ({
-            ...item,
-            publishAt: item.publishAt ? item.publishAt : '',
-            unpublishAt: item.unpublishAt ? item.unpublishAt : '',
-          })),
+          publications: publicationsPayload,
           revisionTitle,
           revisionNote,
         }),
@@ -225,6 +387,7 @@ export default function CmsContentManager() {
       setMessage('Publications saved successfully.')
       setRevisionTitle('')
       setRevisionNote('')
+      await loadAll()
       await loadRevisions('publications')
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to save publications')
@@ -248,6 +411,7 @@ export default function CmsContentManager() {
       setMessage('About page copy saved successfully.')
       setRevisionTitle('')
       setRevisionNote('')
+      await loadAll()
       await loadRevisions('about-snippets')
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to save about content')
@@ -303,88 +467,106 @@ export default function CmsContentManager() {
         <div className="admin-card-list">
           {faqs.map((item, index) => (
             <div key={`faq-${index}`} className="admin-panel">
-              <label className="admin-form__label">Question</label>
-              <input
-                className="admin-form__input"
-                value={item.question}
-                onChange={(e) =>
-                  setFaqs((current) => current.map((x, i) => (i === index ? { ...x, question: e.target.value } : x)))
-                }
-              />
-              <label className="admin-form__label">Answer</label>
-              <textarea
-                className="admin-form__input"
-                value={item.answer}
-                onChange={(e) => setFaqs((current) => current.map((x, i) => (i === index ? { ...x, answer: e.target.value } : x)))}
-              />
-              <div className="admin-inline-actions">
-                <input
-                  className="admin-form__input"
-                  value={item.category}
-                  onChange={(e) =>
-                    setFaqs((current) => current.map((x, i) => (i === index ? { ...x, category: e.target.value } : x)))
-                  }
-                  placeholder="Category"
-                />
-                <label className="admin-muted" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                  <input
-                    type="checkbox"
-                    checked={item.published}
-                    onChange={(e) =>
-                      setFaqs((current) => current.map((x, i) => (i === index ? { ...x, published: e.target.checked } : x)))
-                    }
-                  />
-                  Published
-                </label>
-                <label>
-                  Publish at
-                  <input
-                    className="admin-form__input"
-                    type="datetime-local"
-                    value={isoToLocalInput(item.publishAt)}
-                    onChange={(e) =>
-                      setFaqs((current) =>
-                        current.map((x, i) => (i === index ? { ...x, publishAt: localInputToIso(e.target.value) } : x)),
-                      )
-                    }
-                  />
-                </label>
-                <label>
-                  Unpublish at
-                  <input
-                    className="admin-form__input"
-                    type="datetime-local"
-                    value={isoToLocalInput(item.unpublishAt)}
-                    onChange={(e) =>
-                      setFaqs((current) =>
-                        current.map((x, i) => (i === index ? { ...x, unpublishAt: localInputToIso(e.target.value) } : x)),
-                      )
-                    }
-                  />
-                </label>
-                <button type="button" onClick={() => setFaqs((current) => current.filter((_, i) => i !== index))}>
-                  Remove
-                </button>
+              <div className="admin-faq-card__header">
+                <div>
+                  <p className="admin-faq-card__meta">
+                    #{index + 1} • {normalizeFaqCategory(item.category)} • {item.published ? 'Published' : 'Hidden'}
+                  </p>
+                  <h4 className="admin-faq-card__title">{item.question.trim() || `Untitled FAQ ${index + 1}`}</h4>
+                </div>
+                <div className="admin-inline-actions admin-inline-wrap">
+                  <button type="button" onClick={() => toggleFaqEditor(index)}>
+                    {expandedFaqIndex === index ? 'Collapse' : 'Edit'}
+                  </button>
+                  <button type="button" onClick={() => removeFaqAt(index)}>
+                    Remove
+                  </button>
+                </div>
               </div>
+
+              {expandedFaqIndex === index ? (
+                <div className="admin-faq-card__body">
+                  <label className="admin-form__label">Question</label>
+                  <input
+                    className="admin-form__input"
+                    value={item.question}
+                    onChange={(e) =>
+                      setFaqs((current) => current.map((x, i) => (i === index ? { ...x, question: e.target.value } : x)))
+                    }
+                  />
+                  <label className="admin-form__label">Answer</label>
+                  <textarea
+                    className="admin-form__input"
+                    value={item.answer}
+                    onChange={(e) => setFaqs((current) => current.map((x, i) => (i === index ? { ...x, answer: e.target.value } : x)))}
+                  />
+                  <label className="admin-form__label">Category</label>
+                  <select
+                    className="admin-form__input"
+                    style={{ maxWidth: 280 }}
+                    value={normalizeFaqCategory(item.category)}
+                    onChange={(e) =>
+                      setFaqs((current) => current.map((x, i) => (i === index ? { ...x, category: e.target.value } : x)))
+                    }
+                  >
+                    {faqCategorySelectValues(item.category).map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="admin-inline-actions">
+                    <label className="admin-muted" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      <input
+                        type="checkbox"
+                        checked={item.published}
+                        onChange={(e) =>
+                          setFaqs((current) => current.map((x, i) => (i === index ? { ...x, published: e.target.checked } : x)))
+                        }
+                      />
+                      Published
+                    </label>
+                    <label>
+                      Publish at
+                      <input
+                        className="admin-form__input"
+                        type="datetime-local"
+                        value={isoToLocalInput(item.publishAt)}
+                        onChange={(e) =>
+                          setFaqs((current) =>
+                            current.map((x, i) => (i === index ? { ...x, publishAt: localInputToIso(e.target.value) } : x)),
+                          )
+                        }
+                      />
+                    </label>
+                    <label>
+                      Unpublish at
+                      <input
+                        className="admin-form__input"
+                        type="datetime-local"
+                        value={isoToLocalInput(item.unpublishAt)}
+                        onChange={(e) =>
+                          setFaqs((current) =>
+                            current.map((x, i) => (i === index ? { ...x, unpublishAt: localInputToIso(e.target.value) } : x)),
+                          )
+                        }
+                      />
+                    </label>
+                  </div>
+                </div>
+              ) : null}
             </div>
           ))}
+          <p className="admin-muted" style={{ maxWidth: 720 }}>
+            {CMS_SCHEDULE_HELP}
+          </p>
           <div className="admin-inline-actions">
+            <button type="button" onClick={() => setExpandedFaqIndex(null)} disabled={faqs.length === 0}>
+              Collapse all
+            </button>
             <button
               type="button"
-              onClick={() =>
-                setFaqs((current) => [
-                  ...current,
-                  {
-                    question: '',
-                    answer: '',
-                    category: 'General',
-                    sortOrder: current.length + 1,
-                    published: true,
-                    publishAt: '',
-                    unpublishAt: '',
-                  },
-                ])
-              }
+              onClick={addFaqRow}
             >
               Add FAQ item
             </button>
@@ -399,47 +581,91 @@ export default function CmsContentManager() {
         <div className="admin-card-list">
           {publications.map((item, index) => (
             <div key={`pub-${index}`} className="admin-panel">
-              <label className="admin-form__label">Title</label>
-              <input
-                className="admin-form__input"
-                value={item.title}
-                onChange={(e) =>
-                  setPublications((current) => current.map((x, i) => (i === index ? { ...x, title: e.target.value } : x)))
-                }
-              />
-              <label className="admin-form__label">Summary</label>
-              <textarea
-                className="admin-form__input"
-                value={item.excerpt}
-                onChange={(e) =>
-                  setPublications((current) => current.map((x, i) => (i === index ? { ...x, excerpt: e.target.value } : x)))
-                }
-              />
-              <div className="admin-split-grid">
-                <label>
-                  Slug
-                  <input
-                    className="admin-form__input"
-                    value={item.slug}
-                    onChange={(e) =>
-                      setPublications((current) => current.map((x, i) => (i === index ? { ...x, slug: e.target.value } : x)))
-                    }
-                  />
-                </label>
-                <label>
-                  Date
-                  <input
-                    className="admin-form__input"
-                    value={item.dateText}
-                    onChange={(e) =>
-                      setPublications((current) => current.map((x, i) => (i === index ? { ...x, dateText: e.target.value } : x)))
-                    }
-                  />
-                </label>
+              <div className="admin-publication-card__header">
+                <div>
+                  <p className="admin-publication-card__meta">
+                    #{index + 1} {item.published ? '• Published' : '• Hidden'}
+                  </p>
+                  <h4 className="admin-publication-card__title">{item.title.trim() || `Untitled publication ${index + 1}`}</h4>
+                  <p className="admin-publication-card__meta">
+                    Slug: <code>{item.slug || '—'}</code> • Date: {item.dateText || '—'}
+                  </p>
+                </div>
+                <div className="admin-inline-actions admin-inline-wrap">
+                  <button type="button" onClick={() => togglePublicationEditor(index)}>
+                    {expandedPublicationIndex === index ? 'Collapse' : 'Edit'}
+                  </button>
+                  <button type="button" onClick={() => removePublicationAt(index)}>
+                    Remove
+                  </button>
+                </div>
               </div>
-              <div className="admin-split-grid">
-                <label>
-                  Dateline
+
+              {expandedPublicationIndex === index ? (
+                <div className="admin-publication-card__body">
+                  <label className="admin-form__label">Title</label>
+                  <input
+                    className="admin-form__input"
+                    value={item.title}
+                    onChange={(e) =>
+                      setPublications((current) => current.map((x, i) => (i === index ? { ...x, title: e.target.value } : x)))
+                    }
+                  />
+                  <label className="admin-form__label">Summary</label>
+                  <textarea
+                    className="admin-form__input"
+                    value={item.excerpt}
+                    onChange={(e) =>
+                      setPublications((current) => current.map((x, i) => (i === index ? { ...x, excerpt: e.target.value } : x)))
+                    }
+                  />
+                  <label className="admin-form__label">Article body</label>
+                  <p className="admin-muted" style={{ marginTop: 0 }}>
+                    Use the toolbar for headings, lists, links, and images. This is the main story below the press release
+                    headline on the public page.
+                  </p>
+                  <p className="admin-muted" style={{ marginTop: -6 }}>
+                    Note: the public page applies legacy publication styling automatically (image framing, tier/contact blocks,
+                    and consistent typography) after save.
+                  </p>
+                  <PublicationBodyEditor
+                    value={item.body ?? ''}
+                    disabled={saving}
+                    onChange={(html) =>
+                      setPublications((current) => current.map((x, i) => (i === index ? { ...x, body: html } : x)))
+                    }
+                  />
+                  <div className="admin-split-grid">
+                    <label>
+                      Slug
+                      <input
+                        className="admin-form__input"
+                        value={item.slug}
+                        onChange={(e) => {
+                          const slug = e.target.value
+                          setPublications((current) =>
+                            current.map((x, i) =>
+                              i === index ? { ...x, slug, href: publicationHrefFromSlug(slug) } : x,
+                            ),
+                          )
+                        }}
+                      />
+                    </label>
+                    <label>
+                      Publication date
+                      <input
+                        className="admin-form__input"
+                        type="date"
+                        value={item.dateText}
+                        onChange={(e) =>
+                          setPublications((current) =>
+                            current.map((x, i) => (i === index ? { ...x, dateText: e.target.value } : x)),
+                          )
+                        }
+                      />
+                    </label>
+                  </div>
+                  <label className="admin-form__label">Dateline</label>
                   <input
                     className="admin-form__input"
                     value={item.dateline}
@@ -447,90 +673,96 @@ export default function CmsContentManager() {
                       setPublications((current) => current.map((x, i) => (i === index ? { ...x, dateline: e.target.value } : x)))
                     }
                   />
-                </label>
-                <label>
-                  Link URL
+                  <p className="admin-muted" style={{ marginTop: 8, marginBottom: 0 }}>
+                    Public URL: <strong>{publicationHrefFromSlug(item.slug) || '—'}</strong> (from slug)
+                  </p>
+                  <label className="admin-form__label" style={{ marginTop: 16 }}>
+                    Cover image (required)
+                  </label>
+                  <p className="admin-muted" style={{ marginTop: 0 }}>
+                    JPEG, PNG, or WebP, up to 8MB. Stored under <code>/uploads/publications/</code>.
+                  </p>
                   <input
                     className="admin-form__input"
-                    value={item.href}
-                    onChange={(e) =>
-                      setPublications((current) => current.map((x, i) => (i === index ? { ...x, href: e.target.value } : x)))
-                    }
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
+                    disabled={pubImageUploadIndex === index}
+                    onChange={(e) => {
+                      const file = e.target.files?.[0] ?? null
+                      e.target.value = ''
+                      void uploadPublicationCoverImage(index, file)
+                    }}
                   />
-                </label>
-              </div>
-              <label className="admin-form__label">Image URL</label>
-              <input
-                className="admin-form__input"
-                value={item.image}
-                onChange={(e) =>
-                  setPublications((current) => current.map((x, i) => (i === index ? { ...x, image: e.target.value } : x)))
-                }
-              />
-              <div className="admin-inline-actions">
-                <label className="admin-muted" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                  <input
-                    type="checkbox"
-                    checked={item.published}
-                    onChange={(e) =>
-                      setPublications((current) => current.map((x, i) => (i === index ? { ...x, published: e.target.checked } : x)))
-                    }
-                  />
-                  Published
-                </label>
-                <label>
-                  Publish at
-                  <input
-                    className="admin-form__input"
-                    type="datetime-local"
-                    value={isoToLocalInput(item.publishAt)}
-                    onChange={(e) =>
-                      setPublications((current) =>
-                        current.map((x, i) => (i === index ? { ...x, publishAt: localInputToIso(e.target.value) } : x)),
-                      )
-                    }
-                  />
-                </label>
-                <label>
-                  Unpublish at
-                  <input
-                    className="admin-form__input"
-                    type="datetime-local"
-                    value={isoToLocalInput(item.unpublishAt)}
-                    onChange={(e) =>
-                      setPublications((current) =>
-                        current.map((x, i) => (i === index ? { ...x, unpublishAt: localInputToIso(e.target.value) } : x)),
-                      )
-                    }
-                  />
-                </label>
-                <button type="button" onClick={() => setPublications((current) => current.filter((_, i) => i !== index))}>
-                  Remove
-                </button>
-              </div>
+                  {pubImageUploadIndex === index ? <p className="admin-muted">Uploading…</p> : null}
+                  {item.image ? (
+                    <div style={{ marginTop: 10 }}>
+                      <p className="admin-muted" style={{ marginBottom: 6 }}>
+                        Current:{' '}
+                        <a href={item.image} target="_blank" rel="noreferrer">
+                          {item.image}
+                        </a>
+                      </p>
+                      <Image
+                        src={item.image}
+                        alt=""
+                        width={280}
+                        height={160}
+                        style={{ objectFit: 'cover', borderRadius: 6, maxWidth: '100%', height: 'auto' }}
+                      />
+                    </div>
+                  ) : null}
+                  <div className="admin-inline-actions">
+                    <label className="admin-muted" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      <input
+                        type="checkbox"
+                        checked={item.published}
+                        onChange={(e) =>
+                          setPublications((current) => current.map((x, i) => (i === index ? { ...x, published: e.target.checked } : x)))
+                        }
+                      />
+                      Published
+                    </label>
+                    <label>
+                      Publish at
+                      <input
+                        className="admin-form__input"
+                        type="datetime-local"
+                        value={isoToLocalInput(item.publishAt)}
+                        onChange={(e) =>
+                          setPublications((current) =>
+                            current.map((x, i) => (i === index ? { ...x, publishAt: localInputToIso(e.target.value) } : x)),
+                          )
+                        }
+                      />
+                    </label>
+                    <label>
+                      Unpublish at
+                      <input
+                        className="admin-form__input"
+                        type="datetime-local"
+                        value={isoToLocalInput(item.unpublishAt)}
+                        onChange={(e) =>
+                          setPublications((current) =>
+                            current.map((x, i) => (i === index ? { ...x, unpublishAt: localInputToIso(e.target.value) } : x)),
+                          )
+                        }
+                      />
+                    </label>
+                  </div>
+                </div>
+              ) : null}
             </div>
           ))}
+          <p className="admin-muted" style={{ maxWidth: 720 }}>
+            {CMS_SCHEDULE_HELP}
+          </p>
           <div className="admin-inline-actions">
+            <button type="button" onClick={() => setExpandedPublicationIndex(null)} disabled={publications.length === 0}>
+              Collapse all
+            </button>
             <button
               type="button"
-              onClick={() =>
-                setPublications((current) => [
-                  ...current,
-                  {
-                    slug: '',
-                    title: '',
-                    excerpt: '',
-                    dateText: '',
-                    dateline: '',
-                    image: '',
-                    href: '',
-                    sortOrder: current.length + 1,
-                    published: true,
-                    publishAt: '',
-                    unpublishAt: '',
-                  },
-                ])
-              }
+              onClick={addPublicationRow}
             >
               Add publication
             </button>

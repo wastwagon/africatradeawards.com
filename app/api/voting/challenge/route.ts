@@ -27,5 +27,10 @@ export async function POST(request: Request) {
   );
 
   // Client must wait minimum dwell before casting vote (captcha-free friction).
-  return NextResponse.json({ ok: true, challengeToken: token, minWaitSeconds: 5 });
+  return NextResponse.json({
+    ok: true,
+    entryId: parsed.data.entryId,
+    challengeToken: token,
+    minWaitSeconds: 5,
+  });
 }

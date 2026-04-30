@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 type Entry = {
   id: string;
@@ -57,8 +58,10 @@ export default function AdminCertificatesPage() {
 
   return (
     <main>
-      <h1>Winner Certificates</h1>
-      <p className="admin-muted">Generate downloadable PDF certificates for entries marked as WINNER.</p>
+      <AdminPageHeader
+        title="Winner certificates"
+        description="Generate downloadable PDF certificates for entries marked as WINNER."
+      />
       <AdminMetricStrip mergeSnapshot appendItems={certAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
       {entries.length === 0 ? <p>No winners found yet.</p> : null}

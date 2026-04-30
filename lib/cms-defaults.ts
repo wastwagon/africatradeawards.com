@@ -1,3 +1,5 @@
+import { PRESS_RELEASE_AFRICA_TRADE_AWARDS_2026_ARTICLE_INNER_HTML } from "@/lib/cms-publication-bodies";
+
 export type CmsFaqItem = {
   question: string;
   answer: string;
@@ -12,6 +14,8 @@ export type CmsPublicationItem = {
   slug: string;
   title: string;
   excerpt: string;
+  /** Trusted HTML: article body, contact block, and back link (see `PublicationPressReleaseView`). */
+  body?: string;
   dateText: string;
   dateline: string;
   image: string;
@@ -56,13 +60,35 @@ export const DEFAULT_FAQS: CmsFaqItem[] = [
   },
 ];
 
+/** Canonical FAQ category labels for the admin CMS dropdown (plus any legacy value per row). */
+export const FAQ_CMS_CATEGORY_OPTIONS: readonly string[] = Object.freeze(
+  Array.from(
+    new Set([
+      ...new Set(DEFAULT_FAQS.map((f) => f.category)),
+      "General",
+      "Nominations",
+    ]),
+  ).sort((a, b) => a.localeCompare(b)),
+);
+
+/** Options for `<select>`: canonical list, plus `current` when it is non-empty and not already listed. */
+export function faqCategorySelectValues(current: string): string[] {
+  const trimmed = current.trim();
+  const base = [...FAQ_CMS_CATEGORY_OPTIONS];
+  if (trimmed && !base.includes(trimmed)) {
+    return [...base, trimmed].sort((a, b) => a.localeCompare(b));
+  }
+  return base;
+}
+
 export const DEFAULT_PUBLICATIONS: CmsPublicationItem[] = [
   {
     slug: "africa-trade-awards-2026",
     title: "Africa Trade Awards 2026 Honour Leaders Driving Africa's Industrialisation and Intra-African Trade",
     excerpt:
       "The Africa Trade Awards 2026 concluded in Accra as a landmark celebration of leadership, innovation, and execution in advancing Africa's industrialisation and intra-African trade agenda under the AfCFTA.",
-    dateText: "January 29, 2026",
+    body: PRESS_RELEASE_AFRICA_TRADE_AWARDS_2026_ARTICLE_INNER_HTML,
+    dateText: "2026-01-29",
     dateline: "Accra, Ghana",
     image: "/assets/img/gallery/2P9A9182.jpg",
     href: "/publications/africa-trade-awards-2026",

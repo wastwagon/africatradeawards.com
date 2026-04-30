@@ -1,5 +1,6 @@
 import PDFDocument from "pdfkit";
 import type { OnsiteReportPayload } from "@/lib/event-onsite-report";
+import { getPdfDefaultFontPath, registerPdfFonts, applyPdfSans, applyPdfSansBold } from "@/lib/pdf-fonts";
 
 type ShiftSummaryEvent = {
   name: string;
@@ -41,19 +42,20 @@ export function onsiteReportToCsv(payload: OnsiteReportPayload): string {
 }
 
 export async function buildShiftSummaryPdf(event: ShiftSummaryEvent, report: OnsiteReportPayload): Promise<Buffer> {
-  const doc = new PDFDocument({ size: "A4", margin: 36 });
+  const doc = new PDFDocument({ size: "A4", margin: 36, font: getPdfDefaultFontPath() });
+  registerPdfFonts(doc);
   const chunks: Buffer[] = [];
   doc.on("data", (chunk: Buffer) => chunks.push(chunk));
 
-  doc.fontSize(20).fillColor("#111").text("Onsite Shift Summary");
+  applyPdfSansBold(doc).fontSize(20).fillColor("#111").text("Onsite Shift Summary");
   doc.moveDown(0.2);
-  doc.fontSize(12).fillColor("#333").text(event.name);
+  applyPdfSans(doc).fontSize(12).fillColor("#333").text(event.name);
   doc.text(`${event.venueName} | ${new Date(event.startsAt).toLocaleString()}`);
   doc.text(`Generated: ${new Date().toLocaleString()}`);
   doc.moveDown(0.8);
 
-  doc.fontSize(13).fillColor("#111").text("KPI Snapshot");
-  doc.fontSize(11).fillColor("#222");
+  applyPdfSansBold(doc).fontSize(13).fillColor("#111").text("KPI Snapshot");
+  applyPdfSans(doc).fontSize(11).fillColor("#222");
   doc.text(`Registrations: ${report.totals.registrations}`);
   doc.text(`Checked in: ${report.totals.checkedIn}`);
   doc.text(`Pending: ${report.totals.pending}`);
@@ -66,8 +68,8 @@ export async function buildShiftSummaryPdf(event: ShiftSummaryEvent, report: Ons
   doc.text(`Average resolve time: ${report.totals.avgResolveMinutes} minutes`);
   doc.moveDown(0.6);
 
-  doc.fontSize(13).fillColor("#111").text("Top Failure Reasons");
-  doc.fontSize(10).fillColor("#222");
+  applyPdfSansBold(doc).fontSize(13).fillColor("#111").text("Top Failure Reasons");
+  applyPdfSans(doc).fontSize(10).fillColor("#222");
   if (report.topFailureReasons.length === 0) {
     doc.text("None in last 24h.");
   } else {
@@ -77,8 +79,8 @@ export async function buildShiftSummaryPdf(event: ShiftSummaryEvent, report: Ons
   }
   doc.moveDown(0.6);
 
-  doc.fontSize(13).fillColor("#111").text("Open Incidents");
-  doc.fontSize(10).fillColor("#222");
+  applyPdfSansBold(doc).fontSize(13).fillColor("#111").text("Open Incidents");
+  applyPdfSans(doc).fontSize(10).fillColor("#222");
   const openIncidents = report.incidents.filter((item) => item.status !== "RESOLVED").slice(0, 12);
   if (openIncidents.length === 0) {
     doc.text("No open incidents.");

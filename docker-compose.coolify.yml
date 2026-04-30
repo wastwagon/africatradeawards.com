@@ -20,6 +20,7 @@ services:
       SMTP_PASS: ${SMTP_PASS}
       SMTP_FROM: ${SMTP_FROM}
       VOTING_REQUIRE_EMAIL_VERIFICATION: ${VOTING_REQUIRE_EMAIL_VERIFICATION}
+      VOTING_DEV_EMAIL_BYPASS: ${VOTING_DEV_EMAIL_BYPASS:-false}
       VOTE_CODE_SALT: ${VOTE_CODE_SALT}
       EVENT_RECOVERY_CODE_SALT: ${EVENT_RECOVERY_CODE_SALT}
       EVENT_QR_SECRET: ${EVENT_QR_SECRET}
@@ -37,7 +38,7 @@ services:
       - "3003:3003"
     # If Postgres was first provisioned with `db push` (not migrate), baseline once:
     # docker compose -f docker-compose.coolify.yml --env-file .env.coolify.example run --rm app npx prisma migrate resolve --applied 20260330130000_init
-    command: ["sh", "-c", "npx prisma migrate deploy && exec node .next/standalone/server.js"]
+    command: ["sh", "-c", "npx prisma migrate deploy && exec npm run start"]
     restart: unless-stopped
     volumes:
       - uploads_data:/app/uploads
@@ -78,9 +79,8 @@ services:
   worker:
     build:
       context: .
-      dockerfile: Dockerfile.fullstack
+      dockerfile: Dockerfile.worker
     container_name: africa-trade-awards-worker
-    command: ["npm", "run", "worker:broadcast"]
     environment:
       NODE_ENV: production
       DATABASE_URL: postgresql://${POSTGRES_USER:-africa_trade_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-africa_trade_awards}

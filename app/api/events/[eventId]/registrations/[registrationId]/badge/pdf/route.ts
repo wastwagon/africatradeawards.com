@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireManager } from "@/lib/api-auth";
 import { createBadgeSignature } from "@/lib/event-badge";
+import { getPdfDefaultFontPath, registerPdfFonts, applyPdfSans, applyPdfSansBold } from "@/lib/pdf-fonts";
 import {
   canBypassReprintPolicy,
   canOverrideReprintPolicy,
@@ -87,22 +88,23 @@ export async function GET(
     },
   });
 
-  const doc = new PDFDocument({ size: "A6", margin: 24 });
+  const doc = new PDFDocument({ size: "A6", margin: 24, font: getPdfDefaultFontPath() });
+  registerPdfFonts(doc);
   const chunks: Buffer[] = [];
   doc.on("data", (chunk: Buffer) => chunks.push(chunk));
 
-  doc.fontSize(10).fillColor("#666").text(registration.event.name.toUpperCase(), { align: "left" });
+  applyPdfSans(doc).fontSize(10).fillColor("#666").text(registration.event.name.toUpperCase(), { align: "left" });
   doc.moveDown(0.6);
-  doc.fontSize(22).fillColor("#111").text(registration.attendeeFullName, { align: "left" });
+  applyPdfSansBold(doc).fontSize(22).fillColor("#111").text(registration.attendeeFullName, { align: "left" });
   doc.moveDown(0.3);
-  doc.fontSize(12).fillColor("#333").text(registration.roleTitle || "Attendee");
-  doc.fontSize(11).fillColor("#555").text(registration.organization || "");
+  applyPdfSans(doc).fontSize(12).fillColor("#333").text(registration.roleTitle || "Attendee");
+  applyPdfSans(doc).fontSize(11).fillColor("#555").text(registration.organization || "");
   doc.moveDown(0.5);
-  doc.fontSize(10).fillColor("#333").text(registration.attendeeEmail);
+  applyPdfSans(doc).fontSize(10).fillColor("#333").text(registration.attendeeEmail);
   doc.text(registration.event.venueName);
   doc.text(new Date(registration.event.startsAt).toLocaleString());
   doc.moveDown(0.7);
-  doc.fontSize(9).fillColor("#111").text(`Pass ref: ${registration.qrTokenHint}`);
+  applyPdfSans(doc).fontSize(9).fillColor("#111").text(`Pass ref: ${registration.qrTokenHint}`);
   doc.text(`Badge sig: ${badgeSignature}`);
   doc.text(`Generated: ${new Date().toISOString()}`);
   doc.end();

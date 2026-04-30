@@ -1,13 +1,90 @@
 /**
- * Demo users for local testing — two per UserRole.
- * Run: DEMO_SEED=true npx prisma db seed
- * Do not run against production databases.
+ * Database seed entrypoint.
+ * - Always: idempotent CMS defaults — FAQs when the FAQ table is empty; publications/snippets inserted only when missing (by slug/key).
+ * - Optional: demo users and demo data when DEMO_SEED=true (local/demo only; do not use on production with real data).
+ * - Optional: SYNC_CANONICAL_PUBLICATION_BODIES=true — for each slug in CMS_PUBLICATION_SEED, set `body` from the repo HTML even if the row already has content (overwrites admin edits to that field).
+ *
+ * Run: npx prisma db seed
+ * Demo extras: DEMO_SEED=true npx prisma db seed
+ * Force canonical publication HTML: npm run prisma:seed:sync-canonical
  */
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
+import {
+  CMS_FAQ_SEED,
+  CMS_PUBLICATION_SEED,
+  CMS_SNIPPET_SEED,
+} from "./cms-default-seed-data.mjs";
 
 const prisma = new PrismaClient();
+
+async function seedCmsDefaultsIfEmpty() {
+  const seeded = {
+    faqs: 0,
+    publications: 0,
+    snippets: 0,
+    publicationBackfills: 0,
+    publicationCanonicalBodySyncs: 0,
+  };
+  const faqCount = await prisma.cmsFaq.count();
+  if (faqCount === 0 && CMS_FAQ_SEED.length > 0) {
+    await prisma.cmsFaq.createMany({ data: CMS_FAQ_SEED });
+    seeded.faqs = CMS_FAQ_SEED.length;
+    console.log(`Seeded default CMS FAQs: ${seeded.faqs}`);
+  }
+  for (const row of CMS_PUBLICATION_SEED) {
+    const existing = await prisma.cmsPublication.findUnique({ where: { slug: row.slug } });
+    if (!existing) {
+      await prisma.cmsPublication.create({ data: row });
+      seeded.publications += 1;
+      console.log(`Inserted missing CMS publication: ${row.slug}`);
+    }
+  }
+  for (const seedRow of CMS_PUBLICATION_SEED) {
+    const row = await prisma.cmsPublication.findUnique({ where: { slug: seedRow.slug } });
+    if (!row) continue;
+    const emptyBody = row.body == null || String(row.body).trim() === "";
+    if (!emptyBody) continue;
+    await prisma.cmsPublication.update({
+      where: { slug: seedRow.slug },
+      data: {
+        body: seedRow.body ?? null,
+        title: seedRow.title,
+        excerpt: seedRow.excerpt,
+        dateText: seedRow.dateText,
+        dateline: seedRow.dateline ?? null,
+        image: seedRow.image ?? null,
+        href: seedRow.href ?? null,
+        sortOrder: seedRow.sortOrder,
+        published: seedRow.published,
+      },
+    });
+    seeded.publicationBackfills += 1;
+    console.log(`Backfilled empty publication body and listing fields: ${seedRow.slug}`);
+  }
+  if (process.env.SYNC_CANONICAL_PUBLICATION_BODIES === "true") {
+    for (const seedRow of CMS_PUBLICATION_SEED) {
+      const row = await prisma.cmsPublication.findUnique({ where: { slug: seedRow.slug } });
+      if (!row) continue;
+      await prisma.cmsPublication.update({
+        where: { slug: seedRow.slug },
+        data: { body: seedRow.body ?? null },
+      });
+      seeded.publicationCanonicalBodySyncs += 1;
+      console.log(`SYNC_CANONICAL_PUBLICATION_BODIES: refreshed canonical body for ${seedRow.slug}`);
+    }
+  }
+  for (const row of CMS_SNIPPET_SEED) {
+    const existing = await prisma.cmsSnippet.findUnique({ where: { key: row.key } });
+    if (!existing) {
+      await prisma.cmsSnippet.create({ data: row });
+      seeded.snippets += 1;
+      console.log(`Inserted missing About snippet: ${row.key}`);
+    }
+  }
+  return seeded;
+}
 
 const DEMO_PASSWORD = "Demo_Awards_2026!";
 
@@ -50,10 +127,22 @@ function attendeeSeedRows() {
 }
 
 async function main() {
+  const cmsSeeded = await seedCmsDefaultsIfEmpty();
+  const cmsRowsInserted =
+    cmsSeeded.faqs +
+    cmsSeeded.publications +
+    cmsSeeded.snippets +
+    cmsSeeded.publicationBackfills +
+    cmsSeeded.publicationCanonicalBodySyncs;
+
   if (process.env.DEMO_SEED !== "true") {
-    console.error("Refusing to seed: set DEMO_SEED=true (local/demo only).");
-    console.error("Example: DEMO_SEED=true npx prisma db seed");
-    process.exit(1);
+    if (cmsRowsInserted === 0) {
+      console.log("No CMS default rows inserted.");
+    } else {
+      console.log(`Inserted ${cmsRowsInserted} CMS default row(s) (FAQs if table was empty, and/or missing publications/snippets).`);
+    }
+    console.log("Set DEMO_SEED=true to seed demo users and demo programs (local/demo only).");
+    return;
   }
 
   const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 12);
@@ -206,24 +295,20 @@ async function main() {
     },
   });
 
+  const demoPub = CMS_PUBLICATION_SEED[0];
   await prisma.cmsPublication.upsert({
-    where: { slug: "africa-trade-awards-2026" },
-    create: {
-      slug: "africa-trade-awards-2026",
-      title: "Africa Trade Awards 2026 Programme Launch",
-      excerpt: "Programme launch update, key milestones, and nomination timeline for the 2026 cycle.",
-      dateText: "January 2026",
-      dateline: "Accra",
-      sortOrder: 1,
-      published: true,
-    },
+    where: { slug: demoPub.slug },
+    create: { ...demoPub },
     update: {
-      title: "Africa Trade Awards 2026 Programme Launch",
-      excerpt: "Programme launch update, key milestones, and nomination timeline for the 2026 cycle.",
-      dateText: "January 2026",
-      dateline: "Accra",
-      sortOrder: 1,
-      published: true,
+      title: demoPub.title,
+      excerpt: demoPub.excerpt,
+      body: demoPub.body ?? null,
+      dateText: demoPub.dateText,
+      dateline: demoPub.dateline ?? null,
+      image: demoPub.image ?? null,
+      href: demoPub.href ?? null,
+      sortOrder: demoPub.sortOrder,
+      published: demoPub.published,
     },
   });
 

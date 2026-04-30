@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSessionCookieName, signSessionToken } from "@/lib/auth";
+import { getSessionCookieName, isSessionCookieSecure, signSessionToken } from "@/lib/auth";
 import { getRequestSessionUser } from "@/lib/api-auth";
 import { defaultDashboardPath } from "@/lib/post-login-redirect";
 import { prisma } from "@/lib/prisma";
@@ -44,7 +44,7 @@ export async function POST() {
   response.cookies.set(getSessionCookieName(), token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: isSessionCookieSecure(),
     maxAge: 60 * 60 * 24 * 7,
     path: "/",
   });

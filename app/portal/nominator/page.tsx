@@ -1,8 +1,10 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import PlatformSiteChrome from "@/components/platform/PlatformSiteChrome";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
+import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+/** Matches `summary` validation in `app/api/nominations/route.ts` and `[nominationId]/route.ts`. */
+const SUMMARY_MIN_LENGTH = 20;
 
 type Program = {
   id: string;
@@ -34,24 +36,34 @@ type Nomination = {
 export default function NominatorPortalPage() {
   const [programs, setPrograms] = useState<Program[]>([]);
   const [nominations, setNominations] = useState<Nomination[]>([]);
-  const [selectedProgramId, setSelectedProgramId] = useState("");
-  const [selectedSeasonId, setSelectedSeasonId] = useState("");
-  const [selectedCategoryId, setSelectedCategoryId] = useState("");
   const [selectedNominationId, setSelectedNominationId] = useState("");
-  const [nomineeFullName, setNomineeFullName] = useState("");
-  const [nomineeEmail, setNomineeEmail] = useState("");
-  const [nomineeOrganization, setNomineeOrganization] = useState("");
-  const [nomineeRoleTitle, setNomineeRoleTitle] = useState("");
-  const [summary, setSummary] = useState("");
-  const [evidenceLinks, setEvidenceLinks] = useState("");
+
+  const [newProgramId, setNewProgramId] = useState("");
+  const [newSeasonId, setNewSeasonId] = useState("");
+  const [newCategoryId, setNewCategoryId] = useState("");
+  const [newNomineeFullName, setNewNomineeFullName] = useState("");
+  const [newNomineeEmail, setNewNomineeEmail] = useState("");
+  const [newNomineeOrganization, setNewNomineeOrganization] = useState("");
+  const [newNomineeRoleTitle, setNewNomineeRoleTitle] = useState("");
+  const [newSummary, setNewSummary] = useState("");
+  const [newEvidenceLinks, setNewEvidenceLinks] = useState("");
+
+  const [editNomineeFullName, setEditNomineeFullName] = useState("");
+  const [editNomineeEmail, setEditNomineeEmail] = useState("");
+  const [editNomineeOrganization, setEditNomineeOrganization] = useState("");
+  const [editNomineeRoleTitle, setEditNomineeRoleTitle] = useState("");
+  const [editSummary, setEditSummary] = useState("");
+  const [editEvidenceLinks, setEditEvidenceLinks] = useState("");
+
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const feedbackRef = useRef<HTMLDivElement>(null);
 
-  const selectedProgram = useMemo(() => programs.find((program) => program.id === selectedProgramId) ?? null, [programs, selectedProgramId]);
+  const newProgram = useMemo(() => programs.find((program) => program.id === newProgramId) ?? null, [programs, newProgramId]);
 
   const loadMetadata = useCallback(async () => {
-    const res = await fetch("/api/portal/metadata", { cache: "no-store" });
+    const res = await fetch("/api/portal/metadata/", { cache: "no-store" });
     if (!res.ok) {
       setError("Could not load program metadata.");
       return;
@@ -61,15 +73,14 @@ export default function NominatorPortalPage() {
   }, []);
 
   const loadNominations = useCallback(async () => {
-    const res = await fetch("/api/nominations", { cache: "no-store" });
+    const res = await fetch("/api/nominations/", { cache: "no-store" });
     if (!res.ok) {
       setError("Could not load nominations.");
       return;
     }
     const data = await res.json();
     setNominations(data.nominations ?? []);
-    if (!selectedNominationId && data.nominations?.[0]?.id) setSelectedNominationId(data.nominations[0].id);
-  }, [selectedNominationId]);
+  }, []);
 
   useEffect(() => {
     void loadMetadata();
@@ -78,33 +89,46 @@ export default function NominatorPortalPage() {
 
   useEffect(() => {
     const nomination = nominations.find((item) => item.id === selectedNominationId);
-    if (!nomination) return;
-    setNomineeFullName(nomination.nomineeFullName ?? "");
-    setNomineeEmail(nomination.nomineeEmail ?? "");
-    setNomineeOrganization(nomination.nomineeOrganization ?? "");
-    setNomineeRoleTitle(nomination.nomineeRoleTitle ?? "");
-    setSummary(nomination.summary ?? "");
-    setEvidenceLinks(nomination.evidenceLinks ?? "");
+    if (!nomination) {
+      setEditNomineeFullName("");
+      setEditNomineeEmail("");
+      setEditNomineeOrganization("");
+      setEditNomineeRoleTitle("");
+      setEditSummary("");
+      setEditEvidenceLinks("");
+      return;
+    }
+    setEditNomineeFullName(nomination.nomineeFullName ?? "");
+    setEditNomineeEmail(nomination.nomineeEmail ?? "");
+    setEditNomineeOrganization(nomination.nomineeOrganization ?? "");
+    setEditNomineeRoleTitle(nomination.nomineeRoleTitle ?? "");
+    setEditSummary(nomination.summary ?? "");
+    setEditEvidenceLinks(nomination.evidenceLinks ?? "");
   }, [selectedNominationId, nominations]);
+
+  useEffect(() => {
+    if (!message && !error) return;
+    feedbackRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [message, error]);
 
   async function createNomination(e: FormEvent) {
     e.preventDefault();
     setSaving(true);
     setError(null);
     setMessage(null);
-    const res = await fetch("/api/nominations", {
+    const res = await fetch("/api/nominations/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        nomineeFullName,
-        nomineeEmail,
-        nomineeOrganization,
-        nomineeRoleTitle,
-        summary,
-        evidenceLinks,
-        programId: selectedProgramId,
-        seasonId: selectedSeasonId,
-        categoryId: selectedCategoryId,
+        nomineeFullName: newNomineeFullName,
+        nomineeEmail: newNomineeEmail,
+        nomineeOrganization: newNomineeOrganization,
+        nomineeRoleTitle: newNomineeRoleTitle,
+        summary: newSummary,
+        evidenceLinks: newEvidenceLinks,
+        programId: newProgramId,
+        seasonId: newSeasonId,
+        categoryId: newCategoryId,
       }),
     });
     setSaving(false);
@@ -114,12 +138,12 @@ export default function NominatorPortalPage() {
       return;
     }
     setMessage("Nomination draft created.");
-    setNomineeFullName("");
-    setNomineeEmail("");
-    setNomineeOrganization("");
-    setNomineeRoleTitle("");
-    setSummary("");
-    setEvidenceLinks("");
+    setNewNomineeFullName("");
+    setNewNomineeEmail("");
+    setNewNomineeOrganization("");
+    setNewNomineeRoleTitle("");
+    setNewSummary("");
+    setNewEvidenceLinks("");
     await loadNominations();
   }
 
@@ -128,16 +152,24 @@ export default function NominatorPortalPage() {
     setSaving(true);
     setError(null);
     setMessage(null);
-    const res = await fetch(`/api/nominations/${selectedNominationId}`, {
+    if (
+      (action === "save_draft" || action === "submit") &&
+      editSummary.trim().length < SUMMARY_MIN_LENGTH
+    ) {
+      setError(`Summary must be at least ${SUMMARY_MIN_LENGTH} characters.`);
+      setSaving(false);
+      return;
+    }
+    const res = await fetch(`/api/nominations/${selectedNominationId}/`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        nomineeFullName,
-        nomineeEmail,
-        nomineeOrganization,
-        nomineeRoleTitle,
-        summary,
-        evidenceLinks,
+        nomineeFullName: editNomineeFullName,
+        nomineeEmail: editNomineeEmail,
+        nomineeOrganization: editNomineeOrganization,
+        nomineeRoleTitle: editNomineeRoleTitle,
+        summary: editSummary,
+        evidenceLinks: editEvidenceLinks,
         action,
       }),
     });
@@ -151,44 +183,46 @@ export default function NominatorPortalPage() {
     await loadNominations();
   }
 
-  return (
-    <PlatformSiteChrome>
-      <section className="platform-page">
-        <div className="container" style={{ maxWidth: 1100 }}>
-          <div className="platform-page-header">
-            <p className="platform-eyebrow">Nominator workspace</p>
-            <h1 className="platform-title">Nominate awardees</h1>
-            <p className="platform-lead">
-              Submit and track awardee nominations. Managers review nominations and can convert approved nominations into official entries.
-            </p>
-          </div>
-          {error ? <p className="platform-msg-error">{error}</p> : null}
-          {message ? <p className="platform-msg-ok">{message}</p> : null}
+  const selectedNomination = nominations.find((item) => item.id === selectedNominationId);
 
-          <section className="platform-card" style={{ marginBottom: 24 }}>
-            <h2 className="platform-title" style={{ fontSize: "1.2rem", marginBottom: 16 }}>
-              New nomination
-            </h2>
-            <form onSubmit={createNomination} style={{ display: "grid", gap: 12 }}>
+  return (
+    <div className="admin-page--wide">
+      <AdminPageHeader
+        eyebrow="Nominator workspace"
+        title="Nominate awardees"
+        description="Submit and track awardee nominations. Managers review nominations and can convert approved nominations into official entries."
+      />
+
+      <div ref={feedbackRef}>
+        {error ? (
+          <p className="admin-error admin-mt-sm" role="alert">
+            {error}
+          </p>
+        ) : null}
+        {message ? <p className="admin-ok admin-mt-sm">{message}</p> : null}
+      </div>
+
+      <AdminSection title="New nomination">
+              <form onSubmit={createNomination} className="platform-form-grid">
               <label className="platform-field">
                 Nominee full name
-                <input value={nomineeFullName} onChange={(e) => setNomineeFullName(e.target.value)} required />
+                <input value={newNomineeFullName} onChange={(e) => setNewNomineeFullName(e.target.value)} required />
               </label>
               <label className="platform-field">
                 Nominee email (optional)
-                <input type="email" value={nomineeEmail} onChange={(e) => setNomineeEmail(e.target.value)} />
+                <input type="email" value={newNomineeEmail} onChange={(e) => setNewNomineeEmail(e.target.value)} />
               </label>
               <label className="platform-field">
                 Nominee organization (optional)
-                <input value={nomineeOrganization} onChange={(e) => setNomineeOrganization(e.target.value)} />
+                <input value={newNomineeOrganization} onChange={(e) => setNewNomineeOrganization(e.target.value)} />
               </label>
               <label className="platform-field">
                 Nominee role/title (optional)
-                <input value={nomineeRoleTitle} onChange={(e) => setNomineeRoleTitle(e.target.value)} />
+                <input value={newNomineeRoleTitle} onChange={(e) => setNewNomineeRoleTitle(e.target.value)} />
               </label>
               <label className="platform-field">
                 Program
-                <select value={selectedProgramId} onChange={(e) => setSelectedProgramId(e.target.value)} required>
+                <select value={newProgramId} onChange={(e) => setNewProgramId(e.target.value)} required>
                   <option value="">Select program</option>
                   {programs.map((program) => (
                     <option key={program.id} value={program.id}>
@@ -199,9 +233,9 @@ export default function NominatorPortalPage() {
               </label>
               <label className="platform-field">
                 Season
-                <select value={selectedSeasonId} onChange={(e) => setSelectedSeasonId(e.target.value)} required>
+                <select value={newSeasonId} onChange={(e) => setNewSeasonId(e.target.value)} required>
                   <option value="">Select season</option>
-                  {(selectedProgram?.seasons ?? []).map((season) => (
+                  {(newProgram?.seasons ?? []).map((season) => (
                     <option key={season.id} value={season.id}>
                       {season.year}
                     </option>
@@ -210,9 +244,9 @@ export default function NominatorPortalPage() {
               </label>
               <label className="platform-field">
                 Category
-                <select value={selectedCategoryId} onChange={(e) => setSelectedCategoryId(e.target.value)} required>
+                <select value={newCategoryId} onChange={(e) => setNewCategoryId(e.target.value)} required>
                   <option value="">Select category</option>
-                  {(selectedProgram?.categories ?? []).map((category) => (
+                  {(newProgram?.categories ?? []).map((category) => (
                     <option key={category.id} value={category.id}>
                       {category.name}
                     </option>
@@ -221,46 +255,74 @@ export default function NominatorPortalPage() {
               </label>
               <label className="platform-field">
                 Why should this nominee be recognized?
-                <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={5} required />
+                <textarea
+                  value={newSummary}
+                  onChange={(e) => setNewSummary(e.target.value)}
+                  rows={5}
+                  required
+                  minLength={SUMMARY_MIN_LENGTH}
+                  maxLength={6000}
+                />
+                <span className="platform-field-hint">
+                  Minimum {SUMMARY_MIN_LENGTH} characters ({newSummary.trim().length}/{SUMMARY_MIN_LENGTH})
+                </span>
               </label>
               <label className="platform-field">
                 Evidence links (optional)
-                <textarea value={evidenceLinks} onChange={(e) => setEvidenceLinks(e.target.value)} rows={3} />
+                <textarea value={newEvidenceLinks} onChange={(e) => setNewEvidenceLinks(e.target.value)} rows={3} />
               </label>
               <button type="submit" className="vl-btn1" disabled={saving}>
                 {saving ? "Saving..." : "Create nomination draft"}
               </button>
             </form>
-          </section>
+      </AdminSection>
 
-          <section className="platform-card">
-            <h2 className="platform-title" style={{ fontSize: "1.2rem", marginBottom: 16 }}>
-              Your nominations
-            </h2>
-            <label className="platform-field">
-              Select nomination
-              <select value={selectedNominationId} onChange={(e) => setSelectedNominationId(e.target.value)}>
-                <option value="">Select nomination</option>
-                {nominations.map((nomination) => (
-                  <option key={nomination.id} value={nomination.id}>
-                    {nomination.nomineeFullName} ({nomination.status})
-                  </option>
-                ))}
-              </select>
-            </label>
-            {selectedNominationId ? (
-              <div style={{ marginTop: 16, display: "grid", gap: 12 }}>
+      <AdminSection title="Your nominations">
+              <label className="platform-field">
+                Select nomination
+                <select value={selectedNominationId} onChange={(e) => setSelectedNominationId(e.target.value)}>
+                  <option value="">Select nomination</option>
+                  {nominations.map((nomination) => (
+                    <option key={nomination.id} value={nomination.id}>
+                      {nomination.nomineeFullName} ({nomination.status})
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {selectedNominationId ? (
+                <div className="platform-form-grid platform-subsection">
                 <label className="platform-field">
                   Nominee full name
-                  <input value={nomineeFullName} onChange={(e) => setNomineeFullName(e.target.value)} />
+                  <input value={editNomineeFullName} onChange={(e) => setEditNomineeFullName(e.target.value)} />
+                </label>
+                <label className="platform-field">
+                  Nominee email (optional)
+                  <input type="email" value={editNomineeEmail} onChange={(e) => setEditNomineeEmail(e.target.value)} />
+                </label>
+                <label className="platform-field">
+                  Nominee organization (optional)
+                  <input value={editNomineeOrganization} onChange={(e) => setEditNomineeOrganization(e.target.value)} />
+                </label>
+                <label className="platform-field">
+                  Nominee role/title (optional)
+                  <input value={editNomineeRoleTitle} onChange={(e) => setEditNomineeRoleTitle(e.target.value)} />
                 </label>
                 <label className="platform-field">
                   Summary
-                  <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={6} />
+                  <textarea
+                    value={editSummary}
+                    onChange={(e) => setEditSummary(e.target.value)}
+                    rows={6}
+                    minLength={SUMMARY_MIN_LENGTH}
+                    maxLength={6000}
+                  />
+                  <span className="platform-field-hint">
+                    Minimum {SUMMARY_MIN_LENGTH} characters ({editSummary.trim().length}/{SUMMARY_MIN_LENGTH})
+                  </span>
                 </label>
                 <label className="platform-field">
                   Evidence links
-                  <textarea value={evidenceLinks} onChange={(e) => setEvidenceLinks(e.target.value)} rows={3} />
+                  <textarea value={editEvidenceLinks} onChange={(e) => setEditEvidenceLinks(e.target.value)} rows={3} />
                 </label>
                 <div className="platform-actions">
                   <button type="button" className="vl-btn1" onClick={() => void updateNomination("save_draft")} disabled={saving}>
@@ -273,33 +335,22 @@ export default function NominatorPortalPage() {
                     Withdraw nomination
                   </button>
                 </div>
-                {nominations.find((item) => item.id === selectedNominationId)?.reviewNote ? (
-                  <p className="platform-muted">
-                    Review note: <strong>{nominations.find((item) => item.id === selectedNominationId)?.reviewNote}</strong>
+                {selectedNomination?.reviewNote ? (
+                  <p className="admin-muted admin-muted-flat">
+                    Review note: <strong>{selectedNomination.reviewNote}</strong>
                   </p>
                 ) : null}
-                {nominations.find((item) => item.id === selectedNominationId)?.source ? (
-                  <p className="platform-muted">
-                    Source: <strong>{nominations.find((item) => item.id === selectedNominationId)?.source}</strong>
+                {selectedNomination?.source ? (
+                  <p className="admin-muted admin-muted-flat">
+                    Source: <strong>{selectedNomination.source}</strong>
                   </p>
                 ) : null}
-                {nominations.find((item) => item.id === selectedNominationId)?.convertedEntry ? (
-                  <p className="platform-muted">
-                    Converted to entry: {nominations.find((item) => item.id === selectedNominationId)?.convertedEntry?.title}
-                  </p>
+                {selectedNomination?.convertedEntry ? (
+                  <p className="admin-muted admin-muted-flat">Converted to entry: {selectedNomination.convertedEntry.title}</p>
                 ) : null}
-              </div>
-            ) : null}
-          </section>
-          <p className="platform-muted text-center" style={{ marginTop: 28 }}>
-            <Link href="/portal/entrant/">Entrant workspace</Link>
-            {" · "}
-            <Link href="/login/">Sign In</Link>
-            {" · "}
-            <Link href="/">Home</Link>
-          </p>
-        </div>
-      </section>
-    </PlatformSiteChrome>
+                </div>
+              ) : null}
+      </AdminSection>
+    </div>
   );
 }

@@ -41,6 +41,8 @@ The web container entrypoint runs:
 2. **`npx prisma migrate deploy`** — applies existing migrations to your local DB (same family of command as production; does **not** reset data).
 3. `npm run sass:build` then `next dev` + sass watch.
 
+**CMS data after migrations:** `migrate deploy` does **not** run `prisma db seed`. If a migration adds CMS columns or you need default/backfill content (for example long-form publication HTML), run **`npm run prisma:seed`** against the same database. To replace stored publication `body` values with the canonical HTML from the repo for every slug in `CMS_PUBLICATION_SEED` (overwrites that field even when non-empty), use **`npm run prisma:seed:sync-canonical`**.
+
 **New migration from schema changes (on the host, with DB reachable):**
 
 ```bash
@@ -83,6 +85,7 @@ Useful if you prefer running `npm run dev` directly on your machine.
    npm install
    npm run sass:build
    npx prisma migrate dev
+   npm run prisma:seed
    npm run dev
    ```
 
@@ -102,10 +105,21 @@ Useful if you prefer running `npm run dev` directly on your machine.
 ### Production / Coolify (summary)
 
 - Compose file in Coolify must be **`docker-compose.coolify.yml`** (not root **`docker-compose.yml`**, which is web-only). In the Coolify UI, set **Docker Compose Location** to `docker-compose.coolify.yml`. See **`COOLIFY_FULLSTACK_SETUP.md`**.
-- The **`app`** service starts with: `npx prisma migrate deploy && node .next/standalone/server.js` — this **applies pending migrations** to the production database. It **adds** schema changes; it does **not** wipe the database by itself.
+- The **`app`** service starts with: `npx prisma migrate deploy && npm run start` — this **applies pending migrations** to the production database. It **adds** schema changes; it does **not** wipe the database by itself. (Coolify fullstack uses default Next output via [`Dockerfile.fullstack`](Dockerfile.fullstack), not `output: "standalone"`.)
+- **CMS seed:** that startup path does **not** run `db seed`. Run **`npm run prisma:seed`** as a one-off or scheduled job when you need idempotent CMS defaults or empty-field backfills. Use **`npm run prisma:seed:sync-canonical`** only when you intentionally want to overwrite canonical publication HTML from the repo.
 - **Destructive migrations** (drops, destructive alters, data-deleting scripts) can still cause data loss—review migrations in PRs and coordinate backups when needed.
 
 Environment variables for production are documented in **`.env.coolify.example`**.
+
+### Verifying production CMS vs local
+
+FAQ and publications are stored in **`CmsFaq` / `CmsPublication` in Postgres**. The admin UI and the public site both use **`DATABASE_URL`** for that deployment.
+
+1. **`DATABASE_URL`:** In Coolify (or your host env), confirm it points at the **same database** you inspect with `npx prisma studio` or your SQL client when debugging production content.
+2. **Admin vs local:** Saving in **localhost** admin updates **only your local Postgres**. Open **production** `/admin/site-content` on the **live domain** and use **Save** there to update what visitors see—or migrate data explicitly.
+3. **`migrate deploy` vs `db seed`:** Migrate applies **schema** only. Seed inserts **defaults when tables are empty**; it does **not** copy rows from your laptop. After deploy, if the public FAQ still looks like the three stock questions, production DB likely still has only those rows or you have not saved changes in **production** admin.
+
+Public `/faq` and `/publications` routes are configured for **fresh CMS reads** (`force-dynamic` where applicable); the **`/api/site/publications`** response is **not** edge-cached for long periods so listing cards update after CMS saves.
 
 ---
 
@@ -132,6 +146,8 @@ npm run smoke:http -- --base-url http://127.0.0.1:3003
 
 ## Where to get help
 
+- **Architecture / features / doc map:** `docs/PROJECT_OVERVIEW.md`.
+- **Manual QA (commands, demo accounts, voting flags, role URLs):** `docs/MANUAL_QA_GUIDE.md`.
 - **Docker / local:** comments in `docker-compose.dev.yml`, this file, `.env.docker.example`.
 - **Coolify / VPS:** `COOLIFY_FULLSTACK_SETUP.md` and Coolify build logs.
 - **Schema / migrations:** `prisma/schema.prisma` and `prisma/migrations/`.

@@ -6,6 +6,7 @@ import { fetchJsonOrThrow, toErrorMessage } from "@/components/admin/admin-api";
 import useAdminAsyncAction from "@/components/admin/useAdminAsyncAction";
 import useAdminFeedback from "@/components/admin/useAdminFeedback";
 import AdminToastViewport from "@/components/admin/AdminToastViewport";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 type Role = "SUPER_ADMIN" | "PROGRAM_MANAGER" | "AUDITOR" | "JUDGE" | "ENTRANT";
 
@@ -69,8 +70,10 @@ export default function AdminBadgePrintPage() {
 
   return (
     <main>
-      <h1>Badge print studio</h1>
-      <p className="admin-muted">Generate a printable attendee badge template and print directly from this page.</p>
+      <AdminPageHeader
+        title="Badge print studio"
+        description="Generate a printable attendee badge template and print directly from this page."
+      />
       <AdminToastViewport toasts={toasts} onClose={dismissToast} />
       {loading ? <p className="admin-muted">Loading badge data...</p> : null}
       {!canLoad ? <p className="admin-error">Missing eventId or registrationId in query parameters.</p> : null}

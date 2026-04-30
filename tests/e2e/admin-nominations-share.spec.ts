@@ -3,33 +3,11 @@ import { loginAsAdmin } from "./helpers/auth";
 import { longSummary, uniqueEmail } from "./helpers/factories";
 
 test("admin nominations share shortcuts work on focused audit panel", async ({ page }) => {
-  test.setTimeout(60_000);
+  test.setTimeout(240_000);
   await loginAsAdmin(page);
 
-  const entrantEmail = uniqueEmail("audit-shortcuts");
-  const createUserRes = await page.request.post("/api/users", {
-    data: {
-      email: entrantEmail,
-      password: "AuditShortcuts_12345",
-      fullName: "Audit Shortcut Entrant",
-      role: "ENTRANT",
-    },
-  });
-  expect([201, 409]).toContain(createUserRes.status());
-
-  const usersRes = await page.request.get("/api/users?role=ENTRANT");
-  expect(usersRes.ok()).toBeTruthy();
-  const usersBody = (await usersRes.json()) as {
-    users?: Array<{ id: string; email: string }>;
-  };
-  const entrant = usersBody.users?.find((user) => user.email.toLowerCase() === entrantEmail.toLowerCase());
-  expect(entrant).toBeTruthy();
-
-  const impersonateRes = await page.request.post("/api/auth/impersonate", {
-    data: { userId: entrant!.id },
-  });
-  expect(impersonateRes.ok()).toBeTruthy();
-  const metadataRes = await page.request.get("/api/portal/metadata");
+  // `requireRole(ENTRANT)` allows super admin / manager without impersonation (see `lib/rbac` rank).
+  const metadataRes = await page.request.get("/api/portal/metadata/");
   expect(metadataRes.ok()).toBeTruthy();
   const metadata = (await metadataRes.json()) as {
     programs?: Array<{
@@ -40,8 +18,6 @@ test("admin nominations share shortcuts work on focused audit panel", async ({ p
   };
   const firstProgram = metadata.programs?.find((program) => program.seasons.length > 0 && program.categories.length > 0);
   expect(firstProgram).toBeTruthy();
-  const stopImpersonationRes = await page.request.post("/api/auth/impersonate/stop");
-  expect(stopImpersonationRes.ok()).toBeTruthy();
 
   const nomineeName = `E2E Share ${Date.now()}`;
   const publicSubmitRes = await page.request.post("/api/nominations/public/", {
@@ -65,9 +41,13 @@ test("admin nominations share shortcuts work on focused audit panel", async ({ p
   const nominationId = publicBody.nomination?.id;
   expect(nominationId).toBeTruthy();
 
-  await page.goto("/admin/nominations");
+  // Deep-link so `selectedId` hydrates from `nid` while `rows` loads; avoids selectOption before options exist.
+  await page.goto(`/admin/nominations/?nid=${encodeURIComponent(nominationId!)}`);
+  await expect(page.locator(`select option[value="${nominationId}"]`)).toHaveCount(1, { timeout: 120_000 });
   await page.getByLabel("Select nomination").first().selectOption(nominationId!);
   await expect(page.getByText("Audit timeline")).toBeVisible();
+  // Audit fetch + first paint can exceed default expect timeout on cold Docker dev.
+  await expect(page.getByRole("button", { name: "Apply filters" })).toBeVisible({ timeout: 90_000 });
 
   const origin = new URL(page.url()).origin;
   await page.context().grantPermissions(["clipboard-read", "clipboard-write"], { origin });

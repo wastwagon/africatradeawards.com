@@ -2,13 +2,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import LogoutButton from '@/components/auth/LogoutButton'
 import ColorModeToggle from '@/components/elements/ColorModeToggle'
 import { useSiteConfig } from '@/components/site/SiteConfigProvider'
+import { useAuthMe } from '@/hooks/useAuthMe'
+import { defaultDashboardForRoleStr } from '@/lib/role-access'
 import { isPlatformChromePath } from '@/lib/platform-paths'
 
 export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 	const pathname = usePathname()
 	const { mobileNavMetaLine, supportEmail, eventLiveStreamEnabled } = useSiteConfig()
+	const { user: authUser, loading: authLoading } = useAuthMe()
 	const supportMailHref = `mailto:${supportEmail}`
 	const showThemeToggle = isPlatformChromePath(pathname)
 
@@ -151,10 +155,40 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 								<ColorModeToggle />
 							</div>
 						) : null}
-						<div className="ata-mobile-drawer__ctas">
-							<Link href="/login/" className="ata-mobile-drawer__btn-secondary" onClick={handleMobileMenu}>
-								Sign In
-							</Link>
+						<div
+							className={`ata-mobile-drawer__ctas${authUser ? " ata-mobile-drawer__ctas--with-account" : ""}`}
+						>
+							{authLoading && !authUser ? (
+								<span
+									className="ata-mobile-drawer__btn-secondary ata-mobile-drawer__btn-account"
+									aria-label="Loading account"
+									aria-busy="true"
+								>
+									<i className="fa-solid fa-spinner fa-spin" aria-hidden />
+									<span className="ata-mobile-drawer__btn-account-label">Loading…</span>
+								</span>
+							) : authUser ? (
+								<div className="ata-mobile-drawer__account-row">
+									<Link
+										href={defaultDashboardForRoleStr(authUser.role)}
+										className="ata-mobile-drawer__btn-secondary ata-mobile-drawer__btn-account"
+										onClick={handleMobileMenu}
+										aria-label={`Account — ${authUser.fullName}`}
+										title={authUser.fullName}
+									>
+										<i className="fa-solid fa-circle-user" aria-hidden />
+										<span className="ata-mobile-drawer__btn-account-label">Account</span>
+									</Link>
+									<LogoutButton
+										className="ata-mobile-drawer__btn-secondary ata-mobile-drawer__btn-logout"
+										onLoggedOut={handleMobileMenu}
+									/>
+								</div>
+							) : (
+								<Link href="/login/" className="ata-mobile-drawer__btn-secondary" onClick={handleMobileMenu}>
+									Sign In
+								</Link>
+							)}
 							<Link href="/vote" className="ata-mobile-drawer__btn-primary" onClick={handleMobileMenu}>
 								Vote Now
 							</Link>
@@ -401,6 +435,29 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 					gap: 10px;
 					margin-bottom: 22px;
 				}
+				.ata-mobile-drawer__ctas--with-account {
+					flex-direction: column;
+					align-items: stretch;
+				}
+				.ata-mobile-drawer__account-row {
+					display: flex;
+					gap: 10px;
+					width: 100%;
+				}
+				.ata-mobile-drawer__account-row > .ata-mobile-drawer__btn-account {
+					flex: 1;
+					min-width: 0;
+				}
+				.ata-mobile-drawer__btn-logout {
+					flex: 0 0 auto;
+					min-width: 108px;
+					background: transparent;
+					cursor: pointer;
+				}
+				.ata-mobile-drawer__btn-logout:disabled {
+					opacity: 0.75;
+					cursor: wait;
+				}
 				.ata-mobile-drawer__btn-secondary {
 					flex: 1;
 					text-align: center;
@@ -414,6 +471,20 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 					text-transform: uppercase;
 					color: #fff !important;
 					text-decoration: none;
+				}
+				.ata-mobile-drawer__btn-account {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					gap: 8px;
+				}
+				.ata-mobile-drawer__btn-account i {
+					font-size: 1.15rem;
+				}
+				.ata-mobile-drawer__btn-account-label {
+					text-transform: none;
+					font-weight: 600;
+					letter-spacing: 0.02em;
 				}
 				.ata-mobile-drawer__btn-primary {
 					flex: 1;

@@ -51,12 +51,12 @@ function LoginForm() {
     <PlatformSiteChrome>
       <section className="platform-page">
         <div className="container">
-          <div className="platform-page-header">
+          <div className="platform-page-header platform-page-header--center">
             <p className="platform-eyebrow">Awards platform</p>
             <h1 className="platform-title">Sign In</h1>
             <p className="platform-lead">
-              One account for programme managers, auditors, judges, and entrants. After you sign in, we send you straight to
-              the right workspace.
+              Programme managers, auditors, judges, and entrants use this sign-in. Public voters who want a dashboard should{" "}
+              <Link href="/register/">create a voter account</Link> instead.
             </p>
           </div>
           <div className="row justify-content-center">
@@ -89,6 +89,8 @@ function LoginForm() {
                   </button>
                 </form>
                 <p className="platform-muted" style={{ marginTop: "1.25rem", marginBottom: 0 }}>
+                  <Link href="/register/">Voter registration</Link>
+                  {" · "}
                   <Link href="/vote/">Public voting</Link>
                   {" · "}
                   <Link href="/portal/nominator/">Nominator portal</Link>

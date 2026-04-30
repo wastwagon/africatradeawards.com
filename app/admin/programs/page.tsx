@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminSection from "@/components/admin/AdminSection";
 
 type Program = { id: string; slug: string; name: string; description?: string | null };
 type Season = { id: string; year: number; startDate: string; endDate: string };
@@ -20,6 +22,10 @@ export default function AdminProgramsPage() {
   const [seasonYear, setSeasonYear] = useState(new Date().getFullYear());
   const [seasonStart, setSeasonStart] = useState("");
   const [seasonEnd, setSeasonEnd] = useState("");
+  const [editingSeasonId, setEditingSeasonId] = useState<string | null>(null);
+  const [editSeasonYear, setEditSeasonYear] = useState(new Date().getFullYear());
+  const [editSeasonStart, setEditSeasonStart] = useState("");
+  const [editSeasonEnd, setEditSeasonEnd] = useState("");
 
   const [categoryName, setCategoryName] = useState("");
   const [categorySlug, setCategorySlug] = useState("");
@@ -62,6 +68,10 @@ export default function AdminProgramsPage() {
       void loadProgramMeta(selectedProgramId);
     }
   }, [selectedProgramId, loadProgramMeta]);
+
+  useEffect(() => {
+    setEditingSeasonId(null);
+  }, [selectedProgramId]);
 
   async function createProgram(e: FormEvent) {
     e.preventDefault();
@@ -107,6 +117,39 @@ export default function AdminProgramsPage() {
     await loadProgramMeta(selectedProgramId);
   }
 
+  function beginEditSeason(s: Season) {
+    setEditingSeasonId(s.id);
+    setEditSeasonYear(s.year);
+    setEditSeasonStart(new Date(s.startDate).toISOString().slice(0, 10));
+    setEditSeasonEnd(new Date(s.endDate).toISOString().slice(0, 10));
+  }
+
+  function cancelEditSeason() {
+    setEditingSeasonId(null);
+  }
+
+  async function updateSeason(e: FormEvent) {
+    e.preventDefault();
+    if (!selectedProgramId || !editingSeasonId) return;
+    setError(null);
+    const res = await fetch(`/api/programs/${selectedProgramId}/seasons/${editingSeasonId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        year: editSeasonYear,
+        startDate: new Date(editSeasonStart).toISOString(),
+        endDate: new Date(editSeasonEnd).toISOString(),
+      }),
+    });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setError(typeof body.error === "string" ? body.error : "Could not update season");
+      return;
+    }
+    setEditingSeasonId(null);
+    await loadProgramMeta(selectedProgramId);
+  }
+
   async function createCategory(e: FormEvent) {
     e.preventDefault();
     if (!selectedProgramId) return;
@@ -130,12 +173,10 @@ export default function AdminProgramsPage() {
 
   return (
     <main>
-      <h1>Programs</h1>
-      <p>Create programs, seasons and categories.</p>
+      <AdminPageHeader title="Programs" description="Create programs, seasons and categories." />
       {error ? <p className="admin-error">{error}</p> : null}
 
-      <section>
-        <h2>Create Program</h2>
+      <AdminSection title="Create program">
         <form onSubmit={createProgram} className="admin-form">
           <input placeholder="Program name" value={programName} onChange={(e) => setProgramName(e.target.value)} required />
           <input placeholder="program-slug" value={programSlug} onChange={(e) => setProgramSlug(e.target.value)} required />
@@ -146,10 +187,9 @@ export default function AdminProgramsPage() {
           />
           <button type="submit">Create Program</button>
         </form>
-      </section>
+      </AdminSection>
 
-      <section>
-        <h2>Select Program</h2>
+      <AdminSection title="Select program">
         <select value={selectedProgramId} onChange={(e) => setSelectedProgramId(e.target.value)}>
           <option value="">Choose a program</option>
           {programs.map((p) => (
@@ -159,7 +199,7 @@ export default function AdminProgramsPage() {
           ))}
         </select>
         {selectedProgram ? <p>Active: {selectedProgram.name}</p> : null}
-      </section>
+      </AdminSection>
 
       <section className="admin-split-grid">
         <div className="admin-panel">
@@ -178,13 +218,36 @@ export default function AdminProgramsPage() {
               Add Season
             </button>
           </form>
-          <ul>
+          <ul className="admin-plain-list">
             {seasons.map((s) => (
               <li key={s.id}>
                 {s.year} ({new Date(s.startDate).toLocaleDateString()} - {new Date(s.endDate).toLocaleDateString()})
+                <button type="button" className="admin-ml-sm" onClick={() => beginEditSeason(s)}>
+                  Edit
+                </button>
               </li>
             ))}
           </ul>
+          {editingSeasonId ? (
+            <form onSubmit={updateSeason} className="admin-form admin-edit-panel">
+              <h3 className="admin-edit-panel__title">Edit season</h3>
+              <input
+                type="number"
+                placeholder="Year"
+                value={editSeasonYear}
+                onChange={(e) => setEditSeasonYear(Number(e.target.value))}
+                required
+              />
+              <input type="date" value={editSeasonStart} onChange={(e) => setEditSeasonStart(e.target.value)} required />
+              <input type="date" value={editSeasonEnd} onChange={(e) => setEditSeasonEnd(e.target.value)} required />
+              <div className="admin-inline-actions admin-inline-wrap">
+                <button type="submit">Save season</button>
+                <button type="button" onClick={cancelEditSeason}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          ) : null}
         </div>
 
         <div className="admin-panel">

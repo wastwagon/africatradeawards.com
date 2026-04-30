@@ -14,6 +14,42 @@ const schema = z.object({
   stageId: z.string().min(1).optional(),
 });
 
+export async function GET(request: Request) {
+  const auth = await requireRole(UserRole.JUDGE);
+  if (!auth.ok) return NextResponse.json({ error: auth.message }, { status: auth.status });
+
+  const { searchParams } = new URL(request.url);
+  const entryId = (searchParams.get("entryId") ?? "").trim();
+  const criteria = (searchParams.get("criteria") ?? "").trim();
+  const stageIdParam = searchParams.get("stageId");
+  const stageId = stageIdParam && stageIdParam.trim() ? stageIdParam.trim() : null;
+
+  if (!entryId || !criteria) {
+    return NextResponse.json({ error: "entryId and criteria are required" }, { status: 400 });
+  }
+
+  const score = await prisma.score.findFirst({
+    where: {
+      judgeId: auth.user.userId,
+      entryId,
+      criteria,
+      stageId,
+    },
+    orderBy: [{ updatedAt: "desc" }],
+    select: {
+      id: true,
+      entryId: true,
+      criteria: true,
+      value: true,
+      comment: true,
+      stageId: true,
+      updatedAt: true,
+    },
+  });
+
+  return NextResponse.json({ ok: true, score });
+}
+
 export async function POST(request: Request) {
   const auth = await requireRole(UserRole.JUDGE);
   if (!auth.ok) return NextResponse.json({ error: auth.message }, { status: auth.status });
@@ -58,16 +94,36 @@ export async function POST(request: Request) {
     }
   }
 
-  const score = await prisma.score.create({
-    data: {
+  const stageId = parsed.data.stageId ?? null;
+  const existing = await prisma.score.findFirst({
+    where: {
       judgeId: auth.user.userId,
       entryId: parsed.data.entryId,
       criteria: parsed.data.criteria,
-      value: parsed.data.value,
-      comment: parsed.data.comment,
-      stageId: parsed.data.stageId,
+      stageId,
     },
+    select: { id: true },
+    orderBy: [{ updatedAt: "desc" }],
   });
+
+  const score = existing
+    ? await prisma.score.update({
+        where: { id: existing.id },
+        data: {
+          value: parsed.data.value,
+          comment: parsed.data.comment,
+        },
+      })
+    : await prisma.score.create({
+        data: {
+          judgeId: auth.user.userId,
+          entryId: parsed.data.entryId,
+          criteria: parsed.data.criteria,
+          value: parsed.data.value,
+          comment: parsed.data.comment,
+          stageId: parsed.data.stageId,
+        },
+      });
 
   return NextResponse.json({ ok: true, score }, { status: 201 });
 }

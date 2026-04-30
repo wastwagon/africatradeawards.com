@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import AdminMetricStrip from "@/components/admin/AdminMetricStrip";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 type Program = { id: string; name: string; slug: string };
 type Season = { id: string; year: number };
@@ -63,12 +64,16 @@ export default function AdminExportsPage() {
 
   return (
     <main>
-      <h1>Data exports</h1>
-      <p className="admin-muted">
-        Optional filters apply to entries, votes, scores, and the ZIP pack. Program and season narrow rows; date range
-        filters each file by its own timestamps (entry created, vote cast, score saved, user registered). Users CSV
-        still respects program scope when a program is selected.
-      </p>
+      <AdminPageHeader
+        title="Data exports"
+        description={
+          <>
+            Optional filters apply to entries, votes, scores, and the ZIP pack. Program and season narrow rows; date
+            range filters each file by its own timestamps (entry created, vote cast, score saved, user registered).
+            Users CSV still respects program scope when a program is selected.
+          </>
+        }
+      />
       <AdminMetricStrip mergeSnapshot />
 
       <div className="admin-form admin-form--compact">

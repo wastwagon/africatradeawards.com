@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSessionCookieName } from "@/lib/auth";
+import { getSessionCookieName, isSessionCookieSecure } from "@/lib/auth";
 
 export { dynamic } from "@/lib/force-dynamic-api";
 
@@ -8,7 +8,7 @@ export async function POST() {
   response.cookies.set(getSessionCookieName(), "", {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: isSessionCookieSecure(),
     maxAge: 0,
     path: "/",
   });

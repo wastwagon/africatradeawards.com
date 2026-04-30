@@ -7,6 +7,7 @@ import { fetchJsonOrThrow, toErrorMessage } from "@/components/admin/admin-api";
 import useAdminAsyncAction from "@/components/admin/useAdminAsyncAction";
 import useAdminFeedback from "@/components/admin/useAdminFeedback";
 import AdminToastViewport from "@/components/admin/AdminToastViewport";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
 type EventRow = {
   id: string;
@@ -227,9 +228,11 @@ export default function EventOnsiteAnalyticsPage() {
   }, [report]);
 
   return (
-    <main>
-      <h1>Onsite analytics</h1>
-      <p className="admin-muted">Live operational visibility for throughput, scanner quality, and reprint risk.</p>
+    <main className="admin-page--wide">
+      <AdminPageHeader
+        title="Onsite analytics"
+        description="Live operational visibility for throughput, scanner quality, and reprint risk."
+      />
       <AdminMetricStrip mergeSnapshot appendItems={onsiteAppend} />
       <AdminToastViewport toasts={toasts} onClose={dismissToast} />
       <AdminActionModal
