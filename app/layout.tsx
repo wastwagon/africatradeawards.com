@@ -16,26 +16,26 @@ import { SiteConfigProvider } from '@/components/site/SiteConfigProvider'
 import { getPublicSiteSettings } from '@/lib/public-site-settings'
 
 import type { Metadata, Viewport } from "next"
-import { Figtree, Space_Grotesk } from "next/font/google"
+import { Cormorant_Garamond, Outfit } from "next/font/google"
 
-const mainCssHref = `/assets/css/main.css?v=${process.env.NEXT_PUBLIC_CSS_BUST ?? '20260406'}`
+const mainCssHref = `/assets/css/main.css?v=${process.env.NEXT_PUBLIC_CSS_BUST ?? '20260429'}`
 
 const DEFAULT_SITE_DESCRIPTION =
 	"The Africa Trade Awards honour the trailblazers, innovators, and institutions powering the continent's trade transformation and industrial renaissance. 28th and 29th January 2026, Kempinski Gold Coast City Hotel, Accra"
 
 const siteBaseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.africatradeawards.com').replace(/\/+$/, '')
 
-/* Match theme tokens in scss/utils/_fonts-s.scss (400–800); skip 300/900 to cut font bytes */
-const figtree = Figtree({
+/* Match theme tokens in scss/utils/_fonts-s.scss (400–800). Body: Outfit; display: Cormorant Garamond. */
+const bodySans = Outfit({
 	weight: ['400', '500', '600', '700', '800'],
-	style: ['normal', 'italic'],
 	subsets: ['latin'],
 	variable: "--figtree",
 	display: 'swap',
 	adjustFontFallback: true,
 })
-const grotesk = Space_Grotesk({
+const displaySerif = Cormorant_Garamond({
 	weight: ['400', '500', '600', '700'],
+	style: ['normal', 'italic'],
 	subsets: ['latin'],
 	variable: "--grotesk",
 	display: 'swap',
@@ -116,7 +116,7 @@ html.styles-loaded body{opacity:1}
 				/>
 				<link rel="stylesheet" href={mainCssHref} />
 			</head>
-			<body className={`${figtree.variable} ${grotesk.variable} homepage1-body`} suppressHydrationWarning>
+			<body className={`${bodySans.variable} ${displaySerif.variable} homepage1-body`} suppressHydrationWarning>
 				<StylesLoadedGate />
 				<noscript>
 					<style>{'html:not(.styles-loaded) body{opacity:1!important}'}</style>

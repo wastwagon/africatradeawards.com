@@ -128,7 +128,7 @@ export default function SpeakersSingle() {
 																	</li>
 																</ul>
 																<div className="space20" />
-																<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
+																<Link href="/event-single" className="head">Accelerating Africa&apos;s Trade Execution</Link>
 																<div className="space24" />
 																<div className="author-area">
 																	<div className="autho-name-area">
@@ -179,7 +179,7 @@ export default function SpeakersSingle() {
 																	</li>
 																</ul>
 																<div className="space20" />
-																<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
+																<Link href="/event-single" className="head">Accelerating Africa&apos;s Trade Execution</Link>
 																<div className="space24" />
 																<div className="author-area">
 																	<div className="autho-name-area">
@@ -242,7 +242,7 @@ export default function SpeakersSingle() {
 																	</li>
 																</ul>
 																<div className="space20" />
-																<Link href="/event-single" className="head">Accelerating Africa's Trade Execution</Link>
+																<Link href="/event-single" className="head">Accelerating Africa&apos;s Trade Execution</Link>
 																<div className="space24" />
 																<div className="author-area">
 																	<div className="autho-name-area">

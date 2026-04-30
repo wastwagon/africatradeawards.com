@@ -1,6 +1,6 @@
 /* Remaining overrides: hero, about silver, footer sparkles, inner-page header/video, breadcrumbs.
    Migrated to main.css: _faq-and-modern-contact, _about-committee-partners, _section-padding-and-awards, _sponsors, _home-section-tweaks, _recognition-governance.
-   Theme: --ztc-* in main.css; fonts: --figtree / --grotesk; semantic: app/design-tokens.css */
+   Theme: --ztc-* in main.css; fonts: --figtree (Outfit) / --grotesk (Cormorant Garamond); semantic: app/design-tokens.css */
 
 /* Reduce hero section height for less top spacing */
 .hero1-section-area {

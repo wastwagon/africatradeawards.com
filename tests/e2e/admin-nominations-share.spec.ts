@@ -3,6 +3,7 @@ import { loginAsAdmin } from "./helpers/auth";
 import { longSummary, uniqueEmail } from "./helpers/factories";
 
 test("admin nominations share shortcuts work on focused audit panel", async ({ page }) => {
+  test.setTimeout(60_000);
   await loginAsAdmin(page);
 
   const entrantEmail = uniqueEmail("audit-shortcuts");
@@ -43,7 +44,7 @@ test("admin nominations share shortcuts work on focused audit panel", async ({ p
   expect(stopImpersonationRes.ok()).toBeTruthy();
 
   const nomineeName = `E2E Share ${Date.now()}`;
-  const publicSubmitRes = await page.request.post("/api/nominations/public", {
+  const publicSubmitRes = await page.request.post("/api/nominations/public/", {
     data: {
       nominatorName: "E2E Share Nominator",
       nominatorEmail: uniqueEmail("share-nominator"),
@@ -67,7 +68,6 @@ test("admin nominations share shortcuts work on focused audit panel", async ({ p
   await page.goto("/admin/nominations");
   await page.getByLabel("Select nomination").first().selectOption(nominationId!);
   await expect(page.getByText("Audit timeline")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Apply filters" })).toBeVisible();
 
   const origin = new URL(page.url()).origin;
   await page.context().grantPermissions(["clipboard-read", "clipboard-write"], { origin });

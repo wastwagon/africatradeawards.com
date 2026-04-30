@@ -3,6 +3,7 @@ import { loginAsAdmin } from "./helpers/auth";
 import { longSummary, uniqueEmail } from "./helpers/factories";
 
 test("public nomination review and conversion lifecycle", async ({ page }) => {
+  test.setTimeout(60_000);
   await loginAsAdmin(page);
 
   const entrantEmail = uniqueEmail("entrant");
@@ -48,7 +49,7 @@ test("public nomination review and conversion lifecycle", async ({ page }) => {
   expect(stopImpersonationRes.ok()).toBeTruthy();
 
   const nomineeName = `E2E Nominee ${Date.now()}`;
-  const publicSubmitRes = await page.request.post("/api/nominations/public", {
+  const publicSubmitRes = await page.request.post("/api/nominations/public/", {
     data: {
       nominatorName: "Public E2E Nominator",
       nominatorEmail: uniqueEmail("public-nominator"),

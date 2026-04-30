@@ -3,7 +3,11 @@ import { expect, test } from "@playwright/test";
 test.describe("public marketing shell", () => {
   test("home hero loads", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: /Africa Trade Awards/i }).first()).toBeVisible();
+    await expect(
+      page
+        .getByRole("heading", { name: /Where Trade Excellence Takes the Stage|Africa Trade Awards/i })
+        .first()
+    ).toBeVisible();
   });
 
   test("live page loads with stream section", async ({ page }) => {

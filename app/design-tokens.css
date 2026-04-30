@@ -1,6 +1,6 @@
 /**
  * Semantic design tokens: shared across marketing, platform, admin, and app shells.
- * next/font sets --figtree and --grotesk on <body>.
+ * next/font sets --figtree (Outfit, body/UI) and --grotesk (Cormorant Garamond, display) on <body>.
  */
 :root {
 	--color-brand-primary: #4e2b5a;
@@ -27,7 +27,7 @@ html {
 body.homepage1-body {
 	overflow-x: clip;
 	--font-body: var(--figtree), ui-sans-serif, system-ui, sans-serif;
-	--font-display: var(--grotesk), ui-sans-serif, system-ui, sans-serif;
+	--font-display: var(--grotesk), ui-serif, Georgia, "Times New Roman", serif;
 	--touch-target-min: 44px;
 }
 
@@ -100,7 +100,7 @@ body.homepage1-body {
 
 .app-status-eyebrow {
 	margin: 0 0 8px;
-	font-family: var(--font-display, var(--grotesk), ui-sans-serif, system-ui, sans-serif);
+	font-family: var(--font-display, var(--grotesk), ui-serif, Georgia, serif);
 	font-size: 0.6875rem;
 	font-weight: 700;
 	letter-spacing: 0.12em;
@@ -110,7 +110,7 @@ body.homepage1-body {
 
 .app-status-title {
 	margin: 0 0 10px;
-	font-family: var(--font-display, var(--grotesk), ui-sans-serif, system-ui, sans-serif);
+	font-family: var(--font-display, var(--grotesk), ui-serif, Georgia, serif);
 	font-size: clamp(1.35rem, 4vw, 1.75rem);
 	font-weight: 700;
 	color: #1a1719;
