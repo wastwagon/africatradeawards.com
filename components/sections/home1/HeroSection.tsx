@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination, EffectFade } from 'swiper/modules'
 import { heroBannerImages } from '@/app/assets/hero'
@@ -24,14 +25,30 @@ const swiperOptions = {
 		type: 'bullets' as const,
 	},
 }
+const eventOpenAtMs = new Date('2026-01-28T18:30:00+00:00').getTime()
 
 export default function HeroSection() {
 	const { eventLiveStreamEnabled, eventLiveStreamTitle, heroBarDateLine, heroBarVenueLine } = useSiteConfig()
+	const [secondsLeft, setSecondsLeft] = useState(0)
 	const liveAria =
 		eventLiveStreamTitle.trim().length > 0
 			? `${eventLiveStreamTitle.trim()} — open live page`
 			: 'Watch live stream'
 	const heroDateVenueLine = `${heroBarDateLine.trim() || '28–29 January 2026'} · ${heroBarVenueLine.trim() || 'Accra, Ghana'}`
+	useEffect(() => {
+		const tick = () => {
+			const diff = Math.max(0, Math.floor((eventOpenAtMs - Date.now()) / 1000))
+			setSecondsLeft(diff)
+		}
+		tick()
+		const timer = setInterval(tick, 1000)
+		return () => clearInterval(timer)
+	}, [])
+
+	const days = Math.floor(secondsLeft / 86400)
+	const hours = Math.floor((secondsLeft % 86400) / 3600)
+	const minutes = Math.floor((secondsLeft % 3600) / 60)
+	const seconds = secondsLeft % 60
 
 	return (
 		<section className="hero-banner-section" aria-label="Hero banner">
@@ -63,14 +80,37 @@ export default function HeroSection() {
 			<div className="hero-banner-overlay" aria-hidden="false">
 				<div className="container hero-banner-overlay-inner">
 					<p className="hero-banner-eyebrow">{heroDateVenueLine}</p>
-					<h1 className="hero-banner-heading">Where Trade Excellence Takes the Stage</h1>
+					<h1 className="hero-banner-heading">Africa Trade Awards 2026</h1>
 					<p className="hero-banner-tagline">
-						From continental leadership to industry-scale execution, we spotlight the institutions and people shaping
-						Africa&apos;s trade future through measurable impact.
+						A two-day celebration of Africa&apos;s top trade leaders, finalists, and institutions - live in Accra with
+						programme sessions, recognition moments, and audience voting.
 					</p>
+					<div className="hero-banner-highlights" aria-label="Event highlights">
+						<span>Live programme</span>
+						<span>Recognition night</span>
+						<span>Industry networking</span>
+					</div>
+					<div className="hero-banner-countdown" aria-label="Time remaining to event opening">
+						<div className="hero-banner-countdown-item">
+							<strong>{days}</strong>
+							<span>Days</span>
+						</div>
+						<div className="hero-banner-countdown-item">
+							<strong>{hours}</strong>
+							<span>Hours</span>
+						</div>
+						<div className="hero-banner-countdown-item">
+							<strong>{minutes}</strong>
+							<span>Min</span>
+						</div>
+						<div className="hero-banner-countdown-item">
+							<strong>{seconds}</strong>
+							<span>Sec</span>
+						</div>
+					</div>
 					<div className="hero-banner-actions">
-						<Link href="/vote/" className="hero-banner-cta hero-banner-btn-primary">
-							Cast Your Vote
+						<Link href="/event/register/" className="hero-banner-cta hero-banner-btn-primary">
+							Register now
 						</Link>
 						{eventLiveStreamEnabled ? (
 							<Link
@@ -84,6 +124,9 @@ export default function HeroSection() {
 						) : null}
 						<Link href="/portal/entrant/" className="hero-banner-cta hero-banner-btn-secondary">
 							Enter your submission
+						</Link>
+						<Link href="/event/" className="hero-banner-cta hero-banner-btn-secondary">
+							View programme
 						</Link>
 					</div>
 				</div>
@@ -99,6 +142,17 @@ export default function HeroSection() {
 					max-height: 920px;
 					overflow: hidden;
 					background: #1a1518;
+				}
+				.hero-banner-section::after {
+					content: '';
+					position: absolute;
+					inset: 0;
+					z-index: 5;
+					pointer-events: none;
+					background:
+						radial-gradient(circle at 16% 22%, rgba(255, 216, 150, 0.2) 0%, transparent 30%),
+						radial-gradient(circle at 84% 78%, rgba(106, 127, 232, 0.16) 0%, transparent 34%);
+					animation: heroGlowFloat 8s ease-in-out infinite alternate;
 				}
 				.hero-banner-swiper {
 					width: 100%;
@@ -120,6 +174,8 @@ export default function HeroSection() {
 					height: 100%;
 					object-fit: cover !important;
 					object-position: center center !important;
+					transform: scale(1.05);
+					animation: heroImagePulse 16s ease-in-out infinite alternate;
 				}
 				.hero-banner-slider-nav {
 					position: absolute;
@@ -176,8 +232,8 @@ export default function HeroSection() {
 				}
 				@media (max-width: 575px) {
 					.hero-banner-section {
-						height: 82vh;
-						min-height: 380px;
+						height: 84vh;
+						min-height: 410px;
 						max-height: none;
 					}
 					.hero-banner-slider-nav { width: 44px; height: 44px; }
@@ -226,6 +282,7 @@ export default function HeroSection() {
 					color: #fff;
 					margin: 0 0 12px;
 					text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+					animation: heroHeadingRise 0.65s ease-out both;
 				}
 				.hero-banner-tagline {
 					font-family: var(--figtree), system-ui, sans-serif;
@@ -234,6 +291,64 @@ export default function HeroSection() {
 					color: rgba(255,255,255,0.88);
 					max-width: 640px;
 					margin: 0 auto 22px;
+					animation: heroHeadingRise 0.75s ease-out both;
+				}
+				.hero-banner-highlights {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 8px 10px;
+					justify-content: center;
+					margin: 0 0 18px;
+				}
+				.hero-banner-highlights span {
+					display: inline-flex;
+					align-items: center;
+					padding: 6px 10px;
+					border-radius: 999px;
+					border: 1px solid rgba(255, 255, 255, 0.32);
+					background: rgba(255, 255, 255, 0.08);
+					color: rgba(255, 255, 255, 0.95);
+					font-family: var(--figtree), system-ui, sans-serif;
+					font-size: 0.72rem;
+					font-weight: 600;
+					letter-spacing: 0.03em;
+					text-transform: uppercase;
+				}
+				.hero-banner-countdown {
+					display: inline-flex;
+					align-items: center;
+					gap: 8px;
+					margin: 0 auto 18px;
+					padding: 8px 10px;
+					border-radius: 12px;
+					border: 1px solid rgba(255, 255, 255, 0.22);
+					background: rgba(10, 8, 16, 0.42);
+					backdrop-filter: blur(8px);
+					animation: heroHeadingRise 0.85s ease-out both;
+				}
+				.hero-banner-countdown-item {
+					min-width: 58px;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					padding: 6px 8px;
+					border-radius: 8px;
+					background: rgba(255, 255, 255, 0.08);
+				}
+				.hero-banner-countdown-item strong {
+					font-family: var(--grotesk), sans-serif;
+					font-size: 1rem;
+					font-weight: 700;
+					line-height: 1.1;
+					color: #fff;
+				}
+				.hero-banner-countdown-item span {
+					font-family: var(--figtree), system-ui, sans-serif;
+					font-size: 0.62rem;
+					letter-spacing: 0.08em;
+					text-transform: uppercase;
+					color: rgba(255, 255, 255, 0.82);
 				}
 				.hero-banner-actions {
 					display: flex;
@@ -242,6 +357,7 @@ export default function HeroSection() {
 					gap: 12px 14px;
 					justify-content: center;
 					align-items: center;
+					animation: heroHeadingRise 0.95s ease-out both;
 				}
 				/* Shrink to label width — avoid full-width in column flex / stretched layouts */
 				.hero-banner-actions > :global(a) {
@@ -302,7 +418,47 @@ export default function HeroSection() {
 					border-color: rgba(255, 220, 160, 0.9) !important;
 				}
 				@media (max-width: 575px) {
-					.hero-banner-overlay { padding-bottom: 96px; }
+					.hero-banner-overlay {
+						padding: 0 12px 84px;
+						align-items: flex-end;
+					}
+					.hero-banner-eyebrow {
+						font-size: 0.66rem;
+						letter-spacing: 0.14em;
+						margin-bottom: 8px;
+					}
+					.hero-banner-heading {
+						font-size: clamp(1.8rem, 9vw, 2.2rem);
+						line-height: 1.08;
+						margin-bottom: 10px;
+					}
+					.hero-banner-tagline {
+						font-size: 0.9rem;
+						line-height: 1.45;
+						margin-bottom: 16px;
+					}
+					.hero-banner-highlights {
+						gap: 6px 8px;
+						margin-bottom: 14px;
+					}
+					.hero-banner-countdown {
+						width: 100%;
+						max-width: 340px;
+						gap: 6px;
+						padding: 8px;
+					}
+					.hero-banner-countdown-item {
+						min-width: 0;
+						flex: 1 1 0;
+						padding: 6px 4px;
+					}
+					.hero-banner-countdown-item strong {
+						font-size: 0.92rem;
+					}
+					.hero-banner-highlights span {
+						font-size: 0.66rem;
+						padding: 5px 9px;
+					}
 					/* Keep buttons on one row when they fit; wrap to next line only if needed. Never stack full-width. */
 					.hero-banner-actions {
 						flex-direction: row;
@@ -311,9 +467,54 @@ export default function HeroSection() {
 						justify-content: center;
 					}
 					section.hero-banner-section .hero-banner-cta {
-						min-height: 2.5rem;
-						padding: 0 1rem;
-						font-size: 0.75rem;
+						min-height: 44px;
+						padding: 0 0.92rem;
+						font-size: 0.72rem;
+						letter-spacing: 0.045em;
+					}
+					.hero-banner-actions {
+						gap: 8px;
+					}
+					.hero-banner-actions > :global(a) {
+						flex: 1 1 calc(50% - 8px);
+						min-width: 136px;
+					}
+				}
+				@media (max-width: 413px) {
+					.hero-banner-overlay {
+						padding: 0 10px 76px;
+					}
+					.hero-banner-actions > :global(a) {
+						flex: 1 1 100%;
+						min-width: 0;
+					}
+				}
+				@keyframes heroHeadingRise {
+					from {
+						opacity: 0;
+						transform: translateY(12px);
+					}
+					to {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
+				@keyframes heroGlowFloat {
+					from {
+						opacity: 0.7;
+						transform: translateY(0);
+					}
+					to {
+						opacity: 1;
+						transform: translateY(-8px);
+					}
+				}
+				@keyframes heroImagePulse {
+					from {
+						transform: scale(1.03);
+					}
+					to {
+						transform: scale(1.08);
 					}
 				}
 			`}</style>

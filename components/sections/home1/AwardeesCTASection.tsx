@@ -16,10 +16,16 @@ export default function AwardeesCTASection() {
 								See the individuals, institutions, and initiatives recognised for contributions that moved Africa&apos;s trade and industry forward.
 							</p>
 							<div className="space24" />
-							<Link href="/awardees" className="cta-btn-primary awardees-cta-btn">
-								<span>Meet the Awardees</span>
-								<i className="fa-solid fa-arrow-right" />
-							</Link>
+							<div className="awardees-cta-actions">
+								<Link href="/event/register/" className="cta-btn-primary awardees-cta-btn awardees-cta-btn-register">
+									<span>Register for the Event</span>
+									<i className="fa-solid fa-ticket" />
+								</Link>
+								<Link href="/awardees" className="cta-btn-primary awardees-cta-btn">
+									<span>Meet the Awardees</span>
+									<i className="fa-solid fa-arrow-right" />
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -60,8 +66,19 @@ export default function AwardeesCTASection() {
 				.awardees-cta-content .awards-intro-compact {
 					color: rgba(248, 243, 234, 0.84);
 				}
+				.awardees-cta-actions {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					gap: 10px;
+					flex-wrap: wrap;
+				}
 				.awardees-cta-btn {
 					box-shadow: 0 4px 20px rgba(78, 43, 90, 0.35);
+				}
+				.awardees-cta-btn-register {
+					background: linear-gradient(135deg, #f4e4c8 0%, #e8c89a 45%, #dfb07a 100%);
+					color: #1a1222 !important;
 				}
 				.awardees-cta-btn:hover {
 					box-shadow: 0 8px 28px rgba(78, 43, 90, 0.45);

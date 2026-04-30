@@ -13,9 +13,9 @@ export default function GallerySection() {
 				<div className="row">
 					<div className="col-lg-10 m-auto">
 						<div className="home-gallery-header awards-header-compact text-center" data-aos="fade-up" data-aos-duration={600}>
-							<h2 className="awards-title-compact">Gallery</h2>
+							<h2 className="awards-title-compact">Event Highlights</h2>
 							<div className="space16" />
-							<p className="awards-intro-compact">A glimpse into the ceremony and celebrations.</p>
+							<p className="awards-intro-compact">Moments from stage, audience, and recognition night.</p>
 						</div>
 						<div className="home-gallery-slider-wrap" data-aos="fade-up" data-aos-duration={800} data-aos-delay={150}>
 							<GallerySlider
@@ -27,7 +27,7 @@ export default function GallerySection() {
 							/>
 							<div className="home-gallery-cta">
 								<Link href="/gallery" className="cta-btn-primary">
-									<span>View Full Gallery</span>
+									<span>See All Moments</span>
 									<i className="fa-solid fa-arrow-right" />
 								</Link>
 							</div>

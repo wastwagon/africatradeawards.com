@@ -26,9 +26,9 @@ export default function AboutSection() {
 					<div className="col-lg-6">
 						<div className="overview-content">
 							<div className="overview-description" data-aos="fade-up" data-aos-duration={900}>
-								<p>The Africa Trade Awards platform is built to celebrate institutions, leaders, and enterprises delivering real trade and industrial outcomes across the continent.</p>
+								<p>Africa Trade Awards 2026 brings together the continent&apos;s most impactful trade leaders, institutions, and enterprise achievements.</p>
 								<div className="space12" />
-								<p>Beyond recognition, the platform brings together nominations, judging, public voting, publications, and event participation into one consistent digital experience for participants and stakeholders.</p>
+								<p>From nominations to judging, audience voting, and the live ceremony, every touchpoint is designed as one seamless event experience.</p>
 							</div>
 							<div className="space24" />
 							<div className="btn-area1" data-aos="fade-up" data-aos-duration={1000}>

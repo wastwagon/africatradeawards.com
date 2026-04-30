@@ -8,7 +8,7 @@ const tiers = [
 		title: 'Continental Leadership',
 		icon: 'fa-globe',
 		accentColor: '#4e2b5a',
-		description: 'Leadership exercised at continental or multi-regional scale, honouring strategic decisions that influenced trade and industrial activity across multiple African markets.'
+		description: 'Honours strategic leadership that shaped trade and industry across multiple African markets.'
 	},
 	{
 		id: 'tier-ii',
@@ -16,7 +16,7 @@ const tiers = [
 		title: 'Industry & Value Chains',
 		icon: 'fa-industry',
 		accentColor: '#78508c',
-		description: 'Development of industrial production and strategic value chains, recognising enterprises that established manufacturing capacity and industrial technology.'
+		description: 'Recognises enterprises building manufacturing capacity and high-impact value chains.'
 	},
 	{
 		id: 'tier-iii',
@@ -24,7 +24,7 @@ const tiers = [
 		title: 'Markets & Enterprise',
 		icon: 'fa-building',
 		accentColor: '#4e2b5a',
-		description: 'Systems that enable trade to function, focusing on trade infrastructure, logistics networks, financial platforms, and enterprise mechanisms.'
+		description: 'Highlights logistics, finance, and enterprise systems that keep trade moving efficiently.'
 	},
 	{
 		id: 'tier-iv',
@@ -32,7 +32,7 @@ const tiers = [
 		title: 'Trade Policy & Systems',
 		icon: 'fa-file-contract',
 		accentColor: '#78508c',
-		description: 'Public-sector execution where policy decisions led to measurable improvements in trade facilitation, corridor performance, or market usability.'
+		description: 'Celebrates policy execution that measurably improved trade facilitation and market access.'
 	},
 	{
 		id: 'tier-v',
@@ -40,7 +40,7 @@ const tiers = [
 		title: 'Distinguished Recognition',
 		icon: 'fa-award',
 		accentColor: '#4e2b5a',
-		description: 'Exceptional recognition of cumulative, long-term contribution to Africa&apos;s trade and industrial development at a foundational level.',
+		description: 'Reserved for exceptional long-term contribution to Africa&apos;s trade and industrial transformation.',
 		featured: true
 	}
 ]
@@ -54,7 +54,7 @@ export default function AwardCategoriesSection() {
 						<div className="awards-header-compact text-center" data-aos="fade-up" data-aos-duration={800}>
 							<h2 className="awards-title-compact">Tiered Recognition Framework</h2>
 							<div className="space16" />
-							<p className="awards-intro-compact">The Africa Trade Awards are organised across a tiered structure designed to reflect the different layers through which Africa&apos;s trade and industrial systems are shaped, delivered, and sustained.</p>
+							<p className="awards-intro-compact">Five clear tiers spotlight where trade impact happens - from policy to industry to enterprise execution.</p>
 						</div>
 					</div>
 				</div>

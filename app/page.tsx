@@ -30,20 +30,20 @@ export default function Home() {
 				<HeroSection />
 				<EventDateVenueBar />
 
-				{/* 2. Story */}
-				<AboutSection />
-
-				{/* 3. Proof */}
-				<KudosStatsSection />
-
-				{/* 4. Platform services */}
-				<EngagePlatformSection />
-
-				{/* 5. Framework */}
+				{/* 2. Framework */}
 				<AwardCategoriesSection />
 
-				{/* 6. Proof & emotion: event moments */}
+				{/* 3. Proof & emotion: event moments */}
 				<GallerySection />
+
+				{/* 4. Story */}
+				<AboutSection />
+
+				{/* 5. Proof */}
+				<KudosStatsSection />
+
+				{/* 6. Platform services */}
+				<EngagePlatformSection />
 
 				{/* 7. Trust: who validates */}
 				<div className="committee-text-section">

@@ -22,6 +22,14 @@ export default function EventDateVenueBar() {
 						</div>
 						<span className="event-date-venue-text">{heroBarVenueLine}</span>
 					</div>
+					<div className="event-date-venue-actions">
+						<a href="/event/" className="event-date-venue-cta event-date-venue-cta-secondary">
+							Programme
+						</a>
+						<a href="/event/register/" className="event-date-venue-cta event-date-venue-cta-primary">
+							Register
+						</a>
+					</div>
 				</div>
 			</div>
 			<style jsx>{`
@@ -117,6 +125,45 @@ export default function EventDateVenueBar() {
 					flex-shrink: 0;
 					align-self: center;
 				}
+				.event-date-venue-actions {
+					display: inline-flex;
+					align-items: center;
+					gap: 8px;
+					flex-shrink: 0;
+				}
+				.event-date-venue-cta {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					min-height: 34px;
+					padding: 0 12px;
+					border-radius: 999px;
+					font-family: var(--grotesk), sans-serif;
+					font-size: 11px;
+					font-weight: 700;
+					letter-spacing: 0.06em;
+					text-transform: uppercase;
+					text-decoration: none;
+					transition: all 0.2s ease;
+				}
+				.event-date-venue-cta-primary {
+					color: #fff;
+					background: linear-gradient(135deg, #4e2b5a 0%, #6a3f84 100%);
+					box-shadow: 0 6px 16px rgba(78, 43, 90, 0.25);
+				}
+				.event-date-venue-cta-primary:hover {
+					color: #fff;
+					transform: translateY(-1px);
+				}
+				.event-date-venue-cta-secondary {
+					color: #5e3b8a;
+					background: rgba(255, 255, 255, 0.65);
+					border: 1px solid rgba(94, 59, 138, 0.28);
+				}
+				.event-date-venue-cta-secondary:hover {
+					color: #4e2b5a;
+					background: rgba(255, 255, 255, 0.85);
+				}
 				@media (min-width: 576px) {
 					.event-date-venue-bar {
 						padding: 12px 20px;
@@ -155,6 +202,11 @@ export default function EventDateVenueBar() {
 					.event-date-venue-divider {
 						height: 24px;
 						min-height: 24px;
+					}
+					.event-date-venue-cta {
+						min-height: 36px;
+						font-size: 11px;
+						padding: 0 14px;
 					}
 				}
 				@media (min-width: 992px) {
@@ -201,6 +253,19 @@ export default function EventDateVenueBar() {
 						height: 28px;
 						min-height: 28px;
 						align-self: center;
+					}
+					.event-date-venue-cta {
+						min-height: 38px;
+						font-size: 12px;
+					}
+				}
+				@media (max-width: 767px) {
+					.event-date-venue-inner {
+						flex-wrap: wrap;
+						justify-content: center;
+					}
+					.event-date-venue-divider {
+						display: none;
 					}
 				}
 			`}</style>

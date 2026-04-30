@@ -635,6 +635,23 @@
 }
 
 @media (max-width: 767px) {
+	.home-gallery-section,
+	.engage-platform-section,
+	.compact-awards-structure-section,
+	.about1-section-area.overview-section {
+		padding-top: 44px !important;
+		padding-bottom: 52px !important;
+	}
+
+	.home-gallery-header .awards-intro-compact,
+	.awards-header-compact .awards-intro-compact,
+	.engage-platform-intro {
+		max-width: 94%;
+		margin-left: auto;
+		margin-right: auto;
+		line-height: 1.5;
+	}
+
 	.public-page-hero__title {
 		font-size: clamp(1.55rem, 8.2vw, 2rem);
 		line-height: 1.2;
@@ -670,6 +687,10 @@
 		padding: 18px 16px 20px !important;
 	}
 
+	.engage-card {
+		padding: 22px 16px 20px !important;
+	}
+
 	.blog4-boxarea .readmore,
 	.publication-card-cta,
 	.event2-boxarea .vl-btn1,
@@ -679,6 +700,15 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.awardees-cta-actions {
+		width: 100%;
+	}
+
+	.awardees-cta-actions .awardees-cta-btn {
+		flex: 1 1 100%;
+		width: 100%;
 	}
 
 	.event2-boxarea .content-area ul li span,
@@ -753,5 +783,48 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 12px;
 	}
+}
+
+/* Event-first visual pulse: stronger depth + motion for programme/event cards */
+.event2-boxarea,
+.engage-card,
+.kudos-testimonial-card,
+.publication-card {
+	transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease !important;
+}
+
+.event2-boxarea:hover,
+.engage-card:hover,
+.kudos-testimonial-card:hover,
+.publication-card:hover {
+	transform: translateY(-6px);
+	border-color: rgba(201, 160, 99, 0.42) !important;
+	box-shadow: 0 20px 46px rgba(22, 15, 20, 0.15);
+}
+
+.event2-boxarea .vl-btn1,
+.engage-card-cta.vl-btn1,
+.awardees-cta-btn {
+	position: relative;
+	overflow: hidden;
+}
+
+.event2-boxarea .vl-btn1::after,
+.engage-card-cta.vl-btn1::after,
+.awardees-cta-btn::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -120%;
+	width: 80%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+	transition: left 0.35s ease;
+}
+
+.event2-boxarea .vl-btn1:hover::after,
+.engage-card-cta.vl-btn1:hover::after,
+.awardees-cta-btn:hover::after {
+	left: 130%;
 }
 
