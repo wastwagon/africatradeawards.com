@@ -4,6 +4,7 @@ import { requireRole } from "@/lib/api-auth";
 import { createCmsRevision } from "@/lib/cms-revisions";
 import { DEFAULT_PUBLICATIONS } from "@/lib/cms-defaults";
 import { normalizePublicationSlug, publicationHrefFromSlug } from "@/lib/cms-publication-slug";
+import { sanitizePublicationBodyHtml } from "@/lib/sanitize-publication-html";
 import { prisma } from "@/lib/prisma";
 import { UserRole } from "@prisma/client";
 import { z } from "zod";
@@ -70,12 +71,13 @@ export async function PUT(request: Request) {
   for (let index = 0; index < body.publications.length; index += 1) {
     const row = body.publications[index] ?? {};
     const bodyRaw = typeof row.body === "string" ? row.body : "";
+    const sanitizedBody = sanitizePublicationBodyHtml(bodyRaw);
     const slug = typeof row.slug === "string" ? normalizePublicationSlug(row.slug) : "";
     const candidate = {
       slug,
       title: typeof row.title === "string" ? row.title.trim() : "",
       excerpt: typeof row.excerpt === "string" ? row.excerpt.trim() : "",
-      body: bodyRaw.trim() === "" ? null : bodyRaw,
+      body: sanitizedBody === "" ? null : sanitizedBody,
       dateText: typeof row.dateText === "string" ? row.dateText.trim() : "",
       dateline: typeof row.dateline === "string" ? row.dateline.trim() : "",
       image: typeof row.image === "string" ? row.image.trim() : "",

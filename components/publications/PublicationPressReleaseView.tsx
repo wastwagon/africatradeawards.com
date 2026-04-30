@@ -5,11 +5,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { CmsPublicationItem } from '@/lib/cms-defaults'
 import { formatPublicationDateLabel } from '@/lib/cms-publication-date'
+import { normalizePublicationBodyToLegacy } from '@/lib/normalize-publication-body'
+import { sanitizePublicationBodyHtml } from '@/lib/sanitize-publication-html'
 import { useEffect, useRef } from 'react'
 
 export default function PublicationPressReleaseView({ publication }: { publication: CmsPublicationItem }) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const html = publication.body?.trim() ?? ''
+  const html = normalizePublicationBodyToLegacy(
+    sanitizePublicationBodyHtml(publication.body ?? '').trim(),
+  )
 
   useEffect(() => {
     const video = videoRef.current
@@ -85,6 +89,11 @@ export default function PublicationPressReleaseView({ publication }: { publicati
                     ) : null}
                   </div>
                 )}
+                <div className="press-release-back">
+                  <Link href="/publications" className="vl-btn1 publication-back-btn">
+                    <i className="fa-solid fa-arrow-left" /> Back to Publications
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

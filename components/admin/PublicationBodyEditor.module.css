@@ -1,0 +1,118 @@
+.wrap {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.wrap.disabled {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #f8f9fb;
+}
+
+.toolbar button {
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+  border: 1px solid #c9ced8;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1e2230;
+  min-height: 30px;
+  min-width: 34px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.toolbar button:hover:not(:disabled) {
+  background: #eef2f8;
+  color: #111827;
+  border-color: #aeb6c4;
+}
+
+.toolbar button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  color: #667085;
+}
+
+.toolbarBtnActive {
+  background: #dde5ff;
+  border-color: #7487ce;
+  color: #1a245f;
+}
+
+.editorShell {
+  min-height: 240px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.proseMirror {
+  outline: none;
+  padding: 14px 16px;
+  min-height: 220px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #1a1a1a;
+}
+
+.proseMirror p {
+  margin: 0 0 0.75em;
+}
+
+.proseMirror h2 {
+  font-size: 1.35rem;
+  margin: 1em 0 0.5em;
+  font-weight: 700;
+}
+
+.proseMirror h3 {
+  font-size: 1.15rem;
+  margin: 1em 0 0.5em;
+  font-weight: 600;
+}
+
+.proseMirror ul,
+.proseMirror ol {
+  padding-left: 1.4em;
+  margin: 0 0 0.75em;
+}
+
+.proseMirror blockquote {
+  margin: 0 0 0.75em;
+  padding-left: 1em;
+  border-left: 3px solid #ccc;
+  color: #444;
+}
+
+.inlineImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 0.5em 0;
+}
+
+.loading {
+  padding: 24px;
+  color: #666;
+  font-size: 14px;
+}
+
+.hiddenFile {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}

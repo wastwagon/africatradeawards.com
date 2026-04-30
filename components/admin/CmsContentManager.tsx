@@ -11,6 +11,7 @@ import {
 } from '@/lib/cms-defaults'
 import type { AdminCmsEditorBundle } from '@/lib/cms-content'
 import Image from 'next/image'
+import PublicationBodyEditor from '@/components/admin/PublicationBodyEditor'
 import { normalizePublicationDateTextForState } from '@/lib/cms-publication-date'
 import { normalizePublicationSlug, publicationHrefFromSlug } from '@/lib/cms-publication-slug'
 import { useEffect, useState } from 'react'
@@ -503,17 +504,20 @@ export default function CmsContentManager({ initialBundle }: { initialBundle?: A
                   setPublications((current) => current.map((x, i) => (i === index ? { ...x, excerpt: e.target.value } : x)))
                 }
               />
-              <label className="admin-form__label">Article body (HTML)</label>
+              <label className="admin-form__label">Article body</label>
               <p className="admin-muted" style={{ marginTop: 0 }}>
-                Trusted HTML only. Renders below the headline on the public press release page.
+                Use the toolbar for headings, lists, links, and images. This is the main story below the press release
+                headline on the public page.
               </p>
-              <textarea
-                className="admin-form__input"
-                style={{ minHeight: 220, fontFamily: 'ui-monospace, monospace', fontSize: 13 }}
-                rows={14}
+              <p className="admin-muted" style={{ marginTop: -6 }}>
+                Note: the public page applies legacy publication styling automatically (image framing, tier/contact blocks,
+                and consistent typography) after save.
+              </p>
+              <PublicationBodyEditor
                 value={item.body ?? ''}
-                onChange={(e) =>
-                  setPublications((current) => current.map((x, i) => (i === index ? { ...x, body: e.target.value } : x)))
+                disabled={saving}
+                onChange={(html) =>
+                  setPublications((current) => current.map((x, i) => (i === index ? { ...x, body: html } : x)))
                 }
               />
               <div className="admin-split-grid">
