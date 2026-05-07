@@ -28,13 +28,12 @@ const swiperOptions = {
 const eventOpenAtMs = new Date('2026-01-28T18:30:00+00:00').getTime()
 
 export default function HeroSection() {
-	const { eventLiveStreamEnabled, eventLiveStreamTitle, heroBarDateLine, heroBarVenueLine } = useSiteConfig()
+	const { eventLiveStreamEnabled, eventLiveStreamTitle } = useSiteConfig()
 	const [secondsLeft, setSecondsLeft] = useState(0)
 	const liveAria =
 		eventLiveStreamTitle.trim().length > 0
 			? `${eventLiveStreamTitle.trim()} — open live page`
 			: 'Watch live stream'
-	const heroDateVenueLine = `${heroBarDateLine.trim() || '28–29 January 2026'} · ${heroBarVenueLine.trim() || 'Accra, Ghana'}`
 	useEffect(() => {
 		const tick = () => {
 			const diff = Math.max(0, Math.floor((eventOpenAtMs - Date.now()) / 1000))
@@ -79,7 +78,6 @@ export default function HeroSection() {
 
 			<div className="hero-banner-overlay" aria-hidden="false">
 				<div className="container hero-banner-overlay-inner">
-					<p className="hero-banner-eyebrow">{heroDateVenueLine}</p>
 					<h1 className="hero-banner-heading">Africa Trade Awards 2026</h1>
 					<p className="hero-banner-tagline">
 						The continent&apos;s trade leaders, institutions, and finalists gather in Accra for two days — one summit
@@ -237,11 +235,17 @@ export default function HeroSection() {
 						min-height: 410px;
 						max-height: none;
 					}
-					.hero-banner-slider-nav { width: 44px; height: 44px; }
+					.hero-banner-slider-nav {
+						width: 44px;
+						height: 44px;
+						top: auto;
+						bottom: 14px;
+						transform: none;
+					}
 					.hero-banner-slider-nav i { font-size: 16px; }
 					.hero-banner-slider-prev { left: 14px; }
 					.hero-banner-slider-next { right: 14px; }
-					.hero-banner-slider-pagination { bottom: 20px; }
+					.hero-banner-slider-pagination { bottom: 14px; }
 				}
 
 				.hero-banner-overlay {
@@ -438,7 +442,7 @@ export default function HeroSection() {
 				}
 				@media (max-width: 575px) {
 					.hero-banner-overlay {
-						padding: 0 12px 84px;
+						padding: 0 12px 112px;
 						align-items: flex-end;
 					}
 					.hero-banner-eyebrow {

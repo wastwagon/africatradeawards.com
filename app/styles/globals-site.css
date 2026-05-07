@@ -454,15 +454,38 @@
 }
 
 /* Update breadcrumb styling to reduce purple dominance */
+.inner-page-header .public-page-hero__breadcrumbs {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 auto;
+}
+
+.inner-page-header .public-page-hero__breadcrumbs i {
+	color: rgba(255, 255, 255, 0.86);
+	font-size: 0.85rem;
+	line-height: 1;
+}
+
 .inner-page-header .heading1 a .breadcrumb-home,
-.inner-page-header .heading1 a .breadcrumb-current {
+.inner-page-header .heading1 .breadcrumb-current {
 	background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(192, 192, 192, 0.08) 100%) !important;
 	border: 1px solid rgba(255, 255, 255, 0.25) !important;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+	border-radius: 999px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 40px;
+	padding: 0 18px;
+	color: #fff !important;
+	font-weight: 700;
+	letter-spacing: 0.02em;
 }
 
-.inner-page-header .heading1 a:hover .breadcrumb-home,
-.inner-page-header .heading1 a:hover .breadcrumb-current {
+.inner-page-header .heading1 a:hover .breadcrumb-home {
 	background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.18) 50%, rgba(192, 192, 192, 0.12) 100%) !important;
 	border-color: rgba(255, 255, 255, 0.35) !important;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;

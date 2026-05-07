@@ -52,21 +52,21 @@ export default function PublicPageHero({
 					<div className="col-lg-8 m-auto">
 						<div className="heading1 text-center public-page-hero__content">
 							<div className="space20" />
-							<Link href="/">
-								<span className="breadcrumb-home">Home</span>
-							</Link>
-							{parentLabel && parentHref ? (
-								<>
-									{' '}
-									<i className="fa-solid fa-angle-right" />{' '}
-									<Link href={parentHref}>
-										<span className="breadcrumb-home">{parentLabel}</span>
-									</Link>
-								</>
-							) : null}
-							{' '}
-							<i className="fa-solid fa-angle-right" />{' '}
-							<span className="breadcrumb-current">{currentLabel}</span>
+							<nav className="public-page-hero__breadcrumbs" aria-label="Breadcrumb">
+								<Link href="/">
+									<span className="breadcrumb-home">Home</span>
+								</Link>
+								{parentLabel && parentHref ? (
+									<>
+										<i className="fa-solid fa-angle-right" aria-hidden />
+										<Link href={parentHref}>
+											<span className="breadcrumb-home">{parentLabel}</span>
+										</Link>
+									</>
+								) : null}
+								<i className="fa-solid fa-angle-right" aria-hidden />
+								<span className="breadcrumb-current">{currentLabel}</span>
+							</nav>
 							<div className="space16" />
 							<h1 className="text-white public-page-hero__title">{title}</h1>
 							{subtitle ? (

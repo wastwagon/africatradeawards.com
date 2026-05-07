@@ -3,7 +3,9 @@ import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import PublicPageHero from '@/components/sections/PublicPageHero'
+import { galleryImages } from '@/data/gallery'
 export default function Memories() {
+	const memoryImages = galleryImages.slice(0, 9)
 
 	return (
 		<>
@@ -14,147 +16,30 @@ export default function Memories() {
 						title="Recent Memories"
 						currentLabel="Recent Memories"
 						subtitle="A curated visual archive of key moments from the summit and awards experience."
+						useVideo={false}
 					/>
 					{/*===== HERO AREA ENDS =======*/}
 					{/*===== MEMORY AREA STARTS =======*/}
 					<div className="memory-inner-section-area sp1">
 						<div className="container">
 							<div className="row">
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img4.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
+								{memoryImages.map((image, index) => (
+									<div key={image} className="col-lg-4 col-md-6">
+										<div className="memory3-boxarea">
+											<div className="img1">
+												<Image src={image} alt={`Africa Trade Awards memory ${index + 1}`} width={800} height={600} />
+											</div>
+											<div className="content-area">
+												<p>Africa Trade Awards 2026</p>
+												<div className="space12" />
+												<Link href="/event-single">Awards Night Highlights</Link>
+												<div className="plus">
+													<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img5.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img6.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img7.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img8.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img9.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img10.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img11.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-4 col-md-6">
-									<div className="memory3-boxarea">
-										<div className="img1">
-											<Image src="/assets/img/all-images/memory/memory-img12.png" alt="" width={800} height={600} />
-										</div>
-										<div className="content-area">
-											<p>Africa Trade Awards 2026</p>
-											<div className="space12" />
-											<Link href="/event-single">Awards Night Highlights</Link>
-											<div className="plus">
-												<Link href="/event-single"><i className="fa-solid fa-plus" /></Link>
-											</div>
-										</div>
-									</div>
-								</div>
+								))}
 								<div className="space30" />
 								<div className="pagination-area">
 									<nav aria-label="Page navigation example">
@@ -232,6 +117,29 @@ export default function Memories() {
 						</div>
 					</div>
 				</div>
+				<style jsx global>{`
+					.inner-page-header {
+						background:
+							linear-gradient(135deg, rgba(22, 15, 29, 0.88) 0%, rgba(78, 43, 90, 0.78) 42%, rgba(201, 160, 99, 0.32) 100%),
+							url('/assets/img/all-images/hero/hero-bg1.png') center/cover no-repeat;
+					}
+					.memory-inner-section-area {
+						background: linear-gradient(180deg, #f8f3ec 0%, #f2ecf6 100%);
+					}
+					.memory-inner-section-area .memory3-boxarea .content-area {
+						background: linear-gradient(90deg, #4e2b5a 0%, #6a3f84 52%, #c9a063 100%);
+					}
+					.memory-inner-section-area .memory3-boxarea .content-area p {
+						color: rgba(255, 255, 255, 0.82);
+					}
+					.memory-inner-section-area .memory3-boxarea .content-area a {
+						color: #fff;
+					}
+					.memory-inner-section-area .memory3-boxarea .content-area .plus a {
+						background: #fff;
+						color: #4e2b5a;
+					}
+				`}</style>
 
 			</Layout>
 		</>
