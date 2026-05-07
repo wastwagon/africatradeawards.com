@@ -1,3 +1,5 @@
+ 'use client'
+
 import Image from "next/image"
 import Countdown from '@/components/elements/Countdown'
 import Layout from "@/components/layout/Layout"
