@@ -13,7 +13,8 @@ export default function AwardeesCTASection() {
 							<h2 className="awards-title-compact">Recognition Honours 2026</h2>
 							<div className="space16" />
 							<p className="awards-intro-compact">
-								See the individuals, institutions, and initiatives recognised for contributions that moved Africa&apos;s trade and industry forward.
+								You have followed the story from purpose to programme to partners — step into the room, or spend time with
+								the people and institutions already honoured for moving Africa&apos;s trade and industry forward.
 							</p>
 							<div className="space24" />
 							<div className="awardees-cta-actions">

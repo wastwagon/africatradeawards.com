@@ -115,7 +115,7 @@ export default function About() {
 					{/*===== RECOGNITION PROCESS & GOVERNANCE CARDS AREA ENDS =======*/}
 					
 					{/*===== RECOGNITION & VALIDATION COMMITTEE TEXT SECTION =======*/}
-					<div className="committee-text-section">
+					<div className="committee-text-section" id="committee">
 						<div className="container">
 							<div className="row">
 								<div className="col-lg-10 m-auto">

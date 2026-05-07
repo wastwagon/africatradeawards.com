@@ -4,32 +4,32 @@ import Link from 'next/link'
 
 const cards = [
   {
-    href: '/nominate/',
-    title: 'Nominations',
-    body: 'Submit and manage award nominations with clear progress tracking from intake to validation.',
-    icon: 'fa-solid fa-user-plus',
-    cta: 'Nominate now',
+    href: '/event/register/',
+    title: 'Get your pass',
+    body: 'Save your spot, plan your evening, and join the room where the story happens.',
+    icon: 'fa-solid fa-ticket',
+    cta: 'Register',
   },
   {
     href: '/vote/',
-    title: 'Public Voting',
-    body: 'Enable audience participation with secure verification and anti-fraud checks built into the flow.',
-    icon: 'fa-solid fa-list-check',
-    cta: 'Cast vote',
+    title: 'Cheer for finalists',
+    body: 'Cast your public vote and help the audience voice land on stage.',
+    icon: 'fa-solid fa-heart',
+    cta: 'Vote',
+  },
+  {
+    href: '/nominate/',
+    title: 'Put names forward',
+    body: 'Recognise the teams and leaders who should be in the running this season.',
+    icon: 'fa-solid fa-user-plus',
+    cta: 'Nominate',
   },
   {
     href: '/portal/entrant/',
-    title: 'Entrant Workspace',
-    body: 'Entrants can draft submissions, upload evidence, and monitor review decisions in one dashboard.',
+    title: 'Entrant hub',
+    body: 'For organisations in the running: submit, track, and stay ready for show week.',
     icon: 'fa-solid fa-pen-to-square',
-    cta: 'Open portal',
-  },
-  {
-    href: '/login/',
-    title: 'Judging & Operations',
-    body: 'A single sign-in routes judges, staff, and administrators to role-specific workflows and controls.',
-    icon: 'fa-solid fa-user-shield',
-    cta: 'Access dashboard',
+    cta: 'Open hub',
   },
 ] as const
 
@@ -39,13 +39,13 @@ export default function EngagePlatformSection() {
       <div className="engage-platform-bg" aria-hidden />
       <div className="container">
         <div className="engage-platform-head text-center" data-aos="fade-up" data-aos-duration={600}>
-          <p className="engage-platform-eyebrow">Core platform services</p>
+          <p className="engage-platform-eyebrow">How to take part</p>
           <h2 id="engage-platform-heading" className="engage-platform-title">
-            Everything needed to run a premium awards programme
+            From the first invitation to the final applause
           </h2>
           <p className="engage-platform-intro">
-            This is the operational layer behind the public brand experience: nominee intake, entrant submissions,
-            judging, voting, and role-based administration.
+            Judging is independent and evidence-led — your journey starts here. Register, vote, nominate, or manage an entry:
+            these are the doors people walk through to join the Africa Trade Awards story.
           </p>
         </div>
         <div className="row g-4 engage-platform-row">

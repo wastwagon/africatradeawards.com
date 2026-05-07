@@ -82,13 +82,13 @@ export default function HeroSection() {
 					<p className="hero-banner-eyebrow">{heroDateVenueLine}</p>
 					<h1 className="hero-banner-heading">Africa Trade Awards 2026</h1>
 					<p className="hero-banner-tagline">
-						A two-day celebration of Africa&apos;s top trade leaders, finalists, and institutions - live in Accra with
-						programme sessions, recognition moments, and audience voting.
+						The continent&apos;s trade leaders, institutions, and finalists gather in Accra for two days — one summit
+						programme, one gala night, audience voting, and recognition on the main stage.
 					</p>
 					<div className="hero-banner-highlights" aria-label="Event highlights">
-						<span>Live programme</span>
-						<span>Recognition night</span>
-						<span>Industry networking</span>
+						<span>Summit programme</span>
+						<span>Gala &amp; recognition</span>
+						<span>Voting &amp; networking</span>
 					</div>
 					<div className="hero-banner-countdown" aria-label="Time remaining to event opening">
 						<div className="hero-banner-countdown-item">
@@ -110,7 +110,10 @@ export default function HeroSection() {
 					</div>
 					<div className="hero-banner-actions">
 						<Link href="/event/register/" className="hero-banner-cta hero-banner-btn-primary">
-							Register now
+							Reserve your seat
+						</Link>
+						<Link href="/event/" className="hero-banner-cta hero-banner-btn-secondary">
+							Review programme
 						</Link>
 						{eventLiveStreamEnabled ? (
 							<Link
@@ -122,12 +125,10 @@ export default function HeroSection() {
 								Watch live
 							</Link>
 						) : null}
-						<Link href="/portal/entrant/" className="hero-banner-cta hero-banner-btn-secondary">
-							Enter your submission
-						</Link>
-						<Link href="/event/" className="hero-banner-cta hero-banner-btn-secondary">
-							View programme
-						</Link>
+					</div>
+					<div className="hero-banner-tertiary-links" aria-label="Additional actions">
+						<Link href="/portal/entrant/">Entrants: open submission portal</Link>
+						<Link href="/nominate/">Submit a nomination</Link>
 					</div>
 				</div>
 			</div>
@@ -359,6 +360,24 @@ export default function HeroSection() {
 					align-items: center;
 					animation: heroHeadingRise 0.95s ease-out both;
 				}
+				.hero-banner-tertiary-links {
+					margin-top: 12px;
+					display: flex;
+					flex-wrap: wrap;
+					gap: 10px 16px;
+					justify-content: center;
+				}
+				.hero-banner-tertiary-links :global(a) {
+					font-family: var(--figtree), system-ui, sans-serif;
+					font-size: 0.82rem;
+					font-weight: 600;
+					color: rgba(255, 255, 255, 0.88);
+					text-decoration: underline;
+					text-underline-offset: 3px;
+				}
+				.hero-banner-tertiary-links :global(a):hover {
+					color: #fff;
+				}
 				/* Shrink to label width — avoid full-width in column flex / stretched layouts */
 				.hero-banner-actions > :global(a) {
 					flex: 0 0 auto;
@@ -478,6 +497,9 @@ export default function HeroSection() {
 					.hero-banner-actions > :global(a) {
 						flex: 1 1 calc(50% - 8px);
 						min-width: 136px;
+					}
+					.hero-banner-tertiary-links :global(a) {
+						font-size: 0.74rem;
 					}
 				}
 				@media (max-width: 413px) {

@@ -31,6 +31,19 @@ export default function EventDateVenueBar() {
 						</a>
 					</div>
 				</div>
+				<p className="event-date-venue-tagline">
+					<span className="event-date-venue-tagline__part">Accra</span>
+					<span className="event-date-venue-tagline__sep" aria-hidden="true">
+						{' '}
+						·{' '}
+					</span>
+					<span className="event-date-venue-tagline__part">Two days</span>
+					<span className="event-date-venue-tagline__sep" aria-hidden="true">
+						{' '}
+						·{' '}
+					</span>
+					<span className="event-date-venue-tagline__part">Summit &amp; gala</span>
+				</p>
 			</div>
 			<style jsx>{`
 				.event-date-venue-bar {
@@ -131,6 +144,23 @@ export default function EventDateVenueBar() {
 					gap: 8px;
 					flex-shrink: 0;
 				}
+				.event-date-venue-tagline {
+					margin: 10px 0 0;
+					padding-top: 10px;
+					border-top: 1px solid rgba(94, 59, 138, 0.14);
+					text-align: center;
+					font-family: var(--grotesk), serif;
+					font-size: 10px;
+					font-weight: 700;
+					letter-spacing: 0.14em;
+					text-transform: uppercase;
+					color: rgba(94, 59, 138, 0.72);
+					line-height: 1.45;
+				}
+				.event-date-venue-tagline__sep {
+					font-weight: 600;
+					opacity: 0.65;
+				}
 				.event-date-venue-cta {
 					display: inline-flex;
 					align-items: center;
@@ -165,6 +195,10 @@ export default function EventDateVenueBar() {
 					background: rgba(255, 255, 255, 0.85);
 				}
 				@media (min-width: 576px) {
+					.event-date-venue-tagline {
+						font-size: 10.5px;
+						letter-spacing: 0.16em;
+					}
 					.event-date-venue-bar {
 						padding: 12px 20px;
 						max-width: 560px;
@@ -210,6 +244,11 @@ export default function EventDateVenueBar() {
 					}
 				}
 				@media (min-width: 992px) {
+					.event-date-venue-tagline {
+						font-size: 11px;
+						margin-top: 12px;
+						padding-top: 12px;
+					}
 					.event-date-venue-bar {
 						padding: 14px 0;
 						max-width: none;

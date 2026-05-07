@@ -54,7 +54,10 @@ export default function AwardCategoriesSection() {
 						<div className="awards-header-compact text-center" data-aos="fade-up" data-aos-duration={800}>
 							<h2 className="awards-title-compact">Tiered Recognition Framework</h2>
 							<div className="space16" />
-							<p className="awards-intro-compact">Five clear tiers spotlight where trade impact happens - from policy to industry to enterprise execution.</p>
+							<p className="awards-intro-compact">
+								That mission becomes structured recognition: five tiers spotlight where trade impact happens — from policy and
+								continental leadership to industry, enterprise execution, and distinguished honour.
+							</p>
 						</div>
 					</div>
 				</div>

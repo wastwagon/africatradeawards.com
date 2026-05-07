@@ -39,6 +39,7 @@ export default function Header1({ scroll }: Header1Props) {
 		isActive('/sponsors-partners') ||
 		isActive('/gallery') ||
 		isActive('/publications') ||
+		isActive('/press') ||
 		isActive('/faq') ||
 		(eventLiveStreamEnabled && isActive('/live'))
 
@@ -90,6 +91,9 @@ export default function Header1({ scroll }: Header1Props) {
 										</li>
 										<li>
 											<Link href="/publications">Publications</Link>
+										</li>
+										<li>
+											<Link href="/press">Press &amp; media</Link>
 										</li>
 										<li>
 											<Link href="/faq">FAQs</Link>

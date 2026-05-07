@@ -54,6 +54,7 @@ export default function Footer1({ supportEmail = DEFAULT_SUPPORT, showLiveStream
 									<li><Link href="/awardees">Awardees</Link></li>
 									<li><Link href="/gallery">Gallery</Link></li>
 									<li><Link href="/publications">Publications</Link></li>
+									<li><Link href="/press">Press &amp; media</Link></li>
 									<li><Link href="/faq">FAQs</Link></li>
 									<li><Link href="/nominate">Nominate</Link></li>
 									<li><Link href="/vote">Public Vote</Link></li>

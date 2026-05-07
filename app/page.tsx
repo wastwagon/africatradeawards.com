@@ -1,112 +1,64 @@
 import Layout from "@/components/layout/Layout"
 import HeroSection from '@/components/sections/home1/HeroSection'
 import EventDateVenueBar from '@/components/sections/home1/EventDateVenueBar'
+import PremiumAttendanceSection from '@/components/sections/home1/PremiumAttendanceSection'
+import PremiumTrustStrip from '@/components/sections/home1/PremiumTrustStrip'
+import EventExperienceStrip from '@/components/sections/home1/EventExperienceStrip'
 import AboutSection from '@/components/sections/home1/AboutSection'
 import KudosStatsSection from '@/components/sections/home1/KudosStatsSection'
 import EngagePlatformSection from '@/components/sections/home1/EngagePlatformSection'
 import AwardCategoriesSection from '@/components/sections/home1/AwardCategoriesSection'
 import KudosTestimonialsSection from '@/components/sections/home1/KudosTestimonialsSection'
 import AwardeesCTASection from '@/components/sections/home1/AwardeesCTASection'
-import CommitteeProfiles from '@/components/sections/CommitteeProfiles'
 import GallerySection from '@/components/sections/home1/GallerySection'
+import HeadlineTalentScheduleSection from '@/components/sections/home1/HeadlineTalentScheduleSection'
 import SponsorsSection from '@/components/sections/SponsorsSection'
+import VenuePressStrip from '@/components/sections/home1/VenuePressStrip'
 
 /**
- * Homepage content flow (audience journey):
- * 1. Hero + Event bar + Engage hub — Attention, when/where, direct links to vote / entry / sign-in
- * 2. About — Understanding: what the awards are
- * 3. Award structure — Understanding: how recognition is organized
- * 4. Awardees CTA — Recognition intro + CTA to awardees page
- * 5. Gallery — Proof & emotion: moments from the event
- * 6. Committee — Trust: who validates the outcomes
- * 7. Sponsors — Support: who backs the awards
+ * Homepage narrative (read top to bottom):
+ * Occasion → Meaning → Framework → Experience preview (gallery → committee & schedule → navigate) → Scale →
+ * Your paths (engage) → Voices (testimonials) → Show up & tell the story
+ * (venue / press) → Coalition (sponsors) → Closing invitation (register / awardees).
  */
 
 export default function Home() {
 	return (
 		<>
 			<Layout>
-				{/* 1. Attention */}
+				{/* Occasion: when, where, primary actions */}
 				<HeroSection />
 				<EventDateVenueBar />
+				<PremiumTrustStrip />
+				<PremiumAttendanceSection />
 
-				{/* 2. Framework */}
-				<AwardCategoriesSection />
-
-				{/* 3. Proof & emotion: event moments */}
-				<GallerySection />
-
-				{/* 4. Story */}
+				{/* Meaning: why the awards exist (before the tier framework) */}
 				<AboutSection />
 
-				{/* 5. Proof */}
+				{/* Framework: what we recognise */}
+				<AwardCategoriesSection />
+
+				{/* Experience preview: feel → voices & rhythm → deeper pages */}
+				<GallerySection />
+				<HeadlineTalentScheduleSection />
+				<EventExperienceStrip />
+
+				{/* Scale of the movement */}
 				<KudosStatsSection />
 
-				{/* 6. Platform services */}
+				{/* Participation: register, vote, nominate, entrant hub */}
 				<EngagePlatformSection />
 
-				{/* 7. Trust: who validates */}
-				<div className="committee-text-section">
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-10 m-auto">
-								<div className="committee-text-content">
-									<h2 className="committee-text-title">Recognition & Validation Committee</h2>
-									<div className="space16" />
-									<p className="committee-text-description">The Recognition & Validation Committee is responsible for reviewing and validating all recognition decisions under the Africa Trade Awards. The Committee comprises senior professionals drawn from trade, finance, industry, infrastructure, and public policy, selected for their experience in evaluating complex institutional, commercial, and policy outcomes.</p>
-									<div className="space24" />
-									<h3 className="committee-text-subtitle">The Committee&apos;s role includes:</h3>
-									<div className="space16" />
-									<div className="committee-roles-grid-cards">
-										<div className="committee-role-card">
-											<div className="role-icon-box">
-												<i className="fa-solid fa-check"></i>
-											</div>
-											<p className="role-card-text">Reviewing evidence of contribution and impact within the reference period</p>
-										</div>
-										<div className="committee-role-card">
-											<div className="role-icon-box">
-												<i className="fa-solid fa-check"></i>
-											</div>
-											<p className="role-card-text">Assessing relevance, scale, and durability of outcomes</p>
-										</div>
-										<div className="committee-role-card">
-											<div className="role-icon-box">
-												<i className="fa-solid fa-check"></i>
-											</div>
-											<p className="role-card-text">Ensuring consistency across recognition tiers and categories</p>
-										</div>
-										<div className="committee-role-card">
-											<div className="role-icon-box">
-												<i className="fa-solid fa-check"></i>
-											</div>
-											<p className="role-card-text">Safeguarding the integrity and intent of the Awards</p>
-										</div>
-									</div>
-									<div className="space24" />
-									<p className="committee-text-footer">Recognition decisions are reached through deliberation and professional judgment, guided by the Awards&apos; principles and scope.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className="committee-banner-section">
-					<div className="container">
-						<div className="row">
-							<div className="col-12">
-								<CommitteeProfiles />
-							</div>
-						</div>
-					</div>
-				</div>
-
-				{/* 8. Social proof */}
+				{/* Social proof after paths are clear */}
 				<KudosTestimonialsSection />
 
-				{/* 9. Support: partners & sponsors */}
+				{/* Venue, hashtag, press desk */}
+				<VenuePressStrip />
+
+				{/* Coalition */}
 				<SponsorsSection />
 
-				{/* 10. Recognition CTA */}
+				{/* Closing invitation */}
 				<AwardeesCTASection />
 			</Layout>
 		</>

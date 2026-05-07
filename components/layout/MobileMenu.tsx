@@ -105,6 +105,11 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 										</Link>
 									</li>
 									<li>
+										<Link href="/press" onClick={handleMobileMenu}>
+											Press &amp; media
+										</Link>
+									</li>
+									<li>
 										<Link href="/faq" onClick={handleMobileMenu}>
 											FAQs
 										</Link>

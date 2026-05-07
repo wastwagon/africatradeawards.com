@@ -13,9 +13,11 @@ export default function GallerySection() {
 				<div className="row">
 					<div className="col-lg-10 m-auto">
 						<div className="home-gallery-header awards-header-compact text-center" data-aos="fade-up" data-aos-duration={600}>
-							<h2 className="awards-title-compact">Event Highlights</h2>
+							<h2 className="awards-title-compact">The night in motion</h2>
 							<div className="space16" />
-							<p className="awards-intro-compact">Moments from stage, audience, and recognition night.</p>
+							<p className="awards-intro-compact">
+								See how those tiers come alive — stagecraft, audience energy, and the recognition moment itself.
+							</p>
 						</div>
 						<div className="home-gallery-slider-wrap" data-aos="fade-up" data-aos-duration={800} data-aos-delay={150}>
 							<GallerySlider

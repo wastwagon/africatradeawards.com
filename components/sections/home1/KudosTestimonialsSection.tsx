@@ -2,19 +2,19 @@
 
 const testimonials = [
 	{
-		name: 'Programme Partner',
+		name: 'Awards guest',
 		quote:
-			'The platform made stakeholder coordination straightforward, from nomination intake through final recognition publishing.',
+			'The energy in the room felt electric - a real celebration of what trade can do when it is done with purpose.',
 	},
 	{
-		name: 'Committee Member',
+		name: 'Finalist team',
 		quote:
-			'Review workflows are clearer and faster. Evidence, scoring context, and decision tracking are all in one place.',
+			'Walking the stage was unforgettable. The production, pacing, and recognition moment felt world-class.',
 	},
 	{
-		name: 'Entrant Organisation',
+		name: 'Partner delegate',
 		quote:
-			'Submission and status tracking felt professional end-to-end. The process gave us confidence in fairness and transparency.',
+			'It is rare to be in a room where policy, industry, and community show up with the same level of intent.',
 	},
 ] as const
 
@@ -23,10 +23,14 @@ export default function KudosTestimonialsSection() {
 		<section className="kudos-testimonials-section" aria-labelledby="kudos-testimonials-heading">
 			<div className="container">
 				<div className="kudos-testimonials-head text-center" data-aos="fade-up" data-aos-duration={700}>
-					<p className="kudos-testimonials-eyebrow">Testimonials</p>
+					<p className="kudos-testimonials-eyebrow">In the room</p>
 					<h2 id="kudos-testimonials-heading" className="kudos-testimonials-title">
-						Trusted by entrants, partners, and reviewers
+						What people remember after the night ends
 					</h2>
+					<p className="kudos-testimonials-intro">
+						Paths are open and the process is clear — here is what stays with guests, finalists, and partners once the lights
+						go down.
+					</p>
 				</div>
 				<div className="row g-4">
 					{testimonials.map((item, index) => (

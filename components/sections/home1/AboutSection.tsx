@@ -25,10 +25,21 @@ export default function AboutSection() {
 					</div>
 					<div className="col-lg-6">
 						<div className="overview-content">
+							<div className="overview-badge" data-aos="fade-up" data-aos-duration={700}>
+								<span>The occasion</span>
+							</div>
+							<div className="space16" />
+							<h2 className="overview-heading" data-aos="fade-up" data-aos-duration={750}>
+								Why we gather in one room
+							</h2>
+							<div className="space16" />
 							<div className="overview-description" data-aos="fade-up" data-aos-duration={900}>
 								<p>Africa Trade Awards 2026 brings together the continent&apos;s most impactful trade leaders, institutions, and enterprise achievements.</p>
 								<div className="space12" />
-								<p>From nominations to judging, audience voting, and the live ceremony, every touchpoint is designed as one seamless event experience.</p>
+								<p>
+									From the first nomination to the last ovation, judging, public vote, and live ceremony are woven into one
+									seamless occasion — built for clarity, theatre, and shared celebration.
+								</p>
 							</div>
 							<div className="space24" />
 							<div className="btn-area1" data-aos="fade-up" data-aos-duration={1000}>
