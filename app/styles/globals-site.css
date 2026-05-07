@@ -2,6 +2,35 @@
    Migrated to main.css: _faq-and-modern-contact, _about-committee-partners, _section-padding-and-awards, _sponsors, _home-section-tweaks, _recognition-governance.
    Theme: --ztc-* in main.css; fonts: --figtree (Outfit) / --grotesk (Cormorant Garamond); semantic: app/design-tokens.css */
 
+/* Accessibility: keep skip link, hide unless keyboard-focused */
+.skip-to-content {
+	position: absolute;
+	left: -9999px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+	left: 16px;
+	top: 12px;
+	width: auto;
+	height: auto;
+	overflow: visible;
+	white-space: normal;
+	z-index: 100000;
+	padding: 10px 14px;
+	border-radius: 10px;
+	background: linear-gradient(135deg, #4e2b5a 0%, #6a3f84 100%);
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+	box-shadow: 0 8px 24px rgba(22, 15, 20, 0.26);
+}
+
 /* Reduce hero section height for less top spacing */
 .hero1-section-area {
 	min-height: 85vh !important;
