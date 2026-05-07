@@ -147,13 +147,13 @@ export default function AdminEntriesPage() {
   return (
     <main className="admin-page--wide">
       <AdminPageHeader
-        title="Entries and judging"
-        description="Assign judges and move entries through review outcomes."
+        title="Review Entries & Assign Judges"
+        description="Assign judges and manage entry review outcomes."
       />
       {error ? <p className="admin-error">{error}</p> : null}
       {message ? <p className="admin-ok">{message}</p> : null}
 
-      <AdminSection title="Assign judge">
+      <AdminSection title="Assign judges">
         <form onSubmit={assignJudge} className="admin-form">
           <select value={selectedEntryId} onChange={(e) => setSelectedEntryId(e.target.value)} required>
             <option value="">Select entry</option>

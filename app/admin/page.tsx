@@ -30,7 +30,7 @@ export default async function AdminPage() {
     <main>
       <AdminPageHeader
         eyebrow="Overview"
-        title="Admin console"
+        title="Admin Dashboard"
         description={
           auditor
             ? "Auditor access: read-only exports, voting analytics, judging summaries, and quarantine review (no approvals)."

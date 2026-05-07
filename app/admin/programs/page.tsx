@@ -173,13 +173,18 @@ export default function AdminProgramsPage() {
 
   return (
     <main>
-      <AdminPageHeader title="Programs" description="Create programs, seasons and categories." />
+      <AdminPageHeader title="Programs & Categories" description="Set up programs, seasons, and categories." />
       {error ? <p className="admin-error">{error}</p> : null}
 
       <AdminSection title="Create program">
         <form onSubmit={createProgram} className="admin-form">
           <input placeholder="Program name" value={programName} onChange={(e) => setProgramName(e.target.value)} required />
-          <input placeholder="program-slug" value={programSlug} onChange={(e) => setProgramSlug(e.target.value)} required />
+          <input
+            placeholder="Program web address name (e.g., africa-trade-awards)"
+            value={programSlug}
+            onChange={(e) => setProgramSlug(e.target.value)}
+            required
+          />
           <textarea
             placeholder="Description (optional)"
             value={programDescription}
@@ -203,7 +208,7 @@ export default function AdminProgramsPage() {
 
       <section className="admin-split-grid">
         <div className="admin-panel">
-          <h2>Seasons</h2>
+          <h2>Event Timeline</h2>
           <form onSubmit={createSeason} className="admin-form">
             <input
               type="number"
