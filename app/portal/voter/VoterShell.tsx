@@ -88,7 +88,7 @@ export default function VoterShell({
               />
             </Link>
             <p className="admin-shell__kicker">Public vote</p>
-            <h2 className="admin-shell__title">Voter hub</h2>
+            <h2 className="admin-shell__title">Voter Dashboard</h2>
           </div>
           <p className="admin-shell__user">
             <span className="admin-shell__user-label">Signed in as</span>

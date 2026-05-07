@@ -104,7 +104,7 @@ export default function AdminSidebar({
             />
           </Link>
           <p className="admin-shell__kicker">Awards platform</p>
-          <h2 className="admin-shell__title">Admin console</h2>
+          <h2 className="admin-shell__title">Admin Dashboard</h2>
         </div>
         <p className="admin-shell__user">
           <span className="admin-shell__user-label">Signed in as</span>

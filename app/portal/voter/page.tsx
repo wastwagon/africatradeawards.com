@@ -63,7 +63,7 @@ export default function VoterPortalPage() {
   return (
     <div className="admin-page--wide">
       <AdminPageHeader
-        eyebrow="Voter hub"
+        eyebrow="Voter Dashboard"
         title="Your votes and standings"
         description="Votes cast while you were signed in to this voter account appear here. Rank compares validated public votes within each category (shortlisted and winning entries)."
         actions={

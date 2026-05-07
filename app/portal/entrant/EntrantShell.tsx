@@ -96,7 +96,7 @@ export default function EntrantShell({
               />
             </Link>
             <p className="admin-shell__kicker">Entrant workspace</p>
-            <h2 className="admin-shell__title">Program portal</h2>
+            <h2 className="admin-shell__title">Entrant Dashboard</h2>
           </div>
           <p className="admin-shell__user">
             <span className="admin-shell__user-label">Signed in as</span>

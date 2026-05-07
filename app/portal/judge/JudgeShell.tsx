@@ -91,7 +91,7 @@ export default function JudgeShell({
               />
             </Link>
             <p className="admin-shell__kicker">Judging</p>
-            <h2 className="admin-shell__title">Judge workspace</h2>
+            <h2 className="admin-shell__title">Judge Dashboard</h2>
           </div>
           <p className="admin-shell__user">
             <span className="admin-shell__user-label">Signed in as</span>

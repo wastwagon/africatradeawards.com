@@ -92,7 +92,7 @@ export default function NominatorShell({
               />
             </Link>
             <p className="admin-shell__kicker">Nominations</p>
-            <h2 className="admin-shell__title">Nominator portal</h2>
+            <h2 className="admin-shell__title">Nominator Dashboard</h2>
           </div>
           <p className="admin-shell__user">
             <span className="admin-shell__user-label">Signed in as</span>
