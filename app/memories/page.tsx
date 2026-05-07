@@ -40,33 +40,35 @@ export default function Memories() {
 										</div>
 									</div>
 								))}
-								<div className="space30" />
-								<div className="pagination-area">
-									<nav aria-label="Page navigation example">
-										<ul className="pagination">
-											<li className="page-item">
-												<Link className="page-link" href="/#" aria-label="Previous">
-													<i className="fa-solid fa-angle-left" />
-												</Link>
-											</li>
-											<li className="page-item"><Link className="page-link active" href="/#">1</Link></li>
-											<li className="page-item"><Link className="page-link" href="/#">2</Link></li>
-											<li className="page-item"><Link className="page-link" href="/#">...</Link></li>
-											<li className="page-item"><Link className="page-link" href="/#">12</Link></li>
-											<li className="page-item">
-												<Link className="page-link" href="/#" aria-label="Next">
-													<i className="fa-solid fa-angle-right" />
-												</Link>
-											</li>
-										</ul>
-									</nav>
+								<div className="col-12">
+									<div className="space30" />
+									<div className="pagination-area memories-pagination">
+										<nav aria-label="Page navigation example">
+											<ul className="pagination">
+												<li className="page-item">
+													<Link className="page-link" href="/#" aria-label="Previous">
+														<i className="fa-solid fa-angle-left" />
+													</Link>
+												</li>
+												<li className="page-item"><Link className="page-link active" href="/#">1</Link></li>
+												<li className="page-item"><Link className="page-link" href="/#">2</Link></li>
+												<li className="page-item"><Link className="page-link" href="/#">...</Link></li>
+												<li className="page-item"><Link className="page-link" href="/#">12</Link></li>
+												<li className="page-item">
+													<Link className="page-link" href="/#" aria-label="Next">
+														<i className="fa-solid fa-angle-right" />
+													</Link>
+												</li>
+											</ul>
+										</nav>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					{/*===== MEMORY AREA ENDS =======*/}
 					{/*===== CTA AREA STARTS =======*/}
-					<div className="cta1-section-area d-lg-block d-block">
+					<div className="cta1-section-area memories-cta d-lg-block d-none">
 						<div className="container">
 							<div className="row">
 								<div className="col-lg-10 m-auto">
@@ -92,7 +94,7 @@ export default function Memories() {
 					</div>
 					{/*===== CTA AREA ENDS =======*/}
 					{/*===== CTA AREA STARTS =======*/}
-					<div className="cta1-section-area d-lg-none d-block">
+					<div className="cta1-section-area memories-cta d-lg-none d-block">
 						<div className="container">
 							<div className="row">
 								<div className="col-lg-10 m-auto">
@@ -138,6 +140,35 @@ export default function Memories() {
 					.memory-inner-section-area .memory3-boxarea .content-area .plus a {
 						background: #fff;
 						color: #4e2b5a;
+					}
+					.memory-inner-section-area .memories-pagination {
+						display: flex;
+						justify-content: center;
+						margin-bottom: 10px;
+					}
+					.memories-cta {
+						margin-top: 22px;
+						margin-bottom: 0 !important;
+					}
+					.memories-cta .cta1-main-boxarea {
+						max-width: 1060px;
+						margin: 0 auto;
+					}
+					@media (max-width: 991px) {
+						.memories-cta .cta1-main-boxarea {
+							padding: 24px 16px;
+						}
+						.memories-cta .timer-btn-area {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							gap: 14px;
+						}
+						.memories-cta .btn-area1 {
+							padding-left: 0;
+							border-left: 0;
+							margin-top: 0;
+						}
 					}
 				`}</style>
 
