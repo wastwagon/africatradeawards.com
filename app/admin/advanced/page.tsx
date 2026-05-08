@@ -125,14 +125,14 @@ export default function AdminAdvancedPage() {
   return (
     <main>
       <AdminPageHeader
-        title="Advanced workflow tools"
-        description="Judging stages, score matrix review, and broadcast queue in one place."
+        title="Admin Tools"
+        description="Set up judging steps, review scores, and send announcements."
       />
       <AdminMetricStrip mergeSnapshot />
       {error ? <p className="admin-error">{error}</p> : null}
       {success ? <p className="admin-muted">{success}</p> : null}
 
-      <AdminSection title="Judging stages">
+      <AdminSection title="Judging Steps">
         <form onSubmit={createStage} className="admin-form">
           <select value={selectedProgramId} onChange={(e) => setSelectedProgramId(e.target.value)} required>
             <option value="">Select program</option>
@@ -150,13 +150,13 @@ export default function AdminAdvancedPage() {
               </option>
             ))}
           </select>
-          <input value={stageName} onChange={(e) => setStageName(e.target.value)} placeholder="Stage name" required />
+          <input value={stageName} onChange={(e) => setStageName(e.target.value)} placeholder="Step name" required />
           <input type="number" min={1} max={20} value={stageOrder} onChange={(e) => setStageOrder(Number(e.target.value))} />
-          <button type="submit">Create Stage</button>
+          <button type="submit">Create Step</button>
         </form>
       </AdminSection>
 
-      <AdminSection title="Score matrix">
+      <AdminSection title="Score Review">
         <div className="admin-inline-actions">
           <select value={selectedEntryId} onChange={(e) => setSelectedEntryId(e.target.value)}>
             <option value="">Select entry</option>
@@ -167,7 +167,7 @@ export default function AdminAdvancedPage() {
             ))}
           </select>
           <button type="button" onClick={loadMatrix}>
-            Load Matrix
+            Load Scores
           </button>
         </div>
         <ul>
@@ -179,7 +179,7 @@ export default function AdminAdvancedPage() {
         </ul>
       </AdminSection>
 
-      <AdminSection title="Broadcast queue">
+      <AdminSection title="Announcements">
         {smtpConfigured === false ? (
           <p className="admin-error" role="status">
             SMTP is not configured (set SMTP_HOST, SMTP_USER, SMTP_PASS, and optionally SMTP_FROM). Queued jobs will fail
@@ -195,11 +195,11 @@ export default function AdminAdvancedPage() {
           </select>
           <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="Subject" required />
           <label>
-            Optional schedule (local datetime)
+            Optional send time (local)
             <input type="datetime-local" value={sendAt} onChange={(e) => setSendAt(e.target.value)} />
           </label>
           <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows={5} placeholder="Message" required />
-          <button type="submit">Queue Broadcast Job</button>
+          <button type="submit">Schedule Announcement</button>
         </form>
       </AdminSection>
     </main>

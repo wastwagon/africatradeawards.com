@@ -59,35 +59,35 @@ export default function VotingFraudPage() {
   return (
     <main className="admin-page--wide">
       <AdminPageHeader
-        title="Voting fraud analytics"
-        description="Monitor suspicious clustering by IP and device fingerprint."
+        title="Voting Reports"
+        description="Review unusual voting patterns by IP address and device."
       />
       <AdminMetricStrip mergeSnapshot appendItems={fraudAppend} />
       {error ? <p className="admin-error">{error}</p> : null}
 
-      <AdminSection title="Suspicious IP hash clusters (5+ votes)">
+      <AdminSection title="Unusual IP activity (5+ votes)">
         <ul>
           {suspiciousIp.map((row) => (
             <li key={row.ipHash}>
               {row.ipHash}: {row._count._all} votes
             </li>
           ))}
-          {suspiciousIp.length === 0 ? <li>No suspicious IP clusters detected.</li> : null}
+          {suspiciousIp.length === 0 ? <li>No unusual IP activity detected.</li> : null}
         </ul>
       </AdminSection>
 
-      <AdminSection title="Suspicious fingerprint clusters (3+ votes)">
+      <AdminSection title="Unusual device activity (3+ votes)">
         <ul>
           {suspiciousFingerprint.map((row) => (
             <li key={row.fingerprintHash ?? "unknown"}>
               {row.fingerprintHash}: {row._count._all} votes
             </li>
           ))}
-          {suspiciousFingerprint.length === 0 ? <li>No suspicious fingerprint clusters detected.</li> : null}
+          {suspiciousFingerprint.length === 0 ? <li>No unusual device activity detected.</li> : null}
         </ul>
       </AdminSection>
 
-      <AdminSection title="Top verification request sources">
+      <AdminSection title="Top verification sources">
         <ul>
           {verificationStats.map((row) => (
             <li key={row.ipHash}>
@@ -97,7 +97,7 @@ export default function VotingFraudPage() {
         </ul>
       </AdminSection>
 
-      <AdminSection title="Recent one-time token usage">
+      <AdminSection title="Recent verification link usage">
         <ul>
           {tokenUsageRecent.map((row) => (
             <li key={row.id}>

@@ -24,7 +24,7 @@ function isActive(pathname: string, href: string): boolean {
 const NAV: { href: string; label: string }[] = [
   { href: "/portal/entrant/", label: "Dashboard" },
   { href: "/portal/entrant/entry/", label: "Manage entries" },
-  { href: "/portal/nominator/", label: "Nominator portal" },
+  { href: "/portal/nominator/", label: "Nominator dashboard" },
   { href: "/vote/", label: "Public voting" },
   { href: "/", label: "Website home" },
 ];

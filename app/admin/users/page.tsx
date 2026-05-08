@@ -164,8 +164,8 @@ export default function AdminCreateUserPage() {
     <main className="admin-page--wide">
       <AdminPageHeader
         eyebrow="Accounts"
-        title="User management and impersonation"
-        description="Super admin only. Create, update, reset passwords, and impersonate any role account in one click."
+        title="Team Account Management"
+        description="Super admin only. Create and update accounts, reset passwords, and sign in as another role for support."
       />
       <AdminMetricStrip items={userMetrics} />
       <AdminSection title="Directory">
@@ -191,7 +191,7 @@ export default function AdminCreateUserPage() {
                 <th>Email</th>
                 <th>Name</th>
                 <th>Role</th>
-                <th>Temp password reset</th>
+                <th>Set new password</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -236,7 +236,7 @@ export default function AdminCreateUserPage() {
                         onClick={() => void impersonateUser(user)}
                         disabled={impersonatingId === user.id}
                       >
-                        {impersonatingId === user.id ? "Switching…" : "Impersonate"}
+                        {impersonatingId === user.id ? "Switching…" : "Sign in as user"}
                       </button>
                     </div>
                   </td>
@@ -262,7 +262,7 @@ export default function AdminCreateUserPage() {
           <input value={fullName} onChange={(e) => setFullName(e.target.value)} required />
         </label>
         <label>
-          Temporary password
+          Temporary password (first login)
           <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" minLength={10} required />
         </label>
         <label>

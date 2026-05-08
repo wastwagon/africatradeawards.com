@@ -77,13 +77,11 @@ export default function VotingQuarantinePage() {
   return (
     <main className="admin-page--wide">
       <AdminPageHeader
-        title="Vote quarantine queue"
-        description="Approve to count the vote as valid, or reject to discard it and free the voter to try again."
+        title="Votes to Review"
+        description="Approve valid votes or reject flagged votes so voters can try again."
       />
       <AdminMetricStrip mergeSnapshot appendItems={queueMetrics} />
-      {!canReview ? (
-        <p className="admin-muted">Auditor view: you can inspect the queue only. Approvals require a program manager.</p>
-      ) : null}
+      {!canReview ? <p className="admin-muted">Auditor view: read-only. A program manager must approve or reject votes.</p> : null}
       {error ? <p className="admin-error">{error}</p> : null}
       {votes.length === 0 ? <p>No votes awaiting review.</p> : null}
       <ul className="admin-card-list">
@@ -95,7 +93,7 @@ export default function VotingQuarantinePage() {
             </div>
             <div className="admin-card-list__meta">
               <div>Email: {v.voterEmail ?? "—"}</div>
-              <div>IP hash: {v.ipHash.slice(0, 16)}…</div>
+              <div>Security reference: {v.ipHash.slice(0, 16)}…</div>
               <div>Reason: {v.quarantineReason ?? "—"}</div>
               <div>Submitted: {new Date(v.createdAt).toLocaleString()}</div>
             </div>

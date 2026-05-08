@@ -55,22 +55,21 @@ export default function AdminExportsPage() {
   }, [programId]);
 
   const rows = [
-    { href: `/api/exports/entries${query}`, label: "Entries (CSV)" },
-    { href: `/api/exports/users${query}`, label: "Users (CSV) — filtered by program when selected" },
-    { href: `/api/exports/votes${query}`, label: "Public votes (CSV)" },
-    { href: `/api/exports/scores${query}`, label: "Judge scores (CSV)" },
-    { href: `/api/exports/pack${query}`, label: "ZIP — all four files above" },
+    { href: `/api/exports/entries${query}`, label: "Entries report (CSV)" },
+    { href: `/api/exports/users${query}`, label: "Users report (CSV) — filtered by selected program" },
+    { href: `/api/exports/votes${query}`, label: "Public voting report (CSV)" },
+    { href: `/api/exports/scores${query}`, label: "Judge scoring report (CSV)" },
+    { href: `/api/exports/pack${query}`, label: "Download all reports (ZIP)" },
   ];
 
   return (
     <main>
       <AdminPageHeader
-        title="Data exports"
+        title="Data Downloads"
         description={
           <>
-            Optional filters apply to entries, votes, scores, and the ZIP pack. Program and season narrow rows; date
-            range filters each file by its own timestamps (entry created, vote cast, score saved, user registered).
-            Users CSV still respects program scope when a program is selected.
+            Optional filters apply to entries, votes, scores, and the ZIP file. Program and season narrow the data.
+            Date range filters each report by its own timestamps.
           </>
         }
       />

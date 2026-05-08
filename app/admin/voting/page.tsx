@@ -67,14 +67,14 @@ export default function AdminVotingResultsPage() {
   return (
     <main className="admin-page--wide">
       <AdminPageHeader
-        title="Public voting results"
+        title="Voting Results"
         description={
           <>
             Rankings use the same rules as the public vote page: only <strong>shortlisted</strong> and{" "}
             <strong>winner</strong> entries, counting <strong>validated</strong> votes only. Order matches public ordering
-            (by vote total). For quarantined or suspicious activity, see{" "}
-            <Link href="/admin/voting-quarantine">Vote quarantine</Link> and{" "}
-            <Link href="/admin/voting-fraud">Voting fraud analytics</Link>. Public page: <Link href="/vote">/vote</Link>.
+            (by vote total). For flagged or suspicious activity, see{" "}
+            <Link href="/admin/voting-quarantine">Votes to review</Link> and{" "}
+            <Link href="/admin/voting-fraud">Voting reports</Link>. Public page: <Link href="/vote">/vote</Link>.
           </>
         }
       />
